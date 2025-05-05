@@ -1,0 +1,174 @@
+$green: #17433B;
+$grey: #F2F2F2; 
+$orange: #EC7B14;
+$teal: #91B7AC;
+
+$gutter: 22px;
+$radius: 12px;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+html{
+    // background-color: $green;
+    background-image: url(/images/m32.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    justify-content: center;
+}
+
+body{
+    width: 800px;
+    max-width: 800px;
+    padding: $gutter;
+}
+
+.top{
+
+}
+
+.section{
+    padding: $gutter;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: $gutter;
+    background-color: $teal;
+    position: relative;
+    border-radius: $radius;
+}
+
+.hero{
+    border-radius: $radius;
+    position: relative;
+    overflow: hidden;
+}
+
+.main {
+    background: white;
+    border-radius: $radius;
+    display: flex;
+    flex-direction: column;
+    gap: $gutter;
+}
+
+.footer{
+    background: $green;
+    color: white;
+    border-radius: $radius;
+}
+
+.me{     
+    display: block;
+    text-align: center;
+    width: 445px;
+    height: 356px;
+    max-width: 445px;
+    height: 356px;
+    background: url(/images/me.png) no-repeat;
+    background-size: cover;
+    text-indent: -9999px;
+}
+
+.nav{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    background-color: #FFEACA;
+    border-radius: $radius;
+    overflow: hidden;
+    &__link{
+        position: relative;
+        display: block;
+        text-decoration: none;
+        color: $green;
+        font-size: 18px;
+        padding: 22px 32px;
+        // border-radius: 8px 8px 0 0;
+        // margin-right: 3px;
+        // border: solid 1px #FFEACA;
+
+        &.active, &:hover{
+            background-color: $orange;  
+            color: white;          
+            // border: solid 2px #ccc;
+            // border-bottom: 0px;
+        } 
+
+    }    
+}
+
+.typography{
+    font-size: 18px;
+    line-height: 1.5;
+    color: $green;
+    
+    p, h2, h3, h4, h5, h6, 
+    ul, ol, table, blockquote {margin-bottom: $gutter;}
+
+    p:last-child{
+        margin-bottom: 0;
+    }
+
+    blockquote{
+        padding: $gutter;
+        background-color: $grey;
+        border-radius: $radius;
+        font-size: 18px;
+        line-height: 1.5;
+    }
+
+    h1{
+        font-size: 42px;
+        line-height: 1.2;
+        margin-bottom: 4px;
+    }
+
+}
+
+
+.cards{
+    &__cards{
+        display: flex;
+        flex-direction: row;
+        gap: $gutter;
+    }
+    &__title{
+        margin-bottom: $gutter;
+    }
+}
+
+.card{
+    background: $grey;
+    border-radius: $radius;
+    text-decoration: none;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    color: $green;
+    &__details{
+        padding: $gutter;
+    }
+    &__title{
+        font-size: 24px;
+    }
+    &:hover{
+        background: #ccc;
+        //color: white;
+    }
+}   

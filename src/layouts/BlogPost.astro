@@ -8,27 +8,18 @@ type Props = CollectionEntry<'blog'>['data'];
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
-<Wrapper>
-	<article>
-		<div class="hero-image">
-			{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
-		</div>
-		<div class="prose">
-			<div class="title">
-				<div class="date">
-					<FormattedDate date={pubDate} />
-					{
-						updatedDate && (
-							<div class="last-updated-on">
-								Last updated on <FormattedDate date={updatedDate} />
-							</div>
-						)
-					}
+<Wrapper>	
+	{heroImage && <img class="hero" width={1020} height={510} src={heroImage} alt="" />}
+	<section class="typography">	
+		<h1>{title}</h1>
+		<p><FormattedDate date={pubDate} />			
+		{
+			updatedDate && (
+				<div class="last-updated-on">
+					Last updated on <FormattedDate date={updatedDate} />
 				</div>
-				<h1>{title}</h1>
-				<hr />
-			</div>
-			<slot />
-		</div>
-	</article>
+			)
+		}</p>
+		<slot />
+	</section>			
 </Wrapper>
