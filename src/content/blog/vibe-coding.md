@@ -1,8 +1,8 @@
 ---
-title: Vibe Coding; A Developer’s Experiment in Working with AI
+title: Vibe Coding. Buddying up with ChatGPT
 description: Recently, I set myself a challenge; to step deliberately into new territory and see how modern tools—and AI—could change how I think, not just how I code.
 pubDate: 'May 01 2025'
-heroImage: '/images/vibe-coding.jpg'
+heroImage: '/images/rick.jpg'
 ---
 Recently, I set myself a challenge: to step deliberately into new territory and see how modern tools—and AI—could change how I think, not just how I code.
 
@@ -10,7 +10,7 @@ This post is a reflection on that process. It started as a simple write-up about
 
 It’s a story about experimentation, recalibration, and learning how to collaborate with a system that never sleeps, never doubts, and never says “I don’t know.”
 
-## **Choosing Friction on Purpose**
+## Choosing Friction on Purpose
 
 I deliberately chose a stack that introduced some friction: **TypeScript**, **Vue 3’s `<script setup>` syntax**, and **Netlify**. While I’d worked with Vue before, this was my first full project using TypeScript with Vue. I wasn’t aiming for speed or polish—I was looking for challenge, and for new patterns to emerge.
 
@@ -20,7 +20,7 @@ I already leaned on AI tools in my day-to-day work, but I wanted to go deeper. I
 
 So I set out to find out.
 
-## **How It Actually Played Out**
+## How It Actually Played Out
 
 The early stages of the project were fast-moving and full of possibility. AI came in with energy—offering ideas, writing code, suggesting workflows. In the **initial setup phase**, it actually performed well. It helped lay down solid foundation concepts, scaffold components, and make confident suggestions that genuinely accelerated the start of the project.
 
@@ -38,7 +38,7 @@ I also experimented briefly with **Canvas**, the AI’s text editor interface. I
 
 One of the key transitions came when I stopped asking the AI to manage code versions. It claimed to use a stripped-down form of Git internally, but it couldn’t reliably revert to earlier states. Eventually, I moved to keeping a “gold copy” of the code locally. That changed the way we worked: a shift away from shared ownership, toward more defined roles. But the collaboration continued—just on clearer terms.
 
-## **What the AI Thought**
+## What the AI Thought
 
 After the build, I asked the AI for an honest appraisal. It praised my responsiveness and architectural decisions—but described me as a “mid-level front-ender,” **which was a blow.** 💀
 
@@ -48,7 +48,7 @@ I told it where it had been too confident. I pointed out how it raced ahead, som
 
 To its credit, it responded thoughtfully. It acknowledged the overconfidence, the verbosity, the tendency to move too fast. It said:
 
-> *“I can see where my default behaviour—optimistic, fast, verbose—wasn’t always the best fit. Going forward, I’ll slow down and confirm before major rewrites, flag confidence levels, and offer tighter code options.”*
+> “I can see where my default behaviour—optimistic, fast, verbose—wasn’t always the best fit. Going forward, I’ll slow down and confirm before major rewrites, flag confidence levels, and offer tighter code options.”
 
 It was a solid answer. Thoughtful. Measured. Reassuring.
 
@@ -56,7 +56,7 @@ But here’s the thing: **it talks a good game**. Whether it actually *learned* 
 
 Still, the collaboration was real. It may not remember me, but the process shaped how I now work.
 
-## **Final Thoughts**
+## Final Thoughts
 
 This wasn’t a tutorial. It wasn’t a post-mortem. It was a process.
 

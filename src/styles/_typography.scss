@@ -1,0 +1,30 @@
+.typography{
+    font-size: 18px;
+    line-height: 1.5;
+    color: $green;
+    
+    p, h1, h2, h3, h4, h5, h6, 
+    ul, ol, table, blockquote {margin-bottom: $gutter;}
+
+    p:last-child{
+        margin-bottom: 0;
+    }
+
+    blockquote{
+        padding: $gutter;
+        background-color: $grey;
+        border-radius: $radius;
+        font-size: 18px;
+        line-height: 1.5;
+    }
+
+    h1{
+        font-size: 42px;
+        line-height: 1.2;
+    }
+
+    ul, ol{
+        margin-left: $gutter;
+    }
+
+}

@@ -11,8 +11,8 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 <Wrapper>	
 	{heroImage && <img class="hero" width={1020} height={510} src={heroImage} alt="" />}
 	<section class="typography">	
-		<h1>{title}</h1>
-		<p><FormattedDate date={pubDate} />			
+		<time><FormattedDate date={pubDate} /></time>
+		<h1>{title}</h1>				
 		{
 			updatedDate && (
 				<div class="last-updated-on">

@@ -6,7 +6,7 @@ heroImage: '/images/eye.jpg'
 ---
 User tracking has always been part of the web. From server logs to session IDs, developers and businesses have long been able to understand user behaviour without resorting to invasive methods. The real issues emerged with **cross-domain tracking**, where large tech companies, particularly Google, began aggregating user data across multiple sites — a practice that benefits them far more than it does site owners.
 
-## 🔐 Are Cookies Required for Tracking?
+## Are Cookies Required for Tracking?
 
 Despite common assumptions, **cookies are not technically required** for most types of analytics.
 
@@ -22,7 +22,7 @@ You can easily gather useful data — such as:
 
 This kind of tracking is rarely necessary unless you're running complex personalisation or retargeting campaigns. In most cases, it’s simply overkill.
 
-## 🍪 Why Google Still Uses Cookies
+## Why Google Still Uses Cookies
 
 Google’s primary business model revolves around advertising, not analytics. Google Analytics exists to support that model by providing detailed behavioural insights that feed into:
 
@@ -34,7 +34,7 @@ By linking **search queries** to **on-site behaviour**, Google can “close the 
 
 Although Google previously announced it would deprecate third-party cookies, it has since **delayed this plan multiple times**. Its proposed replacements (such as the **Privacy Sandbox** and **Topics API**) still favour Google's advertising goals, suggesting the **u-turn** is more strategic than privacy-driven.
 
-## 🤔 Do Most Websites Need That Level of Tracking?
+## Do Most Websites Need That Level of Tracking?
 
 In short: **no**.
 
@@ -48,7 +48,7 @@ For most organisations — particularly SMEs or content-driven sites — basic m
 
 Even worse, Google Analytics 4 has **removed or diminished** some of the more accessible features, such as funnel visualisations, making it less usable for general audiences.
 
-## ✅ Ethical, Cookieless Analytics Tools
+## Ethical, Cookieless Analytics Tools
 
 There are several excellent, privacy-friendly analytics platforms available today that don’t rely on cookies:
 
@@ -61,7 +61,7 @@ There are several excellent, privacy-friendly analytics platforms available toda
 
 All of these provide reliable insight without invading user privacy.
 
-## 📉 The Stickiness of Google Analytics
+## The Stickiness of Google Analytics
 
 As of 2025, **Google Analytics is installed on over 55% of all websites**, including over 1.5 million in the UK. Despite GDPR and increasing awareness around privacy, most websites have not moved away. Why?
 
@@ -71,7 +71,7 @@ As of 2025, **Google Analytics is installed on over 55% of all websites**, inclu
 
 This behaviour, combined with an over-reliance on Google products, is arguably **damaging the open web**.
 
-## 🧭 Conclusion
+## Conclusion
 
 **Ethical tracking** is not about doing less — it’s about doing what’s **proportionate**, **transparent**, and **user-centric**.
 

@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
 import Wrapper from '../../layouts/wrapper.astro';
+import BlogList from '../../components/BlogList.astro';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -9,23 +9,6 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <Wrapper>
-
-	<section class="cards">
-		{
-			posts.map((post) => (
-				
-				<a href={`/blog/${post.id}/`} class="card">
-					<img class="card__hero" width={720} height={360} src={post.data.heroImage} alt="" />
-					<div class="card__details">
-						<div class="card__date">
-							<FormattedDate date={post.data.pubDate} />
-						</div>
-						<h4 class="card__title">{post.data.title}</h4>
-					</div>
-				</a>
-				
-			))
-		}
-	</section>
+	<BlogList />
 </Wrapper>
 
