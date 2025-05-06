@@ -34,3 +34,18 @@ h1, h2, h3, h4, h5, h6{
     font-family: "Cal Sans", sans-serif;
     font-weight: normal;
 }
+
+
+a{
+    &:hover{
+        text-decoration: none;
+    }
+}
+
+.label{
+    display: inline-block;
+    padding: 4px 12px;
+    background: $green;
+    color: white;
+    border-radius: $radius;
+}

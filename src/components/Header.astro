@@ -2,13 +2,18 @@
 import HeaderLink from './HeaderLink.astro';
 ---
 <nav class="nav">
-	<HeaderLink 
-		class="nav__link" 
-		href="/">Home</HeaderLink>
-	<HeaderLink
-		class="nav__link" 
-		href="/blog">Blog</HeaderLink>
-	<HeaderLink 
-		class="nav__link"
-		href="/about">About</HeaderLink>
+	<h1 class="nav__brand"><a href="/">
+		<img src="/images/NickClarkson.png" alt="Logo" />
+	</a></h1>
+	<div class="nav__links">
+		<HeaderLink 
+			class="nav__link" 
+			href="/">Home</HeaderLink>
+		<HeaderLink
+			class="nav__link" 
+			href="/blog">Blog</HeaderLink>
+		<HeaderLink 
+			class="nav__link"
+			href="/about">About</HeaderLink>
+	</div>
 </nav>

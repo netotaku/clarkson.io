@@ -1,0 +1,36 @@
+.nav{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFEACA;
+    border-radius: $radius;
+    overflow: hidden;
+    &__links{
+        display: flex;        
+    }
+    &__brand{
+        padding: 0 22px;
+        display: flex;
+        align-items: center;
+        color: $green;
+        img{
+            display: block;
+            text-decoration: none;
+            color: $green;
+        }
+    }
+    &__link{
+        position: relative;
+        display: block;
+        text-decoration: none;
+        color: $green;
+        font-size: 18px;
+        padding: 22px 32px;
+
+        &.active, &:hover{
+            background-color: $orange;  
+            color: white;          
+        } 
+
+    }    
+}

@@ -1,8 +1,10 @@
 ---
 const today = new Date();
+import SignUp from './SignUp.astro';
 ---
 
 <footer class="section footer">
-	&copy; {today.getFullYear()} Nick Clarkson. All rights reserved.
+	<SignUp />
+	&copy; {today.getFullYear()} Nick Clarkson. All rights reserved. <a href="/privacy-and-cookies">Cookies & Privacy</a>
 </footer>
 

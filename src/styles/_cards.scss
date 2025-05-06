@@ -1,8 +1,9 @@
 .cards{
     &__cards{
-        display: flex;
-        flex-direction: row;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: $gutter;
+        align-items: stretch; /* ensure items stretch to row height */
     }
     &__title{
         margin-bottom: $gutter;
@@ -26,5 +27,15 @@
     &:hover{
         background: #ccc;
         //color: white;
+    }
+    &__hero{
+        &__image{
+            display: block;
+        }
+        &__date{
+            position: absolute;
+            top: $gutter;
+            left: $gutter
+        }
     }
 } 

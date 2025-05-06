@@ -1,8 +1,8 @@
 ---
 title: Vibe Coding. Buddying up with ChatGPT
 description: Recently, I set myself a challenge; to step deliberately into new territory and see how modern tools—and AI—could change how I think, not just how I code.
-pubDate: 'May 01 2025'
-heroImage: '/images/rick.jpg'
+pubDate: 'May 03 2025'
+heroImage: '/images/aw.jpg'
 ---
 Recently, I set myself a challenge: to step deliberately into new territory and see how modern tools—and AI—could change how I think, not just how I code.
 
@@ -66,5 +66,3 @@ I learned a lot—not just about working with TypeScript in practice, but about 
 
 > **Moving forward, I’ll never start another project without it.**
 > Not because it’s perfect. But because it changes what’s possible.
-
-Let me know if you’d like a downloadable copy or version for Markdown, HTML, or your publishing platform.

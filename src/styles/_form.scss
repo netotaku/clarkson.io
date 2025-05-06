@@ -1,0 +1,43 @@
+.form{
+
+    &__row{
+        margin-bottom: $gutter;
+        display: block;
+    }
+    &__text-input{
+        
+        display: block;
+        width: 100%;
+        padding: 12px 14px;   
+        background-color: $teal;        
+        font-size: 18px;
+        border: 0;
+        &::placeholder{
+            color: $green;
+        }
+        &--email{
+                    
+        }
+    }
+    &__small-print{
+        color: $teal;
+
+    }
+    &__button{
+        appearance: none;
+        padding: 12px 14px;        
+        background: #708D84;
+        border: 0;
+        font-size: 18px;
+        color: white;
+        cursor: pointer;
+    }
+
+
+    &__subscribe{
+        display: flex;
+        border-radius: $radius;
+        position: relative;
+        overflow: hidden;
+    }
+}

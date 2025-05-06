@@ -1,10 +1,11 @@
-
-
 @import './vars';
+@import './util';
 @import './base';
 @import './cards';
 @import './typography';
-
+@import './form';
+@import './footer';
+@import './nav';
 
 .section{
     padding: $gutter;
@@ -25,6 +26,15 @@
     border-radius: $radius;
     position: relative;
     overflow: hidden;
+    margin-bottom: $gutter;
+    &__date{
+        position: absolute;
+        top: $gutter;
+        left: $gutter;
+    }
+    &__image{
+        display: block;
+    }
 }
 
 .main {
@@ -35,11 +45,7 @@
     gap: $gutter;
 }
 
-.footer{
-    background: $green;
-    color: white;
-    border-radius: $radius;
-}
+
 
 .me{     
     display: block;
@@ -53,33 +59,7 @@
     text-indent: -9999px;
 }
 
-.nav{
-    position: relative;
-    z-index: 1;
-    display: flex;
-    background-color: #FFEACA;
-    border-radius: $radius;
-    overflow: hidden;
-    &__link{
-        position: relative;
-        display: block;
-        text-decoration: none;
-        color: $green;
-        font-size: 18px;
-        padding: 22px 32px;
-        // border-radius: 8px 8px 0 0;
-        // margin-right: 3px;
-        // border: solid 1px #FFEACA;
 
-        &.active, &:hover{
-            background-color: $orange;  
-            color: white;          
-            // border: solid 2px #ccc;
-            // border-bottom: 0px;
-        } 
-
-    }    
-}
 
 
 
