@@ -1,0 +1,14 @@
+.unit{
+    background: $grey;
+    border-radius: $radius;
+    color: $green
+}
+
+.units{
+    display: flex;
+    flex-direction: column;
+    gap: $gutter;
+    @media (max-width: $break) {        
+        gap: $gutter/2;
+    }
+}

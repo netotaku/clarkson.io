@@ -1,6 +1,10 @@
 ---
 import Wrapper from '../layouts/wrapper.astro';
 import BlogList from '../components/BlogList.astro';
+
+import CRM from '../components/home/crm.astro';
+import WebDev from '../components/home/webdev.astro';
+import PM from '../components/home/projectmanagement.astro';
 ---
 
 <Wrapper>
@@ -8,7 +12,11 @@ import BlogList from '../components/BlogList.astro';
 		<div class="hero"> 
 			<img class="hero__image" src="/images/intro.jpg" alt=""> 
 		</div>
-		<BlogList />
+		<div class="units">
+			<CRM />
+			<WebDev />
+			<PM />
+			<BlogList />			
+		</div>
 	</article>
-	
 </Wrapper>

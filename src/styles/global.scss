@@ -7,8 +7,12 @@
 @import './footer';
 @import './nav';
 @import './hero';
+@import './unit';
 
 .section{
+    position: relative;
+    border-radius: $radius;
+    overflow: hidden;
     padding: $gutter;
     @media (max-width: $break) {
         padding: $gutter/2;

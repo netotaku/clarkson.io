@@ -85,9 +85,11 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 			</nav>  
 			<slot />
 			<footer class="section footer">
-				<SignUp />
-				&copy; {today.getFullYear()} Nick Clarkson. All rights reserved. <a href="/privacy-and-cookies">Cookies & Privacy</a>
+				<SignUp />				
 			</footer>
+			<footer class="section u-olive">				
+				&copy; {today.getFullYear()} Nick Clarkson. All rights reserved. <a href="/privacy-and-cookies">Cookies & Privacy</a>
+			</footer>		
 		</main>
 	</body>
 </html>

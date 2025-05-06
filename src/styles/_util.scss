@@ -2,4 +2,11 @@
     &hide{
         display: none!important;
     }
+    &olive{
+        background-color: $olive;
+        color: white;
+        a{
+            color: white;
+        }
+    }
 }
