@@ -3,10 +3,19 @@ import Wrapper from '../layouts/wrapper.astro';
 ---
 
 <Wrapper
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage="/blog-placeholder-about.jpg"
->
-	<h1>Bio</h1>
+	title="Bio">
+
+	<article>
+
+		<div class="hero"> 
+			<img class="hero__image" width="1020" height="510" src="/images/bio.jpg" alt=""> 
+		</div>
+		<div class="typography">
+			<h2>Bio</h2>
+			<p>Nick Clarkson is a Creative Technologist with over 25 years of experience at the forefront of digital marketing and development. Specialising in full-stack web development, digital strategy, CRM integration, and AI-enhanced workflows, he’s known for delivering high-impact, user-centred solutions at speed and scale.</p>
+			<p>Nick has worked with global B2B and B2C brands including Triumph Motorcycles, Kia, Orange, Land Rover, and Turtle Bay. He’s won multiple awards for recruitment, hospitality, and public sector digital work, and is a passionate advocate for ethical, insight-led technology that just works.</p>
+			<p><a href="https://nightofthevampire.com" target="_blank">I also make music</a></p>
+		</div>
+	</article>
+
 </Wrapper>

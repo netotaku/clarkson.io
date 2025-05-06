@@ -6,35 +6,10 @@
 @import './form';
 @import './footer';
 @import './nav';
+@import './hero';
 
 .section{
     padding: $gutter;
-}
-
-.header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: $gutter;
-    background-color: $teal;
-    position: relative;
-    border-radius: $radius;
-}
-
-.hero{
-    border-radius: $radius;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: $gutter;
-    &__date{
-        position: absolute;
-        top: $gutter;
-        left: $gutter;
-    }
-    &__image{
-        display: block;
-    }
 }
 
 .main {
@@ -43,25 +18,4 @@
     display: flex;
     flex-direction: column;
     gap: $gutter;
-}
-
-
-
-.me{     
-    display: block;
-    text-align: center;
-    width: 445px;
-    height: 356px;
-    max-width: 445px;
-    height: 356px;
-    background: url(/images/me.png) no-repeat;
-    background-size: cover;
-    text-indent: -9999px;
-}
-
-
-
-
-
-
-  
+}  

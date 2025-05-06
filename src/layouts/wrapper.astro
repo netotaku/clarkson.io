@@ -10,8 +10,8 @@ import SignUp from '../components/SignUp.astro';
 import '../styles/global.scss';
 
 interface Props {
-	title: string;
-	description: string;
+	title?: string;
+	description?: string;
 	image?: string;
 }
 
@@ -68,9 +68,9 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 	<body>            
 		<main class="section main">
 			<nav class="nav">
-				<h1 class="nav__brand"><a href="/">
+				<!-- <h1 class="nav__brand"><a href="/">
 					<img src="/images/NickClarkson.png" alt="Logo" />
-				</a></h1>
+				</a></h1> -->
 				<div class="nav__links">
 					<HeaderLink 
 						class="nav__link" 

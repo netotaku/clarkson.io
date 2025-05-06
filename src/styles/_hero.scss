@@ -1,0 +1,14 @@
+.hero{
+    border-radius: $radius;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: $gutter;
+    &__date{
+        position: absolute;
+        top: $gutter;
+        left: $gutter;
+    }
+    &__image{
+        display: block;
+    }
+}
