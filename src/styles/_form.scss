@@ -3,6 +3,9 @@
     &__row{
         margin-bottom: $gutter;
         display: block;
+        @media (max-width: $break) {
+            margin-bottom: $gutter/2;
+        }
     }
     &__text-input{
         

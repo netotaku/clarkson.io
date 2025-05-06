@@ -10,6 +10,9 @@
 
 .section{
     padding: $gutter;
+    @media (max-width: $break) {
+        padding: $gutter/2;
+    }
 }
 
 .main {
@@ -18,4 +21,8 @@
     display: flex;
     flex-direction: column;
     gap: $gutter;
+    @media (max-width: $break) {
+        border-radius: 0;
+        gap: $gutter/2;
+    }
 }  

@@ -28,6 +28,10 @@ body{
     width: 800px;
     max-width: 800px;
     padding: $gutter;
+    @media (max-width: $break) {
+        padding: 0;
+        width: 100%;
+    }
 }
 
 h1, h2, h3, h4, h5, h6{

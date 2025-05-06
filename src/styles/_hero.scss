@@ -11,4 +11,7 @@
     &__image{
         display: block;
     }
+    @media (max-width: $break) {
+        margin-bottom: $gutter/2;
+    } 
 }

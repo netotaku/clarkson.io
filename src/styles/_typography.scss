@@ -4,7 +4,12 @@
     color: $green;
     
     p, h1, h2, h3, h4, h5, h6, 
-    ul, ol, table, blockquote {margin-bottom: $gutter;}
+    ul, ol, table, blockquote {
+        margin-bottom: $gutter;
+        @media (max-width: $break) {
+            margin-bottom: $gutter/2;
+        }
+    }
 
     p:last-child{
         margin-bottom: 0;
@@ -21,6 +26,9 @@
     h1{
         font-size: 42px;
         line-height: 1.2;
+        @media (max-width: $break) {
+            font-size: 32px;
+        }
     }
 
     ul, ol{
@@ -30,5 +38,10 @@
     a{
         color: $orange;
     }
+
+    @media (max-width: $break) {
+        font-size: .9em;
+    }
+    
 
 }

@@ -4,9 +4,16 @@
         grid-template-columns: 1fr 1fr;
         gap: $gutter;
         align-items: stretch; /* ensure items stretch to row height */
+        @media (max-width: $break) {
+            gap: $gutter/2;
+            grid-template-columns: 1fr;
+        }
     }
     &__title{
         margin-bottom: $gutter;
+        @media (max-width: $break) {
+            margin-bottom: $gutter/2;
+        }
     }
 }
 
@@ -20,9 +27,15 @@
     color: $green;
     &__details{
         padding: $gutter;
+        @media (max-width: $break) {
+            padding: $gutter/2;
+        }
     }
     &__title{
         font-size: 24px;
+        @media (max-width: $break) {
+            font-size: 18px;
+        }
     }
     &:hover{
         background: #ccc;
@@ -35,7 +48,11 @@
         &__date{
             position: absolute;
             top: $gutter;
-            left: $gutter
+            left: $gutter;
+            @media (max-width: $break) {
+                top: $gutter/2;
+                left: $gutter/2;
+            }
         }
     }
 } 
