@@ -1,11 +1,11 @@
 .form{
 
     &__row{
-        margin-bottom: $gutter;
+        margin-bottom: var(--gutter);
         display: block;
-        @media (max-width: $break) {
-            margin-bottom: $gutter/2;
-        }
+        // @media (max-width: $break) {
+        //     margin-bottom: $gutter/2;
+        // }
     }
     &__text-input{
         
@@ -15,6 +15,8 @@
         background-color: $teal;        
         font-size: 18px;
         border: 0;
+        border-radius: 0;
+        
         &::placeholder{
             color: $green;
         }
@@ -34,6 +36,7 @@
         font-size: 18px;
         color: white;
         cursor: pointer;
+        border-radius: 0;
     }
 
 
@@ -42,5 +45,6 @@
         border-radius: $radius;
         position: relative;
         overflow: hidden;
+        //border-radius: 0;
     }
 }

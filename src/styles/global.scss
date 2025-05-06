@@ -13,10 +13,10 @@
     position: relative;
     border-radius: $radius;
     overflow: hidden;
-    padding: $gutter;
-    @media (max-width: $break) {
-        padding: $gutter/2;
-    }
+    padding: var(--gutter);
+    // @media (max-width: $break) {
+    //     padding: $gutter/2;
+    // }
 }
 
 .main {
@@ -24,9 +24,10 @@
     border-radius: $radius;
     display: flex;
     flex-direction: column;
-    gap: $gutter;
-    @media (max-width: $break) {
-        border-radius: 0;
-        gap: $gutter/2;
-    }
+    gap: var(--gutter);
+    // @media (max-width: $break) {
+    //     // background: none;
+    //     // border-radius: 0;
+    //     gap: $gutter/2;
+    // }
 }  

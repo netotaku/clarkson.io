@@ -2,16 +2,16 @@
     border-radius: $radius;
     position: relative;
     overflow: hidden;
-    margin-bottom: $gutter;
+    margin-bottom: var(--gutter);
     &__date{
         position: absolute;
-        top: $gutter;
-        left: $gutter;
+        top: var(--gutter);
+        left: var(--gutter);
     }
     &__image{
         display: block;
     }
-    @media (max-width: $break) {
-        margin-bottom: $gutter/2;
-    } 
+    // @media (max-width: $break) {
+    //     margin-bottom: $gutter/2;
+    // } 
 }

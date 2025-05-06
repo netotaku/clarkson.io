@@ -10,7 +10,7 @@ img {
 }
 
 html{
-    // background-color: $green;
+    background-color: $brown;
     background-image: url(/images/m32.jpg);
     background-size: cover;
     background-position: center;
@@ -27,9 +27,8 @@ html{
 body{
     width: 800px;
     max-width: 800px;
-    padding: $gutter;
+    padding: var(--gutter);
     @media (max-width: $break) {
-        padding: 0;
         width: 100%;
     }
 }

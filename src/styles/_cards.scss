@@ -2,18 +2,17 @@
     &__cards{
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: $gutter;
+        gap: var(--gutter);
         align-items: stretch; /* ensure items stretch to row height */
-        @media (max-width: $break) {
-            gap: $gutter/2;
+        @media (max-width: $break) {            
             grid-template-columns: 1fr;
         }
     }
     &__title{
-        margin-bottom: $gutter;
-        @media (max-width: $break) {
-            margin-bottom: $gutter/2;
-        }
+        margin-bottom: var(--gutter);
+        // @media (max-width: $break) {
+        //     //margin-bottom: $gutter/2;
+        // }
     }
 }
 
@@ -26,10 +25,10 @@
     overflow: hidden;
     color: $green;
     &__details{
-        padding: $gutter;
-        @media (max-width: $break) {
-            padding: $gutter/2;
-        }
+        padding: var(--gutter);
+        // @media (max-width: $break) {
+        //     padding: $gutter/2;
+        // }
     }
     &__title{
         font-size: 24px;
@@ -47,12 +46,12 @@
         }
         &__date{
             position: absolute;
-            top: $gutter;
-            left: $gutter;
-            @media (max-width: $break) {
-                top: $gutter/2;
-                left: $gutter/2;
-            }
+            top: var(--gutter);;
+            left: var(--gutter);;
+            // @media (max-width: $break) {
+            //     top: $gutter/2;
+            //     left: $gutter/2;
+            // }
         }
     }
 } 

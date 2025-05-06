@@ -7,8 +7,8 @@
 .units{
     display: flex;
     flex-direction: column;
-    gap: $gutter;
-    @media (max-width: $break) {        
-        gap: $gutter/2;
-    }
+    gap: var(--gutter);
+    // @media (max-width: $break) {        
+    //     gap: $gutter/2;
+    // }
 }

@@ -5,10 +5,10 @@
     
     p, h1, h2, h3, h4, h5, h6, 
     ul, ol, table, blockquote {
-        margin-bottom: $gutter;
-        @media (max-width: $break) {
-            margin-bottom: $gutter/2;
-        }
+        margin-bottom: var(--gutter);
+        // @media (max-width: $break) {
+        //     margin-bottom: $gutter/2;
+        // }
     }
 
     p:last-child{
@@ -16,7 +16,7 @@
     }
 
     blockquote{
-        padding: $gutter;
+        padding: var(--gutter);
         background-color: $grey;
         border-radius: $radius;
         font-size: 18px;
@@ -32,7 +32,7 @@
     }
 
     ul, ol{
-        margin-left: $gutter;
+        margin-left: var(--gutter);
     }
 
     a{
@@ -40,7 +40,7 @@
     }
 
     @media (max-width: $break) {
-        font-size: .9em;
+        font-size: 1.1em;
     }
     
 
