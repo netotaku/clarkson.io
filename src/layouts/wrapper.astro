@@ -1,6 +1,6 @@
 ---
 
-import Header from '../components/Header.astro';
+import HeaderLink from '../components/HeaderLink.astro';
 
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
@@ -24,7 +24,6 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <!doctype html>
 <html lang="en">
 	<head>
-
 		<!-- Global Metadata -->
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -66,16 +65,29 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 		<meta property="twitter:image" content={new URL(image, Astro.url)} />
 		
 	</head>
-	<body>        
-		      
+	<body>            
 		<main class="section main">
-			<Header />  
+			<nav class="nav">
+				<h1 class="nav__brand"><a href="/">
+					<img src="/images/NickClarkson.png" alt="Logo" />
+				</a></h1>
+				<div class="nav__links">
+					<HeaderLink 
+						class="nav__link" 
+						href="/">Home</HeaderLink>
+					<HeaderLink
+						class="nav__link" 
+						href="/blog">Blog</HeaderLink>
+					<HeaderLink 
+						class="nav__link"
+						href="/about">About</HeaderLink>
+				</div>
+			</nav>  
 			<slot />
 			<footer class="section footer">
 				<SignUp />
 				&copy; {today.getFullYear()} Nick Clarkson. All rights reserved. <a href="/privacy-and-cookies">Cookies & Privacy</a>
 			</footer>
 		</main>
-		
 	</body>
 </html>
