@@ -3,17 +3,19 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: var(--gutter);
-        align-items: stretch; /* ensure items stretch to row height */
+        align-items: stretch;
         @media (max-width: $break) {            
             grid-template-columns: 1fr;
         }
     }
-    &__title{
-        margin-bottom: var(--gutter);
-        // @media (max-width: $break) {
-        //     //margin-bottom: $gutter/2;
-        // }
-    }
+
+    // &__title{
+    //     margin-bottom: var(--gutter);
+    // }
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--gutter);
 }
 
 .card{
@@ -32,9 +34,6 @@
 
     &__details{
         padding: var(--gutter);
-        // @media (max-width: $break) {
-        //     padding: $gutter/2;
-        // }
     }
     &__title{
         font-size: 24px;
@@ -43,8 +42,7 @@
         }
     }
     &:hover{
-        background: #ccc;
-        //color: white;
+        background: #ccc;        
     }
     &__hero{
         &__image{
@@ -54,10 +52,6 @@
             position: absolute;
             top: var(--gutter);;
             left: var(--gutter);;
-            // @media (max-width: $break) {
-            //     top: $gutter/2;
-            //     left: $gutter/2;
-            // }
         }
     }
 } 
