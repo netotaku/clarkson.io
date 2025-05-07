@@ -1,6 +1,6 @@
 ---
 title: Why You Probably Don’t Need a Bespoke Website 
-description: A practical look at why no-code platforms like Squarespace are often the better choice for most businesses—saving time, money, and complexity without compromising on quality.
+description: No Code vs Code
 pubDate: 'May 05 2025'
 heroImage: '/images/tailor.jpg'
 ---

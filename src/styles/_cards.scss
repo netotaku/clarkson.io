@@ -15,6 +15,7 @@
 }
 
 .card{
+
     background: $grey;
     border-radius: $radius;
     text-decoration: none;
@@ -29,17 +30,25 @@
     }
 
     &__details{
-        padding: var(--gutter);
+        padding: var(--gutter);        
     }
-    &__title{
+
+    &__desc{
+        line-height: 1.4;
+        margin-top: 4px;
+    }
+
+    &__title{        
         font-size: 24px;
         @media (max-width: $break) {
             font-size: 18px;
         }
     }
+
     &:hover{
         background: #ccc;        
     }
+    
     &__hero{
         &__image{
             display: block;

@@ -1,6 +1,6 @@
 ---
-title: As Social Platforms Splinter, CRM and Email Remain the Strategic Constant
-description: When Elon Musk took over Twitter and rebranded it as X, the platform's utility as a reliable marketing channel quickly deteriorated. Major advertisers left, the tone shifted, and the rules of engagement became unclear. But the problem isn’t just X—it’s systemic.
+title: Big Tech Is Picking Sides
+description: Are CRM and Email Are Your Last Safe Channels?
 pubDate: 'May 04 2025'
 heroImage: '/images/destruction.jpg'
 ---

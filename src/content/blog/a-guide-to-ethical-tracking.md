@@ -1,6 +1,6 @@
 ---
-title: Ethical Tracking. Moving Beyond Cookies and Google Analytics
-description: RequiredThis article explores the ethics of web tracking, questioning the necessity of cookies and the dominance of Google Analytics. It argues that most websites do not require the depth of tracking Google provides and introduces cookieless alternatives that respect user privacy. With a focus on proportionality and compliance, the piece advocates for simpler, transparent analytics that prioritise user trust over data hoarding.
+title: Ethical Tracking. 
+description: Moving Beyond Cookies and Google Analytics
 pubDate: 'May 01 2025'
 heroImage: '/images/eye.jpg'
 ---

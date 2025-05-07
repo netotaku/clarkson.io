@@ -1,6 +1,6 @@
 ---
-title: Vibe Coding. Buddying up with ChatGPT
-description: Recently, I set myself a challenge; to step deliberately into new territory and see how modern tools—and AI—could change how I think, not just how I code.
+title: Vibe Coding. 
+description: Buddying up with ChatGPT
 pubDate: 'May 03 2025'
 heroImage: '/images/aw.jpg'
 ---
