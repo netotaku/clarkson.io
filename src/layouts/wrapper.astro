@@ -40,7 +40,8 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 		<!-- Font preloads -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 		<!-- Canonical URL -->
 		<link rel="canonical" href={canonicalURL} />
@@ -68,9 +69,6 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 	<body>            
 		<main class="section main">
 			<nav class="nav">
-				<!-- <h1 class="nav__brand"><a href="/">
-					<img src="/images/NickClarkson.png" alt="Logo" />
-				</a></h1> -->
 				<div class="nav__links">
 					<HeaderLink 
 						class="nav__link" 
@@ -87,7 +85,7 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 			<footer class="section footer">
 				<SignUp />				
 			</footer>
-			<footer class="section u-olive">				
+			<footer class="section u-olive">								
 				&copy; {today.getFullYear()} Nick Clarkson. All rights reserved. <a href="/privacy-and-cookies">Cookies & Privacy</a>
 			</footer>		
 		</main>

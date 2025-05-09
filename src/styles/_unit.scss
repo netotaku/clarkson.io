@@ -1,7 +1,18 @@
 .unit{
     background: $grey;
     border-radius: $radius;
-    color: $green
+    color: $green;
+
+    display: flex;
+    justify-content: space-between;
+
+    &__details{
+
+    }
+
+    &__icon{
+        
+    }
 }
 
 .units{

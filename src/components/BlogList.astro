@@ -9,9 +9,6 @@ const posts = (await getCollection('blog')).sort(
 const featured = posts.shift();
 ---
 <section class="cards">
-    <div class="cards__header">
-        <h2 class="cards__title">Latest</h2>
-    </div>
     <Card post={featured} />
     <div class="cards__cards">
         {

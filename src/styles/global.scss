@@ -8,15 +8,13 @@
 @import './nav';
 @import './hero';
 @import './unit';
+@import './post';
 
 .section{
     position: relative;
     border-radius: $radius;
     overflow: hidden;
     padding: var(--gutter);
-    // @media (max-width: $break) {
-    //     padding: $gutter/2;
-    // }
 }
 
 .main {
@@ -25,9 +23,23 @@
     display: flex;
     flex-direction: column;
     gap: var(--gutter);
-    // @media (max-width: $break) {
-    //     // background: none;
-    //     // border-radius: 0;
-    //     gap: $gutter/2;
-    // }
 }  
+
+.icon{
+    color: white;
+    background: $orange;
+    padding: 12px;
+    font-size: 32px;
+    border-radius: $radius;
+    display: inline-block;
+    width: 80px;
+    min-width: 80px;
+    text-align: center;
+    align-self: flex-start;
+    @media (max-width: $break) {
+        font-size: 22px;
+        width: 60px;
+        min-width: 60px;
+        display: none;
+    }
+}

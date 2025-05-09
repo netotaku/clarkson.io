@@ -1,5 +1,5 @@
 ---
-title: Why You Probably Don’t Need a Bespoke Website 
+title: Why You Probably Don’t Need a Bespoke Website. 
 description: No Code vs Code
 pubDate: 'May 05 2025'
 heroImage: '/images/tailor.jpg'
