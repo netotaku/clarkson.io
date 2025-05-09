@@ -2,9 +2,7 @@
 import Wrapper from '../layouts/wrapper.astro';
 import BlogList from '../components/BlogList.astro';
 
-import CRM from '../components/home/crm.astro';
-import WebDev from '../components/home/webdev.astro';
-import PM from '../components/home/projectmanagement.astro';
+import Unit from '../components/Unit.astro';
 ---
 
 <Wrapper
@@ -15,10 +13,35 @@ import PM from '../components/home/projectmanagement.astro';
 			<img class="hero__image" src="/images/intro.jpg" alt=""> 
 		</div>
 		<div class="units">			
-			<PM />
-			<WebDev />
-			<CRM />
+			<Unit 
+				title="Digital Consultancy"
+				summary="I help organisations solve digital challenges with clear, secure, and impactful solutions."
+				content="As a consultant, I help organisations navigate digital complexity with clarity and confidence. Whether I’m advising on Cyber Essentials and secure development practices, or delivering talks on AI-enhanced productivity, Vibe Coding, and data-driven decision making, my focus is always on practical impact. I bring over two decades of hands-on experience to every engagement—bridging technical detail with strategic thinking to support teams, shape workflows, and drive meaningful digital change."
+				icon="fa-solid fa-mug-hot"    
+			/>
+			<Unit 
+				title="Web Development, Design & UX"
+				summary="I design and build fast, accessible, full-stack websites that balance creativity with technical precision to deliver real, user-centred value."
+				content="My approach to web design and development blends creativity with technical precision. I focus on building fast, accessible, and user-centred websites that serve a clear purpose—whether thats conversion, engagement, or communication. I work full stack, from design systems and front-end UX to scalable back-end architecture, always aiming for elegant solutions that are easy to maintain and deliver real value."
+				icon="fa-solid fa-code"    
+			/>
+			<Unit 
+				title="CRM Strategy & Activation"
+				summary="I design user-focused CRM systems that align with business goals and use automation to support meaningful, timely customer engagement."
+				content="I take a strategic, user-focused approach to CRM—designing systems that genuinely support customer relationships rather than just tracking them. I specialise in aligning CRM tools with business goals, integrating them cleanly with websites and marketing platforms, and using automation and segmentation to deliver timely, relevant communication. It’s about making the technology work for people—not the other way around."
+				icon="fa-solid fa-address-book"    
+			/>			
 			<BlogList />			
 		</div>
 	</article>
 </Wrapper>
+
+<script type="module">
+	document.querySelectorAll('.js-expander__link').forEach(link => {
+	  link.addEventListener('click', (e) => {
+		e.preventDefault();
+		const unit = link.closest('.js-expander');
+		unit.classList.toggle('js-expander--expanded');
+	  });
+	});
+  </script>

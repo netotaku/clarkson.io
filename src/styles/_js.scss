@@ -1,0 +1,23 @@
+.js-{
+    &expander{
+        &__content{
+            display: none;
+        }
+        &__link{
+            &::before{
+                content: "Learn more";
+            }
+        }
+        &--expanded{
+            .js-expander__content{
+                display: block; 
+            }
+            .js-expander__link{
+                &::before{
+                    content: "Learn less";
+                }
+            }   
+        } 
+    }
+   
+}

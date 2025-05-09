@@ -1,0 +1,22 @@
+---
+const {
+  title,
+  summary,
+  content,
+  icon = "fa-solid fa-circle-info",
+} = Astro.props;
+---
+
+<section class="section unit typography js-expander">
+  <div class="unit__details">
+    <h2>{title}</h2>
+    <p>{summary}</p>
+    <p class="unit__content js-expander__content">{content}</p>
+    <p>
+      <a class="js-expander__link" href="#"></a>
+    </p>
+  </div>
+  <div class="unit__icon icon">
+    <i class={icon}></i>
+  </div>
+</section>
