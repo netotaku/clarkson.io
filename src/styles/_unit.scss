@@ -5,9 +5,12 @@
 
     display: flex;
     justify-content: space-between;
+    gap: var(--gutter);
 
     &__details{
-
+        display: flex;
+        flex-direction: column;        
+        gap: var(--gutter);
     }
 
     &__icon{
