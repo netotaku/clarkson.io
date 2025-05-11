@@ -1,9 +1,43 @@
 .footer{
-    line-height: 1.2;
-    background: $green;
-    color: white;
-    border-radius: $radius;
+    line-height: 1.2;    
+    color: #bbb;    
     a{
         color: white;
+    }
+    &__title{
+        margin-bottom: var(--gutter);
+    }
+    &__copy{
+        margin-top: var(--gutter);
+    }
+    &__contacts{
+        margin-top: var(--gutter);
+        font-size: 22px;;
+        font-family: "Cal Sans", sans-serif;
+        a{
+            text-decoration: none;
+        }
+    }
+    &__cols{
+        display: flex;
+        justify-content: space-between; 
+        @media (max-width: $break) {
+            flex-direction: column;
+        }       
+    }
+    &__col{
+        &--right{
+            text-align: right;
+            @media (max-width: $break) {
+                text-align: left;
+            }
+        }
+        &--left{
+            width: 50%;
+            @media (max-width: $break) {
+                width: 100%;
+                margin-bottom: var(--gutter);
+            }
+        }
     }
 }

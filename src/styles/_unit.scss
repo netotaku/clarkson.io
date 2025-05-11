@@ -19,13 +19,14 @@
         gap: var(--gutter);
     }
 
-    &__icon{
-        
-    }
-
     &__link{
         margin-top: auto;
     }
+
+    @media (max-width: $break) {
+        border-radius: 0; 
+    }
+
 }
 
 .units{
@@ -33,4 +34,8 @@
     flex-direction: row;
     gap: var(--gutter);
     margin-bottom: var(--gutter);
+    @media (max-width: $break) {
+        flex-direction: column;
+        gap: 0;
+    }
 }

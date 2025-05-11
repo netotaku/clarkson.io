@@ -2,23 +2,11 @@
     position: relative;
     display: flex;
     justify-content: space-between;
-    // background-color: #FFEACA;
-    // border-radius: $radius;
-    // overflow: hidden;
+
     &__links{
         display: flex;        
     }
-    // &__brand{
-    //     padding: 0 22px;
-    //     display: flex;
-    //     align-items: center;
-    //     color: $green;
-    //     img{
-    //         display: block;
-    //         text-decoration: none;
-    //         color: $green;
-    //     }
-    // }
+
     &__link{
         position: relative;
         display: flex;
@@ -35,9 +23,63 @@
         }
         
         @media (max-width: $break) {
-            font-size: 18px;
-            padding: 12px 22px;
+            font-size: 16px;
+            padding: 12px 12px;
+            &.active{
+                background: none;
+                // text-decoration: underline;
+                color: $orange;
+            }
         }
 
     }    
+}
+
+
+.burger{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    cursor: pointer;
+    padding: 0 22px;
+}
+
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 10;
+
+    backdrop-filter: blur(10px);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
+    font-family: "Cal Sans", sans-serif;
+    
+    
+    a.nav__link{
+        text-decoration: none;
+        justify-content: end;
+        padding: 0;
+        font-size: 32px;
+    }
+
+    &__close{
+        position: absolute;
+        top: 22px;
+        right: 22px;
+        font-size: 32px;
+        color: white;
+        cursor: pointer;
+    }
+    &__links{
+        padding: 22px;
+    }
+   display: none;
 }

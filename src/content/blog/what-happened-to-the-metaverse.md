@@ -3,6 +3,7 @@ title: What Happened to the Metaverse?
 description: Exploring VR’s Future and Why It’s Struggling
 pubDate: 'May 07 2025'
 heroImage: '/images/metaverse.jpg'
+cta: "I offer consultancy for teams and individuals looking to reduce platform dependency, build ethical CRM practices, and create resilient email strategies that actually work. Let’s talk"
 ---
 Not too long ago, tech enthusiasts and industry leaders predicted the Metaverse—a fully immersive virtual world—as the inevitable future of digital interaction. Yet, recently, the hype has largely faded. What went wrong, and what’s next for VR technology?
 

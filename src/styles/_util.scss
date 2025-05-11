@@ -2,6 +2,9 @@
     &hide{
         display: none!important;
     }
+    &show{
+        display: flex!important;
+    }    
     &olive{
         background-color: $olive;
         color: white;
@@ -11,5 +14,15 @@
     }
     &grey{
         color: #ccc
+    }
+    &no-mobile{
+        @media (max-width: $break) {         
+            display: none!important;
+        }
+    }
+    &mobile-only{
+        @media (min-width: $break) {         
+            display: none!important;
+        }
     }
 }

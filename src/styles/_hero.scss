@@ -1,12 +1,6 @@
 .hero{
     
     position: relative;
-    
-    &__date{
-        // position: absolute;
-        // top: var(--gutter);
-        // left: var(--gutter);
-    }
 
     &__image{
         display: block;
@@ -17,11 +11,26 @@
     height: 550px;
     display: flex;
     align-items: center;
-    // justify-content: center;    
     gap: var(--gutter);
 
     &--standard{                   
         height: 650px;        
+    }
+
+    &--large{                   
+        height: 800px;        
+    }
+         
+
+    @media (max-width: $break) {
+        flex-direction: column;
+        height: auto;
+    }
+
+    &__image{
+        @media (max-width: $break) {
+            display: none
+        }
     }
 
     &__text{
@@ -32,6 +41,17 @@
             margin-top: auto;
             width: 50%;
             max-width: 50%;
+            @media (max-width: $break) {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+        &--large{                                            
+            width: 50%;
+            max-width: 50%;      
+        }
+        @media (max-width: $break) {
+            padding: var(--gutter);
         }
     }
 
@@ -39,9 +59,7 @@
         color: white!important;
     }
 
-    @media (max-width: $break) {
-    
-    }
+
 }
 
 .hero-image{
@@ -57,4 +75,10 @@
     background-color: black;
     background-size: cover;
     background-position: center;
+    @media (max-width: $break) {
+        position: relative;
+        border-radius: 0px;
+        margin-left: 0;
+        height: 250px;
+    }
 }

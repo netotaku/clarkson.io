@@ -23,6 +23,10 @@ h1, h2, h3, h4, h5, h6{
     font-weight: normal;
 }
 
+h2{
+    line-height: 1.1;
+}
+
 a{
     &:hover{
         text-decoration: none;
@@ -47,17 +51,38 @@ a{
     &--medium{
         font-size: 70px;
         line-height: 1.1;
+        @media (max-width: $break) {
+            font-size: 32px!important;        
+        }
     }
+    @media (max-width: $break) {
+        font-size: 40px;        
+    }
+
 }
 
 
 .icon{
     font-size: 24px;
+    border-radius: 8px;
+    min-width: 52px;
+    background-color: rgba(0,0,0,.4);
+    padding-top: 13px;
+    text-align: center;
+    // display: flex;
+    // justify-content: center;
+    // i{
+    //     margin-top: auto;
+    // }
 }
 
 .measure{
     width: 1000px;
     padding: 70px;
+    @media (max-width: $break) {
+        width: 100%;
+        padding: var(--gutter);      
+    }   
 }
 
 .cta{
@@ -70,6 +95,10 @@ a{
     &__contacts{
         margin-top: var(--gutter);
     }
+    @media (max-width: $break) {       
+        border-radius: 0; 
+        font-size: 1.5em;
+    }  
 }
 
 .content{
@@ -82,5 +111,16 @@ a{
         font-size: 2em;
         line-height: 1.2;
         font-family: "Cal Sans", sans-serif;
+        @media (max-width: $break) {
+            font-size: 1.5em;
+        }
     }
+    @media (max-width: $break) {
+        margin-top: 0px; 
+        border-radius: 0;      
+    }    
+}
+
+.socials{
+    letter-spacing: 5px;
 }

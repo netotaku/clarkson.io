@@ -1,4 +1,8 @@
 .cv{
     display: flex;
     gap: 100px;
+    @media (max-width: $break) {
+        flex-direction: column;
+        // display: none;
+    }
 }

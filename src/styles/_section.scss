@@ -3,9 +3,14 @@
     display: flex;    
     justify-content: center;  
     width: 100%;
+
+    padding: 0px 50px;
     
     &__title{
         font-size: 50px; 
+        @media (max-width: $break) {
+            font-size: 32px; 
+        }
     }
     &__inner{
         max-width: 1200px;
@@ -27,6 +32,21 @@
 
     &--solo{
         padding: 70px 0;
+    }
+
+
+
+    @media (max-width: $break) {
+
+        padding: 0px;
+        
+        &--solo{
+            padding: var(--gutter);
+        }
+        
+        &--no-mobile{
+            padding: 0
+        }
     }
 
 }

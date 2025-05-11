@@ -1,40 +1,40 @@
 .form{
 
+    color: #666;
+
     &__row{
         margin-bottom: var(--gutter);
         display: block;
-        // @media (max-width: $break) {
-        //     margin-bottom: $gutter/2;
-        // }
     }
+
     &__text-input{
         
         display: block;
         width: 100%;
         padding: 12px 14px;   
-        background-color: $teal;        
+        background-color: rgba(255, 255, 255, .2);        
         font-size: 18px;
         border: 0;
         border-radius: 0;
         
         &::placeholder{
-            color: $green;
+            color: #666;
         }
         &--email{
                     
         }
     }
     &__small-print{
-        color: $teal;
+        // color: $teal;
 
     }
     &__button{
         appearance: none;
         padding: 12px 14px;        
-        background: #708D84;
+        background-color: rgba(255, 255, 255, .3); 
         border: 0;
         font-size: 18px;
-        color: white;
+        color: #ccc;
         cursor: pointer;
         border-radius: 0;
     }

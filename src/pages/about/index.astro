@@ -1,19 +1,36 @@
 ---
 import Wrapper from '../../layouts/wrapper.astro';
+import Unit from '../../components/Unit.astro';
+import Socials from '../../components/Socials.astro';
 ---
 
 <Wrapper
 	title="Bio"
 	image="/images/bio.jpg">
 
-	<article>				
-		<div class="section">
-			<div class="section__inner typography">				
-				<h2>Bio</h2>
-				<p>Nick Clarkson is a Creative Technologist with over 25 years of experience at the forefront of digital marketing and development. Specialising in full-stack web development, digital strategy, CRM integration, and AI-enhanced workflows, he’s known for delivering high-impact, user-centred solutions at speed and scale.</p>
-				<p>Nick has worked with global B2B and B2C brands including Triumph Motorcycles, Kia, Orange, Land Rover, and Turtle Bay. He’s won multiple awards for recruitment, hospitality, and public sector digital work, and is a passionate advocate for ethical, insight-led technology that works.</p>			
-			</div>
-		</div>
-	</article>
+
+	<section class="section">
+		<div class="section__inner hero hero--large">
+			<div class="hero__text hero__text--large">
+				<h1 class="nc nc--medium">Bio</h1>							
+				<div class="typography">
+					<h2>Blending experience, empathy and curiosity to build better digital experiences.</h2>					
+					<p>With over 25 years of experience in web development and more than 15 years leading technical teams, 
+						I’ve worked across agency and in-house environments on everything from high-traffic 
+						hospitality platforms to complex CRM integrations. I care about clean code, purposeful 
+						design, and building digital experiences that are ethical, inclusive, and resilient.</p>
+
+					<p>I believe in pragmatic innovation – knowing when to use cutting-edge tools and when to keep things simple. My work spans frontend frameworks (mainly Vue and TypeScript), backend systems, APIs, ethical tracking alternatives, and AI-augmented workflows. If there’s a faster, smarter, or more elegant way to do something, I’ll find it – and probably test it three times.</p>
+
+					<!-- <h2>Outside Work</h2>
+					<p>I’m a dad to two brilliant boys, and a proud part of a blended family with my partner Charlotte and her son. Family life is everything, even when it’s loud and a bit chaotic. When I’m not coding, I’m probably playing guitar, making dub jams with friends, or releasing tracks from a large and slightly unruly back catalogue of music.
+					
+					<p>I also care about privacy, digital ethics, and using technology to serve people – not the other way around. -->
+
+					<p class="hero__social"><Socials /></p>
+				</div>
+			</div>			
+		</div>			
+	</section>
 
 </Wrapper>

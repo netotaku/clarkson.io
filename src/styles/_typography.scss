@@ -1,14 +1,14 @@
 .typography{
-    // font-size: 18px;
+    
     line-height: 1.5;
-    // color: $green;
+    
     
     p, h1, h2, h3, h4, h5, h6, 
     ul, ol, table, blockquote {
         margin-bottom: var(--gutter);
-        // @media (max-width: $break) {
-        //     margin-bottom: $gutter/2;
-        // }
+        @media (max-width: $break) {
+            margin-bottom: $gutter/2;
+        }
     }
 
     p:last-child{
@@ -41,10 +41,12 @@
     }
 
     table{
-        display: block;
+        // display: block;
         width: 100%;
+        border-collapse: collapse;
         th{
             text-align: left;
+            border-bottom: solid 1px #666;
         }
         th,td{
             padding: 3px;        
@@ -52,8 +54,7 @@
     }
 
     @media (max-width: $break) {
-        font-size: 1.1em;
+        font-size: .9em;
     }
     
-
 }
