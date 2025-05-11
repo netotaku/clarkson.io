@@ -3,6 +3,7 @@ title: Ethical Tracking.
 description: Moving Beyond Cookies and Google Analytics.
 pubDate: 'May 01 2025'
 heroImage: '/images/eye.jpg'
+cta: "Have questions about implementing ethical analytics? Or want help migrating away from Google Analytics? Let’s talk."
 ---
 User tracking has always been part of the web. From server logs to session IDs, developers and businesses have long been able to understand user behaviour without resorting to invasive methods. The real issues emerged with **cross-domain tracking**, where large tech companies, particularly Google, began aggregating user data across multiple sites — a practice that benefits them far more than it does site owners.
 
@@ -78,7 +79,3 @@ This behaviour, combined with an over-reliance on Google products, is arguably *
 Unless your site has a well-defined measurement strategy, complex goals, and ties to ad spend, **Google Analytics is likely more than you need** — and may pose unnecessary risks in terms of privacy and compliance.
 
 For most sites, **lightweight, cookieless analytics tools** offer more than enough insight — and send a clear message that you respect your users.
-
----
-
-*Have questions about implementing ethical analytics? Or want help migrating away from Google Analytics? Let’s talk.*

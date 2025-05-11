@@ -18,13 +18,13 @@
 
 .card{
 
-    // background: $grey;
-   // border-radius: $radius;
+    background-color: #3D3D3D;
+    border-radius: $radius;
     text-decoration: none;
     display: block;
     position: relative;
-  //  overflow: hidden;
-    // color: $green;
+    overflow: hidden;
+    color: white;
 
     &--featured{
         width: 100%;
@@ -48,7 +48,7 @@
     }
 
     &:hover{
-        background: #ccc;        
+        background: $orange;        
     }
 
     &__hero{
@@ -62,8 +62,3 @@
         }
     }
 } 
-
-
-.expand{
-    display: none;
-}

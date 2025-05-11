@@ -2,13 +2,29 @@
 import { getCollection } from 'astro:content';
 import Wrapper from '../../layouts/wrapper.astro';
 import BlogList from '../../components/BlogList.astro';
+import BlogHero from '../../components/BlogHero.astro';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+const featured = posts.shift();
 ---
 
-<Wrapper>
-	<BlogList />
+<Wrapper 
+	title="Blog"
+	image={featured.data.heroImage}>
+
+	<BlogHero
+		post={featured}
+		showButton={true}  />
+	
+	<section class="section section--solo">
+		<div class="section__inner cards">
+			<BlogList 
+				title="Latest Posts" 
+				posts={posts} />
+		</div>
+	</section>
+
 </Wrapper>
 

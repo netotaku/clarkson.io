@@ -1,20 +1,13 @@
 ---
-import { getCollection } from 'astro:content';
 import Card from './Card.astro';
-
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
-
-const featured = posts.shift();
+const { posts, title } = Astro.props;
 ---
-<section class="cards">
-    <Card post={featured} />
-    <div class="cards__cards">
-        {
-            posts.map((post) => (
-                <Card post={post} />
-            ))
-        }
-    </div>
-</section>
+
+<h2 class="section__title">{title}</h2>        
+<div class="cards__cards">
+    {
+        posts.map((post) => (
+            <Card post={post} />
+        ))
+    }
+</div>

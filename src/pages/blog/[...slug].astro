@@ -1,21 +1,39 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
+import Wrapper from '../../layouts/wrapper.astro';
+import BlogHero from '../../components/BlogHero.astro';
 import { render } from 'astro:content';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
 	return posts.map((post) => ({
 		params: { slug: post.id },
-		props: post,
+		props: {
+			...post,
+			data: post.data,
+		}
 	}));
 }
+
 type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
 const { Content } = await render(post);
 ---
-
-<BlogPost {...post.data}>
-	<Content />
-</BlogPost>
+<Wrapper
+	image={post.data.heroImage}>
+	<BlogHero post={post} />
+	<section 
+		class="section section--solo">
+		<div class="section__inner">
+			<div class="typography content measure">
+				<Content />
+			</div>
+			<div class="cta measure">
+				<p>{post.data.cta}</p>
+				<p class="cta__contacts"><i class="fa-solid fa-mobile-retro"></i> 07771 535 355<br>
+				<i class="fa-solid fa-envelope"></i> nick@clarkson.io</p>
+			</div>
+		</div>
+	</section>
+</Wrapper>

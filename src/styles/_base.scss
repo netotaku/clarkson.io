@@ -29,32 +29,58 @@ a{
     }
 }
 
-// .label{
-//     display: inline-block;
-//     padding: 4px 12px;
-//     background: $green;
-//     color: white;
-//     border-radius: $radius;
-// }
+.label{
+    display: inline-block;
+    padding: 4px 12px;
+    background: $orange;
+    color: white;
+    border-radius: $radius;
+}
 
 .nc{
     font-family: 'Druk Wide Bold Bold';
     font-size: 100px;
     line-height: .8;
+    &--small{
+
+    }
+    &--medium{
+        font-size: 70px;
+        line-height: 1.1;
+    }
 }
 
-.brand{
-    font-family: 'Druk Wide Bold Bold';
-    font-size: 32px;
-    color: white;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    padding: var(--gutter);
-    display: block;
-    background-color: $orange;
-}
 
 .icon{
     font-size: 24px;
+}
+
+.measure{
+    width: 1000px;
+    padding: 70px;
+}
+
+.cta{
+    background: $orange;
+    border-bottom-right-radius: $radius;
+    border-bottom-left-radius: $radius;
+    font-size: 2em;
+    line-height: 1.2;
+    font-family: "Cal Sans", sans-serif;
+    &__contacts{
+        margin-top: var(--gutter);
+    }
+}
+
+.content{
+    background-color: #3D3D3D;
+    max-width: 1000px!important;
+    border-top-right-radius: $radius;
+    border-top-left-radius: $radius;
+    margin-top: -60px;
+    & p:first-child{
+        font-size: 2em;
+        line-height: 1.2;
+        font-family: "Cal Sans", sans-serif;
+    }
 }

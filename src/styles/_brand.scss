@@ -1,0 +1,12 @@
+.brand{
+    font-family: 'Druk Wide Bold Bold';
+    font-size: 32px;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: var(--gutter);
+    display: inline-block;
+    background-color: $orange;
+    color: white!important;
+}

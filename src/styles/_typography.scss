@@ -16,11 +16,8 @@
     }
 
     blockquote{
-        padding: var(--gutter);
-        background-color: $grey;
-        border-radius: $radius;
-        font-size: 18px;
-        line-height: 1.5;
+        padding-left: var(--gutter);
+        border-left: 4px solid $orange;
     }
 
     h1{
@@ -41,6 +38,17 @@
 
     a{
         color: $orange;
+    }
+
+    table{
+        display: block;
+        width: 100%;
+        th{
+            text-align: left;
+        }
+        th,td{
+            padding: 3px;        
+        }
     }
 
     @media (max-width: $break) {

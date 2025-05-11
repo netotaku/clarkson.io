@@ -1,14 +1,20 @@
 ---
+import { getCollection } from 'astro:content';
 import Wrapper 	from '../layouts/wrapper.astro';
 import BlogList from '../components/BlogList.astro';
-import CV from '../components/CV.astro';
+import CV 		from '../components/CV.astro';
 import Unit 	from '../components/Unit.astro';
+import Socials 	from '../components/Socials.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
 ---
 
 <Wrapper
 	title="Nick Clarkson - Digital Consultant"
-	description="Nick Clarkson is a digital consultant with over 20 years of experience in web development, project management, and CRM systems. He helps organisations navigate digital complexity with clarity and confidence."
-	image="/images/clarky.jpg">
+	description="Nick Clarkson is a digital consultant with over 20 years of experience in web development, project management, and CRM systems. He helps organisations navigate digital complexity with clarity and confidence.">
 
 	<article>	
 
@@ -19,11 +25,8 @@ import Unit 	from '../components/Unit.astro';
 					<div class="typography">
 						<h2>Creative Technologist / Digital Consultant</h2>
 						<p class="u-grey">With over two decades of hands-on experience, I help agencies and organisations deliver meaningful digital work—whether that means building fast, accessible websites, shaping CRM strategies, or applying AI to streamline delivery.</p>
-						<p class="hero__social">
-							<i class="fa-brands fa-threads"></i> 
-							<i class="fa-brands fa-instagram"></i> 
-							<i class="fa-brands fa-github-alt"></i> 
-							<i class="fa-brands fa-linkedin-in"></i>
+						<p class="socials hero__social">
+							<Socials />
 						</p>
 					</div>
 				</div>
@@ -61,7 +64,12 @@ import Unit 	from '../components/Unit.astro';
 			</div>	
 		</section>
 		<CV />
-		<!-- <BlogList /> -->
+		<section class="section section--solo">
+			<div class="section__inner cards">
+				<BlogList 
+					title="Latest Posts"					
+					posts={posts} />
+			</div>
 	</article>
 </Wrapper>
 
