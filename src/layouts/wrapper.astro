@@ -40,7 +40,7 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 		<!-- Font preloads -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 		<!-- Canonical URL -->
@@ -67,27 +67,31 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 		
 	</head>
 	<body>            
-		<main class="section main">
-			<nav class="nav">
-				<div class="nav__links">
-					<HeaderLink 
-						class="nav__link" 
-						href="/">Home</HeaderLink>
-					<HeaderLink
-						class="nav__link" 
-						href="/blog">Blog</HeaderLink>
-					<HeaderLink 
-						class="nav__link"
-						href="/about">About</HeaderLink>
+		<main class="main">
+			<nav class="section">
+				<div class="section__inner nav">
+					<a href="/" class="brand">N.</a>					
+					<div class="nav__links">
+						<HeaderLink 
+							class="nav__link" 
+							href="/">Home</HeaderLink>
+						<HeaderLink
+							class="nav__link" 
+							href="/blog">Blog</HeaderLink>
+						<HeaderLink 
+							class="nav__link"
+							href="/about">About</HeaderLink>
+					</div>
 				</div>
-			</nav>  
+			</nav> 		
+			<div class="hero-image"></div>
 			<slot />
-			<footer class="section footer">
+			<!-- <footer class="section footer">
 				<SignUp />				
 			</footer>
 			<footer class="section u-olive">								
 				&copy; {today.getFullYear()} Nick Clarkson. All rights reserved. <a href="/privacy-and-cookies">Cookies & Privacy</a>
-			</footer>		
+			</footer>		 -->
 		</main>
 	</body>
 </html>

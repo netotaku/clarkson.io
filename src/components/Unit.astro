@@ -7,19 +7,19 @@ const {
 ---
 
 <section class="section unit js-expander">
+  <div class="unit__icon icon">
+    <i class={icon}></i>
+  </div>
   <div class="unit__details">
     <div class="typography">
-      <h2>{title}</h2>
-      <p>{summary}</p>
+      <h2 class="unit__title">{title}</h2>
+      <p class="u-grey">{summary}</p>
     </div>
     <div class="unit__content typography js-expander__content">
         <slot />
     </div>
-    <p class="typography">
+    <p class="typography unit__link">
       <a class="js-expander__link" href="#"></a>
     </p>
-  </div>
-  <div class="unit__icon icon">
-    <i class={icon}></i>
   </div>
 </section>

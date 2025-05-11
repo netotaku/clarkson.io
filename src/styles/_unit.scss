@@ -1,11 +1,17 @@
 .unit{
-    background: $grey;
     border-radius: $radius;
-    color: $green;
+    background-color: #3D3D3D;
+    padding: var(--gutter);
+
+    flex: 1; 
 
     display: flex;
     justify-content: space-between;
     gap: var(--gutter);
+
+    &__title{
+        line-height: 1.1;
+    }
 
     &__details{
         display: flex;
@@ -16,10 +22,15 @@
     &__icon{
         
     }
+
+    &__link{
+        margin-top: auto;
+    }
 }
 
 .units{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: var(--gutter);
+    margin-bottom: var(--gutter);
 }

@@ -10,34 +10,18 @@ img {
 }
 
 html{
-    background-color: $brown;
-    background-image: url(/images/m32.jpg);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-
-    display: flex;
-    justify-content: center;
-
-    font-family: sans-serif;
+    background-color: #4A4A4A;
+    color: white;
+    font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-body{
-    width: 800px;
-    max-width: 800px;
-    padding: var(--gutter);
-    @media (max-width: $break) {
-        width: 100%;
-    }
-}
 
 h1, h2, h3, h4, h5, h6{
     font-family: "Cal Sans", sans-serif;
     font-weight: normal;
 }
-
 
 a{
     &:hover{
@@ -45,10 +29,32 @@ a{
     }
 }
 
-.label{
-    display: inline-block;
-    padding: 4px 12px;
-    background: $green;
+// .label{
+//     display: inline-block;
+//     padding: 4px 12px;
+//     background: $green;
+//     color: white;
+//     border-radius: $radius;
+// }
+
+.nc{
+    font-family: 'Druk Wide Bold Bold';
+    font-size: 100px;
+    line-height: .8;
+}
+
+.brand{
+    font-family: 'Druk Wide Bold Bold';
+    font-size: 32px;
     color: white;
-    border-radius: $radius;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: var(--gutter);
+    display: block;
+    background-color: $orange;
+}
+
+.icon{
+    font-size: 24px;
 }

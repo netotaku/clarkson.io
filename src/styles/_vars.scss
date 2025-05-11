@@ -16,3 +16,10 @@ $break: 799px;
         --gutter: 14px;
     }
 }
+
+@font-face {
+    font-family: 'Druk Wide Bold Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Druk Wide Bold Bold'), url('/fonts/druk-wide-bold-webfont/DrukWideBold.woff') format('woff');
+}

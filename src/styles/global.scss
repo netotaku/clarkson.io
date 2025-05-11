@@ -10,37 +10,6 @@
 @import './unit';
 @import './post';
 @import './js';
-
-.section{
-    position: relative;
-    border-radius: $radius;
-    overflow: hidden;
-    padding: var(--gutter);
-}
-
-.main {
-    background: white;
-    border-radius: $radius;
-    display: flex;
-    flex-direction: column;
-    gap: var(--gutter);
-}  
-
-.icon{
-    color: white;
-    background: $orange;
-    padding: 12px;
-    font-size: 32px;
-    border-radius: $radius;
-    display: inline-block;
-    width: 80px;
-    min-width: 80px;
-    text-align: center;
-    align-self: flex-start;
-    @media (max-width: $break) {
-        font-size: 22px;
-        width: 60px;
-        min-width: 60px;
-        display: none;
-    }
-}
+@import './roles';
+@import './cv';
+@import './section';

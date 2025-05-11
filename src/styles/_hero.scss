@@ -1,17 +1,46 @@
 .hero{
-    border-radius: $radius;
+    
     position: relative;
-    overflow: hidden;
-    margin-bottom: var(--gutter);
+    
     &__date{
-        position: absolute;
-        top: var(--gutter);
-        left: var(--gutter);
+        // position: absolute;
+        // top: var(--gutter);
+        // left: var(--gutter);
     }
     &__image{
         display: block;
+        width: 50%;
+        max-width: 50%;
     }
-    // @media (max-width: $break) {
-    //     margin-bottom: $gutter/2;
-    // } 
+     
+    height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gutter);
+
+    &__text{
+        display: flex;
+        flex-direction: column;
+        gap: var(--gutter);
+    }
+
+    &__social{
+        color: white!important;
+    }
+
+    @media (max-width: $break) {
+    
+    }
+}
+
+.hero-image{
+    border-top-left-radius: 40px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 90vh;
+    margin-left: 25vw;
+    background-color: black;
 }

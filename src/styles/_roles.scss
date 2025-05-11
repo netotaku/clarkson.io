@@ -1,0 +1,14 @@
+.roles{
+    //
+    // flex-direction: row;
+    // width: 100%;
+}
+
+.role{
+    display: flex; 
+    align-items: center;   
+    &__date{
+        padding-right: var(--gutter);
+    }
+    margin-top: var(--gutter);
+}

@@ -1,7 +1,7 @@
 .typography{
-    font-size: 18px;
+    // font-size: 18px;
     line-height: 1.5;
-    color: $green;
+    // color: $green;
     
     p, h1, h2, h3, h4, h5, h6, 
     ul, ol, table, blockquote {
@@ -33,6 +33,10 @@
 
     ul, ol{
         margin-left: var(--gutter);
+    }
+
+    p, li{
+        color: #ccc;
     }
 
     a{
