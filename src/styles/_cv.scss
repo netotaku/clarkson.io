@@ -1,8 +1,10 @@
 .cv{
     display: flex;
     gap: 100px;
+    &__timeline{
+        min-width: 377px;
+    }
     @media (max-width: $break) {
-        flex-direction: column;
-        // display: none;
+        flex-direction: column;        
     }
 }
