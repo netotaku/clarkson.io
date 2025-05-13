@@ -18,9 +18,17 @@
         font-size: 18px;
         padding: 22px 32px;
 
-        &.active, &:hover{
-            background-color: $orange;  
+        &:hover{
+            background-color: #f90;  
             color: white;          
+        }
+
+        &.active{
+            background-color: $orange;
+        }
+
+        &--orange{
+            color: #f90;
         }
         
         @media (max-width: $break) {

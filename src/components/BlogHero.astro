@@ -8,7 +8,7 @@ const { post, showButton } = Astro.props;
             <div class="typography">
                 <h2>{post.data.description}</h2>
                 {showButton && (
-                    <p><a href={`/blog/${post.id}/`}>Read Article</a></p>
+                    <p><a class="button" href={`/blog/${post.id}/`}>Read Article</a></p>
                 )}  
             </div>
         </div>			

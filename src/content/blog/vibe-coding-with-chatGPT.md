@@ -65,5 +65,5 @@ I came in thinking I’d write a clean, linear blog post about working with AI. 
 
 I learned a lot—not just about working with TypeScript in practice, but about the rhythms of collaboration. How to trust AI with research, but not architecture. How to use it to frame decisions, but not make them. How to say *“no, that’s not right”* and have it actually respond.
 
-> **Moving forward, I’ll never start another project without it.**
+> Moving forward, I’ll never start another project without it.
 > Not because it’s perfect. But because it changes what’s possible.

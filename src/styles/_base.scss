@@ -147,3 +147,27 @@ a{
         background: #f90;
     }
 }
+
+.hire-me{    
+    position: fixed;
+    bottom: var(--gutter);
+    left: var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $orange;
+    color: #fff;
+    text-decoration: none;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    font-family: "Cal Sans", sans-serif;
+    font-size: 22px;
+    text-align: center;
+    line-height: 1;    
+    text-transform: uppercase;
+    display: none;
+    &:hover{
+        background: #f90;
+    }
+}
