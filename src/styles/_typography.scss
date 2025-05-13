@@ -29,7 +29,12 @@
     }
 
     ul, ol{
-        margin-left: var(--gutter);
+        margin-left: 22px;
+        li{
+            &::marker{
+                color: white;
+            }
+        }
     }
 
     p, li{
