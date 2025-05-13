@@ -1,7 +1,7 @@
 ---
 import Wrapper from '../../layouts/wrapper.astro';
 import Socials from '../../components/Socials.astro';
-import BlogHero from '../../components/BlogHero.astro';
+import Unit from '../../components/Unit.astro';
 ---
 
 <Wrapper
@@ -9,7 +9,7 @@ import BlogHero from '../../components/BlogHero.astro';
 	image="/images/bio.jpg">
 
 	<section class="section">
-		<div class="section__inner hero hero--large">
+		<div class="section__inner hero">
 			<div class="hero__text hero__text--large">
 				<h1 class="nc nc--medium">Bio</h1>							
 				<div class="typography">
@@ -25,6 +25,36 @@ import BlogHero from '../../components/BlogHero.astro';
 				</div>
 			</div>			
 		</div>			
+	</section>
+
+	<section class="section">
+		<div class="section__inner units">				
+			<Unit 
+				title="DX and Digital<br>Consultancy"
+				summary="I help organisations solve digital challenges with clear, secure, and impactful solutions."				
+				thumb="fa-solid fa-mug-hot">
+					<p>As a consultant, I help organisations navigate digital complexity with clarity and confidence. Whether I’m advising on Cyber Essentials and secure 
+						development practices, or delivering talks on AI-enhanced productivity, Vibe Coding, and data-driven decision making, 
+						my focus is always on practical impact. I bring over two decades of hands-on experience to every engagement—bridging technical detail with 
+						strategic thinking to support teams, shape workflows, and drive meaningful digital change.</p>
+			</Unit>
+			<Unit 
+				title="Design,<br>Development and UX"
+				summary="I design and build fast, accessible, full-stack websites that balance creativity with technical precision to deliver real, user-centred value."				
+				thumb="fa-solid fa-code">
+					<p>My approach to web design and development blends creativity with technical precision. I focus on building fast, accessible, and user-centred websites that
+						serve a clear purpose—whether thats conversion, engagement, or communication. I work full stack, from design systems and front-end UX to scalable back-end architecture, 
+						always aiming for elegant solutions that are easy to maintain and deliver real value.</p>
+			</Unit>
+			<Unit 
+				title="CX, CRM Strategy<br>and Activation"
+				summary="I design user-focused CRM systems that align with business goals and use automation to support meaningful, timely customer engagement."				
+				thumb="fa-solid fa-envelope">	
+					<p>I take a strategic, user-focused approach to CRM—designing systems that genuinely support customer relationships rather than just tracking them. I specialise in aligning 
+						CRM tools with business goals, integrating them cleanly with websites and marketing platforms, and using automation and segmentation to deliver timely, relevant communication. 
+						It’s about making the technology work for people—not the other way around.</p>	
+			</Unit>	
+		</div>	
 	</section>
 
 </Wrapper>
