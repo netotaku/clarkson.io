@@ -39,6 +39,9 @@
                 // text-decoration: underline;
                 color: $orange;
             }
+            &:hover{
+                background: none;
+            }
         }
 
     }    
@@ -70,6 +73,13 @@
     justify-content: start;
 
     font-family: "Cal Sans", sans-serif;
+
+    &__socials{
+        position: absolute;
+        bottom: 22px;
+        left: 22px;
+        font-size: 22px;
+    }
     
     
     a.nav__link{
