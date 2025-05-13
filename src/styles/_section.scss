@@ -20,6 +20,13 @@
         display: flex;
         flex-direction: row;
         gap: var(--gutter);
+        @media (max-width: $break) {
+            flex-direction: column;
+        }
+    }
+
+    &__col{
+        flex: 1;
     }
 
     &--grey{

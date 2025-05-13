@@ -41,19 +41,17 @@
             margin-top: auto;
             width: 50%;
             max-width: 50%;
-            @media (max-width: $break) {
-                width: 100%;
-                max-width: 100%;
-            }
         }
         &--large{                                            
             width: 50%;
-            max-width: 50%;
-            @media (max-width: $break) {
-                width: 100%;
-            }      
+            max-width: 50%;   
+        }
+        &--34{
+            width: 80%;
+            max-width: 80%; 
         }
         @media (max-width: $break) {
+            width: 100%;
             max-width: 100%;
             padding: var(--gutter);
         }
