@@ -21,11 +21,6 @@
         height: 800px;        
     }
 
-    &--home{
-
-    }
-         
-
     @media (max-width: $break) {
         flex-direction: column;
         height: auto;

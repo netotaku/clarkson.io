@@ -35,8 +35,7 @@
             font-size: 16px;
             padding: 12px 12px;
             &.active{
-                background: none;
-                // text-decoration: underline;
+                background: none;                
                 color: $orange;
             }
             &:hover{

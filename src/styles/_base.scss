@@ -69,11 +69,6 @@ a{
     background-color: rgba(0,0,0,.4);
     padding-top: 13px;
     text-align: center;
-    // display: flex;
-    // justify-content: center;
-    // i{
-    //     margin-top: auto;
-    // }
     display: none;
 }
 
@@ -112,9 +107,9 @@ a{
         font-size: 2em;
         line-height: 1.2;
         font-family: "Cal Sans", sans-serif;
-        color: white;
+        // color: white;
         @media (max-width: $break) {
-            font-size: 1.5em;
+            font-size: 1.2em;
         }
     }
     @media (max-width: $break) {
@@ -135,6 +130,7 @@ a{
 
 
 .button{
+    margin-top: 18px;
     display: inline-block;
     background: $orange;
     color: white!important;
