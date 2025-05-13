@@ -24,7 +24,10 @@
 
     &__thumb{
         font-size: 30px;
-        padding: var(--gutter);
+        padding-left: var(--gutter);
+        padding-right: var(--gutter);
+        padding-top: 12px;
+        padding-bottom: 12px;
         background-color: rgba(255,255,255,.1);        
         color: rgba(255,255,255,.4);
     }
@@ -37,7 +40,6 @@
     gap: var(--gutter);
     margin-bottom: var(--gutter);
     @media (max-width: $break) {
-        flex-direction: column;
-        gap: 0;
+        display: block;
     }
 }

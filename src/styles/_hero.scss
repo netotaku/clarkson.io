@@ -53,7 +53,10 @@
         }
         &--large{                                            
             width: 50%;
-            max-width: 50%;      
+            max-width: 50%;
+            @media (max-width: $break) {
+                width: 100%;
+            }      
         }
         @media (max-width: $break) {
             max-width: 100%;
