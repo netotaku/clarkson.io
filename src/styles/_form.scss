@@ -12,13 +12,13 @@
         display: block;
         width: 100%;
         padding: 12px 14px;   
-        background-color: rgba(255, 255, 255, .2);        
+        background-color: #666; // rgba(255, 255, 255, .2);        
         font-size: 18px;
         border: 0;
         border-radius: 0;
         
         &::placeholder{
-            color: #666;
+            color: black;
         }
         &--email{
                     
@@ -31,10 +31,10 @@
     &__button{
         appearance: none;
         padding: 12px 14px;        
-        background-color: rgba(255, 255, 255, .3); 
+        background-color: rgba(255, 255, 255, .15); 
         border: 0;
         font-size: 18px;
-        color: #ccc;
+        color: #666;
         cursor: pointer;
         border-radius: 0;
     }

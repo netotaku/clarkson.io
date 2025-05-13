@@ -9,4 +9,7 @@
     display: inline-block;
     background-color: $orange;
     color: white!important;
+    &:hover{
+        background-color: #f90;
+    }
 }

@@ -2,8 +2,8 @@
     
     position: relative;
     display: flex;
-    justify-content: space-between;
-
+    justify-content: space-between;   
+    
     &__links{
         display: flex;        
     }
@@ -18,9 +18,16 @@
         font-size: 18px;
         padding: 22px 32px;
 
+        .hire-me{
+            display: none;
+        }
+
         &:hover{
             background-color: #f90;  
-            color: white;          
+            color: white;    
+            .hire-me{
+                display: inline;
+            }      
         }
 
         &.active{
@@ -29,6 +36,13 @@
 
         &--orange{
             color: #f90;
+            font-family: "Cal Sans", sans-serif;
+            font-size: 32px;
+            background-color: rgba(0,0,0,.1);
+            @media (max-width: $break) {
+                background-color: transparent;
+            }
+            
         }
         
         @media (max-width: $break) {
@@ -101,3 +115,5 @@
     }
    display: none;
 }
+
+

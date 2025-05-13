@@ -70,14 +70,15 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 		<main class="main">
 			<nav class="section">
 				<div class="section__inner nav">
+
 					<Brand />				
 					<div class="nav__links u-no-mobile">
 						<NavLinks />
 					</div>
 					<div class="burger js-burger u-mobile-only">	
 						<svg
-							width="24"
-							height="24"
+							width="44"
+							height="44"
 							viewBox="0 0 24 24"
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg"
@@ -90,33 +91,29 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 						</svg>
 					</div>
 				</div>
-			</nav> 		
+			</nav>
+				
 			<div class="hero-image" style={`background-image: url('${image}');`}></div>
 			<slot />
 			<footer class="section section--solo section--black">
 				<div class="section__inner footer">
 					<div class="footer__cols">
-						<div class="footer__col footer__col--left">
-							<h2 class="section__title footer__title">Sign up</h2>
+						<div class="footer__col footer__col--left">							
 							<SignUp />							
 						</div>
 						<div class="footer__col footer__col--right">
-							<div class="u-no-mobile">
-								<Brand />
-							</div>					
 							<p class="footer__contacts">
-								<a href="#">07771 535 355</a><br />
-								<a href="#">nick@clarkson.io</a>
-							</p>
-							<p class="footer__contacts">
-								<Socials />	
+								<a class="footer__contacts__method" href="tel:07771535355">07771 535 355</a><br />
+								<a class="footer__contacts__method" href="mailto:nick@clarkson.io">nick@clarkson.io</a>
 							</p>
 						</div>
+					</div>	
+					<div class="footer__base">				
+						<p class="footer__copy">&copy; {today.getFullYear()} Nick Clarkson. All rights reserved. <a href="/privacy-and-cookies">Cookies & Privacy</a></p>						
+						<div class="footer__socials">
+							<Socials />	
+						</div>
 					</div>
-							
-					
-					<p class="footer__copy">&copy; {today.getFullYear()} Nick Clarkson. All rights reserved. <a href="/privacy-and-cookies">Cookies & Privacy</a></p>
-						
 				</div>
 			</footer>
 		</main>
@@ -154,8 +151,6 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 			</div>
 		</div>
 	</div>
-
-	<a class="hire-me" href="tel:07771535355">Hire<br>me</a>
 
 	<script type="module"> 
 		document.addEventListener('DOMContentLoaded', () => {

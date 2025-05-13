@@ -1,6 +1,11 @@
 .footer{
     line-height: 1.2;    
-    color: #bbb;    
+    color: #bbb;   
+    
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
     a{
         color: white;
     }
@@ -8,14 +13,21 @@
         margin-bottom: var(--gutter);
     }
     &__copy{
-        margin-top: var(--gutter);
+        // margin-top: var(--gutter);
     }
-    &__contacts{
-        margin-top: var(--gutter);
-        font-size: 22px;;
+    &__socials{
+        font-size: 20px;
+    }
+    &__contacts{      
         font-family: "Cal Sans", sans-serif;
         a{
             text-decoration: none;
+            &:hover{
+                color: $orange;
+            }
+        }
+        &__method{
+            font-size: 50px;
         }
     }
     &__cols{
@@ -26,6 +38,8 @@
         }       
     }
     &__col{
+        display: flex;
+        flex-direction: column;                
         &--right{
             text-align: right;
             @media (max-width: $break) {
@@ -39,5 +53,10 @@
                 margin-bottom: var(--gutter);
             }
         }
+    }
+    &__base{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
 }
