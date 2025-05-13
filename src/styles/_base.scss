@@ -107,7 +107,6 @@ a{
         font-size: 2em;
         line-height: 1.2;
         font-family: "Cal Sans", sans-serif;
-        // color: white;
         @media (max-width: $break) {
             font-size: 1.2em;
         }
@@ -139,6 +138,12 @@ a{
     border-radius: 30px;
     text-decoration: none;
     cursor: pointer;
+    &--spaced{
+        margin-top: 50px;
+        @media (max-width: $break) {
+            margin-top: var(--gutter);
+        }
+    }
     &:hover{
         background: #f90;
     }
