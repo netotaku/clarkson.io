@@ -8,3 +8,14 @@
         flex-direction: column;        
     }
 }
+
+.client{
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gutter);
+    margin-bottom: 50px;
+    img{
+        flex: 1;
+        max-width: 120px;        
+    }
+}
