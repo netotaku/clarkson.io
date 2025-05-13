@@ -1,0 +1,34 @@
+---
+import Wrapper from '../layouts/wrapper.astro';
+const { title, image, subtitle, description } = Astro.props;
+---
+<Wrapper
+    title={title}
+    image={image}>
+
+
+    <section class="section">
+        <div class="section__inner hero hero--standard">
+            <div class="hero__text hero__text--half">
+                <h1 class="nc nc--medium">{title}</h1>							
+                <div class="typography">
+                    <h2>{subtitle}</h2>
+                    <p>{description}</p>
+                </div>
+            </div>			
+        </div>			
+    </section>
+
+
+    <section 
+		class="section section--solo section--no-mobile">
+		<div class="section__inner">
+			<div class="typography content measure">
+				<slot />
+			</div>			
+		</div>
+	</section>
+
+    
+</Wrapper>
+
