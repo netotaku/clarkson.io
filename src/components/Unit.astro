@@ -1,25 +1,18 @@
 ---
 const {
   title,
-  summary,
-  icon = "fa-solid fa-circle-info",
+  summary,  
+  thumb
 } = Astro.props;
 ---
-
-<section class="unit js-expander">
-  <div class="unit__icon icon">
-    <i class={icon}></i>
+<section class="unit">
+  <div class="unit__thumb">
+    <i class={thumb} />
   </div>
   <div class="unit__details">
     <div class="typography">
       <h2 class="unit__title" set:html={title} />
-      <p class="u-grey">{summary}</p>
-    </div>
-    <div class="unit__content typography js-expander__content">
-        <slot />
-    </div>
-    <p class="typography unit__link u-mobile-only">
-      <a class="js-expander__link" href="#"></a>
-    </p>
+      <p>{summary}</p>
+    </div>   
   </div>
 </section>
