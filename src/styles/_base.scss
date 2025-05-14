@@ -11,6 +11,10 @@ img {
 
 html{
     background-color: black;
+    /* Rectangle 4: */
+    background-image: radial-gradient(51% 100%, #eee 0%, #333 100%);
+
+
     color: white;
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -185,6 +189,7 @@ a{
 
 
 .page{
+    margin: auto;
     position: relative;
     overflow: hidden;
     max-width: 1500px; // debug
@@ -192,6 +197,9 @@ a{
     background-image:  
         repeating-radial-gradient( circle at 0 0, transparent 0, #4A4A4A 10px ), 
         repeating-linear-gradient( rgba(0,0,0,.2), rgba(0,0,0,.1) );
+
+    /* Bitmap: */
+    box-shadow: 0 2px 500px 0 rgba(0,0,0,0.1);
 
     // @media (min-width: 1499px) {        
     //     border-bottom-right-radius: 40px;      
