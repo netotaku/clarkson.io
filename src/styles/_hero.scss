@@ -8,7 +8,12 @@
 
     @media (min-width: $break) {
         background: none!important;
-    }    
+    } 
+    
+    &--home{
+        background-position: center 0;
+     // background-position: -450px -100px;
+    }
 
      
     height: 550px;
@@ -37,7 +42,7 @@
 
     &__bg{
         padding-left: var(--margin);
-        background-color: rgba(255, 153, 0, .3);
+        //background-color: rgba(255, 153, 0, .3);
         padding-top: 50px;
         padding-bottom: 50px;
         padding-right: 50px;
@@ -69,6 +74,12 @@
         flex-direction: column;
         gap: var(--gutter);
         max-width: 70%;
+        @media (max-width: $break) {
+            //background-color: rgba(255, 153, 0, .3);
+            max-width: 100%;
+            margin-top: 300px;
+            padding: var(--gutter);
+        }
     }
 
 
