@@ -5,7 +5,8 @@
     justify-content: space-between;   
     
     &__links{
-        display: flex;        
+        display: flex;   
+        background-color: #4A4A4A;     
     }
 
     &__link{
@@ -19,7 +20,7 @@
         padding: 22px 32px;
 
         .hire-me{
-            display: none;
+           // display: none;
         }
 
         &:hover{

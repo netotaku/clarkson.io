@@ -25,4 +25,9 @@
             display: none!important;
         }
     }
+    &scroller{
+        position: relative;
+        overflow-x: scroll;
+        width: 100%;
+    }
 }

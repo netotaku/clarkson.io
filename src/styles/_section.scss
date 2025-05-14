@@ -1,10 +1,18 @@
 .section{ 
 
+    position: relative;
+
     display: flex;    
     justify-content: center;  
     width: 100%;
 
-    padding: 0px 50px;
+    // max-width: 1200px;
+
+    padding: 0px var(--margin);
+
+    &--nopad{
+        padding: 0px;
+    }
     
     &__title{
         font-size: 50px; 
@@ -13,8 +21,8 @@
         }
     }
     &__inner{
-        max-width: 1200px;
-        width: 1200px;
+       max-width: 100%;
+       width: 100%;       
     }
     &__cols{
         display: flex;
@@ -29,6 +37,11 @@
         flex: 1;
     }
 
+    &__text{
+        max-width: 70%;
+        margin-bottom: 50px;
+    }
+
     &--grey{
         background-color: #3D3D3D;
     }
@@ -38,7 +51,7 @@
     }
 
     &--solo{
-        padding: 70px 50px;
+        padding: 70px var(--margin);
     }
 
 

@@ -67,10 +67,9 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 		
 	</head>
 	<body>            
-		<main class="main">
-			<nav class="section">
+		<main class="page">
+			<nav class="section section--nopad">
 				<div class="section__inner nav">
-
 					<Brand />				
 					<div class="nav__links u-no-mobile">
 						<NavLinks />
@@ -92,8 +91,9 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 					</div>
 				</div>
 			</nav>
-				
+
 			<div class="hero-image" style={`background-image: url('${image}');`}></div>
+
 			<slot />
 			<footer class="section section--solo section--black">
 				<div class="section__inner footer">
@@ -109,7 +109,7 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 						</div>
 					</div>	
 					<div class="footer__base">				
-						<p class="footer__copy">&copy; {today.getFullYear()} Nick Clarkson. All rights reserved. <a href="/privacy-and-cookies">Cookies & Privacy</a></p>						
+						<p class="footer__copy">&copy; {today.getFullYear()} Nick Clarkson. <br class="u-mobile-only" /><a href="/privacy-and-cookies">Cookies & Privacy</a></p>						
 						<div class="footer__socials">
 							<Socials />	
 						</div>

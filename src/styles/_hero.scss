@@ -1,16 +1,21 @@
 .hero{
+
+    //margin-left: var(--margin);
     
     position: relative;
+    background-size: cover;
+    background-position: center;
 
-    &__image{
-        display: block;
-        width: 50%;
-        max-width: 50%;
-    }
+    @media (min-width: $break) {
+        background: none!important;
+    }    
+
      
     height: 550px;
+    
     display: flex;
     align-items: center;
+    
     gap: var(--gutter);
 
     &--standard{                   
@@ -21,39 +26,74 @@
         height: 800px;        
     }
 
+    &--mini{
+        height: 400px;  
+    }
+
     @media (max-width: $break) {
-        flex-direction: column;
+        display: block;
         height: auto;
     }
 
-    &__image{
+    &__bg{
+        padding-left: var(--margin);
+        background-color: rgba(255, 153, 0, .3);
+        padding-top: 50px;
+        padding-bottom: 50px;
+        padding-right: 50px;
+
+        border-top-right-radius: 40px;
+        border-bottom-right-radius: 40px;
+        max-width: 75%;
+
+        // margin-right: calc(var(--margin) * 2);
+
+        flex: 1;
+
+        display: flex;
+        flex-direction: column;
+        gap: var(--gutter);
+
         @media (max-width: $break) {
-            display: none
+            max-width: 100%;
+            margin-top: var(--margin);
+            margin-bottom: var(--margin);
+            margin-right: var(--margin);            
         }
+
     }
+
+    &__home{
+        padding-left: var(--margin);
+        display: flex;
+        flex-direction: column;
+        gap: var(--gutter);
+        max-width: 70%;
+    }
+
 
     &__text{
         display: flex;
         flex-direction: column;
         gap: var(--gutter);
-        max-width: 65%;
+        // max-width: 65%;
         &--half{
             margin-top: auto;
-            width: 50%;
-            max-width: 50%;
+            // width: 50%;
+            // max-width: 50%;
         }
         &--large{                                            
-            width: 50%;
-            max-width: 50%;   
+            // width: 50%;
+            // max-width: 50%;   
         }
         &--34{
-            width: 80%;
-            max-width: 80%; 
+            // width: 80%;
+            // max-width: 80%; 
         }
         @media (max-width: $break) {
-            width: 100%;
-            max-width: 100%;
-            padding: var(--gutter);
+            // width: 100%;
+            // max-width: 100%;
+            // padding: var(--gutter);
         }
     }
 
@@ -71,16 +111,17 @@
     position: absolute;
     left: 0;
     right: 0;
-    z-index: -1;
+    // z-index: -1;
     height: 720px;
-    margin-left: 25vw;
+    margin-left: 25%;
     background-color: black;
     background-size: cover;
     background-position: center;
     @media (max-width: $break) {
-        position: relative;
-        border-radius: 0px;
-        margin-left: 0;
-        height: 250px;
+        // position: relative;
+        // border-radius: 0px;
+        // margin-left: 0;
+        // height: 450px;
+        display: none;
     }
 }

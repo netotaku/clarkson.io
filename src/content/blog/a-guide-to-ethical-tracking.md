@@ -5,7 +5,9 @@ pubDate: 'May 01 2025'
 heroImage: '/images/eye.jpg'
 cta: "Have questions about implementing ethical analytics? Or want help migrating away from Google?"
 ---
-User tracking has always been part of the web. From server logs to session IDs, developers and businesses have long been able to understand user behaviour without resorting to invasive methods. The real issues emerged with **cross-domain tracking**, where large tech companies, particularly Google, began aggregating user data across multiple sites — a practice that benefits them far more than it does site owners.
+User tracking has always been part of the web. From server logs to session IDs, developers and businesses have long been able to understand user behaviour without resorting to invasive methods. 
+
+The real issues emerged with cross-domain tracking, where large tech companies, particularly Google, began aggregating user data across multiple sites — a practice that benefits them far more than it does site owners.
 
 ## Are Cookies Required for Tracking?
 
@@ -53,12 +55,16 @@ Even worse, Google Analytics 4 has **removed or diminished** some of the more ac
 
 There are several excellent, privacy-friendly analytics platforms available today that don’t rely on cookies:
 
+<div class="u-scroller">
+
 | Tool               | Cookieless | Pricing       | Notes                                           |
 |--------------------|------------|---------------|--------------------------------------------------|
 | **Plausible**      | ✅         | From $9/month | Open source, GDPR-compliant, lightweight        |
 | **Fathom**         | ✅         | From $14/month| No cookie banners, built-in privacy features    |
 | **Simple Analytics**| ✅        | From $19/month| Focused, elegant dashboards                     |
 | **Matomo (self-hosted)** | ✅ | Free          | Full-featured, privacy-focused, host yourself   |
+
+</div>
 
 All of these provide reliable insight without invading user privacy.
 
