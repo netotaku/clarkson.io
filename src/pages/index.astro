@@ -9,13 +9,12 @@ import Socials 	from '../components/Socials.astro';
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
-
 ---
-
 <Wrapper
-	title="Nick Clarkson - Digital Consultant"
-	description="Nick Clarkson is a digital consultant with over 20 years of experience in web development, project management, and CRM systems. He helps organisations navigate digital complexity with clarity and confidence."
+	title="Nick Clarkson, Creative Technologist, Bristol UK"
+	description="Nick is a digital consultant with over 20 years of experience in web development, project management, and CRM systems. He helps organisations navigate digital complexity with clarity and confidence."
 	image='/images/clarky-1.jpg'>
+
 
 	<article>	
 
@@ -27,13 +26,12 @@ const posts = (await getCollection('blog')).sort(
 					<div class="typography">
 						<h2>Creative Technologist / Digital Consultant</h2>
 						<p class="u-grey">With over two decades of hands-on experience, I help agencies and organisations deliver meaningful digital work—whether that means building fast, accessible websites, shaping CRM strategies, or applying AI to streamline delivery.</p>
-						<p class="socials hero__social">
-							<Socials />
-						</p>
+						<p class="socials hero__social"><Socials /></p>
 					</div>
 				</div>
 			</div>				
-		</section>				
+		</section>	
+
 
 		<section class="section">	
 			<div class="section__inner units">				
@@ -64,14 +62,23 @@ const posts = (await getCollection('blog')).sort(
 				</Unit>	
 			</div>	
 		</section>
+
+		
 		<CV />
+
+
 		<section class="section section--solo">
 			<div class="section__inner cards">
 				<BlogList 
 					title="Latest Posts"					
 					posts={posts} />
 			</div>
+		</section>
+
+
 	</article>
+
+	
 </Wrapper>
 
 <script type="module">
