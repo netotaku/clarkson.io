@@ -186,9 +186,14 @@ a{
 
 .page{
     position: relative;
-   // max-width: 1400px; // debug
+    overflow: hidden;
+    max-width: 1500px; // debug
     background-color: #4A4A4A;
     background-image:  
         repeating-radial-gradient( circle at 0 0, transparent 0, #4A4A4A 10px ), 
         repeating-linear-gradient( rgba(0,0,0,.2), rgba(0,0,0,.1) );
+
+    // @media (min-width: 1499px) {        
+    //     border-bottom-right-radius: 40px;      
+    // }   
 }
