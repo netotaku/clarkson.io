@@ -18,6 +18,9 @@
     blockquote{
         padding-left: var(--gutter);
         border-left: 4px solid $orange;
+        line-height: 1.2;
+        font-family: "Cal Sans", sans-serif;
+        font-size: 22px;
     }
 
     h1{

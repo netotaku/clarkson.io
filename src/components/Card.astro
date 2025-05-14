@@ -13,7 +13,9 @@ const { id, data } = post;
       alt=""
     />
     <div class="card__hero__date">
-      <FormattedDate date={data.pubDate} />
+      <span class="label">
+        <FormattedDate date={data.pubDate} />
+      </span>
     </div>
   </div>
   <div class="card__details">

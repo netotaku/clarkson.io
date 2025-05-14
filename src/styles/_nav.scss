@@ -19,10 +19,6 @@
         font-size: 18px;
         padding: 22px 32px;
 
-        .hire-me{
-           // display: none;
-        }
-
         &:hover{
             background-color: #f90;  
             color: white;    
@@ -36,7 +32,7 @@
         }
 
         &--orange{
-            color: #f90;
+            color: $orange;
             font-family: "Cal Sans", sans-serif;
             font-size: 32px;
             background-color: rgba(0,0,0,.1);

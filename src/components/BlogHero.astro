@@ -1,9 +1,11 @@
 ---
+import FormattedDate from './FormattedDate.astro'; 
 const { post, showButton } = Astro.props;
 ---
 <section class="hero"  style={`background-image: url('${post.data.heroImage}');`}>
     <div class="hero__text"> 
-        <div class="hero__bg">           
+        <div class="hero__bg">
+            <strong><FormattedDate date={post.data.pubDate} /></strong>
             <h1 class="nc nc--medium">{post.data.title}</h1>
             <h2>{post.data.description}</h2>       
             {showButton && (
