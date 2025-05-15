@@ -1,11 +1,13 @@
 ---
 title: Reclaiming the Middle Ground
-description: Extreme Polarisation is Damaging Our Politics, What We Can Do About It?
+description: Extreme Polarisation is Damaging Our Politics, What Can We Do About It?
 pubDate: 'May 14 2025'
 heroImage: '/images/dump.jpg'
 cta: "I provide consultancy services to teams and individuals seeking to reduce reliance on third-party platforms, implement ethical tracking and CRM practices, develop impactful websites, and strategically integrate AI within agency operations."
 ---
-As time has gone on, things have become more extreme—not just in politics, but across culture. Lines are drawn quickly, sides are chosen faster, and any hint of ambiguity is treated with suspicion. The middle ground, once a place for compromise and conversation, has become a no-man's-land.
+As time has gone on, things have become more extreme—not just in politics, but across culture. 
+
+Lines are drawn quickly, sides are chosen faster, and any hint of ambiguity is treated with suspicion. The middle ground, once a place for compromise and conversation, has become a no-man's-land.
 
 Nowhere is this more damaging than in politics. In both the UK and the US, the space for nuance has all but vanished. Liberals and conservatives often speak in absolutes, not seeking understanding but victory. I've never felt comfortable discussing my politics online. I’m socially liberal and fiscally conservative—a stance that once felt balanced, but now seems to alienate everyone.
 

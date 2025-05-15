@@ -96,21 +96,28 @@ const { title, description, image } = Astro.props;
 			<footer class="section section--solo section--black">
 				<div class="section__inner footer">
 					<div class="footer__cols">
-						<div class="footer__col footer__col--left">							
-							<SignUp />							
-						</div>
-						<div class="footer__col footer__col--right">
+
+						<div class="footer__col footer__col--left">
 							<p class="footer__contacts">
 								<a class="footer__contacts__method" href="tel:07771535355">07771 535 355</a><br />
 								<a class="footer__contacts__method" href="mailto:nick@clarkson.io">nick@clarkson.io</a>
+								<div class="footer__socials">
+									<Socials />	
+								</div>
+								
 							</p>
 						</div>
+
+						<div class="footer__col footer__col--right u-no-mobile">							
+							<Brand />
+							<!-- <SignUp /> -->											
+						</div>
+
+
 					</div>	
 					<div class="footer__base">				
-						<p class="footer__copy">&copy; {today.getFullYear()} Nick Clarkson. <br class="u-mobile-only" /><a href="/privacy-and-cookies">Cookies & Privacy</a></p>						
-						<div class="footer__socials">
-							<Socials />	
-						</div>
+						<p class="footer__copy">&copy; {today.getFullYear()} Nick Clarkson. Bristol, UK</p>						
+						<p><a href="/privacy-and-cookies">Cookies & Privacy</a></p>
 					</div>
 				</div>
 			</footer>
