@@ -6,9 +6,10 @@ import CV 		from '../components/CV.astro';
 import Unit 	from '../components/Unit.astro';
 import Socials 	from '../components/Socials.astro';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 4);
+
 ---
 <Wrapper
 	title="Nick Clarkson, Creative Technologist, Bristol UK"
