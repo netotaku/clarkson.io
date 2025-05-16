@@ -146,10 +146,11 @@ a{
     display: inline-block;
     background: $orange;
     color: white!important;
-    font-weight: bold;
-    padding: 12px 18px;
-    border-radius: 30px;
+    // font-weight: bold;
+    padding: 22px 28px;
+    border-radius: 60px;
     text-decoration: none;
+    font-size: 1.2em;
     cursor: pointer;
     &--spaced{
         margin-top: 50px;
