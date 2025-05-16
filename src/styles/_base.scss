@@ -11,12 +11,7 @@ img {
 
 html{
     background-color: black;
-
-    // background-image: radial-gradient(51% 100%, #eee 0%, #333 100%);
-
     background-image: linear-gradient(-180deg, #FFAD63 0%, #F76B1C 100%);
-
-
     color: white;
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -98,12 +93,11 @@ a{
     font-size: 2em;
     line-height: 1.2;
     font-family: "Cal Sans", sans-serif;
-    &__contacts{
-        // margin-top: var(--gutter);
-    }
+
     h2, a{
         color: rgba(255,255,255,.6);
     }
+
     @media (max-width: $break) {       
         border-radius: 0; 
         font-size: 1.5em;
@@ -145,8 +139,7 @@ a{
     margin-top: 18px;
     display: inline-block;
     background: $orange;
-    color: white!important;
-    // font-weight: bold;
+    color: white!important;    
     padding: 22px 28px;
     border-radius: 60px;
     text-decoration: none;
@@ -163,45 +156,17 @@ a{
     }
 }
 
-.hire-me{    
-    // position: fixed;
-    // bottom: var(--gutter);
-    // left: var(--gutter);
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
-    // background: $orange;
-    // color: #fff;
-    // text-decoration: none;
-    // width: 80px;
-    // height: 80px;
-    // border-radius: 50%;
-    // font-family: "Cal Sans", sans-serif;
-    // font-size: 22px;
-    // text-align: center;
-    // line-height: 1;    
-    // text-transform: uppercase;
-    // display: none;
-    // &:hover{
-    //     background: #f90;
-    // }
-
-    //display: none;
-
-}
-
 
 .page{
     margin: auto;
     position: relative;
     overflow: hidden;
-    max-width: 1500px; // debug
+    max-width: 1500px; 
     background-color: #4A4A4A;
     background-image:  
         repeating-radial-gradient( circle at 0 0, transparent 0, #4A4A4A 10px ), 
         repeating-linear-gradient( rgba(0,0,0,.2), rgba(0,0,0,.1) );
-
-    /* Bitmap: */
+    
     box-shadow: 0 2px 500px 0 rgba(0,0,0,0.4);
 
     @media (min-width: 1499px) {        

@@ -1,10 +1,13 @@
 .hero{
 
-    //margin-left: var(--margin);
-    
     position: relative;
     background-size: cover;
     background-position: center;
+    height: 550px;
+
+    display: flex;
+    align-items: center;   
+    gap: var(--gutter); 
 
     @media (min-width: $break) {
         background: none!important;
@@ -14,17 +17,8 @@
         background-color: black;
         background-position: center 0;
         background-size: 100%;
-        background-repeat: no-repeat;
-     // background-position: -450px -100px;
+        background-repeat: no-repeat;     
     }
-
-     
-    height: 550px;
-    
-    display: flex;
-    align-items: center;
-    
-    gap: var(--gutter);
 
     &--standard{                   
         height: 650px;        
@@ -38,14 +32,8 @@
         height: 400px;  
     }
 
-    @media (max-width: $break) {
-        display: block;
-        height: auto;
-    }
-
     &__bg{
-        padding-left: var(--margin);
-        //background-color: rgba(255, 153, 0, .3);
+        padding-left: var(--margin);        
         padding-top: 50px;
         padding-bottom: 50px;
         padding-right: 50px;
@@ -53,8 +41,6 @@
         border-top-right-radius: 40px;
         border-bottom-right-radius: 40px;
         max-width: 75%;
-
-        // margin-right: calc(var(--margin) * 2);
 
         flex: 1;
 
@@ -77,8 +63,7 @@
         flex-direction: column;
         gap: var(--gutter);
         max-width: 70%;
-        @media (max-width: $break) {
-            //background-color: rgba(255, 153, 0, .3);
+        @media (max-width: $break) {            
             max-width: 100%;
             margin-top: 200px;
             padding: var(--gutter);
@@ -92,25 +77,9 @@
     &__text{
         display: flex;
         flex-direction: column;
-        gap: var(--gutter);
-        // max-width: 65%;
+        gap: var(--gutter);        
         &--half{
             margin-top: auto;
-            // width: 50%;
-            // max-width: 50%;
-        }
-        &--large{                                            
-            // width: 50%;
-            // max-width: 50%;   
-        }
-        &--34{
-            // width: 80%;
-            // max-width: 80%; 
-        }
-        @media (max-width: $break) {
-            // width: 100%;
-            // max-width: 100%;
-            // padding: var(--gutter);
         }
     }
 
@@ -118,6 +87,10 @@
         color: white!important;
     }
 
+    @media (max-width: $break) {
+        display: block;
+        height: auto;
+    }
 
 }
 
@@ -128,17 +101,12 @@
     position: absolute;
     left: 0;
     right: 0;
-    // z-index: -1;
     height: 720px;
     margin-left: 25%;
     background-color: black;
     background-size: cover;
     background-position: center;
     @media (max-width: $break) {
-        // position: relative;
-        // border-radius: 0px;
-        // margin-left: 0;
-        // height: 450px;
         display: none;
     }
 }
