@@ -47,7 +47,11 @@
     }
 
     &--solo{
-        padding: 70px var(--margin);
+        padding: 50px var(--margin);
+    }
+
+    &--darker{
+        background-color: #333;
     }
 
 

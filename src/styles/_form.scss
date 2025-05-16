@@ -1,6 +1,12 @@
 .form{
 
-    color: #666;
+    // color: #666;
+
+    width: 75%;
+
+    @media (max-width: $break) {            
+        width: 100%;
+    }
 
     &__row{
         margin-bottom: var(--gutter);
@@ -12,31 +18,29 @@
         display: block;
         width: 100%;
         padding: 12px 14px;   
-        background-color: #666; // rgba(255, 255, 255, .2);        
+        background-color: #666;
         font-size: 18px;
         border: 0;
         border-radius: 0;
         
         &::placeholder{
-            color: black;
+            color: white;
         }
-        &--email{
-                    
-        }
-    }
-    &__small-print{
-        // color: $teal;
 
     }
+
     &__button{
         appearance: none;
         padding: 12px 14px;        
-        background-color: rgba(255, 255, 255, .15); 
+        background-color: rgba(0, 0, 0, .4); 
         border: 0;
         font-size: 18px;
-        color: #666;
+        color: white;
         cursor: pointer;
         border-radius: 0;
+        &:hover{
+            background: $orange;
+        }
     }
 
 
@@ -44,7 +48,6 @@
         display: flex;
         border-radius: $radius;
         position: relative;
-        overflow: hidden;
-        //border-radius: 0;
+        overflow: hidden;        
     }
 }

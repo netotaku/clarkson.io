@@ -92,6 +92,13 @@ const { title, description, image } = Astro.props;
 			<div class="hero-image" style={`background-image: url('${image}');`}></div>
 
 			<slot />
+			
+			<section class="section section--solo section--darker">
+				<div class="section__inner">
+					<SignUp />
+				</div>
+			</section>
+
 
 			<footer class="section section--solo section--black">
 				<div class="section__inner footer">
@@ -109,8 +116,7 @@ const { title, description, image } = Astro.props;
 						</div>
 
 						<div class="footer__col footer__col--right u-no-mobile">							
-							<Brand />
-							<!-- <SignUp /> -->											
+							<Brand />																		
 						</div>
 
 
