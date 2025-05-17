@@ -67,6 +67,7 @@
             justify-content: start;
             gap: var(--gutter);
             flex-direction: column-reverse;
+            font-size: 1.2em;
         }   
     }
     @media (max-width: $break) {
