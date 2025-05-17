@@ -11,7 +11,10 @@
     padding: 0px var(--margin);
 
     &--nopad{
-        padding: 0px;
+        // 
+        @media (max-width: $break) {
+            padding: 0px!important;
+        }
     }
     
     &__title{
