@@ -84,14 +84,15 @@
 
     font-family: "Cal Sans", sans-serif;
 
+    display: none;
+
     &__socials{
         position: absolute;
         bottom: 22px;
         left: 22px;
         font-size: 22px;
     }
-    
-    
+
     a.nav__link{
         text-decoration: none;
         justify-content: end;
@@ -107,10 +108,11 @@
         color: white;
         cursor: pointer;
     }
+    
     &__links{
         padding: 22px;
     }
-   display: none;
+   
 }
 
 

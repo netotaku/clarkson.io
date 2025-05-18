@@ -30,14 +30,12 @@ const posts = (await getCollection('blog'))
 						<p class="socials hero__social"><Socials /></p>
 					</div>
 				</div>
-			</div>				
+			</div>	
 		</section>	
-
 
 		<Services />
 
 		<CV />
-
 
 		<section class="section section--solo">
 			<div class="section__inner cards">
@@ -52,13 +50,3 @@ const posts = (await getCollection('blog'))
 
 	
 </Wrapper>
-
-<script type="module">
-	document.querySelectorAll('.js-expander__link').forEach(link => {
-	  link.addEventListener('click', (e) => {
-		e.preventDefault();
-		const unit = link.closest('.js-expander');
-		unit.classList.toggle('js-expander--expanded');
-	  });
-	});
-</script>
