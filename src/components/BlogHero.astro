@@ -9,7 +9,8 @@ const { post, showButton } = Astro.props;
                 
                 <strong><FormattedDate date={post.data.pubDate} /></strong>
                 <h1 class="nc nc--medium">{post.data.title}</h1>
-                <h2>{post.data.description}</h2>       
+                <h2 class="hero__h2">{post.data.description}</h2>     
+                <!--  <p class="typography">{post.data.description}</p> -->
                 {showButton && (
                     <p><a class="button" href={`/blog/${post.id}/`}>Read Article</a></p>
                 )}  

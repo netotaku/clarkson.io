@@ -1,6 +1,6 @@
 ---
 title: "Toxic Nostalgia and the Tools We Choose"
-description: "Gatekeeping disguised as tradition is holding creative communities back. What happens when old-school pride becomes a barrier to progress?"
+description: "Gatekeeping disguised as tradition is holding creative communities back."
 pubDate: "18 may 2025"
 heroImage: "/images/dj.jpg"
 cta: "If your team is wrestling with how to bring new tools—like AI or automation—into a practice grounded in experience and quality, I offer consultancy to help you evolve without losing your edge."
@@ -20,9 +20,8 @@ And anyone who’s worked with AI knows: it’s not a replacement for knowledge.
 
 There’s a difference between advocating for strong fundamentals and attacking anyone who didn’t take the same path you did. That’s where empathy curdles into something toxic.
 
-- "You’re not a real DJ if you use sync."
-- "Design isn’t real if you used Canva."
-- "You didn’t earn it if you didn’t suffer for it."
+> "You’re not a real DJ if you use sync."<br>
+> "Design isn’t real if you used Canva."
 
 This is pride dressed as principle. And it often comes from people who are no longer doing the work themselves. The loudest critics tend to be bedroom purists, not working professionals.
 
