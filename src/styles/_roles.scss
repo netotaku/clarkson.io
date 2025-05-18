@@ -1,14 +1,9 @@
-.roles{
-    //
-    // flex-direction: row;
-    // width: 100%;
-}
 
 .role{
     display: flex; 
     align-items: center;   
+    margin-top: var(--gutter);
     &__date{
         padding-right: var(--gutter);
     }
-    margin-top: var(--gutter);
 }
