@@ -3,11 +3,13 @@ import { getCollection } from 'astro:content';
 import Wrapper from '../../layouts/wrapper.astro';
 import BlogList from '../../components/BlogList.astro';
 import BlogHero from '../../components/BlogHero.astro';
+import BlogTable from '../../components/BlogTable.astro';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 const featured = posts.shift();
+const secondary = posts.splice(0,4);
 ---
 
 <Wrapper 
@@ -23,6 +25,13 @@ const featured = posts.shift();
 		<div class="section__inner cards">
 			<BlogList 
 				title="" 
+				posts={secondary} />
+		</div>
+	</section>
+
+	<section class="section section--solo section--grey">
+		<div class="section__inner typography">
+			<BlogTable
 				posts={posts} />
 		</div>
 	</section>

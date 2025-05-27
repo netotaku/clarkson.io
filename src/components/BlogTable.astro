@@ -1,0 +1,23 @@
+---
+import FormattedDate from './FormattedDate.astro'; 
+const { posts } = Astro.props;
+---
+<div class="blog-table">    
+    {
+        posts.map((post) => (
+            <a class="blog-table__link" href={`/blog/${post.id}/`}>
+                <div class="blog-table__img">
+                    <img                    
+                        src={post.data.heroImage}
+                        alt=""
+                    />
+                </div>
+                <div class="">
+                    <strong><FormattedDate date={post.data.pubDate} /></strong>
+                    <h2>{post.data.title}</h2>
+                    <p>{post.data.description}</p>
+                </div>
+            </a>
+        ))
+    }
+</div>

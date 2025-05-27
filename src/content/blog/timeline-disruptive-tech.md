@@ -1,5 +1,5 @@
 ---
-title: "Are We Really Living Through Exponential Tech Growth?"
+title: "Are We Living Through Exponential Tech Growth?"
 description: "A conversation with my father sparked this timeline of disruptive technologies and a reflection on whether progress is accelerating—or just feels like it."
 pubDate: "27 May 2025"
 heroImage: "/images/bulb.jpg"
