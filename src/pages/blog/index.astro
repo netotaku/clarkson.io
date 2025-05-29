@@ -9,6 +9,7 @@ const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 const featured = posts.shift();
+const main = posts;
 const secondary = posts.splice(0,4);
 ---
 

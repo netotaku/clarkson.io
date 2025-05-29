@@ -17,7 +17,7 @@ const posts = (await getCollection('blog'))
 	image='/images/clarky-1.jpg'>
 
 	<article>	
-				
+
 		<section class="hero hero--home"  style="background-image: url(/images/clarky-3.jpg)">
 			<div class="hero__text">
 				<div class="hero__home">							
@@ -40,6 +40,7 @@ const posts = (await getCollection('blog'))
 				<BlogList 
 					title="Latest Posts"					
 					posts={posts} />
+				<p><a href="/blog" class="button">More Posts</a></p>
 			</div>
 		</section>
 
