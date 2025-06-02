@@ -7,12 +7,12 @@ const blog = defineCollection({
 	// Type-check frontmatter using a schema
 	schema: z.object({
 		title: z.string(),
-		description: z.string(),
-		// Transform string to Date object
+		description: z.string(),		
 		pubDate: z.coerce.date(),
 		updatedDate: z.coerce.date().optional(),
 		heroImage: z.string().optional(),
-		cta: z.string().optional()
+		cta: z.string().optional(),
+		categories: z.array(z.string()), 
 	}),
 });
 

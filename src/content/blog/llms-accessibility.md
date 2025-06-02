@@ -3,6 +3,10 @@ title: "LLMs and Accessibility: A Quiet Revolution"
 description: "How large language models are transforming communication and usability for people with dyslexia and neurodivergent users."
 pubDate: "22 May 2025"
 heroImage: "/images/helping-hand.jpg"
+categories: 
+  - "AI"
+  - "Accesibitly" 
+  - "Social"
 cta: "Want to build what’s next? I help teams and individuals explore the inclusive use of AI in real-world settings—and I bring experience managing and mentoring neurodivergent team members."
 ---
 

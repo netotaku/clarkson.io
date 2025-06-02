@@ -3,6 +3,9 @@ title: Vibe Coding.
 description: Buddying up with ChatGPT
 pubDate: 'May 03 2025'
 heroImage: '/images/aw.jpg'
+categories: 
+    - "AI"
+    - "Technology"
 cta: "If you’re curious about integrating AI into your development workflows—or want to explore what vibe coding could look like for your team—I offer consultancy for individuals and organisations. Whether you’re experimenting with AI pair programming, looking to accelerate prototyping, or need help shaping a sustainable human–machine workflow, I can help you get there faster (and with fewer pitfalls)."
 ---
 Recently, I set myself a challenge: to step deliberately into new territory and see how modern tools—and AI—could change how I think, not just how I code.

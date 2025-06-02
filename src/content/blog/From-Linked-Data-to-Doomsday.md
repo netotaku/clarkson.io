@@ -3,6 +3,9 @@ title: From Linked Data to Doomsday
 description: Why we keep mistaking developer tools for civilisation shifts
 pubDate: 'May 17 2025'
 heroImage: '/images/zombies.jpg'
+categories: 
+  - "Comment"
+  - "Technology" 
 cta: "I help teams and individuals navigate new technology without falling for the pitch. Whether it’s AI, ethical tracking, or a better CMS — I help you build what actually works."
 ---
 AI isn’t just the next big thing — if you believe the headlines, it’s the end of work, the end of truth, or the end of the world. That’s quite the arc for what is, at its core, a probabilistic text prediction engine.

@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+
+// Flatten all categories and deduplicate
+const allCategories = Array.from(
+  new Set(posts.flatMap((post) => post.data.categories || []))
+);
+
+// Map each category to its latest post
+const latestByCategory = allCategories.map((category) => {
+  const categoryPosts = posts
+    .filter((post) => post.data.categories?.includes(category))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+  return {
+    category,
+    post: categoryPosts[0],
+  };
+});
+---
+<ul>
+    {latestByCategory.map(({ category, post }) => (
+      <li>
+        <h2><a href={`/blog/category/${category.toLowerCase()}/`}>{category}</a></h2>
+        <a href={`/blog/${post.id}/`}>
+          {post.data.title}
+        </a>
+      </li>
+    ))}
+  </ul>

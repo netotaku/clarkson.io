@@ -3,6 +3,9 @@ title: "Are We Living Through Exponential Tech Growth?"
 description: "A conversation with my father sparked this timeline of disruptive technologies and a reflection on whether progress is accelerating—or just feels like it."
 pubDate: "27 May 2025"
 heroImage: "/images/bulb.jpg"
+categories: 
+    - "Comment"
+    - "Technology"
 cta: "I help teams and individuals make sense of new technologies, implement ethical digital strategies, and future-proof their digital presence."
 ---
 

@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+
+  // Collect all unique category names (lowercased)
+  const categories = new Set(
+    posts.flatMap((post) =>
+      post.data.categories?.map((c) => c.toLowerCase()) || []
+    )
+  );
+
+  // Create a static path for each unique category
+  return Array.from(categories).map((category) => ({
+    params: { category },
+    props: { category },
+  }));
+}
+
+// Get the lowercased category from the route
+const routeCategory = Astro.params.category.toLowerCase();
+
+// Get all posts
+const allPosts = await getCollection('blog');
+
+// Filter posts where any category matches the route, case-insensitively
+const posts = allPosts.filter((post) =>
+  post.data.categories?.some(
+    (c) => c.toLowerCase() === routeCategory
+  )
+);
+---
+
+<h1>Category: { Astro.params.category }</h1>
