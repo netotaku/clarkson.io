@@ -63,6 +63,12 @@
         border-bottom: solid 1px #666;
     }
 
+    code{
+        background-color: #111;
+        color: #ccc;
+        padding: 2px 4px;
+    }
+
     @media (max-width: $break) {
         font-size: 1.3em;
         line-height: 1.4;
