@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 
+
 const posts = await getCollection('blog');
 
 // Flatten all categories and deduplicate
@@ -23,7 +24,7 @@ const latestByCategory = allCategories.map((category) => {
 <ul>
     {latestByCategory.map(({ category, post }) => (
       <li>
-        <h2><a href={`/blog/category/${category.toLowerCase()}/`}>{category}</a></h2>
+        <h2><a href={`/blog/category/${category.toLowerCase()}/`}>{category.replace('-', ' ')}</a></h2>
         <a href={`/blog/${post.id}/`}>
           {post.data.title}
         </a>

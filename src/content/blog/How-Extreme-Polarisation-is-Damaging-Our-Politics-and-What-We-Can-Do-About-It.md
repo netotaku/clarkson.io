@@ -4,8 +4,8 @@ description: Extreme Polarisation is Damaging Our Politics, What Can We Do About
 pubDate: 'May 14 2025'
 heroImage: '/images/dump.jpg'
 categories: 
-  - "Comment"
-  - "Politics"
+  - "comment"
+  - "politics"
 cta: "I work with agencies and organisations to simplify complexity, improve digital performance, and make smarter use of tools like CRM, ethical analytics, and AI."
 ---
 As time has gone on, things have become more extreme—not just in politics, but across culture. 

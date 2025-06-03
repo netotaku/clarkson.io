@@ -4,8 +4,8 @@ description: Exploring VR’s Future and Why It’s Struggling
 pubDate: 'May 07 2025'
 heroImage: '/images/metaverse.jpg'
 categories: 
-    - "Social"
-    - "Technology"
+    - "social"
+    - "technology"
 cta: "I work with agencies and organisations to simplify complexity, improve digital performance, and make smarter use of tools like CRM, ethical analytics, and AI."
 ---
 Not too long ago, tech enthusiasts and industry leaders predicted the Metaverse—a fully immersive virtual world—as the inevitable future of digital interaction. Yet, recently, the hype has largely faded. What went wrong, and what’s next for VR technology?

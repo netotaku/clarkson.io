@@ -27,7 +27,8 @@
     background-color: #3D3D3D;
     border-radius: $radius;
     text-decoration: none;
-    display: block;
+    display: flex;
+    flex-direction: column;   
     position: relative;
     overflow: hidden;
     color: white;
@@ -38,21 +39,29 @@
     }
 
     &__details{
-        padding: var(--gutter);        
+        padding: var(--gutter);  
+        display: flex;
+        flex-direction: column;    
     }
 
     &__desc{
         line-height: 1.4;
         margin-top: 4px;
+        // margin: 0 var(--gutter) 0 var(--gutter);  
     }
 
-    &__title{   
-        margin: 0!important;     
+    &__title{  
+        margin: 0!important; 
+        // margin: var(--gutter) var(--gutter) 0 var(--gutter);     
+    }
+
+    &__tags{
+        margin: auto 0 var(--gutter) var(--gutter);     
     }
 
     &:hover{
         background: $orange;  
-        p{
+        * {
             color: white!important;      
         }        
     }

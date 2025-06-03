@@ -4,7 +4,7 @@ description: Moving Beyond Cookies and Google Analytics.
 pubDate: 'May 01 2025'
 heroImage: '/images/eye.jpg'
 categories: 
-    - "Ethical Tracking"
+    - "ethical-tracking"
 cta: "Have questions about implementing ethical analytics? Or want help migrating away from Google?"
 ---
 User tracking has always been part of the web. From server logs to session IDs, developers and businesses have long been able to understand user behaviour without resorting to invasive methods. 

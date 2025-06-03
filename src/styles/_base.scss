@@ -4,6 +4,13 @@
     padding: 0;
 }
 
+a{
+    color: white;
+    &:hover{
+        text-decoration: none;
+    }
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -174,4 +181,18 @@ a{
         border-bottom-left-radius: 40px; 
         margin-bottom: 150px;     
     }   
+}
+
+
+.tag{
+    color: #999;
+    font-size: 1em;
+    display: inline-block;
+    margin-right: 6px;
+    a{
+        color: #999;
+    }
+    &__pound{
+        color: #666;
+    }
 }

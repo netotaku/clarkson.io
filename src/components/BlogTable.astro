@@ -16,6 +16,13 @@ const { posts } = Astro.props;
                     <strong><FormattedDate date={post.data.pubDate} /></strong>
                     <h2>{post.data.title}</h2>
                     <p>{post.data.description}</p>
+                    <p>
+                        {post.data.categories?.map((category) => (
+                            <span class="tag" data-href={`/blog/category/${category.toLowerCase()}/`}>
+                            #{category}
+                            </span>
+                        ))}
+                    </p>
                 </div>
             </a>
         ))
