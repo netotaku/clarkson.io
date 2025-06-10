@@ -12,6 +12,12 @@
         }
     }
 
+    img{
+        display: block;
+        border-radius: $radius;
+        margin-bottom: var(--gutter);
+    }
+
     p:last-child{
         margin-bottom: 0;
     }
