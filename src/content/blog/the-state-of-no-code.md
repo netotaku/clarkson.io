@@ -6,9 +6,11 @@ heroImage: "/images/no-code.jpg"
 categories:   
   - "No Code" 
   - "Squarespace"
-cta: "Need help deciding which approach is right for your project?I offer consultancy for teams and individuals looking to reduce delivery risk and find the right fit — whether that’s No Code, low code, or fully custom builds."
+cta: "Need help deciding which approach is right for your project? I offer consultancy for teams and individuals looking to reduce delivery risk and find the right fit — whether that’s No Code, low code, or fully custom builds."
 ---
-No Code platforms have long carried a reputation as second-rate — a compromise solution for those lacking technical skills or budget. But that perception is increasingly out of step with reality. While they do have limitations, No Code platforms now power serious businesses, launch startups, and support design teams at speed.
+No Code platforms have long carried a reputation as second-rate — a compromise solution for those lacking technical skills or budget. But that perception is increasingly out of step with reality. 
+
+While they do have limitations, No Code platforms now power serious businesses, launch startups, and support design teams at speed.
 
 # A Short History of No Code
 
