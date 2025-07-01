@@ -1,10 +1,10 @@
 ---
 import Card from './Card.astro';
-const { posts, title } = Astro.props;
+const { posts, title, modifier } = Astro.props;
 ---
 
 <h2 class="section__title">{title}</h2>        
-<div class="cards__cards">
+<div class={`cards__cards${modifier}`}>
     {
         posts.map((post) => (
             <Card post={post} />

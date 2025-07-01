@@ -1,0 +1,52 @@
+---
+import FormattedDate from './FormattedDate.astro'; 
+// import BlogTable from '../components/BlogTable.astro';
+import BlogList from '../components/BlogList.astro';
+import Card from './Card.astro';
+const { posts } = Astro.props;
+
+const map: Record<string, { label: string; year: string; posts: Post[] }> = {};
+
+  posts.forEach((post) => {
+    const d = new Date(post.data.pubDate);
+
+    const label = d.toLocaleString('en-US', { month: 'short' }); // "Jan", "Feb", etc.
+    const year = String(d.getFullYear());
+
+    const key = `${year}-${label}`;
+
+    if (!map[key]) {
+      map[key] = { label, year, posts: [] };
+    }
+    map[key].posts.push(post);
+});
+
+
+const months = Object.values(map).sort((a, b) => {
+    const aDate = new Date(`${a.year}-${a.label}-01`).getTime();
+    const bDate = new Date(`${b.year}-${b.label}-01`).getTime();
+    return bDate - aDate; // newest first
+});
+
+---
+
+    <div class="cards__cards cards__cards--thirds"> 
+
+        {
+            months.map((month) => (  
+                // <div class="card card--breaker">{month.label}<br>{month.year}</div>
+                <>
+                {
+                    month.posts.map((post) => ( 
+                        <Card post={post} />
+                    ))
+                }
+                </>
+            ))
+        }
+
+    </div>
+
+
+
+

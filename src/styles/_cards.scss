@@ -9,9 +9,12 @@
         grid-template-columns: 1fr 1fr;
         gap: var(--gutter);
         align-items: stretch;
+        &--thirds{
+          grid-template-columns: 1fr 1fr 1fr;  
+        }
         @media (max-width: $break) {            
             grid-template-columns: 1fr;
-        }
+        }        
     }
 
     &--on-grey{
@@ -36,6 +39,15 @@
     &--featured{
         width: 100%;
         margin-bottom: var(--gutter);
+    }
+
+    &--breaker{
+        padding: var(--gutter);
+        color: #ccc;
+        font-size: 2em;
+        &:hover{
+            background: #3D3D3D!important;
+        }        
     }
 
     &__details{

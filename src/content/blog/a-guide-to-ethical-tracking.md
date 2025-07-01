@@ -1,7 +1,7 @@
 ---
 title: Ethical Tracking. 
 description: Moving Beyond Cookies and Google Analytics.
-pubDate: 'May 01 2025'
+pubDate: 'Apr 01 2025'
 heroImage: '/images/eye.jpg'
 categories: 
     - "ethical-tracking"

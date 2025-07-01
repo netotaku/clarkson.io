@@ -16,6 +16,11 @@
             padding: 0px!important;
         }
     }
+
+    &--grid{
+        padding-bottom: var(--gutter);
+        padding-top: 0px;
+    }
     
     &__title{
         font-size: 50px; 

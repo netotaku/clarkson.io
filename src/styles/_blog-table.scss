@@ -6,7 +6,7 @@
     &__link{        
         display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items: start;
         gap: var(--gutter); 
         text-decoration: none;
         flex: 1;

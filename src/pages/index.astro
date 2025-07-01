@@ -35,17 +35,16 @@ const posts = (await getCollection('blog'))
 
 		<CV />
 
-		<section class="section section--solo">
+		<section class="section section--grid section--solo">
 			<div class="section__inner cards">
 				<BlogList 
-					title="Latest Posts"					
-					posts={posts} />
+					title="Latest Posts" 
+					posts={posts}
+                	modifier="" />
 				<p><a href="/blog" class="button">More Posts</a></p>
 			</div>
 		</section>
 
-
 	</article>
 
-	
 </Wrapper>

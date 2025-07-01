@@ -1,11 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
-
-import Wrapper from '../../layouts/wrapper.astro';
-import BlogList from '../../components/BlogList.astro';
-import BlogHero from '../../components/BlogHero.astro';
-import BlogTable from '../../components/BlogTable.astro';
-import BlogCal from '../../components/BlogCal.astro';
+import Wrapper from '../layouts/wrapper.astro';
+import BlogList from '../components/BlogList.astro';
+import BlogHero from '../components/BlogHero.astro';
+import BlogCal from '../components/BlogCal.astro';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
