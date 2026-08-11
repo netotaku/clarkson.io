@@ -1,7 +1,7 @@
 .pixel-hero {
   position: relative;
   width: 100%;
-  height: calc(var(--pixel-hero-top-height, 600px) + var(--pixel-hero-tail-height, 0px));
+  height: var(--pixel-hero-height, 600px);
   overflow: visible;
   pointer-events: none;
 
@@ -22,23 +22,23 @@
     will-change: transform;
   }
 
-  &__top,
-  &__tail {
+  &__svg {
     display: block;
     width: 100%;
+    height: var(--pixel-hero-height, 600px);
     overflow: visible;
     opacity: 0;
   }
 
-  &__top { height: var(--pixel-hero-top-height, 600px); }
-  &__tail { height: var(--pixel-hero-tail-height, 0px); }
-
   &.is-ready {
-    .pixel-hero__top,
-    .pixel-hero__tail { opacity: 1; }
+    .pixel-hero__svg {
+      opacity: 1;
+    }
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pixel-hero__parallax { will-change: auto; }
+  .pixel-hero__parallax {
+    will-change: auto;
+  }
 }
