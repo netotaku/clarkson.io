@@ -75,6 +75,7 @@ html{
     h5:not(:last-child),
     h6:not(:last-child),
     hr:not(:last-child),
+    table:not(:last-child),
     blockquote:not(:last-child){
         margin-bottom: vars.$gutter;
     }
@@ -101,6 +102,22 @@ html{
     ul,ol{
         margin-left: vars.$gutter;
     }
+
+    table{
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: vars.$gutter;
+        th{            
+            text-align: left;
+            border-bottom: solid 1px #666;
+        }
+        th,td{
+            padding: 10px;        
+            white-space: nowrap!important;
+        }
+        border-bottom: solid 1px #666;
+    }
+
 }
 
 .card{
