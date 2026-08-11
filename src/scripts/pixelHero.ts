@@ -26,6 +26,10 @@ class PixelHero {
   fadeStart:number;
   fadeEndOpacity:number;
   fadeCurve:number;
+
+  tailOpacity:number;
+  tailDensity:number;
+  tailVerticalBias:number;
   backgroundTarget:string;
   backgroundSample:SampleMode;
   backgroundMix:number;
@@ -58,6 +62,10 @@ class PixelHero {
     this.fadeStart=num(d.fadeStart,.72);
     this.fadeEndOpacity=num(d.fadeEndOpacity,.18);
     this.fadeCurve=num(d.fadeCurve,1.6);
+
+    this.tailOpacity=clamp(num(d.tailOpacity,1));
+    this.tailDensity=Math.max(0,num(d.tailDensity,this.tail.density ?? .035));
+    this.tailVerticalBias=Math.max(.05,num(d.tailVerticalBias,1));
     this.backgroundTarget=d.backgroundTarget ?? 'body';
     this.backgroundSample=(d.backgroundSample as SampleMode) ?? 'average';
     this.backgroundMix=num(d.backgroundMix,.29);
@@ -170,14 +178,39 @@ class PixelHero {
 
       for(let row=0;row<tailRows;row++){
         const progress=tailRows<=1?1:row/(tailRows-1);
-        const density=this.tail.density*clusterFactor*(.12+(1-progress)*.88);
+
+        /*
+          tailVerticalBias:
+          1   = neutral
+          >1  = increasingly favours the bottom
+          <1  = favours the top
+
+          We bias the probability of a dot existing rather than moving
+          dots after generation, so the tail stays aligned to the grid.
+        */
+        const verticalWeight=
+          Math.pow(
+            progress,
+            1/this.tailVerticalBias,
+          );
+
+        const density=
+          this.tailDensity *
+          clusterFactor *
+          (.08 + verticalWeight*.92);
 
         if(this.hash(col,row+500)>density) continue;
 
         const sourceCol=Math.floor(this.hash(col,row+900)*this.columns);
         const sourceRow=Math.max(0,this.rows-1-Math.floor(this.hash(col,row+1200)*Math.min(5,this.rows)));
         const c=this.sampleColour(sourceCol,sourceRow);
-        const opacity=this.fadeEndOpacity+(this.tail.endOpacity-this.fadeEndOpacity)*progress;
+        /*
+          Tail opacity is independent from the top section fade.
+          tailOpacity is the actual starting opacity of section two.
+        */
+        const opacity=
+          this.tailOpacity+
+          (this.tail.endOpacity-this.tailOpacity)*progress;
 
         const rect=document.createElementNS(SVG_NS,'rect');
         rect.setAttribute('x',String(col*this.pitch+(this.pitch-size)/2));
@@ -206,16 +239,84 @@ class PixelHero {
 
   getResponsiveHiddenCells(){
     const result=new Set<string>();
-    const rc=Math.max(1,this.mask.referenceColumns);
-    const rr=Math.max(1,this.mask.referenceRows);
 
-    for(const [x,y] of this.mask.off){
-      const xn=rc<=1?0:x/(rc-1);
-      const yn=rr<=1?0:y/(rr-1);
-      const col=Math.round(xn*(this.columns-1));
-      const row=Math.round(yn*(this.rows-1));
-      result.add(`${col}:${row}`);
+    const rc=Math.max(
+      1,
+      this.mask.referenceColumns,
+    );
+
+    const rr=Math.max(
+      1,
+      this.mask.referenceRows,
+    );
+
+    /*
+      IMPORTANT:
+      Map RUNTIME cells back to the authored reference mask.
+
+      The previous implementation mapped each hidden reference cell to a
+      single runtime cell. That works only when both grids have exactly the
+      same dimensions. On a denser responsive grid it creates a regular
+      lattice artefact because a hidden reference cell should cover several
+      runtime cells, not just one.
+
+      By asking every runtime cell which reference cell it belongs to, the
+      authored mask scales cleanly up or down.
+    */
+    const referenceHidden=
+      new Set(
+        this.mask.off.map(
+          ([x,y]) =>
+            `${x}:${y}`,
+        ),
+      );
+
+    for(
+      let row=0;
+      row<this.rows;
+      row++
+    ){
+      const yNorm=
+        this.rows<=1
+          ? 0
+          : row /
+            (this.rows-1);
+
+      const referenceRow=
+        Math.round(
+          yNorm *
+          (rr-1),
+        );
+
+      for(
+        let col=0;
+        col<this.columns;
+        col++
+      ){
+        const xNorm=
+          this.columns<=1
+            ? 0
+            : col /
+              (this.columns-1);
+
+        const referenceCol=
+          Math.round(
+            xNorm *
+            (rc-1),
+          );
+
+        if(
+          referenceHidden.has(
+            `${referenceCol}:${referenceRow}`,
+          )
+        ){
+          result.add(
+            `${col}:${row}`,
+          );
+        }
+      }
     }
+
     return result;
   }
 
@@ -287,6 +388,7 @@ class PixelHero {
     return w>0 ? {r:r/w,g:g/w,b:b/w} : {r:0,g:0,b:0};
   }
 
+
   onScroll(){
     if(this.scrollFrame) return;
     this.scrollFrame=requestAnimationFrame(()=>{
@@ -299,6 +401,20 @@ class PixelHero {
     const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const y=!this.parallax || reduced ? 0 : window.scrollY*this.parallaxSpeed;
     this.layer.style.transform=`translate3d(0,${y}px,0)`;
+  }
+
+  destroy(){
+    this.resizeObserver?.disconnect();
+    window.removeEventListener(
+      'scroll',
+      this.onScroll,
+    );
+
+    if(this.scrollFrame){
+      cancelAnimationFrame(
+        this.scrollFrame,
+      );
+    }
   }
 
   hash(a:number,b:number){

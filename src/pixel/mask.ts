@@ -1,10 +1,10 @@
 import type { PixelMask, TailConfig } from './types';
 
 export const heroMask: PixelMask = {
-  "name": "hero",
-  "referenceColumns": 60,
-  "referenceRows": 30,
-  "off": []
+  name: 'hero',
+  referenceColumns: 60,
+  referenceRows: 30,
+  off: [],
 };
 
 export const tailConfig: TailConfig = {

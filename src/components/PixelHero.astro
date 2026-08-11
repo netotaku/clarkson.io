@@ -18,6 +18,13 @@ interface Props {
   fadeStart?: number;
   fadeEndOpacity?: number;
   fadeCurve?: number;
+
+  /**
+   * Independent controls for the second/tail section.
+   */
+  tailOpacity?: number;
+  tailDensity?: number;
+  tailVerticalBias?: number;
   backgroundTarget?: string;
   backgroundSample?: 'average' | 'top' | 'bottom' | 'centre';
   backgroundMix?: number;
@@ -40,6 +47,10 @@ const {
   fadeStart = 0.72,
   fadeEndOpacity = 0.18,
   fadeCurve = 1.6,
+
+  tailOpacity = 1,
+  tailDensity = tail.density,
+  tailVerticalBias = 1,
   backgroundTarget = 'body',
   backgroundSample = 'average',
   backgroundMix = 0.29,
@@ -65,6 +76,10 @@ const imageSrc = typeof src === 'string' ? src : src.src;
   data-fade-start={fadeStart}
   data-fade-end-opacity={fadeEndOpacity}
   data-fade-curve={fadeCurve}
+
+  data-tail-opacity={tailOpacity}
+  data-tail-density={tailDensity}
+  data-tail-vertical-bias={tailVerticalBias}
   data-background-target={backgroundTarget}
   data-background-sample={backgroundSample}
   data-background-mix={backgroundMix}
