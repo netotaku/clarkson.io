@@ -2,7 +2,7 @@
 title: Ethical Tracking. 
 description: Moving Beyond Cookies and Google Analytics.
 pubDate: 'Apr 01 2025'
-heroImage: '/images/eye.jpg'
+heroImage: '/src/assets/images/eye.jpg'
 categories: 
     - "ethical-tracking"
 cta: "Have questions about implementing ethical analytics? Or want help migrating away from Google?"

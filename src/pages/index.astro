@@ -18,32 +18,21 @@ const posts = (await getCollection('blog'))
 
 	<article>	
 
-		<section class="hero hero--home"  style="background-image: url(/images/clarky-3.jpg)">
-			<div class="hero__text">
-				<div class="hero__home">							
-					<h1 class="nc">Nick<br>Clarkson</h1>							
-					<div class="typography">
-						<h2>Creative Technologist, Technical Director</h2>
-						<p class="hero__description u-grey u-no-mobile">I help agencies and organisations deliver meaningful digital work through a blend of elegance, resourcefulness, creativity, and flexibility. Whether it’s shaping strategy, leading teams, or solving complex briefs, I bring a practical, people-first approach to building purposeful, well-crafted solutions that adapt and endure.</p>
-						<p class="socials hero__social"><Socials /></p>
-					</div>
-				</div>
-			</div>	
-		</section>	
+		<section>
 
-		<Services />
 
-		<CV />
-
-		<section class="section section--grid section--solo">
-			<div class="section__inner cards">
-				<BlogList 
-					title="Latest Posts" 
-					posts={posts}
-                	modifier="" />
-				<p><a href="/blog" class="button">More Posts</a></p>
-			</div>
 		</section>
+
+		<aside>
+			<BlogList 
+				title="Latest Posts" 
+				posts={posts}
+				modifier="" />
+
+			<p><a href="/blog" class="button">More Posts</a></p>
+
+		</aside>
+
 
 	</article>
 

@@ -2,7 +2,7 @@
 title: Jack of All Code 
 description: Specialising vs Generalising in Web Development
 pubDate: 'Jul 23 2025'
-heroImage: '/images/god.jpg'
+heroImage: '/src/assets/images/god.jpg'
 categories: 
     - "web-development"
 cta: "If you’ve been grappling with where to focus your development skills, ask yourself this: what makes you more adaptable? Deep specialism or broad capability? I’d love to hear your take—are you leaning generalist, specialist, or something in between?"

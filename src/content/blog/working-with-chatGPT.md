@@ -2,7 +2,7 @@
 title: Building a word game with Vue, Sass, and AI.
 description: A collaborative build of a Vue-powered codeword game that blends thoughtful UX, real-time gameplay, and AI-assisted development.
 pubDate: 'Jul 14 2025'
-heroImage: '/images/working-with-chatGPT.png'
+heroImage: '/src/assets/images/working-with-chatGPT.png'
 categories: 
     - "vibe-coding"
 cta: "If you're looking for someone who can blend UX, development, and AI tooling into smart, efficient digital builds — I’m available for freelance and consultancy work."

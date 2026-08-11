@@ -1,0 +1,63 @@
+---
+import type { ImageMetadata } from 'astro';
+import type { PixelMask } from '../pixel/types';
+import { heroMask as defaultMask } from '../pixel/mask';
+import '../styles/pixelMaskEditor.scss';
+
+interface Props {
+  src: string | ImageMetadata;
+  mask?: PixelMask;
+  dotScale?: number;
+  cornerRadius?: number;
+}
+
+const {
+  src,
+  mask = defaultMask,
+  dotScale = 0.44,
+  cornerRadius = 24,
+} = Astro.props;
+
+const imageSrc = typeof src === 'string' ? src : src.src;
+---
+
+<div
+  class="pixel-mask-editor"
+  data-pixel-mask-editor
+  data-mask={JSON.stringify(mask)}
+  data-dot-scale={dotScale}
+  data-corner-radius={cornerRadius}
+>
+  <header class="pixel-mask-editor__toolbar">
+    <label>Tool
+      <select data-mode>
+        <option value="off" selected>Nibble away</option>
+        <option value="on">Restore</option>
+        <option value="toggle">Toggle</option>
+      </select>
+    </label>
+
+    <label>Columns
+      <input type="number" min="4" max="160" value={mask.referenceColumns} data-columns />
+    </label>
+
+    <label>Rows
+      <input type="number" min="4" max="120" value={mask.referenceRows} data-rows />
+    </label>
+
+    <button type="button" data-rebuild>Rebuild full grid</button>
+    <button type="button" data-show-all>Show all</button>
+    <button type="button" data-export>Copy config</button>
+  </header>
+
+  <div class="pixel-mask-editor__stage">
+    <img class="pixel-mask-editor__source" src={imageSrc} alt="" crossorigin="anonymous" data-source />
+    <canvas class="pixel-mask-editor__canvas" data-canvas></canvas>
+  </div>
+
+  <textarea class="pixel-mask-editor__output" data-output readonly></textarea>
+</div>
+
+<script>
+  import '../scripts/pixelMaskEditor';
+</script>

@@ -2,7 +2,7 @@
 title: From Linked Data to Doomsday
 description: Why we keep mistaking developer tools for civilisation shifts
 pubDate: 'May 17 2025'
-heroImage: '/images/zombies.jpg'
+heroImage: '/src/assets/images/zombies.jpg'
 categories: 
   - "comment"
   - "technology" 

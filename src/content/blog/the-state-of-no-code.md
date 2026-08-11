@@ -2,7 +2,7 @@
 title: "No Code, Real Results"
 description: "Rethinking the Value of No Code Platforms"
 pubDate: "18 Jun 2025"
-heroImage: "/images/no-code.jpg"
+heroImage: "/src/assets/images/no-code.jpg"
 categories:   
   - "No Code" 
   - "Squarespace"
@@ -12,7 +12,7 @@ No Code platforms have long carried a reputation as second-rate — a compromise
 
 While they do have limitations, No Code platforms now power serious businesses, launch startups, and support design teams at speed.
 
-# A Short History of No Code
+## A Short History of No Code
 
 The idea of building websites without code isn’t new. Tools like Dreamweaver (and even GeoCities) were early attempts. But the modern No Code movement took off around 2015 with platforms like Webflow, Bubble, and Squarespace making it feasible to launch well-designed, interactive, data-driven sites without writing code.
 
@@ -20,7 +20,7 @@ This was supercharged by the explosion of integrations — Zapier, Airtable, Mak
 
 > “No Code doesn’t mean no strategy. It means fewer bottlenecks.” — Ben Tossell, Makerpad
 
-# The Major Players
+## The Major Players
 
 * Webflow – Visually precise and powerful, popular with designers and front-end developers — the spiritual child of Dreamweaver, but modernised for today’s design workflows.
 * Squarespace – A go-to for small businesses and content creators. Easy, attractive, and strong on structure.

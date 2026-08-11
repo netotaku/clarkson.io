@@ -2,7 +2,7 @@
 title: Big Tech Is Picking Sides.
 description: Are CRM and Email Are Your Last Safe Channels?
 pubDate: 'May 04 2025'
-heroImage: '/images/destruction.jpg'
+heroImage: '/src/assets/images/destruction.jpg'
 categories: 
     - "crm"
     - "digital-strategy"

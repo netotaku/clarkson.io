@@ -1,0 +1,85 @@
+---
+import type { ImageMetadata } from 'astro';
+import type { PixelMask, TailConfig } from '../pixel/types';
+import { heroMask as defaultMask, tailConfig as defaultTail } from '../pixel/mask';
+import '../styles/pixelHero.scss';
+
+interface Props {
+  src: string | ImageMetadata;
+  alt?: string;
+  mask?: PixelMask;
+  tail?: TailConfig;
+  topHeight?: number;
+  pixelPitch?: number;
+  dotScale?: number;
+  cornerRadius?: number;
+  saturation?: number;
+  contrast?: number;
+  fadeStart?: number;
+  fadeEndOpacity?: number;
+  fadeCurve?: number;
+  backgroundTarget?: string;
+  backgroundSample?: 'average' | 'top' | 'bottom' | 'centre';
+  backgroundMix?: number;
+  parallax?: boolean;
+  parallaxSpeed?: number;
+  class?: string;
+}
+
+const {
+  src,
+  alt = '',
+  mask = defaultMask,
+  tail = defaultTail,
+  topHeight = 600,
+  pixelPitch = 18,
+  dotScale = 0.44,
+  cornerRadius = 24,
+  saturation = 1,
+  contrast = 1,
+  fadeStart = 0.72,
+  fadeEndOpacity = 0.18,
+  fadeCurve = 1.6,
+  backgroundTarget = 'body',
+  backgroundSample = 'average',
+  backgroundMix = 0.29,
+  parallax = true,
+  parallaxSpeed = 0.08,
+  class: className = '',
+} = Astro.props;
+
+const imageSrc = typeof src === 'string' ? src : src.src;
+---
+
+<div
+  class:list={['pixel-hero', className]}
+  data-pixel-hero
+  data-mask={JSON.stringify(mask)}
+  data-tail={JSON.stringify(tail)}
+  data-top-height={topHeight}
+  data-pixel-pitch={pixelPitch}
+  data-dot-scale={dotScale}
+  data-corner-radius={cornerRadius}
+  data-saturation={saturation}
+  data-contrast={contrast}
+  data-fade-start={fadeStart}
+  data-fade-end-opacity={fadeEndOpacity}
+  data-fade-curve={fadeCurve}
+  data-background-target={backgroundTarget}
+  data-background-sample={backgroundSample}
+  data-background-mix={backgroundMix}
+  data-parallax={parallax}
+  data-parallax-speed={parallaxSpeed}
+  role="img"
+  aria-label={alt}
+>
+  <img class="pixel-hero__source" src={imageSrc} alt="" crossorigin="anonymous" loading="eager" decoding="async" />
+  <div class="pixel-hero__parallax" data-parallax-layer>
+    <svg class="pixel-hero__top" data-top-svg aria-hidden="true"></svg>
+    <svg class="pixel-hero__tail" data-tail-svg aria-hidden="true"></svg>
+  </div>
+</div>
+
+<script>
+  import '../scripts/pixelHero';
+</script>

@@ -2,7 +2,7 @@
 title: "Making the Subjective Objective"
 description: "How UX Smooths Digital Delivery and Aligns Creative Projects."
 pubDate: "23 jun 2025"
-heroImage: "/images/ux.png"
+heroImage: "/src/assets/images/ux.png"
 categories: 
     - "comment"
     - "ux"

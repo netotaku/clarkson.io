@@ -2,7 +2,7 @@
 title: Vibe Coding. 
 description: Buddying up with ChatGPT
 pubDate: 'Apr 03 2025'
-heroImage: '/images/aw.jpg'
+heroImage: '/src/assets/images/aw.jpg'
 categories: 
     - "ai"
     - "technology"

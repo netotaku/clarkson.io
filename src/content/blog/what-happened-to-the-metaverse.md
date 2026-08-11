@@ -2,7 +2,7 @@
 title: What Happened to the Metaverse?
 description: Exploring VR’s Future and Why It’s Struggling
 pubDate: 'May 07 2025'
-heroImage: '/images/metaverse.jpg'
+heroImage: '/src/assets/images/metaverse.jpg'
 categories: 
     - "social"
     - "technology"

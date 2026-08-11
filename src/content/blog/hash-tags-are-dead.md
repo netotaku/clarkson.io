@@ -2,7 +2,7 @@
 title: "Hashtags Are Dead 💀"
 description: "Once a powerful tool for discovery and growth, Instagram hashtags have lost their edge. Here's why — and what matters now."
 pubDate: 29 May 2025
-heroImage: "/images/hash.jpg"
+heroImage: "/src/assets/images/hash.jpg"
 categories: 
   - "comment"
   - "technology" 

@@ -1,0 +1,44 @@
+.pixel-hero {
+  position: relative;
+  width: 100%;
+  height: calc(var(--pixel-hero-top-height, 600px) + var(--pixel-hero-tail-height, 0px));
+  overflow: visible;
+  pointer-events: none;
+
+  &__source {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    clip-path: inset(50%);
+    pointer-events: none;
+  }
+
+  &__parallax {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    transform-origin: top left;
+    will-change: transform;
+  }
+
+  &__top,
+  &__tail {
+    display: block;
+    width: 100%;
+    overflow: visible;
+    opacity: 0;
+  }
+
+  &__top { height: var(--pixel-hero-top-height, 600px); }
+  &__tail { height: var(--pixel-hero-tail-height, 0px); }
+
+  &.is-ready {
+    .pixel-hero__top,
+    .pixel-hero__tail { opacity: 1; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pixel-hero__parallax { will-change: auto; }
+}
