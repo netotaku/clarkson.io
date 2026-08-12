@@ -19,6 +19,38 @@ const { title, description, image } = Astro.props;
 
 const allPosts = await getCollection('blog');
 
+
+const categoryMap = new Map<
+  string,
+  {
+    slug: string;
+    label: string;
+    count: number;
+  }
+>();
+
+const unslugify = (slug: string) =>
+  slug
+    .replace(/[-_]+/g, ' ')
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+
+for (const post of allPosts) {
+  for (const slug of post.data.categories ?? []) {
+    const existing = categoryMap.get(slug);
+
+    if (existing) {
+      existing.count += 1;
+    } else {
+      categoryMap.set(slug, {
+        slug,
+        label: unslugify(slug),
+        count: 1,
+      });
+    }
+  }
+}
+const categories = [...categoryMap.values()]
+  .sort((a, b) => b.count - a.count);
 ---
 
 <!doctype html>
@@ -78,10 +110,41 @@ const allPosts = await getCollection('blog');
 					<NavLinks />
 				</div>				
 			</div>
-			<div class="nav__section grid grid--column">
+			<div class="nav__section">
+				<h2 class="nav__heading">Contact</h2>
+				<div class="nav__links">
+					<a href="#">WhatsApp</a>
+					<a href="#">07771 535 355</a>
+					<a href="#">nick@clarkson.io</a>
+				</div>				
+			</div>				
+			<div class="nav__section">
+				<h2 class="nav__heading">Social</h2>
+				<div class="nav__links">
+					<a href="#">Threads</a>
+					<a href="#">Bluesky</a>
+					<a href="#">Strava</a>
+					<a href="#">Soundcloud</a>
+				</div>				
+			</div>		
+			<div class="nav__section">
+				<h2 class="nav__heading"># Topics</h2>
+				
+					{categories.map((category) => (
+					<a
+						href={`/blog/category/${category.slug}/`}
+						class="tag"
+					>					
+						<span class="tag__count">{category.count}</span>
+						<span class="tag__label">{category.label}</span>
+					</a>
+					))}
+								
+			</div>			
+			<!-- <div class="nav__section grid grid--column">
 				<h2 class="nav__heading">Recent Posts</h2>
 				<BlogList posts={allPosts} />
-			</div>
+			</div> -->
 		</div>
 
 		<div class="main">
@@ -122,7 +185,7 @@ const allPosts = await getCollection('blog');
 						<img src="/src/assets/SVG/burger.svg">
 					</button>
 				</menu>	
-				
+
 			</div>
 
 		</div> <!-- .main -->

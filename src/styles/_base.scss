@@ -48,6 +48,7 @@ html{
 .main{
     position: relative;
     width: 100vw;
+
     background: var(--pixel-hero-background);
 }
 
@@ -59,4 +60,11 @@ html{
     z-index: 1;
     display: flex;
     gap: 8px;
+}
+
+
+.u-{
+    &blank{
+        min-height: 100vh;
+    }
 }

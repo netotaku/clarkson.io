@@ -1,7 +1,5 @@
 .btn {
-
-    display: inline-block;
-
+    
     cursor: pointer;
     appearance: none;
 
@@ -10,28 +8,41 @@
 
     border-radius: 16px;
 
+    text-decoration: none;
+    font-weight: bold;
+
     display: flex;
     justify-content: center;
     align-items: center;
 
+    color: white;
+
+    padding: 0px 30px;
+    line-height: 1;
+
     &--open{
         width: 46px;
+        background-color: #f60;
+        padding: 0px;
         
-        background: var(--pixel-hero-primary);
+        // 
         &:hover{
-            background-color: #f60;
+            background-color: #f90;
         }                
     }
 
     &--hire{
-        background: var(--pixel-hero-secondary);
-        padding: 0px 30px;
-        text-decoration: none;
-        color: white;
-        font-weight: bold;
+        background: #5CB200;
+        // background: var(--pixel-hero-secondary);
+        
+        
         &:hover{
             background: #6DD400;
         }
+    }
+
+    &--themed{
+        background: var(--pixel-hero-primary);
     }
 
 }

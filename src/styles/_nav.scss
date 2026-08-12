@@ -18,11 +18,15 @@
             text-decoration: none;
             &.active{                
                 border-style: solid;
-                border-left-color: var(--pixel-hero-primary);
+                border-left-color: #f60;
                 border-width: 0px;
                 border-left-width: 4px;
                 padding-left: 8px;                
-            }            
+            }  
+            
+            &:hover{
+                text-decoration: underline;
+            }
         }
     }
 }

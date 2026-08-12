@@ -22,10 +22,10 @@ const optimizedPosts = await Promise.all(
 );
 
 ---
-      
+<div class="grid">   
 {
     optimizedPosts.map((data) => (
         <Card data={data} />
     ))
 }
-
+</div>
