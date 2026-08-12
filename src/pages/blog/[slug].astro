@@ -1,10 +1,9 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
 import Wrapper from '../../layouts/wrapper.astro';
-import BlogList from '../../components/BlogList.astro';
 import { render } from 'astro:content';
 
-import PixelHero from "../../components/PixelHero.astro";
+
 
 import FormattedDate from '../../components/FormattedDate.astro'; 
 
@@ -31,78 +30,27 @@ const relatedPosts = allPosts
   .slice(0, 2); // limit to 2
 ---
 <Wrapper
-	title={post.data.title} >
+	title={post.data.title}
+	image={post.data.heroImage} >
 
+	<div class="measure typography">
+		
+		<strong>
+			<FormattedDate date={post.data.pubDate} />
+		</strong>
 
-	<div class="layer layer--0">		
-		<BlogList posts={allPosts} />
-	</div>
+		<h1>{post.data.title}</h1>
+		<p>{post.data.description}</p>
+		<hr />
 
+		<Content />
 
-	<div class="main" id="js-dynamic-background">
-
-		<div class="layer layer--1">
-
-			<PixelHero
-
-				src={post.data.heroImage}
-
-				topHeight={860}
-
-				pixelPitch={44}
-				dotScale={.8}
-				cornerRadius={28}
-
-				backgroundTarget="#js-dynamic-background"
-				backgroundSample="average"
-				backgroundMix={0.29}
-
-				parallax={true}
-				parallaxSpeed={0.3}
-
-				physics="chunky-collapse"
-				physicsOverrides={{
-					dissolveStart: 0.6,
-				}}
-			/>
-
-		</div>
-
-
-		<!-- 
-			digital-decay
-			chunky-collapse
-			heavy-gravity
-			atmospheric 
-		-->
-
-		<div class="layer layer--2">
-			<div class="measure typography">
-				
-				<strong>
-					<FormattedDate date={post.data.pubDate} />
-				</strong>
-
-				<h1>{post.data.title}</h1>
-				<p>{post.data.description}</p>
-				<hr />
-
-				<Content />
-
-				<h2>Hire Me</h2>
-				<p>{post.data.cta}</p>
-				<p>Let's talk.</p>
-				<p>
-					<a href="tel:07771535355">07771 535 355</a><br>
-					<a href="mailto:nick@clarkson.io">nick@clarkson.io</a></p>				
-			</div>			
-		</div>
-
-		<menu class="menu">
-			<button id="js-open-closed" class="btn btn--open"></button>
-			<a class="btn btn--hire" href="#"></a>
-		</menu>
-
-	</div> <!-- .main -->
-
+		<h2>Hire Me</h2>
+		<p>{post.data.cta}</p>
+		<p>Let's talk.</p>
+		<p>
+			<a href="tel:07771535355">07771 535 355</a><br>
+			<a href="mailto:nick@clarkson.io">nick@clarkson.io</a></p>				
+	</div>			
+		
 </Wrapper>

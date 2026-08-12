@@ -1,5 +1,8 @@
 ---
 import { SITE_TITLE } 		from  '../consts';
+import PixelHero from "../components/PixelHero.astro";
+import { type CollectionEntry, getCollection } from 'astro:content';
+import BlogList from '../components/BlogList.astro';
 import '../styles/global.scss';
 
 const today = new Date();
@@ -10,9 +13,11 @@ interface Props {
 	image?: string;
 }
 
-
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { title, description, image } = Astro.props;
+
+const allPosts = await getCollection('blog');
+
 ---
 
 <!doctype html>
@@ -64,9 +69,67 @@ const { title, description, image } = Astro.props;
 		<meta property="twitter:image" content={new URL(image, Astro.url)} />
 		
 	</head>
-	<body>            
+	<body>  
+		
+		
+
+		<div class="layer layer--0">		
+		<BlogList posts={allPosts} />
+	</div>
+
+
+	<div class="main" id="js-dynamic-background">
+
+		<div class="layer layer--1">
+
+			<PixelHero
+
+				src={image}
+
+				topHeight={860}
+
+				pixelPitch={44}
+				dotScale={.8}
+				cornerRadius={28}
+
+				backgroundTarget="#js-dynamic-background"
+				backgroundSample="average"
+				backgroundMix={0.29}
+
+				parallax={true}
+				parallaxSpeed={0.3}
+
+				physics="chunky-collapse"
+				physicsOverrides={{
+					dissolveStart: 0.6,
+				}}
+			/>
+
+		</div>
+
+
+		<!-- 
+			digital-decay
+			chunky-collapse
+			heavy-gravity
+			atmospheric 
+		-->
+
+		<div class="layer layer--2">
 
 		<slot />	
+
+
+
+		</div>
+
+		<menu class="menu">
+			<button id="js-open-closed" class="btn btn--open"></button>
+			<a class="btn btn--hire" href="#"></a>
+		</menu>
+
+	</div> <!-- .main -->
+
 		
 		<script src="https://cdn.counter.dev/script.js" data-id="59f59e50-b01a-493b-a121-d8237b9db371" data-utcoffset="1"></script>
 		<script>
