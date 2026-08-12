@@ -1,7 +1,11 @@
 ---
 import type { ImageMetadata } from 'astro';
 import type { PhysicsConfig } from '../pixel/types';
-import { physicsConfig as defaultPhysics } from '../pixel/config';
+import {
+  physicsPresets,
+  defaultPhysicsPreset,
+  type PhysicsPresetName,
+} from '../pixel/config';
 import '../styles/pixelHero.scss';
 
 interface Props {
@@ -24,7 +28,17 @@ interface Props {
   parallax?: boolean;
   parallaxSpeed?: number;
 
-  physics?: PhysicsConfig;
+  /**
+   * Pick one of the built-in physics presets.
+   *
+   * Defaults to "heavy-gravity".
+   */
+  physics?: PhysicsPresetName;
+
+  /**
+   * Optional per-instance changes applied on top of the chosen preset.
+   */
+  physicsOverrides?: Partial<PhysicsConfig>;
 
   class?: string;
 }
@@ -49,12 +63,21 @@ const {
   parallax = true,
   parallaxSpeed = 0.08,
 
-  physics = defaultPhysics,
+  physics = defaultPhysicsPreset,
+  physicsOverrides = {},
 
   class: className = '',
 } = Astro.props;
 
-const imageSrc = typeof src === 'string' ? src : src.src;
+const imageSrc =
+  typeof src === 'string'
+    ? src
+    : src.src;
+
+const resolvedPhysics: PhysicsConfig = {
+  ...physicsPresets[physics],
+  ...physicsOverrides,
+};
 ---
 
 <div
@@ -71,7 +94,7 @@ const imageSrc = typeof src === 'string' ? src : src.src;
   data-background-mix={backgroundMix}
   data-parallax={parallax}
   data-parallax-speed={parallaxSpeed}
-  data-physics={JSON.stringify(physics)}
+  data-physics={JSON.stringify(resolvedPhysics)}
   role="img"
   aria-label={alt}
 >
@@ -84,7 +107,10 @@ const imageSrc = typeof src === 'string' ? src : src.src;
     decoding="async"
   />
 
-  <div class="pixel-hero__parallax" data-parallax-layer>
+  <div
+    class="pixel-hero__parallax"
+    data-parallax-layer
+  >
     <svg
       class="pixel-hero__svg"
       data-pixel-svg

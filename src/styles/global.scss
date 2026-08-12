@@ -239,23 +239,43 @@ html{
    .layer--0{
         display: block;
    }
-   .open{
+   .menu{
         right: 322px;
    }
    // background: var(--pixel-hero-background);
 }
 
-.btn {
+.menu{
     position: fixed;  
-    overflow: hidden;  
+    overflow: hidden; 
     top: vars.$gutter;
-    right: vars.$gutter;
-    width: 46px;
-    height: 46px;
-    background: orange;
+    right: vars.$gutter; 
     z-index: 1;
+}
+
+.btn {
+
+    display: inline-block;
+
     cursor: pointer;
     appearance: none;
+
     border: 0px;
-    border-radius: 8px;
+    border-radius: 50%;
+
+    height: 46px;
+
+    &--open{
+        width: 46px;
+        
+        background: orange;
+        &:hover{
+            background-color: #f60;;
+        }                
+    }
+
+    &--hire{
+
+    }
+
 }
