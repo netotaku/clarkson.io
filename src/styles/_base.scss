@@ -34,11 +34,14 @@ html{
 
 }
 
+.section{
+    padding: 5vw;
+    &--top{
+        padding-top: 400px;
+    }
+}
 
 .measure{
-    padding-top: 400px;
-    margin-right: 5vw;
-    margin-left: 5vw;
     max-width: 60%;
 }
 

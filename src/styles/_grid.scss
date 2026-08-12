@@ -1,0 +1,11 @@
+.grid{
+    
+    display: flex;
+    gap: var(--gutter);
+    flex-wrap: wrap;
+
+    &--column{
+        flex-direction: column;
+    }
+    
+}

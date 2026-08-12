@@ -3,9 +3,9 @@ import { getCollection } from 'astro:content';
 
 import Wrapper from '../../layouts/wrapper.astro';
 import BlogList from '../../components/BlogList.astro';
-import BlogHero from '../../components/BlogHero.astro';
-import BlogTable from '../../components/BlogTable.astro';
-import BlogCal from '../../components/BlogCal.astro';
+import FormattedDate from '../../components/FormattedDate.astro'; 
+// import BlogTable from '../../components/BlogTable.astro';
+// import BlogCal from '../../components/BlogCal.astro';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -19,25 +19,22 @@ const secondary = posts.splice(0,2);
 	description="Insights on ethical tech, web development, AI, and digital strategy—from a creative technologist with over 25 years of hands-on industry experience."
 	image={featured.data.heroImage}>
 
-    <BlogHero
-		post={featured}
-		showButton={true}  />
 
-    <section class="section section--grid">
-		<div class="section__inner cards">
-			<BlogList 
-				title="" 
-				posts={secondary}
-                modifier="" />
-		</div>
+	<section class="section section--top typography">
+		<strong>
+			Latest / <FormattedDate date={featured.data.pubDate} />
+		</strong>
+		<h1>{featured.data.title}</h1>
+		<p>{featured.data.description}</p>
 	</section>
 
-    <section class="section section--grid">
-        <div class="section__inner cards">
-            <BlogCal 
-                title="" 
-                posts={posts} />
-        </div>
-    </section>
+    <section class="section grid">
+		
+			<BlogList 
+				title="" 
+				posts={main}
+                modifier="" />
+		
+	</section>
 
 </Wrapper>

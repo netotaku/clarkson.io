@@ -1,3 +1,28 @@
 .nav{
-    
+
+    &__section{
+        padding: var(--gutter);
+    }
+
+    &__heading{
+        color: rgba(255,255,255,.3);
+        text-transform: uppercase;
+        font-size: .9em;
+    }
+
+    &__links{
+        font-size: 1.2em;
+        a{
+            display: block;
+            color: white;
+            text-decoration: none;
+            &.active{                
+                border-style: solid;
+                border-left-color: var(--pixel-hero-primary);
+                border-width: 0px;
+                border-left-width: 4px;
+                padding-left: 8px;                
+            }            
+        }
+    }
 }

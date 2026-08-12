@@ -78,7 +78,7 @@ const allPosts = await getCollection('blog');
 					<NavLinks />
 				</div>				
 			</div>
-			<div class="nav__section">
+			<div class="nav__section grid grid--column">
 				<h2 class="nav__heading">Recent Posts</h2>
 				<BlogList posts={allPosts} />
 			</div>
@@ -89,21 +89,15 @@ const allPosts = await getCollection('blog');
 			<div class="layer layer--1">
 
 				<PixelHero
-
 					src={image}
-
 					topHeight={860}
-
 					pixelPitch={44}
 					dotScale={.8}
-					cornerRadius={28}
-					
+					cornerRadius={28}				
 					backgroundSample="average"
 					backgroundMix={0.29}
-
 					parallax={true}
 					parallaxSpeed={0.3}
-
 					physics="chunky-collapse"
 					physicsOverrides={{
 						dissolveStart: 0.6,
@@ -112,28 +106,27 @@ const allPosts = await getCollection('blog');
 
 			</div>
 
-
-			<!-- 
-				digital-decay
-				chunky-collapse
-				heavy-gravity
-				atmospheric 
-			-->
-
 			<div class="layer layer--2">
-				<slot />	
-			</div>
 
-			<menu class="menu">
-				<a class="btn btn--hire" href="#">HIRE ME</a>
-				<button id="js-open-closed" class="btn btn--open">
-					<img src="/src/assets/SVG/burger.svg">
-				</button>
-			</menu>
+				<slot />
+				
+				<footer class="section footer">
+					<div class="footer__links">
+						<NavLinks />
+					</div>
+				</footer>
+
+				<menu class="menu">
+					<a class="btn btn--hire" href="#">HIRE ME</a>
+					<button id="js-open-closed" class="btn btn--open">
+						<img src="/src/assets/SVG/burger.svg">
+					</button>
+				</menu>	
+				
+			</div>
 
 		</div> <!-- .main -->
 
-		
 		<script src="https://cdn.counter.dev/script.js" data-id="59f59e50-b01a-493b-a121-d8237b9db371" data-utcoffset="1"></script>
 		<script>
 			const toggle = document.querySelector('#js-open-closed');

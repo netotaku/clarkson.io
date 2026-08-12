@@ -3,19 +3,30 @@
 .card{
 
     display: block;
+    overflow: hidden;
+    position: relative;
     text-decoration: none;
 
+    border-radius: 24px;
+
     padding: vars.$gutter;
+
+    background-color: rgba(255,255,255,.05);
+
+
+    // background-color: var(--pixel-hero-secondary);
+
+    // background-image: var(--card-bg);
+    // background-size: cover;
+    // background-position: center;
+
+    max-width: 300px;
 
     color: white;
 
     * {
         font-size: 13px;
     }
-
-    &:hover{
-        background-color: rgba(255,255,255,.1);;
-    }        
     
     &__layout{
         display: flex;

@@ -1,0 +1,13 @@
+.footer{
+    background: #111;
+    &__links{
+        a{
+            display: block;
+            color: white;
+            text-decoration: none;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+}
