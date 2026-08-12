@@ -1,0 +1,55 @@
+@use './vars';
+
+.card{
+
+    display: block;
+    text-decoration: none;
+
+    padding: vars.$gutter;
+
+    color: white;
+
+    * {
+        font-size: 13px;
+    }
+
+    &:hover{
+        background-color: rgba(255,255,255,.1);;
+    }        
+    
+    &__layout{
+        display: flex;
+        gap: vars.$gutter;
+    }
+
+    &__date{
+        font-weight: bold;
+    }
+
+    &__thumb{
+
+    }
+    &__title{
+        font-family: "Oswald", sans-serif;
+        text-transform: uppercase;
+        font-size: 30px;
+        line-height: 1;
+    }
+    &__desc{
+
+    }
+    &__tags{
+
+    }
+    &__image{
+        display: block;
+        width: 46px;
+        height: 46px;
+        border-radius: 8px;
+    }
+    &__row{
+        &:not(:last-child){
+            margin-bottom: vars.$gutter;
+        }
+    }
+}

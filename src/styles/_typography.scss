@@ -1,63 +1,49 @@
+@use './vars';
+
 .typography{
-    
-    line-height: 1.5;
-    font-size: 1.1em;
-    
-    
-    p, h1, h2, h3, h4, h5, h6, 
-    ul, ol, table, blockquote {
-        margin-bottom: var(--gutter);
-        @media (max-width: $break) {
-            margin-bottom: $gutter/2;
-        }
-    }
-
-    img{
-        display: block;
-        border-radius: $radius;
-        margin-bottom: var(--gutter);
-    }
-
-    p:last-child{
-        margin-bottom: 0;
+    // visibility: hidden;
+    p:not(:last-child),
+    ul:not(:last-child),
+    ol:not(:last-child),
+    h1:not(:last-child),
+    h2:not(:last-child),
+    h3:not(:last-child),
+    h4:not(:last-child),
+    h5:not(:last-child),
+    h6:not(:last-child),
+    hr:not(:last-child),
+    table:not(:last-child),
+    blockquote:not(:last-child){
+        margin-bottom: vars.$gutter;
     }
 
     blockquote{
-        padding-left: var(--gutter);
-        border-left: 4px solid $orange;
-        line-height: 1.2;
-        font-family: "Cal Sans", sans-serif;
-        font-size: 1.3em;
+        padding-left: vars.$gutter;
+        font-style: italic;
+    }
+
+
+    hr{
+        opacity: .3;
     }
 
     h1{
-        font-size: 42px;
-        line-height: 1.2;
-        @media (max-width: $break) {
-            font-size: 32px;
-        }
+        font-family: Oswald;
+        font-size: 100px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: -2px;
+        line-height: 1;
     }
 
-    ul, ol{
-        margin-left: 32px;
-        li{
-            &::marker{
-                color: white;
-            }
-        }
-    }
-
-    p, li{
-        color: #ccc;
-    }
-
-    a{
-        color: white;
+    ul,ol{
+        margin-left: vars.$gutter;
     }
 
     table{
         width: 100%;
         border-collapse: collapse;
+        margin-bottom: vars.$gutter;
         th{            
             text-align: left;
             border-bottom: solid 1px #666;
@@ -69,15 +55,90 @@
         border-bottom: solid 1px #666;
     }
 
-    code{
-        background-color: #111;
-        color: #ccc;
-        padding: 2px 4px;
-    }
-
-    @media (max-width: $break) {
-        font-size: 1.3em;
-        line-height: 1.4;
-    }
-    
 }
+
+
+
+// .typography{
+    
+//     line-height: 1.5;
+//     font-size: 1.1em;
+    
+    
+//     p, h1, h2, h3, h4, h5, h6, 
+//     ul, ol, table, blockquote {
+//         margin-bottom: var(--gutter);
+//         @media (max-width: $break) {
+//             margin-bottom: $gutter/2;
+//         }
+//     }
+
+//     img{
+//         display: block;
+//         border-radius: $radius;
+//         margin-bottom: var(--gutter);
+//     }
+
+//     p:last-child{
+//         margin-bottom: 0;
+//     }
+
+//     blockquote{
+//         padding-left: var(--gutter);
+//         border-left: 4px solid $orange;
+//         line-height: 1.2;
+//         font-family: "Cal Sans", sans-serif;
+//         font-size: 1.3em;
+//     }
+
+//     h1{
+//         font-size: 42px;
+//         line-height: 1.2;
+//         @media (max-width: $break) {
+//             font-size: 32px;
+//         }
+//     }
+
+//     ul, ol{
+//         margin-left: 32px;
+//         li{
+//             &::marker{
+//                 color: white;
+//             }
+//         }
+//     }
+
+//     p, li{
+//         color: #ccc;
+//     }
+
+//     a{
+//         color: white;
+//     }
+
+//     table{
+//         width: 100%;
+//         border-collapse: collapse;
+//         th{            
+//             text-align: left;
+//             border-bottom: solid 1px #666;
+//         }
+//         th,td{
+//             padding: 10px;        
+//             white-space: nowrap!important;
+//         }
+//         border-bottom: solid 1px #666;
+//     }
+
+//     code{
+//         background-color: #111;
+//         color: #ccc;
+//         padding: 2px 4px;
+//     }
+
+//     @media (max-width: $break) {
+//         font-size: 1.3em;
+//         line-height: 1.4;
+//     }
+    
+// }

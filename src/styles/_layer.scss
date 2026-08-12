@@ -1,0 +1,33 @@
+.layer{
+
+    width: 100vw;
+
+    &--0{
+        display: none;
+        position: fixed;
+        overflow: hidden;
+        overflow-y: scroll;
+        width: 300px;
+        right: 0;
+        top: 0px;
+        bottom: 0px;
+        background: rgba(0,0,0,.1);
+    }
+    &--1{
+        position: absolute;
+        z-index: 1;
+
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        min-height: 100%;
+        
+        overflow: hidden;
+        pointer-events: none;
+    }
+    &--2{
+        position: relative;
+        z-index: 1;  
+    }
+}
