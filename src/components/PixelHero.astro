@@ -21,7 +21,6 @@ interface Props {
   saturation?: number;
   contrast?: number;
 
-  backgroundTarget?: string;
   backgroundSample?: 'average' | 'top' | 'bottom' | 'centre';
   backgroundMix?: number;
 
@@ -56,7 +55,6 @@ const {
   saturation = 1,
   contrast = 1,
 
-  backgroundTarget = 'body',
   backgroundSample = 'average',
   backgroundMix = 0.29,
 
@@ -89,7 +87,6 @@ const resolvedPhysics: PhysicsConfig = {
   data-corner-radius={cornerRadius}
   data-saturation={saturation}
   data-contrast={contrast}
-  data-background-target={backgroundTarget}
   data-background-sample={backgroundSample}
   data-background-mix={backgroundMix}
   data-parallax={parallax}

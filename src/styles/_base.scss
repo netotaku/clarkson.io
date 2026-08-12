@@ -6,6 +6,13 @@
     box-sizing: border-box;
 }
 
+a{
+    color: var(--pixel-hero-primary);
+    &:hover{
+        text-decoration: none;
+    }
+}
+
 
 html{
     font-family: sans-serif;
@@ -38,6 +45,7 @@ html{
 .main{
     position: relative;
     width: 100vw;
+    background: var(--pixel-hero-background);
 }
 
 .menu{

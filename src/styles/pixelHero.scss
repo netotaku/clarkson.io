@@ -1,3 +1,17 @@
+:root {
+  --pixel-hero-background: #181818;
+
+  --pixel-hero-primary: #f2c14e;
+  --pixel-hero-primary-contrast: #111111;
+
+  --pixel-hero-secondary: #70b7ba;
+  --pixel-hero-secondary-contrast: #111111;
+
+  --pixel-hero-tertiary: #d98e73;
+  --pixel-hero-quaternary: #9d8fc1;
+  --pixel-hero-quinary: #8fa886;
+}
+
 .pixel-hero {
   position: relative;
   width: 100%;

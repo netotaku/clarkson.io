@@ -17,14 +17,14 @@
     &--open{
         width: 46px;
         
-        background: orange;
+        background: var(--pixel-hero-primary);
         &:hover{
-            background-color: #f60;;
+            background-color: #f60;
         }                
     }
 
     &--hire{
-        background: #58AC00;
+        background: var(--pixel-hero-secondary);
         padding: 0px 30px;
         text-decoration: none;
         color: white;

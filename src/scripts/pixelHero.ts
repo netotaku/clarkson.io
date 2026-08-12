@@ -70,7 +70,6 @@ class PixelHero {
   private saturation: number;
   private contrast: number;
 
-  private backgroundTarget: string;
   private backgroundSample: SampleMode;
   private backgroundMix: number;
 
@@ -148,9 +147,6 @@ class PixelHero {
         1,
       );
 
-    this.backgroundTarget =
-      d.backgroundTarget ??
-      'body';
 
     this.backgroundSample =
       (
@@ -341,7 +337,7 @@ class PixelHero {
     this.erodeField();
     this.renderPhysicsField();
 
-    this.applyBackground();
+    this.applyTheme();
     this.applyParallax();
 
     this.root.classList.add(
@@ -1047,49 +1043,715 @@ class PixelHero {
     );
   }
 
-  private applyBackground() {
-    if (
-      !this.pixels ||
-      this.backgroundTarget ===
-        'none'
+  private applyTheme() {
+    if (!this.pixels) return;
+
+    const background = this.sampleBackgroundColour();
+    const mix = clamp(this.backgroundMix);
+
+    const bg = {
+      r: Math.round(background.r * mix),
+      g: Math.round(background.g * mix),
+      b: Math.round(background.b * mix),
+    };
+
+    const palette = this.extractPalette(bg);
+    const root = document.documentElement;
+
+    root.style.setProperty('--pixel-hero-background', this.toCss(bg));
+    root.style.setProperty('--pixel-hero-primary', this.toCss(palette[0]));
+    root.style.setProperty('--pixel-hero-primary-contrast', this.bestTextColour(palette[0]));
+    root.style.setProperty('--pixel-hero-secondary', this.toCss(palette[1]));
+    root.style.setProperty('--pixel-hero-secondary-contrast', this.bestTextColour(palette[1]));
+    root.style.setProperty('--pixel-hero-tertiary', this.toCss(palette[2]));
+    root.style.setProperty('--pixel-hero-quaternary', this.toCss(palette[3]));
+    root.style.setProperty('--pixel-hero-quinary', this.toCss(palette[4]));
+  }
+
+  private extractPalette(
+    background: {
+      r: number;
+      g: number;
+      b: number;
+    },
+  ) {
+    if (!this.pixels) {
+      return [
+        {r:35,g:116,b:93},
+        {r:43,g:95,b:126},
+        {r:217,g:142,b:115},
+        {r:157,g:143,b:193},
+        {r:143,g:168,b:134},
+      ];
+    }
+
+    const buckets =
+      new Map<
+        string,
+        {
+          r: number;
+          g: number;
+          b: number;
+          count: number;
+        }
+      >();
+
+    const step = 32;
+
+    for (
+      let i = 0;
+      i < this.pixels.length;
+      i += 4
     ) {
-      return;
+      const alpha =
+        this.pixels[
+          i + 3
+        ] / 255;
+
+      if (
+        alpha < 0.2
+      ) {
+        continue;
+      }
+
+      const r =
+        this.pixels[i];
+
+      const g =
+        this.pixels[
+          i + 1
+        ];
+
+      const b =
+        this.pixels[
+          i + 2
+        ];
+
+      const key =
+        `${Math.floor(r / step)}:` +
+        `${Math.floor(g / step)}:` +
+        `${Math.floor(b / step)}`;
+
+      const existing =
+        buckets.get(key);
+
+      if (existing) {
+        existing.r += r;
+        existing.g += g;
+        existing.b += b;
+        existing.count++;
+      } else {
+        buckets.set(
+          key,
+          {
+            r,
+            g,
+            b,
+            count: 1,
+          },
+        );
+      }
     }
 
-    const colour =
-      this.sampleBackgroundColour();
+    const candidates =
+      [...buckets.values()]
+        .map(
+          bucket => ({
+            r:
+              Math.round(
+                bucket.r /
+                bucket.count,
+              ),
 
-    const mix =
-      clamp(
-        this.backgroundMix,
-      );
+            g:
+              Math.round(
+                bucket.g /
+                bucket.count,
+              ),
 
-    const cssColour =
-      `rgb(` +
-      `${Math.round(colour.r * mix)} ` +
-      `${Math.round(colour.g * mix)} ` +
-      `${Math.round(colour.b * mix)}` +
-      `)`;
+            b:
+              Math.round(
+                bucket.b /
+                bucket.count,
+              ),
 
-    const target =
-      this.backgroundTarget ===
-      'self'
-        ? this.root
-        : document.querySelector<HTMLElement>(
-            this.backgroundTarget,
+            count:
+              bucket.count,
+          }),
+        );
+
+    const fallback = [
+      {r:35,g:116,b:93},
+      {r:43,g:95,b:126},
+      {r:217,g:142,b:115},
+      {r:157,g:143,b:193},
+      {r:143,g:168,b:134},
+    ];
+
+    /*
+      PRIMARY
+      -------
+      Prefer vivid, reasonably common colours that can be made to support
+      white text without losing too much of their original hue.
+    */
+    const primaryCandidates =
+      [...candidates]
+        .sort(
+          (a, b) =>
+            this.uiAccentScore(
+              b,
+              background,
+            ) -
+            this.uiAccentScore(
+              a,
+              background,
+            ),
+        );
+
+    let primary =
+      primaryCandidates[0]
+        ? this.ensureWhiteTextContrast(
+            primaryCandidates[0],
+            4.5,
+          )
+        : fallback[0];
+
+    /*
+      SECONDARY
+      ---------
+      Same rules as primary, but reward strong hue/colour distance from
+      primary so we do not end up with two similar greens/blues/etc.
+    */
+    const secondaryCandidates =
+      [...candidates]
+        .sort(
+          (a, b) =>
+            this.secondaryAccentScore(
+              b,
+              primary,
+              background,
+            ) -
+            this.secondaryAccentScore(
+              a,
+              primary,
+              background,
+            ),
+        );
+
+    let secondary =
+      secondaryCandidates[0]
+        ? this.ensureWhiteTextContrast(
+            secondaryCandidates[0],
+            4.5,
+          )
+        : fallback[1];
+
+    if (
+      this.colourDistance(
+        primary,
+        secondary,
+      ) < 85
+    ) {
+      const alternative =
+        secondaryCandidates.find(
+          candidate =>
+            this.colourDistance(
+              primary,
+              candidate,
+            ) >= 85,
+        );
+
+      if (alternative) {
+        secondary =
+          this.ensureWhiteTextContrast(
+            alternative,
+            4.5,
           );
-
-    if (target) {
-      target.style.backgroundColor =
-        cssColour;
+      }
     }
 
-    document.documentElement
-      .style
-      .setProperty(
-        '--pixel-hero-background',
-        cssColour,
+    /*
+      TERTIARY–QUINARY
+      ----------------
+      These are representative palette colours rather than button colours,
+      so keep them closer to the source image.
+    */
+    const representative =
+      [...candidates]
+        .sort(
+          (a, b) =>
+            this.representativeScore(b) -
+            this.representativeScore(a),
+        );
+
+    const remaining:
+      Array<{
+        r: number;
+        g: number;
+        b: number;
+      }> = [];
+
+    for (
+      const candidate
+      of representative
+    ) {
+      if (
+        remaining.length >= 3
+      ) {
+        break;
+      }
+
+      const sufficientlyDifferent =
+        [
+          primary,
+          secondary,
+          ...remaining,
+        ].every(
+          colour =>
+            this.colourDistance(
+              candidate,
+              colour,
+            ) > 50,
+        );
+
+      if (
+        sufficientlyDifferent
+      ) {
+        remaining.push({
+          r:
+            candidate.r,
+          g:
+            candidate.g,
+          b:
+            candidate.b,
+        });
+      }
+    }
+
+    while (
+      remaining.length < 3
+    ) {
+      remaining.push(
+        fallback[
+          remaining.length + 2
+        ],
       );
+    }
+
+    return [
+      primary,
+      secondary,
+      remaining[0],
+      remaining[1],
+      remaining[2],
+    ];
+  }
+
+  private uiAccentScore(
+    colour: {
+      r: number;
+      g: number;
+      b: number;
+      count: number;
+    },
+    background: {
+      r: number;
+      g: number;
+      b: number;
+    },
+  ) {
+    const saturation =
+      this.simpleSaturation(
+        colour,
+      );
+
+    const population =
+      Math.log(
+        colour.count + 1,
+      );
+
+    const whiteContrast =
+      this.contrastRatio(
+        colour,
+        {
+          r: 255,
+          g: 255,
+          b: 255,
+        },
+      );
+
+    const backgroundContrast =
+      this.contrastRatio(
+        colour,
+        background,
+      );
+
+    /*
+      Heavily favour colourful source hues, with enough population that
+      tiny noise colours don't dominate. White-text contrast gets rewarded,
+      but low-contrast colours can still win because we darken them later
+      while preserving their hue.
+    */
+    return (
+      saturation * 6 +
+      population * 0.55 +
+      Math.min(
+        whiteContrast,
+        7,
+      ) * 0.9 +
+      Math.min(
+        backgroundContrast,
+        7,
+      ) * 0.35
+    );
+  }
+
+  private secondaryAccentScore(
+    colour: {
+      r: number;
+      g: number;
+      b: number;
+      count: number;
+    },
+    primary: {
+      r: number;
+      g: number;
+      b: number;
+    },
+    background: {
+      r: number;
+      g: number;
+      b: number;
+    },
+  ) {
+    const base =
+      this.uiAccentScore(
+        colour,
+        background,
+      );
+
+    const distance =
+      Math.min(
+        this.colourDistance(
+          colour,
+          primary,
+        ) /
+        180,
+        1,
+      );
+
+    return (
+      base +
+      distance * 4.5
+    );
+  }
+
+  private representativeScore(
+    colour: {
+      r: number;
+      g: number;
+      b: number;
+      count: number;
+    },
+  ) {
+    return (
+      Math.log(
+        colour.count + 1,
+      ) * 1.2 +
+      this.simpleSaturation(
+        colour,
+      ) * 1.3
+    );
+  }
+
+  private simpleSaturation(
+    colour: {
+      r: number;
+      g: number;
+      b: number;
+    },
+  ) {
+    const max =
+      Math.max(
+        colour.r,
+        colour.g,
+        colour.b,
+      );
+
+    const min =
+      Math.min(
+        colour.r,
+        colour.g,
+        colour.b,
+      );
+
+    if (
+      max === 0
+    ) {
+      return 0;
+    }
+
+    return (
+      (max - min) /
+      max
+    );
+  }
+
+  private colourDistance(
+    a: {
+      r: number;
+      g: number;
+      b: number;
+    },
+    b: {
+      r: number;
+      g: number;
+      b: number;
+    },
+  ) {
+    return Math.sqrt(
+      Math.pow(
+        a.r - b.r,
+        2,
+      ) +
+      Math.pow(
+        a.g - b.g,
+        2,
+      ) +
+      Math.pow(
+        a.b - b.b,
+        2,
+      ),
+    );
+  }
+
+  private ensureWhiteTextContrast(
+    colour: {
+      r: number;
+      g: number;
+      b: number;
+    },
+    minimum = 4.5,
+  ) {
+    const white = {
+      r: 255,
+      g: 255,
+      b: 255,
+    };
+
+    if (
+      this.contrastRatio(
+        colour,
+        white,
+      ) >= minimum
+    ) {
+      return {
+        r:
+          colour.r,
+        g:
+          colour.g,
+        b:
+          colour.b,
+      };
+    }
+
+    const black = {
+      r: 0,
+      g: 0,
+      b: 0,
+    };
+
+    /*
+      Darken toward black in small increments. This keeps the hue identity
+      from the hero while guaranteeing the button can use white text.
+    */
+    for (
+      let amount = 0.04;
+      amount <= 0.8;
+      amount += 0.04
+    ) {
+      const darker =
+        this.mixColours(
+          colour,
+          black,
+          amount,
+        );
+
+      if (
+        this.contrastRatio(
+          darker,
+          white,
+        ) >= minimum
+      ) {
+        return darker;
+      }
+    }
+
+    return {
+      r: 64,
+      g: 64,
+      b: 64,
+    };
+  }
+
+  private mixColours(
+    a: {
+      r: number;
+      g: number;
+      b: number;
+    },
+    b: {
+      r: number;
+      g: number;
+      b: number;
+    },
+    amount: number,
+  ) {
+    const mix =
+      clamp(amount);
+
+    return {
+      r:
+        Math.round(
+          a.r +
+          (
+            b.r -
+            a.r
+          ) *
+          mix,
+        ),
+
+      g:
+        Math.round(
+          a.g +
+          (
+            b.g -
+            a.g
+          ) *
+          mix,
+        ),
+
+      b:
+        Math.round(
+          a.b +
+          (
+            b.b -
+            a.b
+          ) *
+          mix,
+        ),
+    };
+  }
+
+  private contrastRatio(
+    a: {
+      r: number;
+      g: number;
+      b: number;
+    },
+    b: {
+      r: number;
+      g: number;
+      b: number;
+    },
+  ) {
+    const l1 =
+      this.relativeLuminance(
+        a,
+      );
+
+    const l2 =
+      this.relativeLuminance(
+        b,
+      );
+
+    const lighter =
+      Math.max(
+        l1,
+        l2,
+      );
+
+    const darker =
+      Math.min(
+        l1,
+        l2,
+      );
+
+    return (
+      (lighter + 0.05) /
+      (darker + 0.05)
+    );
+  }
+
+  private relativeLuminance(
+    colour: {
+      r: number;
+      g: number;
+      b: number;
+    },
+  ) {
+    const convert =
+      (channel: number) => {
+        const value =
+          channel /
+          255;
+
+        return value <= 0.03928
+          ? value / 12.92
+          : Math.pow(
+              (
+                value +
+                0.055
+              ) /
+              1.055,
+              2.4,
+            );
+      };
+
+    return (
+      0.2126 *
+      convert(
+        colour.r,
+      ) +
+      0.7152 *
+      convert(
+        colour.g,
+      ) +
+      0.0722 *
+      convert(
+        colour.b,
+      )
+    );
+  }
+
+  private bestTextColour(
+    background: {
+      r: number;
+      g: number;
+      b: number;
+    },
+  ) {
+    /*
+      Primary and secondary now guarantee white text, but keep this helper
+      for compatibility with the existing CSS variables.
+    */
+    return '#ffffff';
+  }
+
+  private toCss(
+    colour: {
+      r: number;
+      g: number;
+      b: number;
+    },
+  ) {
+    return (
+      `rgb(` +
+      `${Math.round(colour.r)} ` +
+      `${Math.round(colour.g)} ` +
+      `${Math.round(colour.b)}` +
+      `)`
+    );
   }
 
   private sampleBackgroundColour() {

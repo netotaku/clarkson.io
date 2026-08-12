@@ -3,6 +3,7 @@ import { SITE_TITLE } 		from  '../consts';
 import PixelHero from "../components/PixelHero.astro";
 import { type CollectionEntry, getCollection } from 'astro:content';
 import BlogList from '../components/BlogList.astro';
+import NavLinks from '../components/NavLinks.astro';
 import '../styles/global.scss';
 
 const today = new Date();
@@ -70,8 +71,17 @@ const allPosts = await getCollection('blog');
 	</head>
 	<body>  
 		
-		<div class="layer layer--0">		
-			<BlogList posts={allPosts} />
+		<div class="layer layer--0 nav">
+			<div class="nav__section">
+				<h2 class="nav__heading">Menu</h2>
+				<div class="nav__links">
+					<NavLinks />
+				</div>				
+			</div>
+			<div class="nav__section">
+				<h2 class="nav__heading">Recent Posts</h2>
+				<BlogList posts={allPosts} />
+			</div>
 		</div>
 
 		<div class="main">
