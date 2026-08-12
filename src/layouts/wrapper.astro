@@ -54,7 +54,7 @@ const categories = [...categoryMap.values()]
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 	<head>
 		<!-- Global Metadata -->
 		<meta charset="utf-8" />
@@ -122,24 +122,22 @@ const categories = [...categoryMap.values()]
 				<h2 class="nav__heading">Social</h2>
 				<div class="nav__links">
 					<a href="#">Threads</a>
-					<a href="#">Bluesky</a>
+					<a href="#">LinkedIn</a>
 					<a href="#">Strava</a>
 					<a href="#">Soundcloud</a>
 				</div>				
 			</div>		
 			<div class="nav__section">
 				<h2 class="nav__heading"># Topics</h2>
-				
-					{categories.map((category) => (
+				{categories.map((category) => (
 					<a
 						href={`/blog/category/${category.slug}/`}
-						class="tag"
+						class="tag tag--stacked"
 					>					
 						<span class="tag__count">{category.count}</span>
 						<span class="tag__label">{category.label}</span>
 					</a>
-					))}
-								
+				))}
 			</div>			
 			<!-- <div class="nav__section grid grid--column">
 				<h2 class="nav__heading">Recent Posts</h2>

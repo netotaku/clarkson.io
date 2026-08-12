@@ -1,11 +1,17 @@
 .grid{
     
-    display: flex;
-    gap: var(--gutter);
-    flex-wrap: wrap;
+  display: grid;  
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
 
-    &--column{
-        flex-direction: column;
-    }
-    
+  // default = thirds
+  > * {
+    grid-column: span 2;
+  }
+
+//   // first two = halves
+//   > :nth-child(-n + 2) {
+//     grid-column: span 3;
+//   }
+
 }

@@ -16,16 +16,15 @@ const optimizedPosts = await Promise.all(
 
     return {
       post,
-      heroUrl: image.src,
+      optimizedHero: image.src,
     };
   })
 );
 
 ---
-<div class="grid">   
+
 {
     optimizedPosts.map((data) => (
         <Card data={data} />
     ))
 }
-</div>

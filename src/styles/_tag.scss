@@ -1,5 +1,10 @@
 .tag{
-    display: flex;
+    display: inline-flex;
+
+    &--stacked{
+        display: flex;
+    }
+
     align-items: center;
     flex-flow: row nowrap;
     justify-content: stretch;
