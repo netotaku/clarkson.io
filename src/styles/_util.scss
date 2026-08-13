@@ -5,34 +5,4 @@
     &show{
         display: flex!important;
     }    
-    &olive{
-        background-color: $olive;
-        color: white;
-        a{
-            color: white;
-        }
-    }
-    &grey{
-        color: #ccc
-    }
-    &no-mobile{
-        @media (max-width: $break) {         
-            display: none!important;
-        }
-    }
-    &mobile-only{
-        @media (min-width: $break) {         
-            display: none!important;
-        }
-    }
-    &scroller{
-        position: relative;
-        overflow-x: scroll;
-        width: 100%;
-    }
-    &standout{
-        line-height: 1.2;
-        font-family: "Cal Sans", sans-serif;
-        font-size: 1.5em!important  ;
-    }
 }

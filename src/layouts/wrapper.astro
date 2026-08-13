@@ -4,6 +4,7 @@ import PixelHero from "../components/PixelHero.astro";
 import Menu from "../components/nav/menu.astro";
 import Social from "../components/nav/social.astro";
 import Contact from "../components/nav/contact.astro";
+import SignUp from "../components/fragments/SignUp.astro";
 import { getCollection } from 'astro:content';
 import '../styles/global.scss';
 
@@ -166,10 +167,15 @@ const categories = [...categoryMap.values()]
 							<Contact />
 						</div>
 					</div>
+					
+					<SignUp />	
+
+					<p><a class="footer__cookies" href="/cookies-and-privacy">Cookies &amp; Privacy</a></p>
+					
 				</footer>
 
 				<menu class="menu">
-					<a class="btn btn--hire" href="#">HIRE ME</a>
+					<a class="btn btn--hire" href="#">CHAT</a>
 					<button id="js-open-closed" class="btn btn--open">
 						<img src="/src/assets/SVG/burger.svg">
 					</button>

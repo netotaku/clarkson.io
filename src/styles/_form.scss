@@ -1,0 +1,46 @@
+.form{
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--gutter);
+
+    color: rgba(255,255,255,.3);
+
+    &__fieldset{
+        appearance: none;
+        border: solid 2px rgba(255,255,255,.3);
+        border-radius: 17px;
+        display: flex;
+        position: relative;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        max-width: 75%;
+    }
+
+    input[type="email"],
+    input[type="submit"]{
+        appearance: none;
+        padding: 20px;    
+        font-size: 18px;    
+    }
+
+
+    input[type="email"]{
+        background: transparent;
+        border: 0;  
+        flex: 1 1 auto;    
+        min-width: 0;
+        &::placeholder{
+            color: rgba(255,255,255,.3);
+        }
+    }
+
+    input[type="submit"]{        
+        border: 0px;
+        background: rgba(255,255,255,.3);
+        flex: 0 0 auto;
+        border-radius: 0 15px 15px 0;
+    }
+    
+}
