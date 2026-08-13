@@ -4,29 +4,10 @@ const { title, image, subtitle, description } = Astro.props;
 ---
 <Wrapper
     title={title}
-    image={image}>
+    image={image}
+	description={description}>
 
-	<section class="hero" style={`background-image: url('${image}');`}>
-		<div class="hero__text">
-			<div class="hero__home">
-				<h1 class="nc nc--small">{title}</h1>							
-				<div class="typography">
-					<h2>{subtitle}</h2>															
-				</div>
-			</div>
-		</div>			
-	</section>
+	<slot />
 
-
-    <section 
-		class="section section--solo section--no-mobile">
-		<div class="section__inner">
-			<div class="typography content measure">
-				<slot />
-			</div>			
-		</div>
-	</section>
-
-    
 </Wrapper>
 

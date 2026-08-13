@@ -34,20 +34,18 @@ const { id, data: postData } = post;
         {postData.title}
       </h2>
 
-        <div class="card__tags">
-          {postData.categories?.map((category) => (
-              <span class="tag">
-                <span class="tag__count">#</span>
-                <span class="tag__label">{category}</span>
-              </span>
-          ))}
-        </div>
+      <p class="card__desc">
+        {postData.description}
+      </p>
 
-        <p class="card__desc">
-          {postData.description}
-        </p>
-
-      
+      <div class="card__tags">
+        {postData.categories?.map((category) => (
+            <span class="tag">
+              <span class="tag__count">#</span>
+              <span class="tag__label">{category}</span>
+            </span>
+        ))}
+      </div>      
 
   </article>
 </a>
