@@ -135,7 +135,7 @@ const categories = [...categoryMap.values()]
 
 				<PixelHero
 					src={image}
-					topHeight={860}
+					topHeight={1200}
 					pixelPitch={44}
 					dotScale={.8}
 					cornerRadius={28}				
@@ -145,11 +145,31 @@ const categories = [...categoryMap.values()]
 					parallaxSpeed={0.3}
 					physics="chunky-collapse"
 					physicsOverrides={{
-						dissolveStart: 0.6,
+						dissolveStart: .2,
+
+						erosion: 0.9,
+						cohesion: 0.66,
+
+						gravity: 2.25,
+						turbulence: 0.04,
+						drag: 0.22,
+
+						fragmentDistance: 4000,
+
+						tailOpacity: 1,
+						tailFadeCurve: 1,
+
+						seed: 911,
 					}}
+					
 				/>
 
 			</div>
+
+
+			<!-- physicsOverrides={{
+						dissolveStart: 0.6,
+					}} -->
 
 			<main class="layer layer--2">
 

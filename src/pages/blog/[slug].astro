@@ -1,10 +1,8 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import Wrapper from '../../layouts/wrapper.astro';
 import { render } from 'astro:content';
-
-
-
 import FormattedDate from '../../components/FormattedDate.astro'; 
 
 export async function getStaticPaths() {
@@ -33,24 +31,64 @@ const relatedPosts = allPosts
 	title={post.data.title}
 	image={post.data.heroImage} >
 
-	<div class="section section--top measure typography">
+	<div class="section section--top blog">
 		
-		<strong>
-			<FormattedDate date={post.data.pubDate} />
-		</strong>
+		<header class="blog__header">
 
-		<h1>{post.data.title}</h1>
-		<p>{post.data.description}</p>
-		<hr />
+			<div class="blog__header__details">
+				<div class="blog__header__eyebrow">
 
-		<Content />
+					 <Image
+						src={post.data.heroImage}
+						alt={post.data.title}
+						fit="cover" 
+						position="center"     
+						width={30}  
+						height={30}     
+					/>
+					</span>
 
-		<h2>Hire Me</h2>
-		<p>{post.data.cta}</p>
-		<p>Let's talk.</p>
-		<p>
-			<a href="tel:07771535355">07771 535 355</a><br>
-			<a href="mailto:nick@clarkson.io">nick@clarkson.io</a></p>				
+					<FormattedDate date={post.data.pubDate} />
+					
+				</div>
+				<h1 class="blog__header__title">{post.data.title}</h1>
+				
+			</div>
+
+			<p class="blog__header__desc">{post.data.description}</p>
+
+			<div class="blog__header__tags">
+				{post.data.categories?.map((category) => (
+					<a class="tag" href="#">
+						<span class="tag__count">#</span>
+						<span class="tag__label">{category}</span>
+					</a>
+				))}
+			</div>
+
+			<div class="blog__header__hire-me">
+				<h2>Hire Me</h2>
+				<p>{post.data.cta}</p>
+				<p>Let's talk.</p>			
+			</div>
+
+			<p>
+				<a href="tel:07771535355">07771 535 355</a><br>
+				<a href="mailto:nick@clarkson.io">nick@clarkson.io</a></p>	
+
+		</header>
+		<div class="blog__content typography">
+			<!-- <Image
+				src={post.data.heroImage}
+				alt={post.data.title}
+				fit="cover" 
+				position="center"     
+				width={800}  
+				height={600}   
+				class="blog__hero"
+			/> -->
+			<Content />
+		</div>
 	</div>			
 		
 </Wrapper>

@@ -9,8 +9,8 @@
     flex-flow: row nowrap;
     justify-content: stretch;
     // 
-    background: rgba(255,255,255,.1);
-    color: rgba(255,255,255,.6);
+    background: var(--pixel-hero-primary);
+    color: rgba(255,255,255,1);
     margin-right: 4px;
     margin-top: 4px;
     border-radius: 8px;
