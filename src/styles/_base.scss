@@ -6,11 +6,12 @@
     box-sizing: border-box;
 }
 
-a{
-    color: var(--pixel-hero-primary);
-    &:hover{
-        text-decoration: none;
-    }
+a {
+  color: var(--pixel-hero-link);
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 

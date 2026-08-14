@@ -8,6 +8,12 @@ import SignUp from "../components/fragments/SignUp.astro";
 import { getCollection } from 'astro:content';
 import '../styles/global.scss';
 
+
+import {
+  BurgerIcon,
+  WhatsappIcon,
+} from '../icons';
+
 const today = new Date();
 
 interface Props {
@@ -70,32 +76,20 @@ const categories = [...categoryMap.values()]
 			href={new URL('rss.xml', Astro.site)}
 		/>
 		<meta name="generator" content="ZX Spectrum 128 +2" />
-
-		<!-- <link
-  			rel="stylesheet"
-  			href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
-		> -->
-
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Wire+One&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-		<!-- Canonical URL -->
 		<link rel="canonical" href={canonicalURL} />
 
-		<!-- Primary Meta Tags -->
 		<title>{title}</title>
 		<meta name="title" content={title} />
 		<meta name="description" content={description} />
-
-		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={Astro.url} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={new URL(image, Astro.url)} />
-
-		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content={Astro.url} />
 		<meta property="twitter:title" content={title} />
@@ -145,7 +139,8 @@ const categories = [...categoryMap.values()]
 					parallaxSpeed={0.3}
 					physics="chunky-collapse"
 					physicsOverrides={{
-						dissolveStart: .2,
+
+						dissolveStart: .1,
 
 						erosion: 0.9,
 						cohesion: 0.66,
@@ -165,11 +160,6 @@ const categories = [...categoryMap.values()]
 				/>
 
 			</div>
-
-
-			<!-- physicsOverrides={{
-						dissolveStart: 0.6,
-					}} -->
 
 			<main class="layer layer--2">
 
@@ -195,10 +185,12 @@ const categories = [...categoryMap.values()]
 				</footer>
 
 				<menu class="menu">
-					<a class="btn btn--hire" href="#">CHAT</a>
-					<button id="js-open-closed" class="btn btn--open">
-						<img src="/src/assets/SVG/burger.svg">
-					</button>
+					<a class="btn btn--icon btn--whatsapp" href="#">
+						<WhatsappIcon />	
+					</a>
+					<a id="js-open-closed" class="btn btn--icon btn--burger">
+						<BurgerIcon />	
+					</a>
 				</menu>	
 
 			</main>

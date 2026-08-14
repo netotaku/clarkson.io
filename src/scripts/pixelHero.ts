@@ -1063,6 +1063,12 @@ class PixelHero {
     root.style.setProperty('--pixel-hero-primary-contrast', this.bestTextColour(palette[0]));
     root.style.setProperty('--pixel-hero-secondary', this.toCss(palette[1]));
     root.style.setProperty('--pixel-hero-secondary-contrast', this.bestTextColour(palette[1]));
+
+    const link = this.makeLinkColour(palette[0], bg, 5);
+    const linkSecondary = this.makeLinkColour(palette[1], bg, 5);
+
+    root.style.setProperty('--pixel-hero-link', this.toCss(link));
+    root.style.setProperty('--pixel-hero-link-secondary', this.toCss(linkSecondary));
     root.style.setProperty('--pixel-hero-tertiary', this.toCss(palette[2]));
     root.style.setProperty('--pixel-hero-quaternary', this.toCss(palette[3]));
     root.style.setProperty('--pixel-hero-quinary', this.toCss(palette[4]));
@@ -1592,6 +1598,52 @@ class PixelHero {
       g: 64,
       b: 64,
     };
+  }
+
+  private makeLinkColour(
+    colour: {
+      r: number;
+      g: number;
+      b: number;
+    },
+    background: {
+      r: number;
+      g: number;
+      b: number;
+    },
+    minimumContrast = 5,
+  ) {
+    if (this.contrastRatio(colour, background) >= minimumContrast) {
+      return colour;
+    }
+
+    const white = {
+      r: 255,
+      g: 255,
+      b: 255,
+    };
+
+    /*
+      Preserve the sampled hue and lift it toward white only as much
+      as needed to make body-copy links readable on the generated background.
+    */
+    for (let amount = 0.04; amount <= 0.88; amount += 0.04) {
+      const candidate = this.mixColours(
+        colour,
+        white,
+        amount,
+      );
+
+      if (this.contrastRatio(candidate, background) >= minimumContrast) {
+        return candidate;
+      }
+    }
+
+    return this.mixColours(
+      colour,
+      white,
+      0.88,
+    );
   }
 
   private mixColours(

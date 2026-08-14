@@ -18,31 +18,31 @@
     color: white;
 
     padding: 0px 30px;
+
     line-height: 1;
 
-    &--open{
-        width: 46px;
-        background-color: #f60;
+    &--icon{
+        width: 46px;        
         padding: 0px;
-        
-        // 
+    }
+
+    &--burger{
+        background-color: #f60; 
         &:hover{
             background-color: #f90;
-        }                
+        }  
     }
 
-    &--hire{
-        background: #5CB200;
-        // background: var(--pixel-hero-secondary);
-        
-        
-        &:hover{
-            background: #6DD400;
-        }
+    &--whatsapp{
+        background: var(--pixel-hero-link);
     }
 
-    &--themed{
+    &--email{
         background: var(--pixel-hero-primary);
+    }
+
+    &--phone{
+        background: var(--pixel-hero-secondary);
     }
 
 }

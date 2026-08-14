@@ -35,7 +35,11 @@
         }
         &__desc{
             font-size: 20px;            
-        }        
+        } 
+        &__icons{
+            display: flex;
+            gap: 8px;
+        }       
     } 
     
     &__hero{

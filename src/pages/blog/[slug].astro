@@ -4,6 +4,11 @@ import { Image } from 'astro:assets';
 import Wrapper from '../../layouts/wrapper.astro';
 import { render } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro'; 
+import {
+  WhatsappIcon,
+  PhoneIcon,
+  EmailIcon,
+} from '../../icons';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
@@ -46,7 +51,6 @@ const relatedPosts = allPosts
 						width={30}  
 						height={30}     
 					/>
-					</span>
 
 					<FormattedDate date={post.data.pubDate} />
 					
@@ -69,24 +73,18 @@ const relatedPosts = allPosts
 			<div class="blog__header__hire-me">
 				<h2>Hire Me</h2>
 				<p>{post.data.cta}</p>
-				<p>Let's talk.</p>			
 			</div>
 
-			<p>
-				<a href="tel:07771535355">07771 535 355</a><br>
-				<a href="mailto:nick@clarkson.io">nick@clarkson.io</a></p>	
+			<h3>Let's talk.</h3>
+
+			<div class="blog__header__icons">				
+				<a class="btn btn--icon btn--whatsapp" href="#"><WhatsappIcon /></a>
+				<a class="btn btn--icon btn--phone" href="#"><PhoneIcon /></a>
+				<a class="btn btn--icon btn--email" href="#"><EmailIcon /></a>
+			</div>	
 
 		</header>
 		<div class="blog__content typography">
-			<!-- <Image
-				src={post.data.heroImage}
-				alt={post.data.title}
-				fit="cover" 
-				position="center"     
-				width={800}  
-				height={600}   
-				class="blog__hero"
-			/> -->
 			<Content />
 		</div>
 	</div>			

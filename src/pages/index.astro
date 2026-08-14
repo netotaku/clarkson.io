@@ -1,15 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
 import Wrapper 	from '../layouts/wrapper.astro';
-import BlogList from '../components/BlogList.astro';
-import CV 		from '../components/CV.astro';
-import Services from '../components/Services.astro';
-import Socials 	from '../components/Socials.astro';
-
-const posts = (await getCollection('blog'))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 4);
-
 ---
 <Wrapper
 	title="Nick Clarkson, Creative Technologist, Bristol UK"
