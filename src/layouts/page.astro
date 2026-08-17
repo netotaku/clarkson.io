@@ -1,6 +1,15 @@
 ---
+import type { ImageMetadata } from 'astro';
 import Wrapper from '../layouts/wrapper.astro';
-const { title, image, subtitle, description } = Astro.props;
+
+interface Props {
+    title?: string;
+    subtitle?: string;
+    description?: string;
+    image: string | ImageMetadata;
+}
+
+const { title, image, description } = Astro.props;
 ---
 <Wrapper
     title={title}
@@ -12,4 +21,3 @@ const { title, image, subtitle, description } = Astro.props;
     <section>
 
 </Wrapper>
-
