@@ -1,6 +1,9 @@
 @use './vars';
 
 .typography{
+
+    text-wrap: pretty;
+
     // visibility: hidden;
     p:not(:last-child),
     ul:not(:last-child),

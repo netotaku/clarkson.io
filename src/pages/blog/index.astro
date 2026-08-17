@@ -2,17 +2,18 @@
 import { getCollection } from 'astro:content';
 
 import Wrapper from '../../layouts/wrapper.astro';
-import BlogList from '../../components/BlogList.astro';
-import FormattedDate from '../../components/FormattedDate.astro'; 
+// import BlogList from '../../components/BlogList.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Masonry from '../../components/masonry.astro'; 
 // import BlogTable from '../../components/BlogTable.astro';
 // import BlogCal from '../../components/BlogCal.astro';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
-const featured = posts.shift();
-const main = posts;
-const secondary = posts.splice(0,2);
+// const featured = posts.shift();
+// const main = posts;
+// const secondary = posts.splice(0,2);
 ---
 <Wrapper
 	title="Blog // Nick Clarkson, Creative Technologist, Bristol UK"
@@ -20,15 +21,14 @@ const secondary = posts.splice(0,2);
 	image="/src/assets/images/bio.jpg">
 
 
-	<section class="section section--top typography">
-		<strong>
-			Latest / <FormattedDate date={featured.data.pubDate} />
-		</strong>
-		<h1>{featured.data.title}</h1>
-		<p>{featured.data.description}</p>
+
+
+
+	<section class="section section--top">
+		<Masonry posts={posts} />
 	</section>
 
-    <section class="section grid">
+    <!-- <section class="section grid">
 		
 			<BlogList 
 				title="" 
@@ -40,6 +40,6 @@ const secondary = posts.splice(0,2);
 				posts={main}
                 modifier="" />				
 		
-	</section>
+	</section> -->
 
 </Wrapper>

@@ -27,6 +27,7 @@
 
 
     input[type="email"]{
+        color: white;
         background: transparent;
         border: 0;  
         flex: 1 1 auto;    
@@ -41,6 +42,20 @@
         background: rgba(255,255,255,.3);
         flex: 0 0 auto;
         border-radius: 0 15px 15px 0;
+    }
+
+    &:hover{
+        input[type="submit"]{ 
+            background: white;
+        }
+        input[type="email"]{
+            &::placeholder{
+                color: white;
+            }
+        }
+        .form__fieldset{
+            border-color: white;
+        }   
     }
     
 }
