@@ -14,19 +14,18 @@
             text-transform: uppercase;
             font-weight: bold;
             line-height: .9;
-            font-size: 20vw;
+            font-size: var(--font-size-home-heading);
         }
         &__subheading{            
             line-height: 1.2;
             margin-top: 5vw;
-            font-size: 2vw;
             color: #ccc;
-            font-size: 42px;
+            font-size: var(--font-size-home-subheading);
             // text-transform: uppercase;
         }
 
         &__desc{
-            font-size: 18px;
+            font-size: var(--font-size-home-description);
         }
 
         &__details{
@@ -38,7 +37,7 @@
     }
 
     &__nav{
-        font-size: 22px;
+        font-size: var(--font-size-home-nav);
         a{
             display: block;
         }

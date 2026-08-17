@@ -22,7 +22,7 @@
     input[type="submit"]{
         appearance: none;
         padding: 20px;    
-        font-size: 18px;    
+        font-size: var(--font-size-form-control);
     }
 
 

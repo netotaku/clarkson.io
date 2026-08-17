@@ -1,5 +1,3 @@
-@use './vars';
-
 * {
     padding: 0px;
     margin: 0px;
@@ -58,8 +56,8 @@ html{
 .menu{
     position: fixed;  
     overflow: hidden; 
-    top: vars.$gutter;
-    right: vars.$gutter; 
+    top: var(--gutter);
+    right: var(--gutter);
     z-index: 1;
     display: flex;
     gap: 8px;

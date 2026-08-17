@@ -1,32 +1,32 @@
 ---
 import FormattedDate from './helpers/FormattedDate.astro';
 import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
 
-const { data } = Astro.props;
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
 
-const { post, heroUrl } = data;
+const { post } = Astro.props;
 const { id, data: postData } = post;
 ---
 
 <a
   class="card"
   href={`/blog/${id}/`}
-  style={`--card-bg: url("${data.optimizedHero}")`}
 >
   <article class="card__layout">
 
       <div class="card__eyebrow">
-        <span class="card__date">
-          <Image
-            src={postData.heroImage}
-            alt={postData.title}
-            fit="cover" 
-            position="center"     
-            width={40}  
-            height={40} 
-            class="card__image"       
-          />
-        </span>
+        <Image
+          src={postData.heroImage}
+          alt=""
+          fit="cover"
+          position="center"
+          width={40}
+          height={40}
+          class="card__image"
+        />
         <FormattedDate date={postData.pubDate} />
       </div>
 
@@ -38,8 +38,8 @@ const { id, data: postData } = post;
         {postData.description}
       </p>
 
-      <div class="card__tags">
-        {postData.categories?.map((category) => (
+      <div class="card__tags" aria-label="Categories">
+        {postData.categories.map((category) => (
             <span class="tag">
               <span class="tag__count">#</span>
               <span class="tag__label">{category}</span>

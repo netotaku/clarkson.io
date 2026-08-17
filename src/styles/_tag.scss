@@ -17,7 +17,7 @@
     overflow: hidden;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: var(--font-size-small);
     height: 32px;
     &:hover{
        background: rgba(255,255,255,.2); 

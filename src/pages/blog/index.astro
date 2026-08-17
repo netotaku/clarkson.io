@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Wrapper from '../../layouts/wrapper.astro';
-import Masonry from '../../components/masonry.astro'; 
+import BlogList from '../../components/BlogList.astro';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -14,7 +14,7 @@ const posts = (await getCollection('blog')).sort(
 	image="/src/assets/images/bio.jpg">
 
 	<section class="section section--top">
-		<Masonry posts={posts} />
+		<BlogList posts={posts} />
 	</section>
 
 </Wrapper>

@@ -1,9 +1,7 @@
-@use './vars';
-
 .typography{
 
     text-wrap: pretty;
-    font-size: 1.2em;
+    font-size: var(--font-size-body);
 
     p:not(:last-child),
     ul:not(:last-child),
@@ -17,11 +15,11 @@
     hr:not(:last-child),
     table:not(:last-child),
     blockquote:not(:last-child){
-        margin-bottom: vars.$gutter;
+        margin-bottom: var(--gutter);
     }
 
     blockquote{
-        padding-left: vars.$gutter;
+        padding-left: var(--gutter);
         font-style: italic;
     }
 
@@ -32,7 +30,7 @@
 
     h1{
         font-family: Oswald;
-        font-size: 100px;
+        font-size: var(--font-size-page-heading);
         font-weight: bold;
         text-transform: uppercase;
         letter-spacing: -2px;
@@ -40,13 +38,13 @@
     }
 
     ul,ol{
-        margin-left: vars.$gutter;
+        margin-left: var(--gutter);
     }
 
     table{
         width: 100%;
         border-collapse: collapse;
-        margin-bottom: vars.$gutter;
+        margin-bottom: var(--gutter);
         th{            
             text-align: left;
             border-bottom: solid 1px #666;

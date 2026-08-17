@@ -830,7 +830,7 @@ onMounted(fetchQuote);
       0.2em;
 
     font-size:
-      0.32em;
+      var(--font-size-wurd-code);
 
     line-height: 1;
 
