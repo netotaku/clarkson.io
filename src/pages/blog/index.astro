@@ -1,45 +1,20 @@
 ---
 import { getCollection } from 'astro:content';
-
 import Wrapper from '../../layouts/wrapper.astro';
-// import BlogList from '../../components/BlogList.astro';
-import FormattedDate from '../../components/FormattedDate.astro';
 import Masonry from '../../components/masonry.astro'; 
-// import BlogTable from '../../components/BlogTable.astro';
-// import BlogCal from '../../components/BlogCal.astro';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
-// const featured = posts.shift();
-// const main = posts;
-// const secondary = posts.splice(0,2);
+
 ---
 <Wrapper
 	title="Blog // Nick Clarkson, Creative Technologist, Bristol UK"
 	description="Insights on ethical tech, web development, AI, and digital strategy—from a creative technologist with over 25 years of hands-on industry experience."
 	image="/src/assets/images/bio.jpg">
 
-
-
-
-
 	<section class="section section--top">
 		<Masonry posts={posts} />
 	</section>
-
-    <!-- <section class="section grid">
-		
-			<BlogList 
-				title="" 
-				posts={secondary}
-                modifier="" />
-
-			<BlogList 
-				title="" 
-				posts={main}
-                modifier="" />				
-		
-	</section> -->
 
 </Wrapper>

@@ -34,11 +34,10 @@ const posts = allPosts.filter((post) =>
   title={`#${Astro.params.category}`}
   description={`Posts in the category: ${Astro.params.category}`}
   image="/images/bio.jpg">
-  <section class="section section--solo">
-    <div class="section__inner cards">
+
       <BlogList 
         title={`#${ routeCategory }`} 
         posts={posts} />
     </div>
-  </section>
+
 </Wrapper>
