@@ -11,27 +11,26 @@ const { post } = Astro.props;
 const { id, data: postData } = post;
 ---
 
-<a
-  class="card"
-  href={`/blog/${id}/`}
->
-  <article class="card__layout">
+<article class="card">
+  <div class="card__layout">
 
       <div class="card__eyebrow">
-        <Image
-          src={postData.heroImage}
-          alt=""
-          fit="cover"
-          position="center"
-          width={40}
-          height={40}
-          class="card__image"
-        />
+        <a class="card__image-link" href={`/blog/${id}/`} aria-label={`Read ${postData.title}`}>
+          <Image
+            src={postData.heroImage}
+            alt=""
+            fit="cover"
+            position="center"
+            width={40}
+            height={40}
+            class="card__image"
+          />
+        </a>
         <FormattedDate date={postData.pubDate} />
       </div>
 
       <h2 class="card__title">
-        {postData.title}
+        <a href={`/blog/${id}/`}>{postData.title}</a>
       </h2>
 
       <p class="card__desc">
@@ -40,12 +39,15 @@ const { id, data: postData } = post;
 
       <div class="card__tags" aria-label="Categories">
         {postData.categories.map((category) => (
-            <span class="tag">
+            <a
+              class="tag"
+              href={`/blog/category/${encodeURIComponent(category.toLowerCase())}/`}
+            >
               <span class="tag__count">#</span>
               <span class="tag__label">{category}</span>
-            </span>
+            </a>
         ))}
       </div>      
 
-  </article>
-</a>
+  </div>
+</article>

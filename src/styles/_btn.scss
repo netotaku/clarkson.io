@@ -45,4 +45,27 @@
         background: var(--pixel-hero-secondary);
     }
 
+    &--pagination {
+        background: rgba(255, 255, 255, 0.15);
+
+        &:hover:not(:disabled),
+        &:focus-visible {
+            background: #f60;
+        }
+
+        &:disabled {
+            cursor: default;
+            opacity: 0.35;
+        }
+    }
+
+    &--page {
+        min-width: 46px;
+        padding: 0 16px;
+
+        &[aria-current='page'] {
+            background: #f60;
+        }
+    }
+
 }

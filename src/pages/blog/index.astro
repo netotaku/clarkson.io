@@ -1,20 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
-import Wrapper from '../../layouts/wrapper.astro';
-import BlogList from '../../components/BlogList.astro';
+import Archive from '../../layouts/archive.astro';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const posts = await getCollection('blog');
 
 ---
-<Wrapper
+<Archive
 	title="Blog // Nick Clarkson, Creative Technologist, Bristol UK"
 	description="Insights on ethical tech, web development, AI, and digital strategy—from a creative technologist with over 25 years of hands-on industry experience."
-	image="/src/assets/images/bio.jpg">
-
-	<section class="section section--top">
-		<BlogList posts={posts} />
-	</section>
-
-</Wrapper>
+	image="/src/assets/images/bio.jpg"
+	posts={posts}
+/>

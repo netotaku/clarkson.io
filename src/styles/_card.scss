@@ -1,5 +1,4 @@
 .card{
-    text-decoration: none;
     display: block;
     color: white;
 
@@ -10,6 +9,17 @@
         overflow-wrap: break-word;
         hyphens: auto;
         text-wrap: pretty;
+
+        a {
+            color: inherit;
+            text-decoration: none;
+
+            &:hover,
+            &:focus-visible {
+                color: #f60;
+                text-decoration: underline;
+            }
+        }
     }
 
     &__desc{
@@ -29,11 +39,17 @@
         border-radius: 4px;
     }
 
+    &__image-link {
+        display: block;
+        flex: 0 0 auto;
+    }
+
     &__eyebrow{
         display: flex;
         gap: 12px;
         align-items: center;
         font-weight: bold;
+        color: inherit;
     }
 
     &__layout{

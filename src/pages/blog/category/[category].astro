@@ -1,9 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-
-import Wrapper from '../../../layouts/wrapper.astro';
-import BlogList from '../../../components/BlogList.astro';
-
+import Archive from '../../../layouts/archive.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -20,24 +17,20 @@ export async function getStaticPaths() {
   }));
 }
 
-const routeCategory = Astro.params.category.toLowerCase();
+const routeCategory = Astro.props.category.toLowerCase();
 
 const allPosts = await getCollection('blog');
 
 const posts = allPosts.filter((post) =>
-  post.data.categories?.some(
+  post.data.categories.some(
     (c) => c.toLowerCase() === routeCategory
   )
 );
 ---
-<Wrapper 
-  title={`#${Astro.params.category}`}
-  description={`Posts in the category: ${Astro.params.category}`}
-  image="/images/bio.jpg">
-
-      <BlogList 
-        title={`#${ routeCategory }`} 
-        posts={posts} />
-    </div>
-
-</Wrapper>
+<Archive
+  title={`#${routeCategory}`}
+  heading={`#${routeCategory}`}
+  description={`Posts in the category: ${routeCategory}`}
+  image="/images/bio.jpg"
+  posts={posts}
+/>

@@ -1,26 +1,153 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { IconChevronLeft, IconChevronRight } from '@tabler/icons-astro';
 import Card from './Card.astro';
 
 interface Props {
   posts: CollectionEntry<'blog'>[];
   title?: string;
   modifier?: string;
+  perPage?: number;
 }
 
-const { posts, title, modifier } = Astro.props;
+const { posts, title, modifier, perPage = 6 } = Astro.props;
+const pageCount = Math.ceil(posts.length / perPage);
+const dateFormatter = new Intl.DateTimeFormat('en-GB', {
+  month: 'long',
+  year: 'numeric',
+});
+const dateLabels = posts.map((post) =>
+  dateFormatter.format(post.data.pubDate).replace(' ', ' / '),
+);
 ---
 
 {
   title && <h1 class="blog-list__title">{title}</h1>
 }
 
-<ul class:list={['blog-list', modifier]}>
+<ul class:list={['blog-list', modifier]} data-blog-list data-page-size={perPage}>
   {
-    posts.map((post) => (
-      <li class="blog-list__item">
+    posts.map((post, index) => (
+      <li
+        class="blog-list__item"
+        data-blog-list-item
+        data-date-label={dateLabels[index]}
+      >
+        <h2
+          class:list={[
+            'blog-list__date-heading',
+            (index === 0 || dateLabels[index] !== dateLabels[index - 1]) &&
+              'blog-list__date-heading--visible',
+          ]}
+          data-date-heading
+        >
+          {dateLabels[index]}
+        </h2>
         <Card post={post} />
       </li>
     ))
   }
 </ul>
+
+<nav class="blog-list__pagination" aria-label="Blog pagination" data-blog-pagination hidden>
+  <button class="btn btn--pagination btn--icon" type="button" aria-label="Previous page" data-blog-previous>
+    <IconChevronLeft aria-hidden="true" />
+  </button>
+  {
+    Array.from({ length: pageCount }, (_, page) => (
+      <button
+        class="btn btn--pagination btn--page"
+        type="button"
+        data-blog-page-button
+        data-page={page}
+        aria-label={`Page ${page + 1}`}
+      >
+        {page + 1}
+      </button>
+    ))
+  }
+  <button class="btn btn--pagination btn--icon" type="button" aria-label="Next page" data-blog-next>
+    <IconChevronRight aria-hidden="true" />
+  </button>
+</nav>
+
+<script>
+  const initialiseBlogLists = () => {
+    document.querySelectorAll<HTMLElement>('[data-blog-list]').forEach((list) => {
+      if (list.dataset.paginationReady === 'true') return;
+
+      const items = Array.from(
+        list.querySelectorAll<HTMLElement>('[data-blog-list-item]'),
+      );
+      const pageSize = Number(list.dataset.pageSize) || 6;
+      const pageCount = Math.ceil(items.length / pageSize);
+      const pagination = list.nextElementSibling;
+
+      if (!(pagination instanceof HTMLElement) || pageCount <= 1) return;
+
+      const previous = pagination.querySelector<HTMLButtonElement>('[data-blog-previous]');
+      const next = pagination.querySelector<HTMLButtonElement>('[data-blog-next]');
+      const pageButtons = Array.from(
+        pagination.querySelectorAll<HTMLButtonElement>('[data-blog-page-button]'),
+      );
+
+      if (!previous || !next || pageButtons.length === 0) return;
+
+      let currentPage = 0;
+
+      const showPage = (page: number, scrollToList = false) => {
+        currentPage = Math.max(0, Math.min(page, pageCount - 1));
+        const firstVisibleItem = currentPage * pageSize;
+        const lastVisibleItem = firstVisibleItem + pageSize;
+
+        let previousVisibleDate: string | undefined;
+
+        items.forEach((item, index) => {
+          const isVisible = index >= firstVisibleItem && index < lastVisibleItem;
+          const dateHeading = item.querySelector<HTMLElement>('[data-date-heading]');
+          const showDateHeading = isVisible && item.dataset.dateLabel !== previousVisibleDate;
+
+          item.hidden = !isVisible;
+          dateHeading?.classList.toggle('blog-list__date-heading--visible', showDateHeading);
+
+          if (isVisible) previousVisibleDate = item.dataset.dateLabel;
+        });
+
+        previous.disabled = currentPage === 0;
+        next.disabled = currentPage === pageCount - 1;
+        pageButtons.forEach((button, index) => {
+          if (index === currentPage) {
+            button.setAttribute('aria-current', 'page');
+          } else {
+            button.removeAttribute('aria-current');
+          }
+        });
+
+        if (scrollToList) {
+          const gutter = Number.parseFloat(
+            getComputedStyle(document.documentElement).getPropertyValue('--gutter'),
+          ) || 0;
+          const listTop = list.getBoundingClientRect().top + window.scrollY;
+
+          window.scrollTo({
+            top: Math.max(0, listTop - gutter),
+            behavior: 'smooth',
+          });
+        }
+      };
+
+      previous.addEventListener('click', () => showPage(currentPage - 1, true));
+      next.addEventListener('click', () => showPage(currentPage + 1, true));
+      pageButtons.forEach((button) => {
+        button.addEventListener('click', () => showPage(Number(button.dataset.page), true));
+      });
+
+      list.dataset.paginationReady = 'true';
+      pagination.hidden = false;
+      showPage(0);
+    });
+  };
+
+  initialiseBlogLists();
+  document.addEventListener('astro:page-load', initialiseBlogLists);
+</script>

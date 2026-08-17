@@ -6,6 +6,30 @@
 
     &__item {
         padding-bottom: calc(var(--gutter) * 2);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
+
+    &__date-heading {
+        display: none;
+        margin-bottom: var(--gutter);
+        color: rgba(255, 255, 255, 0.3);
+        font-size: var(--font-size-nav-heading);
+        text-transform: uppercase;
+
+        &--visible {
+            display: block;
+        }
+    }
+
+    &__pagination {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 8px;
+        margin-top: calc(var(--gutter) * 2);
+    }
+
+    &__pagination[hidden] {
+        display: none;
+    }
+
 }

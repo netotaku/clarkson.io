@@ -1,0 +1,26 @@
+---
+import type { ImageMetadata } from 'astro';
+import type { CollectionEntry } from 'astro:content';
+import BlogList from '../components/BlogList.astro';
+import Wrapper from './wrapper.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image: string | ImageMetadata;
+  posts: CollectionEntry<'blog'>[];
+  heading?: string;
+  perPage?: number;
+}
+
+const { title, description, image, posts, heading, perPage = 6 } = Astro.props;
+const sortedPosts = [...posts].sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<Wrapper title={title} description={description} image={image}>
+  <section class="section section--top">
+    <BlogList title={heading} posts={sortedPosts} perPage={perPage} />
+  </section>
+</Wrapper>
