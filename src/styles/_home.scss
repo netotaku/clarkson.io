@@ -1,0 +1,46 @@
+.home{
+    text-align: right;
+    position: relative;
+    &__me{
+        margin-right: 3vw;
+    }
+    &__lockup{
+        text-align: left;
+        position: absolute;
+        top: 285px;
+        left: 5vw;
+        &__heading{
+            font-family: Oswald;
+            text-transform: uppercase;
+            font-weight: bold;
+            line-height: .9;
+            font-size: 20vw;
+        }
+        &__subheading{            
+            line-height: 1.2;
+            margin-top: 5vw;
+            font-size: 2vw;
+            color: #ccc;
+            font-size: 42px;
+            // text-transform: uppercase;
+        }
+
+        &__desc{
+            font-size: 18px;
+        }
+
+        &__details{
+            display: flex;
+            flex-direction: column;
+            gap: 5vw;
+        }
+
+    }
+
+    &__nav{
+        font-size: 22px;
+        a{
+            display: block;
+        }
+    }
+}

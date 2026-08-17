@@ -4,10 +4,12 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
+    text-wrap: pretty;
 }
 
 a {
-  color: var(--pixel-hero-link);
+  // color: var(--pixel-hero-link);
+  color: #f60;
 
   &:hover {
     text-decoration: none;
@@ -43,7 +45,7 @@ html{
 }
 
 .measure{
-    max-width: 60%;
+    max-width: 40%;
 }
 
 .main{

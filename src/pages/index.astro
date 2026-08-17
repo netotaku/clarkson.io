@@ -1,9 +1,48 @@
 ---
 import Wrapper 	from '../layouts/wrapper.astro';
+import { Image } from 'astro:assets';
+import me from '../assets/images/chrome/me-crossed-arms.png';
 ---
 <Wrapper
 	title="Nick Clarkson, Creative Technologist, Bristol UK"
 	description="Nick is a digital consultant with over 20 years of experience in web development, project management, and CRM systems. He helps organisations navigate digital complexity with clarity and confidence."
 	image='/src/assets/images/bio.jpg'>
-	<div class="u-blank"></div>
+
+	<section class="section home">
+
+		<Image
+			src={me}
+			alt="Clarky"	
+			width={500}
+			class="home__me"
+		/>
+
+		<div class="home__lockup">
+			<h1 class="home__lockup__heading">Nick<br>Clarkson</h1>
+
+			<div class="home__lockup__details measure">
+
+				<h2 class="home__lockup__subheading">
+					Creative Technologist<br>
+					Technical Director<br>
+					Web Developer<br>
+					Web Designer
+				</h2>
+
+				<p class="home__lockup__desc">Nick has over 20 years of experience in web development, web design
+					project and team management, and CRM systems. 
+					He helps organisations navigate digital complexity with clarity and confidence.</p>
+
+				<nav class="home__nav">
+					<a href="/about">Curriculum Vitae</a>
+					<a href="/cv">Governence</a>
+					<a href="/blog">Thoughts</a>
+				</nav>
+
+			</div>
+			
+		</div>
+
+	</section>
+
 </Wrapper>

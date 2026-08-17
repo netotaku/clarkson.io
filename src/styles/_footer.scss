@@ -1,9 +1,10 @@
 .footer{
-    // background: rgba(0,0,0,.2);
 
     display: flex;
     flex-direction: column;
     gap: var(--gutter);
+
+    background-color: rgba(0,0,0,.2);
 
     &__cookies {
         color: rgba(255,255,255,.6);
