@@ -7,8 +7,6 @@ import Contact from "../components/nav/contact.astro";
 import SignUp from "../components/fragments/SignUp.astro";
 import { getCollection } from 'astro:content';
 import '../styles/global.scss';
-
-
 import {
   BurgerIcon,
   WhatsappIcon,
@@ -60,11 +58,9 @@ for (const post of allPosts) {
 const categories = [...categoryMap.values()]
   .sort((a, b) => b.count - a.count);
 ---
-
 <!doctype html>
 <html lang="en-GB">
 	<head>
-		<!-- Global Metadata -->
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/images/favicon.png" />
@@ -114,10 +110,9 @@ const categories = [...categoryMap.values()]
 				{categories.map((category) => (
 					<a
 						href={`/blog/category/${category.slug}/`}
-						class="tag tag--stacked"
-					>					
-						<span class="tag__count">{category.count}</span>
-						<span class="tag__label">{category.label}</span>
+						class="tag tag--stacked">					
+							<span class="tag__count">{category.count}</span>
+							<span class="tag__label">{category.label}</span>
 					</a>
 				))}
 			</div>			
@@ -141,20 +136,16 @@ const categories = [...categoryMap.values()]
 					physicsOverrides={{
 
 						dissolveStart: .1,
-
 						erosion: 0.9,
 						cohesion: 0.66,
-
 						gravity: 2.25,
 						turbulence: 0.04,
 						drag: 0.22,
-
 						fragmentDistance: 4000,
-
 						tailOpacity: 1,
 						tailFadeCurve: 1,
-
 						seed: 911,
+
 					}}
 					
 				/>

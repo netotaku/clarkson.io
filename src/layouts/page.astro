@@ -7,7 +7,9 @@ const { title, image, subtitle, description } = Astro.props;
     image={image}
 	description={description}>
 
-	<slot />
+    <section class="section section--top typography">
+	    <slot />
+    <section>
 
 </Wrapper>
 

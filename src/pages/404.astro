@@ -1,6 +1,5 @@
 ---
 import Wrapper 	from '../layouts/wrapper.astro';
-import Wurd from '../components/Wurd.vue'
 ---
 <Wrapper
 	title="Nick Clarkson, Creative Technologist, Bristol UK"
@@ -8,16 +7,8 @@ import Wurd from '../components/Wurd.vue'
 	image='/src/assets/images/bio.jpg'>
 	
     <section class="section section--top">
-        <Wurd
-            client:visible
-            endpoint="/.netlify/functions/quote"
-            startingLives={4}
-            starterVowels={2}
-            starterConsonants={2}
-            instancesPerStarter={2}
-            autoNextDelay={500}
-        />
-    </section>
 
+
+    </section>
 
 </Wrapper>
