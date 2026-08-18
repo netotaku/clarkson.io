@@ -1,11 +1,8 @@
-.blog-list {
-
+.list {
     display: flex;
     flex-direction: column;
     gap: calc(var(--gutter) * 2);
-
     list-style: none;
-
 
     &__item {
         padding-bottom: calc(var(--gutter) * 2);
@@ -34,5 +31,4 @@
     &__pagination[hidden] {
         display: none;
     }
-
 }

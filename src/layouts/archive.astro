@@ -2,7 +2,7 @@
 import type { ImageMetadata } from 'astro';
 import type { CollectionEntry } from 'astro:content';
 import bikeImage from '../assets/images/chrome/me-on-a-bike.png';
-import BlogList from '../components/BlogList.astro';
+import List from '../components/List.astro';
 import Hero from '../components/Hero.astro';
 import Wrapper from './wrapper.astro';
 
@@ -32,6 +32,6 @@ const sortedPosts = [...posts].sort(
   image="/src/assets/images/dev.jpg">
   <section class="section">
     <Hero backgroundImage={bikeImage} breadcrumb={breadcrumb} title="Thoughts" />
-    <BlogList posts={sortedPosts} perPage={perPage} />
+    <List posts={sortedPosts} perPage={perPage} />
   </section>
 </Wrapper>

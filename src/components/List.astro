@@ -25,19 +25,19 @@ const dateLabels = posts.map((post) =>
 );
 ---
 
-<ul class:list={['blog-list', modifier]} data-blog-list data-page-size={perPage}>
+<ul class:list={['list', modifier]} data-list data-page-size={perPage}>
   {
     posts.map((post, index) => (
       <li
-        class="blog-list__item"
-        data-blog-list-item
+        class="list__item"
+        data-list-item
         data-date-label={dateLabels[index]}
       >
         <h2
           class:list={[
-            'blog-list__date-heading',
+            'list__date-heading',
             (index === 0 || dateLabels[index] !== dateLabels[index - 1]) &&
-              'blog-list__date-heading--visible',
+              'list__date-heading--visible',
           ]}
           data-date-heading
         >
@@ -49,8 +49,8 @@ const dateLabels = posts.map((post) =>
   }
 </ul>
 
-<nav class="blog-list__pagination" aria-label="Blog pagination" data-blog-pagination hidden>
-  <button class="btn btn--pagination btn--icon" type="button" aria-label="Previous page" data-blog-previous>
+<nav class="list__pagination" aria-label="Blog pagination" data-pagination hidden>
+  <button class="btn btn--pagination btn--icon" type="button" aria-label="Previous page" data-previous>
     <IconChevronLeft aria-hidden="true" />
   </button>
   {
@@ -58,7 +58,7 @@ const dateLabels = posts.map((post) =>
       <button
         class="btn btn--pagination btn--page"
         type="button"
-        data-blog-page-button
+        data-page-button
         data-page={page}
         aria-label={`Page ${page + 1}`}
       >
@@ -66,18 +66,18 @@ const dateLabels = posts.map((post) =>
       </button>
     ))
   }
-  <button class="btn btn--pagination btn--icon" type="button" aria-label="Next page" data-blog-next>
+  <button class="btn btn--pagination btn--icon" type="button" aria-label="Next page" data-next>
     <IconChevronRight aria-hidden="true" />
   </button>
 </nav>
 
 <script>
-  const initialiseBlogLists = () => {
-    document.querySelectorAll<HTMLElement>('[data-blog-list]').forEach((list) => {
+  const initialiseLists = () => {
+    document.querySelectorAll<HTMLElement>('[data-list]').forEach((list) => {
       if (list.dataset.paginationReady === 'true') return;
 
       const items = Array.from(
-        list.querySelectorAll<HTMLElement>('[data-blog-list-item]'),
+        list.querySelectorAll<HTMLElement>('[data-list-item]'),
       );
       const pageSize = Number(list.dataset.pageSize) || 6;
       const pageCount = Math.ceil(items.length / pageSize);
@@ -85,10 +85,10 @@ const dateLabels = posts.map((post) =>
 
       if (!(pagination instanceof HTMLElement) || pageCount <= 1) return;
 
-      const previous = pagination.querySelector<HTMLButtonElement>('[data-blog-previous]');
-      const next = pagination.querySelector<HTMLButtonElement>('[data-blog-next]');
+      const previous = pagination.querySelector<HTMLButtonElement>('[data-previous]');
+      const next = pagination.querySelector<HTMLButtonElement>('[data-next]');
       const pageButtons = Array.from(
-        pagination.querySelectorAll<HTMLButtonElement>('[data-blog-page-button]'),
+        pagination.querySelectorAll<HTMLButtonElement>('[data-page-button]'),
       );
 
       if (!previous || !next || pageButtons.length === 0) return;
@@ -108,7 +108,7 @@ const dateLabels = posts.map((post) =>
           const showDateHeading = isVisible && item.dataset.dateLabel !== previousVisibleDate;
 
           item.hidden = !isVisible;
-          dateHeading?.classList.toggle('blog-list__date-heading--visible', showDateHeading);
+          dateHeading?.classList.toggle('list__date-heading--visible', showDateHeading);
 
           if (isVisible) previousVisibleDate = item.dataset.dateLabel;
         });
@@ -148,6 +148,6 @@ const dateLabels = posts.map((post) =>
     });
   };
 
-  initialiseBlogLists();
-  document.addEventListener('astro:page-load', initialiseBlogLists);
+  initialiseLists();
+  document.addEventListener('astro:page-load', initialiseLists);
 </script>

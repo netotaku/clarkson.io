@@ -1,6 +1,6 @@
 ---
 title: "Toxic Nostalgia and the Tools We Choose"
-description: "Gatekeeping disguised as tradition is holding creative communities back."
+description: "Gatekeeping disguised as tradition is holding creative communities back"
 pubDate: "18 may 2025"
 heroImage: "/src/assets/images/dj.jpg"
 theme: '#a57d52'

@@ -1,5 +1,5 @@
 ---
-title: "Redcatch Construction: Case Study"
+title: "Redcatch Construction, Case Study"
 description: "How I helped a Bristol-based contractor cut through the noise, build trust, and launch a clear, confident brand presence."
 pubDate: "10 Jun 2025"
 heroImage: "/src/assets/images/rc-hero.jpg"

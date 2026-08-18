@@ -1,47 +1,14 @@
 ---
-import FormattedDate from './helpers/FormattedDate.astro';
 import type { CollectionEntry } from 'astro:content';
+import Header from './fragments/Header.astro';
 
 interface Props {
   post: CollectionEntry<'blog'>;
 }
 
 const { post } = Astro.props;
-const { id, data: postData } = post;
 ---
 
 <article class="card">
-  <div class="card__layout">
-
-      <div class="card__eyebrow">
-        <a
-          class="card__theme"
-          href={`/blog/${id}/`}
-          aria-label={`Read ${postData.title}`}
-          style={`--card-theme: ${postData.theme}`}
-        ></a>
-        <FormattedDate date={postData.pubDate} />
-      </div>
-
-      <h2 class="card__title">
-        <a href={`/blog/${id}/`}>{postData.title}</a>
-      </h2>
-
-      <p class="card__desc">
-        {postData.description}
-      </p>
-
-      <div class="card__tags" aria-label="Categories">
-        {postData.categories.map((category) => (
-            <a
-              class="tag"
-              href={`/blog/category/${encodeURIComponent(category.toLowerCase())}/`}
-            >
-              <span class="tag__count">#</span>
-              <span class="tag__label">{category}</span>
-            </a>
-        ))}
-      </div>      
-
-  </div>
+  <Header post={post} />
 </article>

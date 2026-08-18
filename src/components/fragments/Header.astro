@@ -1,0 +1,42 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from '../helpers/FormattedDate.astro';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { id, data } = post;
+const theme = /^#[0-9a-f]{6}$/i.test(data.theme) ? data.theme : '#ff6600';
+---
+<header class="header">
+  <div class="header__eyebrow">
+    <span
+      class="header__theme"
+      aria-label={`Read ${data.title}`}
+      style={`--header-theme: ${theme}`}
+    ></span>
+    <FormattedDate date={data.pubDate} />
+  </div>
+
+  <h2 class="header__title">
+    <a href={`/blog/${id}/`}>{data.title}</a>
+  </h2>
+
+  <p class="header__description">
+    {data.description}
+  </p>
+
+  <div class="header__tags" aria-label="Categories">
+    {data.categories.map((category) => (
+      <a
+        class="tag"
+        href={`/blog/category/${encodeURIComponent(category.toLowerCase())}/`}
+      >
+        <span class="tag__count">#</span>
+        <span class="tag__label">{category}</span>
+      </a>
+    ))}
+  </div>
+</header>

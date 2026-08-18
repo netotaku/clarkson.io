@@ -1,5 +1,5 @@
 ---
-title: Ethical Tracking. 
+title: Ethical Tracking
 description: Moving Beyond Cookies and Google Analytics.
 pubDate: 'Apr 01 2025'
 heroImage: '/src/assets/images/eye.jpg'
