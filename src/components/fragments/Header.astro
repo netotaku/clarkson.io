@@ -11,6 +11,7 @@ const { id, data } = post;
 const theme = /^#[0-9a-f]{6}$/i.test(data.theme) ? data.theme : '#ff6600';
 ---
 <header class="header">
+<div>
   <div class="header__eyebrow">
     <span
       class="header__theme"
@@ -23,6 +24,7 @@ const theme = /^#[0-9a-f]{6}$/i.test(data.theme) ? data.theme : '#ff6600';
   <h2 class="header__title">
     <a href={`/blog/${id}/`}>{data.title}</a>
   </h2>
+</div>
 
   <p class="header__description">
     {data.description}

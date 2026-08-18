@@ -2,7 +2,6 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
 import Wrapper from '../../layouts/wrapper.astro';
 import { render } from 'astro:content';
-import FormattedDate from '../../components/helpers/FormattedDate.astro'; 
 import Hero from '../../components/Hero.astro';
 import {
   WhatsappIcon,
@@ -11,6 +10,8 @@ import {
 } from '../../icons';
 
 import bikeImage from '../../assets/images/chrome/me-on-a-bike.png';
+
+import Header from '../../components/fragments/Header.astro';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
@@ -57,23 +58,7 @@ const breadcrumb = [
 		
 		<header class="blog__header">
 
-			<div class="blog__header__details">
-				<div class="blog__header__eyebrow">
-					<FormattedDate date={post.data.pubDate} />
-					
-				</div>
-			</div>
-
-			<p class="blog__header__desc">{post.data.description}</p>
-
-			<div class="blog__header__tags">
-				{post.data.categories?.map((category) => (
-					<a class="tag" href="#">
-						<span class="tag__count">#</span>
-						<span class="tag__label">{category}</span>
-					</a>
-				))}
-			</div>
+			<Header post={post} />
 
 			<div class="blog__header__hire-me">
 				<h2>Hire Me</h2>
