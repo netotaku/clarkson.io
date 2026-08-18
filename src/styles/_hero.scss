@@ -20,8 +20,7 @@
     &__breadcrumb {
         position: relative;
         z-index: 1;
-        //color: rgba(255, 255, 255, .3);
-        color: white;
+        color: rgba(255, 255, 255, .7);        
         font-size: var(--font-size-blog-description);
 
         a {

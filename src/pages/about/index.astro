@@ -1,122 +1,92 @@
 ---
 import Wrapper from '../../layouts/wrapper.astro';
+import Hero from '../../components/Hero.astro';
+
+import heroImage from '../../assets/images/chrome/me-seated.png'
+
+const breadcrumb = [
+  { label: 'Home', href: '/' },
+  { label: 'About Me' },
+];
+
 ---
 
 <Wrapper
 	title="Bio"
 	description="Nick Clarkson—creative technologist, digital strategist, and agency leader—combining technical expertise with a user-centred approach to build meaningful digital work."
-	image="/images/bio.jpg">
+	image="/src/assets/images/bio.jpg">
 
-	<section class="hero hero--mini" style="background-image: url(/images/bio.jpg)">
-		<div class="hero__text">
-			<div class="hero__home">
-				<h1 class="nc">About</h1>							
-				<div class="typography">
-					<h2>Blending experience, empathy and curiosity to build better digital experiences.</h2>										
-					
-				</div>
-			</div>
-		</div>			
+	<section class="section">
+		<Hero
+			backgroundImage={heroImage}
+			breadcrumb={breadcrumb}
+			title="About Me"
+		/>
 	</section>
-
 	
 
-	<section class="section section--solo">
-		<div class="section__inner tech typography">
-
-			<div class="section__text">
-				<p class="u-standout">With over 25 years in web development and more than 15 leading technical teams, I’ve delivered high-impact digital work across agency and in-house settings—from large-scale hospitality platforms to integrated CRM ecosystems. I care deeply about clean, maintainable code, purposeful design, and creating digital experiences that are ethical, inclusive, and resilient.</p>
-				<p>I’m a pragmatic innovator: equally at home simplifying a solution or applying cutting-edge tools where they bring real value. My work spans frontend and backend development, API architecture, CRM strategy, ethical tracking, and AI-augmented workflows. If there’s a faster, smarter, or more elegant way to deliver, I’ll find it.</p>
-				<p>Outside of work, I enjoy life with my blended family, keep fit by cycling, and stay creatively energised through <a href="https://nightofthevampire.com" target="_blank">electronic music production and DJing</a>, with releases on a number of indie labels.</p>
-			</div>	
-		</div>
-	</section>
-		
-	<section class="section section--solo section--grey">
-		<div class="section__inner tech typography">
-
-			<h2 class="section__title">Technical <br class="u-mobile-only" />Deep Dive</h2>
 	
-			<div class="section__cols">
-				<div class="section__col">
-					<h3>Frontend Development</h3>
-					<p>I design and build fast, accessible frontends that deliver smooth, inclusive, and high-performing user experiences across all devices.</p>
-					<ul>
-						<li>HTML5</li>
-						<li>CSS, SASS, BEM</li>
-						<li>Javascript, TypeScript, Vue</li>
-						<li>Sketch, Figma</li>
-					</ul>
-				</div>
-				<div class="section__col">
-					<h3>Backend Development</h3>
-					<p>I develop robust, scalable backends that are secure, reliable, and easy to maintain—designed for seamless integration and built with testing and long-term stability in mind.</p>
-					<ul>
-						<li>PHP, Node</li>
-						<li>Laravel</li>
-						<li>CraftCMS, Astro</li>						
-					</ul>
-				</div> 
-				<div class="section__col">
-					<h3>DevOps & PaaS</h3>
-					<p>I manage deployment pipelines and infrastructure with a focus on simplicity, automation, and resilience—streamlining environments and workflows to keep projects efficient and production-ready.</p>
-					<ul>
-						<li>Docker, DDev</li>
-						<li>Heroku, Netlify, AWS, Azure</li>	
-						<li>Git, Git Flow, SVN</li>										
-					</ul>
-				</div>                    
-			</div>
+	<section class="section typography measure">
+		<h2>Blending experience, empathy and curiosity to build better digital experiences.</h2>										
+
+		<p>With over 25 years in web development and more than 15 leading technical teams, I’ve delivered high-impact digital work across agency and in-house settings—from large-scale hospitality platforms to integrated CRM ecosystems. I care deeply about clean, maintainable code, purposeful design, and creating digital experiences that are ethical, inclusive, and resilient.</p>
+		<p>I’m a pragmatic innovator: equally at home simplifying a solution or applying cutting-edge tools where they bring real value. My work spans frontend and backend development, API architecture, CRM strategy, ethical tracking, and AI-augmented workflows. If there’s a faster, smarter, or more elegant way to deliver, I’ll find it.</p>
+		<p>Outside of work, I enjoy life with my blended family, keep fit by cycling, and stay creatively energised through <a href="https://nightofthevampire.com" target="_blank">electronic music production and DJing</a>, with releases on a number of indie labels.</p>
+
+		<h3>Technical Deep Dive</h3>
+
+		<h3>Frontend Development</h3>
+		<p>I design and build fast, accessible frontends that deliver smooth, inclusive, and high-performing user experiences across all devices.</p>
+		<ul>
+			<li>HTML5</li>
+			<li>CSS, SASS, BEM</li>
+			<li>Javascript, TypeScript, Vue</li>
+			<li>Sketch, Figma</li>
+		</ul>
+
+		<h3>Backend Development</h3>
+		<p>I develop robust, scalable backends that are secure, reliable, and easy to maintain—designed for seamless integration and built with testing and long-term stability in mind.</p>
+		<ul>
+			<li>PHP, Node</li>
+			<li>Laravel</li>
+			<li>CraftCMS, Astro</li>						
+		</ul>
+
+		<h3>DevOps & PaaS</h3>
+		<p>I manage deployment pipelines and infrastructure with a focus on simplicity, automation, and resilience—streamlining environments and workflows to keep projects efficient and production-ready.</p>
+		<ul>
+			<li>Docker, DDev</li>
+			<li>Heroku, Netlify, AWS, Azure</li>	
+			<li>Git, Git Flow, SVN</li>										
+		</ul>
+
+		<h2>Executive Skills</h2>
 	
-		</div>
-	</section>
+		<h3>Team Management</h3>
+		<p>I lead teams with a focus on clarity, collaboration, and growth—supporting developers through mentorship, structured workflows, and a shared commitment to quality.</p>		
 
+		<h3>Project Management</h3>
+		<p>I approach project management with a focus on clarity, momentum, and delivery—balancing scope, time, and budget while keeping teams aligned and clients confident throughout the process.</p>
 
+		<h3>Technical Direction</h3>
+		<p>I provide technical direction that balances innovation with pragmatism—aligning architecture, tooling, and delivery with project goals and long-term maintainability.</p>
 
-	<section class="section section--solo">
-		<div class="section__inner typography">
+		<h3>Digital Strategy</h3>
+		<p>I shape digital strategies that connect user needs with business objectives—focusing on clarity, impact, and scalable, measurable outcomes.</p>
+
+		<h3>Agency Leadership</h3>
+		<p>I provide agency leadership at a board level by setting strategic direction, aligning creative and commercial goals, and ensuring the agency delivers work that is effective, sustainable, and true to its values.</p>		
+
+		<h3>Business Development</h3>
+		<p>I lead business development through strategic pitching and RFP responses—translating client needs into compelling proposals that align creative insight with commercial opportunity.</p>
+
+		<h2>Testimonial</h2>
+		<blockquote>
+		<p>“Nick is the most knowledgeable and straight-talking Technical expert I've 
+			ever met, and he's an absolute joy to work alongside. He's insightful, 
+			strategic and creative, and makes even the driest of projects fun to work 
+			on. I hope we get to work together again one day.”</p></blockquote>
+		<p><strong>Lucy Stone</strong> - Head of Communications, Bath Spa University</p> 
 	
-			<h2 class="section__title">Executive Skills</h2>
-	
-			<div class="section__cols">
-				<div class="section__col">
-					<h3>Team Management</h3>
-					<p>I lead teams with a focus on clarity, collaboration, and growth—supporting developers through mentorship, structured workflows, and a shared commitment to quality.</p>		
-				</div>
-				<div class="section__col">
-					<h3>Project Management</h3>
-					<p>I approach project management with a focus on clarity, momentum, and delivery—balancing scope, time, and budget while keeping teams aligned and clients confident throughout the process.</p>
-				</div>   				
-				<div class="section__col">
-					<h3>Technical Direction</h3>
-					<p>I provide technical direction that balances innovation with pragmatism—aligning architecture, tooling, and delivery with project goals and long-term maintainability.</p>
-				</div> 
-				<div class="section__col">
-					<h3>Digital Strategy</h3>
-					<p>I shape digital strategies that connect user needs with business objectives—focusing on clarity, impact, and scalable, measurable outcomes.</p>
-				</div>                    
-				<div class="section__col">
-					<h3>Agency Leadership</h3>
-					<p>I provide agency leadership at a board level by setting strategic direction, aligning creative and commercial goals, and ensuring the agency delivers work that is effective, sustainable, and true to its values.</p>		
-				</div>
-				<div class="section__col">
-					<h3>Business Development</h3>
-					<p>I lead business development through strategic pitching and RFP responses—translating client needs into compelling proposals that align creative insight with commercial opportunity.</p>
-				</div>                  
-			</div>			
-
-		</div>
-	</section>
-
-	<section class="section section--solo section--grey">
-		<div class="section__inner typography">
-			<h2 class="section__title">Testimonial</h2>
-			<blockquote class="u-standout">
-				<p>“Nick is the most knowledgeable and straight-talking Technical expert I've 
-					ever met, and he's an absolute joy to work alongside. He's insightful, 
-					strategic and creative, and makes even the driest of projects fun to work 
-					on. I hope we get to work together again one day.”</p></blockquote>
-				<p><strong>Lucy Stone</strong> - Head of Communications, Bath Spa University</p> 
-		</div>
-	</section>
+	</section>			
 </Wrapper>

@@ -1,0 +1,29 @@
+---
+import Wrapper from '../../layouts/wrapper.astro';
+import Hero from '../../components/Hero.astro';
+
+import heroImage from '../../assets/images/chrome/me-seated.png'
+
+const breadcrumb = [
+  { label: 'Home', href: '/' },
+  { label: 'Governance' },
+];
+
+---
+<Wrapper
+	title="AI"
+	description="Nick Clarkson—creative technologist, digital strategist, and agency leader—combining technical expertise with a user-centred approach to build meaningful digital work."
+	image="/src/assets/images/times-sq.jpg">
+
+	<section class="section">
+		<Hero
+			backgroundImage={heroImage}
+			breadcrumb={breadcrumb}
+			title="Governance"
+		/>
+	</section>
+
+	<section class="section typography measure">
+		
+	</section>			
+</Wrapper>
