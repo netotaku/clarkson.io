@@ -1,14 +1,16 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
-import { Image } from 'astro:assets';
 import Wrapper from '../../layouts/wrapper.astro';
 import { render } from 'astro:content';
 import FormattedDate from '../../components/helpers/FormattedDate.astro'; 
+import Hero from '../../components/Hero.astro';
 import {
   WhatsappIcon,
   PhoneIcon,
   EmailIcon,
 } from '../../icons';
+
+import bikeImage from '../../assets/images/chrome/me-on-a-bike.png';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
@@ -31,32 +33,35 @@ const relatedPosts = allPosts
   .filter((p) => p.id !== post.id) // exclude current post
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()) // newest first
   .slice(0, 2); // limit to 2
+
+const breadcrumb = [
+  { label: 'Home', href: '/' },
+  { label: 'Blog', href: '/blog/' },
+  { label: post.data.title },
+];
 ---
 <Wrapper
 	title={post.data.title}
+	description={post.data.description}
 	image={post.data.heroImage} >
 
-	<div class="section section--top blog">
+	<section class="section">
+		<Hero
+			backgroundImage={bikeImage}
+			breadcrumb={breadcrumb}
+			title="Thoughts"
+		/>
+	</section>
+
+	<div class="section blog">
 		
 		<header class="blog__header">
 
 			<div class="blog__header__details">
 				<div class="blog__header__eyebrow">
-
-					 <Image
-						src={post.data.heroImage}
-						alt={post.data.title}
-						fit="cover" 
-						position="center"     
-						width={30}  
-						height={30}     
-					/>
-
 					<FormattedDate date={post.data.pubDate} />
 					
 				</div>
-				<h1 class="blog__header__title">{post.data.title}</h1>
-				
 			</div>
 
 			<p class="blog__header__desc">{post.data.description}</p>

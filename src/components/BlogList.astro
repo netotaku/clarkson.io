@@ -1,16 +1,20 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { IconChevronLeft, IconChevronRight } from '@tabler/icons-astro';
+import IconChevronLeft from '@tabler/icons-astro/dist/esm/icons/chevron-left.mjs';
+import IconChevronRight from '@tabler/icons-astro/dist/esm/icons/chevron-right.mjs';
 import Card from './Card.astro';
 
 interface Props {
   posts: CollectionEntry<'blog'>[];
-  title?: string;
   modifier?: string;
   perPage?: number;
 }
 
-const { posts, title, modifier, perPage = 6 } = Astro.props;
+const {
+  posts,
+  modifier,
+  perPage = 6,
+} = Astro.props;
 const pageCount = Math.ceil(posts.length / perPage);
 const dateFormatter = new Intl.DateTimeFormat('en-GB', {
   month: 'long',
@@ -20,10 +24,6 @@ const dateLabels = posts.map((post) =>
   dateFormatter.format(post.data.pubDate).replace(' ', ' / '),
 );
 ---
-
-{
-  title && <h1 class="blog-list__title">{title}</h1>
-}
 
 <ul class:list={['blog-list', modifier]} data-blog-list data-page-size={perPage}>
   {

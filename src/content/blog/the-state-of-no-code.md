@@ -3,6 +3,7 @@ title: "No Code, Real Results"
 description: "Rethinking the Value of No Code Platforms"
 pubDate: "18 Jun 2025"
 heroImage: "/src/assets/images/no-code.jpg"
+theme: '#f3ca94'
 categories:   
   - "No Code" 
   - "Squarespace"

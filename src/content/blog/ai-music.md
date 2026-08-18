@@ -3,6 +3,7 @@ title: AI Will Never Make Your Favourite Song
 description: But it doesn't need to
 pubDate: 'Aug 16 2026'
 heroImage: '/src/assets/images/blog/ai-music.png'
+theme: '#e73758'
 categories: 
     - "ai"
     - "comment"

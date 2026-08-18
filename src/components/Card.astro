@@ -1,6 +1,5 @@
 ---
 import FormattedDate from './helpers/FormattedDate.astro';
-import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -15,17 +14,12 @@ const { id, data: postData } = post;
   <div class="card__layout">
 
       <div class="card__eyebrow">
-        <a class="card__image-link" href={`/blog/${id}/`} aria-label={`Read ${postData.title}`}>
-          <Image
-            src={postData.heroImage}
-            alt=""
-            fit="cover"
-            position="center"
-            width={40}
-            height={40}
-            class="card__image"
-          />
-        </a>
+        <a
+          class="card__theme"
+          href={`/blog/${id}/`}
+          aria-label={`Read ${postData.title}`}
+          style={`--card-theme: ${postData.theme}`}
+        ></a>
         <FormattedDate date={postData.pubDate} />
       </div>
 

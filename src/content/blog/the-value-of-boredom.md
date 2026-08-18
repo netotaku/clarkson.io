@@ -3,6 +3,7 @@ title: "The value of boredom"
 description: "Why the rise of mindfulness might be a symptom, not the solution"
 pubDate: "14 Aug 2026"
 heroImage: "/src/assets/images/blog/the-value-of-boredom.png"
+theme: '#e7cc77'
 categories:   
   - "Comment" 
   - "Wellbeing"

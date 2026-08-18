@@ -29,8 +29,12 @@ const posts = allPosts.filter((post) =>
 ---
 <Archive
   title={`#${routeCategory}`}
-  heading={`#${routeCategory}`}
   description={`Posts in the category: ${routeCategory}`}
   image="/images/bio.jpg"
+  breadcrumb={[
+    { label: 'Home', href: '/' },
+    { label: 'Blog', href: '/blog/' },
+    { label: `#${routeCategory}` },
+  ]}
   posts={posts}
 />

@@ -32,16 +32,13 @@
         gap: 4px;
     }
 
-    &__image{
+    &__theme {
         display: block;
         width: 40px;
         height: 40px;
-        border-radius: 4px;
-    }
-
-    &__image-link {
-        display: block;
+        border-radius: 10px;
         flex: 0 0 auto;
+        background: var(--card-theme);
     }
 
     &__eyebrow{

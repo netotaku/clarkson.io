@@ -3,6 +3,7 @@ title: Reclaiming the Middle Ground
 description: Extreme Polarisation is Damaging Our Politics, What Can We Do About It?
 pubDate: 'May 14 2025'
 heroImage: '/src/assets/images/dump.jpg'
+theme: '#f3cb67'
 categories: 
   - "comment"
   - "politics"

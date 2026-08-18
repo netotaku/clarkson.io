@@ -1,0 +1,39 @@
+.hero {
+    display: flex;
+    align-items: center;
+    min-height: min(41.8vw, calc(var(--hero-image-height) * .76));
+    background-image: var(--hero-image);
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: auto 100%;
+
+    &__title {
+
+        h1 {
+            font-family: "Oswald", sans-serif;
+            font-size: var(--font-size-blog-list-heading);
+            line-height: .9;
+            text-transform: uppercase;
+        }
+    }
+
+    &__breadcrumb {
+        position: relative;
+        z-index: 1;
+        //color: rgba(255, 255, 255, .3);
+        color: white;
+        font-size: var(--font-size-blog-description);
+
+        a {
+            color: inherit;
+        }
+    }
+
+    @media (max-width: 640px) {
+        min-height: min(60.8vw, calc(var(--hero-image-height) * .76));
+        align-items: flex-start;
+        padding-top: var(--gutter);
+        background-position: right bottom;
+        background-size: auto 100%;
+    }
+}
