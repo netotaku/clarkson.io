@@ -24,6 +24,9 @@ interface Props {
   starterConsonants?: number;
   instancesPerStarter?: number;
   autoNextDelay?: number;
+  useMockQuote?: boolean;
+  mockQuote?: string;
+  mockAuthor?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -33,6 +36,9 @@ const props = withDefaults(defineProps<Props>(), {
   starterConsonants: 2,
   instancesPerStarter: 2,
   autoNextDelay: 500,
+  useMockQuote: import.meta.env.DEV,
+  mockQuote: 'The details are not the details. They make the design.',
+  mockAuthor: 'Charles Eames',
 });
 
 const loading = ref(true);
@@ -274,25 +280,33 @@ async function fetchQuote() {
   inputRefs.value = [];
 
   try {
-    const response =
-      await fetch(
-        props.endpoint
-      );
+    let data: QuoteResponse | undefined;
 
-    if (!response.ok) {
-      throw new Error(
-        `Quote request failed (${response.status})`
-      );
+    if (props.useMockQuote) {
+      data = {
+        q: props.mockQuote,
+        a: props.mockAuthor,
+      };
+    } else {
+      const response =
+        await fetch(
+          props.endpoint
+        );
+
+      if (!response.ok) {
+        throw new Error(
+          `Quote request failed (${response.status})`
+        );
+      }
+
+      const payload =
+        await response.json();
+
+      data =
+        Array.isArray(payload)
+          ? payload[0]
+          : payload;
     }
-
-    const payload =
-      await response.json();
-
-    const data:
-      QuoteResponse | undefined =
-      Array.isArray(payload)
-        ? payload[0]
-        : payload;
 
     if (!data?.q) {
       throw new Error(
@@ -486,7 +500,7 @@ onMounted(fetchQuote);
       <button
         type="button"
         class="
-          button
+          btn
           codeword__action
         "
         @click="fetchQuote"
@@ -628,7 +642,15 @@ onMounted(fetchQuote);
               codeword__lives
             "
           >
-            ♡ {{ lives }}
+            <span
+              class="codeword__lives-icon"
+              aria-hidden="true"
+            >
+              <slot name="lives-icon">
+                ♡
+              </slot>
+            </span>
+            {{ lives }}
           </span>
 
           <span
@@ -645,7 +667,7 @@ onMounted(fetchQuote);
           type="button"
 
           class="
-            button
+            btn
             codeword__action
           "
 
@@ -681,7 +703,7 @@ onMounted(fetchQuote);
         type="button"
 
         class="
-          button
+          btn
           codeword__action
         "
 
@@ -692,185 +714,3 @@ onMounted(fetchQuote);
     </div>
   </section>
 </template>
-
-<style scoped lang="scss">
-/*
- * STRUCTURE / GAMEPLAY ONLY
- *
- * Your global site styles own:
- *
- * - typography
- * - font sizes
- * - colours
- * - buttons
- * - flashes
- * - borders
- * - decorative states
- */
-
-.codeword {
-  width: 100%;
-
-  &__quote {
-    margin: 0;
-  }
-
-  /*
-   * This is the important responsive bit.
-   *
-   * Complete words wrap.
-   * Letters within words do not.
-   */
-  &__words {
-    display: flex;
-    flex-wrap: wrap;
-
-    column-gap: 0.55em;
-    row-gap: 0.45em;
-
-    align-items:
-      flex-start;
-  }
-
-  &__word {
-    display: inline-flex;
-
-    flex: 0 0 auto;
-
-    white-space: nowrap;
-  }
-
-  &__letter,
-  &__punctuation {
-    display:
-      inline-flex;
-
-    flex-direction:
-      column;
-
-    align-items:
-      center;
-
-    flex: 0 0 auto;
-  }
-
-  /*
-   * These dimensions are relative to whatever
-   * font-size your site gives the puzzle.
-   */
-  &__input,
-  &__punctuation {
-    box-sizing:
-      border-box;
-
-    width: 0.78em;
-    height: 1.15em;
-
-    padding: 0;
-    margin: 0;
-
-    border: 0;
-
-    appearance: none;
-
-    background:
-      transparent;
-
-    color: inherit;
-
-    font: inherit;
-    line-height:
-      inherit;
-
-    text-align:
-      center;
-
-    text-transform:
-      uppercase;
-  }
-
-  /*
-   * Kept because an empty character needs
-   * some visible interactive affordance.
-   *
-   * Feel free to override this globally.
-   */
-  &__input {
-    border-bottom:
-      0.04em
-      solid
-      currentColor;
-
-    &:focus {
-      outline:
-        2px
-        solid
-        currentColor;
-
-      outline-offset:
-        2px;
-    }
-
-    &:disabled {
-      opacity: 1;
-
-      color: inherit;
-
-      -webkit-text-fill-color:
-        currentColor;
-
-      cursor: default;
-    }
-  }
-
-  &__code {
-    display: block;
-
-    margin-top:
-      0.2em;
-
-    font-size:
-      var(--font-size-wurd-code);
-
-    line-height: 1;
-
-    text-align:
-      center;
-  }
-
-  &__author {
-    display: block;
-
-    margin-top: 1em;
-
-    font-style:
-      normal;
-  }
-
-  /*
-   * No key/divider line here anymore.
-   */
-  &__footer {
-    display: flex;
-    flex-wrap: wrap;
-
-    align-items:
-      center;
-
-    justify-content:
-      space-between;
-
-    gap: 1rem;
-
-    margin-top:
-      1.5rem;
-  }
-
-  &__score {
-    display: flex;
-    flex-wrap: wrap;
-
-    gap: 0.75em;
-  }
-}
-</style>

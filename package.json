@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "predev": "astro sync --force",
-    "dev": "astro dev",
+    "dev": "astro dev --force",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
