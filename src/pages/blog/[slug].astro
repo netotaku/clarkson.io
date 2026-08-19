@@ -36,8 +36,7 @@ const relatedPosts = allPosts
   .slice(0, 2); // limit to 2
 
 const breadcrumb = [
-  { label: 'Home', href: '/' },
-  { label: 'Blog', href: '/blog/' },
+  { label: 'Blog', href: '/blog/', previous: true },
   { label: post.data.title },
 ];
 ---

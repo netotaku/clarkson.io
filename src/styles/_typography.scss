@@ -1,7 +1,9 @@
 .typography{
 
-    text-wrap: pretty;
-    font-size: var(--font-size-body);
+    
+    // font-size: var(--font-size-body);
+
+    font-size: 1.4em;
 
     p:not(:last-child),
     ul:not(:last-child),

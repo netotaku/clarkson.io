@@ -130,7 +130,7 @@ const dateLabels = posts.map((post) =>
           const listTop = list.getBoundingClientRect().top + window.scrollY;
 
           window.scrollTo({
-            top: Math.max(0, listTop - gutter),
+            top: Math.max(0, listTop - gutter * 4),
             behavior: 'smooth',
           });
         }

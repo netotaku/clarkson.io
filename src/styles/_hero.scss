@@ -18,13 +18,42 @@
     }
 
     &__breadcrumb {
-        position: relative;
+        display: flex;
+        gap: var(--gutter);
+        position: relative;        
         z-index: 1;
-        color: rgba(255, 255, 255, .7);        
-        font-size: var(--font-size-blog-description);
+        color: white;
+        font-weight: bold;   
+        
+        font-size: 18px; 
 
         a {
             color: inherit;
+            text-decoration: none;
+            text-transform: uppercase;
+              
+            color: white;
+            &:hover{
+                color: #f60;
+            }
+        }
+    }
+
+    &__breadcrumb-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    &__breadcrumb-icon {
+        width: 1em;
+        height: 1em;
+        color: white;
+        stroke: currentColor;
+        flex: 0 0 auto;
+
+        &--next {
+            transform: rotate(180deg);
         }
     }
 

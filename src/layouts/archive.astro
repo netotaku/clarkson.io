@@ -9,6 +9,8 @@ import Wrapper from './wrapper.astro';
 interface BreadcrumbItem {
   label: string;
   href?: string;
+  previous?: boolean;
+  next?: boolean;
 }
 
 interface Props {

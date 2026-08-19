@@ -1,9 +1,12 @@
 ---
 import type { ImageMetadata } from 'astro';
+import { ArrowIcon } from '../icons';
 
 interface BreadcrumbItem {
   label: string;
   href?: string;
+  previous?: boolean;
+  next?: boolean;
 }
 
 interface Props {
@@ -32,6 +35,8 @@ const breadcrumbItems = Array.isArray(breadcrumb)
           typeof item.href === 'string' && isSafeHref(item.href)
             ? item.href
             : undefined,
+        previous: item.previous === true,
+        next: item.next === true,
       }))
   : [];
 const hasBreadcrumb =
@@ -49,11 +54,16 @@ const hasBreadcrumb =
           {hasBreadcrumbSlot ? (
             <slot name="breadcrumb" />
           ) : breadcrumbItems.length > 0 ? (
-            breadcrumbItems.map((item, index) => (
-              <Fragment>
+            breadcrumbItems.map((item) => (
+              <span class="hero__breadcrumb-item">
+                {item.previous && (
+                  <ArrowIcon class="hero__breadcrumb-icon" />
+                )}
                 {item.href ? <a href={item.href}>{item.label}</a> : <span>{item.label}</span>}
-                {index < breadcrumbItems.length - 1 && <span aria-hidden="true"> / </span>}
-              </Fragment>
+                {item.next && (
+                  <ArrowIcon class="hero__breadcrumb-icon hero__breadcrumb-icon--next" />
+                )}
+              </span>
             ))
           ) : (
             breadcrumbText

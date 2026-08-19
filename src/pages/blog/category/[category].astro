@@ -32,8 +32,7 @@ const posts = allPosts.filter((post) =>
   description={`Posts in the category: ${routeCategory}`}
   image="/images/bio.jpg"
   breadcrumb={[
-    { label: 'Home', href: '/' },
-    { label: 'Blog', href: '/blog/' },
+    { label: 'Blog', href: '/blog/', previous: true },
     { label: `#${routeCategory}` },
   ]}
   posts={posts}

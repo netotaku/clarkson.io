@@ -10,8 +10,8 @@ const posts = await getCollection('blog');
 	description="Insights on ethical tech, web development, AI, and digital strategy—from a creative technologist with over 25 years of hands-on industry experience."
 	image="/src/assets/images/bio.jpg"
 	breadcrumb={[
-		{ label: 'Home', href: '/' },
-		{ label: 'Blog' },
+		{ label: 'Home', href: '/', previous: true },
+		{ label: 'Weblog' }
 	]}
 	posts={posts}
 />

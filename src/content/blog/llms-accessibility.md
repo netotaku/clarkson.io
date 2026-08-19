@@ -1,5 +1,5 @@
 ---
-title: "LLMs and Accessibility: A Quiet Revolution"
+title: "LLMs and Accessibility, A Quiet Revolution"
 description: "How large language models are transforming communication and usability for people with dyslexia and neurodivergent users."
 pubDate: "22 May 2025"
 heroImage: "/src/assets/images/helping-hand.jpg"

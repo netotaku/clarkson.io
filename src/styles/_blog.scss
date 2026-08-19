@@ -7,7 +7,7 @@
     &__header{
 
         position: sticky;
-        top: 5vw;
+        top: max(5vw, calc(var(--gutter) * 4));
         align-self: flex-start;
         min-width: 30%;
         max-width: 30%;
