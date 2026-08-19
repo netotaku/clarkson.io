@@ -2,9 +2,15 @@
 import { SITE_TITLE } from  '../consts';
 import type { ImageMetadata } from 'astro';
 import PixelHero from "../components/PixelHero.astro";
-import Menu from "../components/nav/menu.astro";
+
+
+import Primary from "../components/nav/primary.astro";
+import Secondary from "../components/nav/secondary.astro";
 import Social from "../components/nav/social.astro";
 import Contact from "../components/nav/contact.astro";
+
+
+
 import SignUp from "../components/fragments/SignUp.astro";
 import { getCollection } from 'astro:content';
 import '../styles/global.scss';
@@ -99,7 +105,10 @@ const categories = [...categoryMap.values()]
 		
 		<nav class="layer layer--0 nav">
 			<div class="nav__section">
-				<Menu />
+				<Primary />
+			</div>
+			<div class="nav__section">
+				<Secondary />
 			</div>
 			<div class="nav__section">
 				<Contact />	
@@ -161,7 +170,10 @@ const categories = [...categoryMap.values()]
 				<footer class="section footer">
 					<div class="footer__links">
 						<div class="footer__links__group">
-							<Menu />
+							<Primary />
+						</div>
+						<div class="footer__links__group">
+							<Secondary />
 						</div>
 						<div class="footer__links__group">
 							<Social />
