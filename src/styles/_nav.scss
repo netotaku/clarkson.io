@@ -12,6 +12,15 @@
 
     &__links{
         font-size: var(--font-size-nav-link);
+
+        .primary {
+            margin-bottom: var(--gutter);
+        }
+
+        .secondary {
+            font-size: 0.875em;
+        }
+
         a{
             display: block;
             color: white;
