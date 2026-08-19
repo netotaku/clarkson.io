@@ -1,0 +1,16 @@
+.menu{
+    position: fixed;  
+    overflow: hidden; 
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding: var(--gutter);
+
+    &__group{
+        display: flex;
+        gap: 8px;
+    }
+}

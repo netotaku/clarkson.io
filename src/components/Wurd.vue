@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref } from 'vue';
+import type { ComponentPublicInstance } from 'vue';
 
 type QuoteResponse = {
   q: string;
@@ -333,7 +334,7 @@ async function fetchQuote() {
 }
 
 function setInputRef(
-  el: Element | null
+  el: Element | ComponentPublicInstance | null
 ) {
   if (
     !(el instanceof HTMLInputElement)

@@ -53,17 +53,6 @@ html{
     background: var(--pixel-hero-background);
 }
 
-.menu{
-    position: fixed;  
-    overflow: hidden; 
-    top: var(--gutter);
-    right: var(--gutter);
-    z-index: 1;
-    display: flex;
-    gap: 8px;
-}
-
-
 .u-{
     &blank{
         min-height: 100vh;

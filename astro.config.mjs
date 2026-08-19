@@ -5,6 +5,9 @@ import vue from '@astrojs/vue';
 
 export default defineConfig({
 	site: 'https://clar.ky',
+	devToolbar: {
+		enabled: false,
+	},
 	integrations: [mdx(), sitemap(), vue()],
 	vite: {
 		optimizeDeps: {

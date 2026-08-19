@@ -13,14 +13,6 @@
     &__links{
         font-size: var(--font-size-nav-link);
 
-        .primary {
-            margin-bottom: var(--gutter);
-        }
-
-        .secondary {
-            font-size: 0.875em;
-        }
-
         a{
             display: block;
             color: white;
@@ -36,6 +28,42 @@
             &:hover{
                 text-decoration: underline;
             }
+        }        
+
+        &--primary{
+            a{
+                position: relative;
+                display: inline-block;
+                font-family: Oswald;
+                text-transform: uppercase;
+                font-weight: bold;
+                font-size: 44px;
+                line-height: .9;
+
+                sup{
+                    display: none;
+                    color: #f60;
+                    vertical-align: top; 
+                    position: absolute;
+                    top: -8%;
+                    right: -8%; 
+                    z-index: -1;
+                }
+
+                &.active{
+                    border: 0;
+                    padding: 0;
+                    color: rgba(255,255,255,.6);
+                    sup{
+                        display: inline;
+                    }
+                }
+                &:hover{
+                    text-decoration: none;
+                    color: orange;
+                }                
+            }
+
         }
     }
 }

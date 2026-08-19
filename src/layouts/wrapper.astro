@@ -17,6 +17,7 @@ import '../styles/global.scss';
 import {
   BurgerIcon,
   WhatsappIcon,
+  HomeIcon
 } from '../icons';
 
 const today = new Date();
@@ -168,17 +169,21 @@ const categories = [...categoryMap.values()]
 				<slot />
 				
 				<footer class="section footer">
-					<div class="footer__links">
-						<div class="footer__links__group">
+
+					<div class="footer__links footer__links--primary">										
+						<div class="footer__links__list">
 							<Primary />
 						</div>
-						<div class="footer__links__group">
+					</div>
+
+					<div class="footer__links">	
+						<div class="footer__links__list">
 							<Secondary />
 						</div>
-						<div class="footer__links__group">
+						<div class="footer__links__list">
 							<Social />
 						</div>
-						<div class="footer__links__group">
+						<div class="footer__links__list">
 							<Contact />
 						</div>
 					</div>
@@ -190,12 +195,21 @@ const categories = [...categoryMap.values()]
 				</footer>
 
 				<menu class="menu">
-					<a class="btn btn--icon btn--whatsapp" href="#">
-						<WhatsappIcon />	
-					</a>
-					<a id="js-open-closed" class="btn btn--icon btn--burger">
-						<BurgerIcon />	
-					</a>
+					<div class="menu__group">
+
+						<a class="btn" href="/">
+							<HomeIcon />
+						</a>
+
+					</div>
+					<div class="menu__group">
+						<a class="btn btn--icon btn--whatsapp" href="#">
+							<WhatsappIcon />	
+						</a>
+						<a id="js-open-closed" class="btn btn--icon btn--burger">
+							<BurgerIcon />	
+						</a>
+					</div>
 				</menu>	
 
 			</main>
