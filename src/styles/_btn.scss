@@ -3,6 +3,8 @@
     cursor: pointer;
     appearance: none;
 
+    overflow: hidden;
+
     border: 0px;
     height: 46px;
 
@@ -17,32 +19,41 @@
 
     color: white;
 
-    padding: 0px 30px;
+    // background: rgba(255,255,255,.3);
+    background-color: #333;
+
+    padding: 0px 20px;
 
     line-height: 1;
+
+    &__circle{
+        align-self: stretch;
+        background: rgba($color: white, $alpha: 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 12px;
+        padding: 0px 13px 0px 16px;
+        &::before {
+            content: "";
+            width: 12px;
+            height: 12px;
+            background-color: rgba($color: white, $alpha: 0.9);
+            border-radius: 50%;
+        }
+    }
 
     &--icon{
         width: 46px;        
         padding: 0px;
-    }
-
-    &--burger{
-        background-color: #f60; 
         &:hover{
-            background-color: #f90;
-        }  
+            background-color: #f60;
+        }
     }
 
-    &--whatsapp{
-        background: var(--pixel-hero-link);
-    }
-
-    &--email{
-        background: var(--pixel-hero-primary);
-    }
-
-    &--phone{
-        background: var(--pixel-hero-secondary);
+    &--green{
+        padding-left: 0px;
+        background-color: #316000;
     }
 
     &--pagination {
