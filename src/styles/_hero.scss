@@ -74,17 +74,20 @@
     visibility: hidden;
 }
 
-.hero-initial-load .main {
+.hero-initial-load .main,
+.hero-initial-load .nav {
     opacity: 0;
 }
 
-.hero-initial-load.hero-initial-reveal .main {
+.hero-initial-load.hero-initial-reveal .main,
+.hero-initial-load.hero-initial-reveal .nav {
     opacity: 1;
     transition: opacity 360ms ease-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .hero-initial-load.hero-initial-reveal .main {
+    .hero-initial-load.hero-initial-reveal .main,
+    .hero-initial-load.hero-initial-reveal .nav {
         transition: none;
     }
 }

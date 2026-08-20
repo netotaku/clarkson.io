@@ -1,4 +1,16 @@
 
+html {
+    transition: margin-left 180ms ease-out;
+}
+
+.main {
+    transition: margin-right 180ms ease-out;
+}
+
+.menu {
+    transition: right 180ms ease-out;
+}
+
 .js-{
     &open{
         margin-left: -300px;
@@ -6,10 +18,22 @@
                 margin-right: -300px; 
         }
         .layer--0{
-                display: block;
+                visibility: visible;
+                pointer-events: auto;
+                transform: translateX(0);
+                transition-delay: 0s;
         }
         .menu{
                 right: 322px;
         }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html,
+    .main,
+    .menu,
+    .layer--0 {
+        transition: none;
     }
 }
