@@ -49,13 +49,13 @@
         margin-bottom: var(--gutter);
         th{            
             text-align: left;
-            border-bottom: solid 1px #666;
+            border-bottom: solid 1px var(--color-grey);
         }
         th,td{
             padding: 10px;        
             white-space: nowrap!important;
         }
-        border-bottom: solid 1px #666;
+        border-bottom: solid 1px var(--color-grey);
     }
 
 }
@@ -106,17 +106,17 @@
 //         margin-left: 32px;
 //         li{
 //             &::marker{
-//                 color: white;
+//                 color: var(--color-white);
 //             }
 //         }
 //     }
 
 //     p, li{
-//         color: #ccc;
+//         color: var(--color-lighter-grey);
 //     }
 
 //     a{
-//         color: white;
+//         color: var(--color-white);
 //     }
 
 //     table{
@@ -124,18 +124,18 @@
 //         border-collapse: collapse;
 //         th{            
 //             text-align: left;
-//             border-bottom: solid 1px #666;
+//             border-bottom: solid 1px var(--color-grey);
 //         }
 //         th,td{
 //             padding: 10px;        
 //             white-space: nowrap!important;
 //         }
-//         border-bottom: solid 1px #666;
+//         border-bottom: solid 1px var(--color-grey);
 //     }
 
 //     code{
-//         background-color: #111;
-//         color: #ccc;
+//         background-color: var(--color-near-black);
+//         color: var(--color-lighter-grey);
 //         padding: 2px 4px;
 //     }
 

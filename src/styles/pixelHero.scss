@@ -1,15 +1,15 @@
 :root {
-  --pixel-hero-background: #181818;
+  --pixel-hero-background: var(--color-dark-charcoal);
 
-  --pixel-hero-primary: #f2c14e;
-  --pixel-hero-primary-contrast: #111111;
+  --pixel-hero-primary: var(--color-gold);
+  --pixel-hero-primary-contrast: var(--color-near-black);
 
-  --pixel-hero-secondary: #70b7ba;
-  --pixel-hero-secondary-contrast: #111111;
+  --pixel-hero-secondary: var(--color-teal);
+  --pixel-hero-secondary-contrast: var(--color-near-black);
 
-  --pixel-hero-tertiary: #d98e73;
-  --pixel-hero-quaternary: #9d8fc1;
-  --pixel-hero-quinary: #8fa886;
+  --pixel-hero-tertiary: var(--color-terracotta);
+  --pixel-hero-quaternary: var(--color-lavender);
+  --pixel-hero-quinary: var(--color-sage);
 }
 
 .pixel-hero {

@@ -22,7 +22,7 @@
         gap: var(--gutter);
         position: relative;        
         z-index: 1;
-        color: white;
+        color: var(--color-white);
         font-weight: bold;   
         
         font-size: 18px; 
@@ -32,9 +32,9 @@
             text-decoration: none;
             text-transform: uppercase;
               
-            color: white;
+            color: var(--color-white);
             &:hover{
-                color: #f60;
+                color: var(--color-orange);
             }
         }
     }
@@ -48,7 +48,7 @@
     &__breadcrumb-icon {
         width: 1em;
         height: 1em;
-        color: white;
+        color: var(--color-white);
         stroke: currentColor;
         flex: 0 0 auto;
 

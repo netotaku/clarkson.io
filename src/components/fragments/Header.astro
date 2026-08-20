@@ -8,7 +8,7 @@ interface Props {
 
 const { post } = Astro.props;
 const { id, data } = post;
-const theme = /^#[0-9a-f]{6}$/i.test(data.theme) ? data.theme : '#ff6600';
+const theme = /^#[0-9a-f]{6}$/i.test(data.theme) ? data.theme : 'var(--color-orange)';
 ---
 <header class="header">
 <div>

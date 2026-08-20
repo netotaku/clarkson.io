@@ -4,11 +4,11 @@
     flex-direction: column;
     gap: var(--gutter);
 
-    color: rgba(255,255,255,.3);
+    color: var(--color-white-30);
 
     &__fieldset{
         appearance: none;
-        border: solid 2px rgba(255,255,255,.3);
+        border: solid 2px var(--color-white-30);
         border-radius: 17px;
         display: flex;
         position: relative;
@@ -27,34 +27,34 @@
 
 
     input[type="email"]{
-        color: white;
-        background: transparent;
+        color: var(--color-white);
+        background: var(--color-transparent);
         border: 0;  
         flex: 1 1 auto;    
         min-width: 0;
         &::placeholder{
-            color: rgba(255,255,255,.3);
+            color: var(--color-white-30);
         }
     }
 
     input[type="submit"]{        
         border: 0px;
-        background: rgba(255,255,255,.3);
+        background: var(--color-white-30);
         flex: 0 0 auto;
         border-radius: 0 15px 15px 0;
     }
 
     &:hover{
         input[type="submit"]{ 
-            background: white;
+            background: var(--color-white);
         }
         input[type="email"]{
             &::placeholder{
-                color: white;
+                color: var(--color-white);
             }
         }
         .form__fieldset{
-            border-color: white;
+            border-color: var(--color-white);
         }   
     }
     

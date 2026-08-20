@@ -8,7 +8,7 @@
         text-align: left;
         position: absolute;
         top: 285px;
-        left: 5vw;
+        left: var(--layout-spacing);
         &__heading{
             font-family: Oswald;
             text-transform: uppercase;
@@ -18,8 +18,8 @@
         }
         &__subheading{            
             line-height: 1.2;
-            margin-top: 5vw;
-            color: #ccc;
+            margin-top: var(--layout-spacing);
+            color: var(--color-lighter-grey);
             font-size: var(--font-size-home-subheading);
             // text-transform: uppercase;
         }
@@ -31,7 +31,7 @@
         &__details{
             display: flex;
             flex-direction: column;
-            gap: 5vw;
+            gap: var(--layout-spacing);
         }
 
     }

@@ -10,7 +10,7 @@
     justify-content: stretch;
     // 
     background: var(--pixel-hero-primary);
-    color: rgba(255,255,255,1);
+    color: var(--color-white);
     margin-right: 4px;
     margin-top: 4px;
     border-radius: 8px;
@@ -20,14 +20,14 @@
     font-size: var(--font-size-small);
     height: 32px;
     &:hover{
-       background: rgba(255,255,255,.2); 
+       background: var(--color-white-20);
     }
     &__count{
-        color: white;
+        color: var(--color-white);
         font-weight: bold;
         padding-left: 12px;
         padding-right: 12px;
-        background-color: rgba(255,255,255,.1);
+        background-color: var(--color-white-10);
 
 
             align-self: stretch;

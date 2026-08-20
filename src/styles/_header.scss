@@ -17,7 +17,7 @@
         width: 20px;
         height: 20px;
         border-radius: 10px;        
-        background-color: var(--header-theme, #f60);
+        background-color: var(--header-theme, var(--color-orange));
     }
 
     &__title {
@@ -34,7 +34,7 @@
 
             &:hover,
             &:focus-visible {
-                color: #f60;
+                color: var(--color-orange);
                 text-decoration: underline;
             }
         }

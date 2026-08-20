@@ -1787,7 +1787,7 @@ class PixelHero {
       Primary and secondary now guarantee white text, but keep this helper
       for compatibility with the existing CSS variables.
     */
-    return '#ffffff';
+    return 'var(--color-white)';
   }
 
   private toCss(

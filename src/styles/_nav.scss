@@ -5,7 +5,7 @@
     }
 
     &__heading{
-        color: rgba(255,255,255,.3);
+        color: var(--color-white-30);
         text-transform: uppercase;
         font-size: var(--font-size-nav-heading);
     }
@@ -15,11 +15,11 @@
 
         a{
             display: block;
-            color: white;
+            color: var(--color-white);
             text-decoration: none;
             &.active{                
                 border-style: solid;
-                border-left-color: #f60;
+                border-left-color: var(--color-orange);
                 border-width: 0px;
                 border-left-width: 4px;
                 padding-left: 8px;                
@@ -42,7 +42,7 @@
 
                 sup{
                     display: none;
-                    color: #f60;
+                    color: var(--color-orange);
                     vertical-align: top; 
                     position: absolute;
                     top: -8%;
@@ -53,7 +53,7 @@
                 &.active{
                     border: 0;
                     padding: 0;
-                    color: #aaa;
+                    color: var(--color-light-grey);
                     sup{
                         display: inline;
                     }

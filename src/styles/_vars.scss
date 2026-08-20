@@ -1,9 +1,33 @@
 :root {
     --gutter: 22px; 
-    --margin: 100px;
-    --shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    --layout-spacing: 5vw;
 
-    // Responsive type scale
+    // colours
+    --color-transparent: transparent;
+    --color-white: #fff;
+    --color-white-90: rgba(255, 255, 255, .9);
+    --color-white-60: rgba(255, 255, 255, .6);
+    --color-white-30: rgba(255, 255, 255, .3);
+    --color-white-20: rgba(255, 255, 255, .2);
+    --color-white-15: rgba(255, 255, 255, .15);
+    --color-white-10: rgba(255, 255, 255, .1);
+    --color-black-20: rgba(0, 0, 0, .2);
+    --color-black-10: rgba(0, 0, 0, .1);
+    --color-near-black: #111;
+    --color-dark-charcoal: #181818;
+    --color-charcoal: #333;
+    --color-grey: #666;
+    --color-light-grey: #aaa;
+    --color-lighter-grey: #ccc;
+    --color-orange: #f60;
+    --color-green: #316000;
+    --color-gold: #f2c14e;
+    --color-teal: #70b7ba;
+    --color-terracotta: #d98e73;
+    --color-lavender: #9d8fc1;
+    --color-sage: #8fa886;
+
+    // fluid type
     --font-size-body: clamp(1rem, 1.2vw, 1.2rem);
     --font-size-small: clamp(0.75rem, 0.9vw, 0.8125rem);
     --font-size-nav-heading: clamp(0.75rem, 1vw, 0.9rem);
@@ -20,7 +44,5 @@
     --font-size-card-title: clamp(2.5rem, 3.95vw, 3.4375rem);
     --font-size-wurd: calc(var(--font-size-body) * 2);
     --font-size-wurd-code: clamp(0.625rem, 0.8vw, 1rem);
-
-    --margin: 22px;
 
 }

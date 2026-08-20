@@ -1,13 +1,13 @@
 .blog{
     
     display: flex;
-    gap: 5vw;
+    gap: var(--layout-spacing);
     position: relative;
 
     &__header{
 
         position: sticky;
-        top: max(5vw, calc(var(--gutter) * 4));
+        top: max(var(--layout-spacing), calc(var(--gutter) * 4));
         align-self: flex-start;
         min-width: 30%;
         max-width: 30%;
@@ -46,6 +46,6 @@
         display: block;
         overflow: hidden;
         border-radius: 24px;
-        margin-bottom: 5vw;
+        margin-bottom: var(--layout-spacing);
     }
 }
