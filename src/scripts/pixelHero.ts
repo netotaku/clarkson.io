@@ -1,9 +1,10 @@
 import type { PhysicsConfig } from '../pixel/types';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
-const DEFAULT_ENTRANCE_STAGGER = 1200;
-const DEFAULT_ENTRANCE_DURATION = 220;
-const DEFAULT_ENTRANCE_DELAY = 120;
+const DEFAULT_ENTRANCE_STAGGER = 1800;
+const DEFAULT_ENTRANCE_DURATION = 480;
+const DEFAULT_ENTRANCE_DELAY = 0;
+const ENTRANCE_INITIAL_VISIBLE_RATIO = 0.25;
 
 let animateNextRender = true;
 
@@ -425,10 +426,29 @@ class PixelHero {
       [rects[index], rects[randomIndex]] = [rects[randomIndex], rects[index]];
     }
 
-    rects.forEach((rect, index) => {
-        const delay = rects.length > 1
-          ? (index / (rects.length - 1)) * maximumDelay
+    const initiallyVisibleCount =
+      Math.ceil(
+        rects.length *
+        ENTRANCE_INITIAL_VISIBLE_RATIO,
+      );
+    const animatedRects =
+      rects.slice(
+        initiallyVisibleCount,
+      );
+
+    rects
+      .slice(0, initiallyVisibleCount)
+      .forEach(rect => {
+        rect.classList.add(
+          'is-initially-visible',
+        );
+      });
+
+    animatedRects.forEach((rect, index) => {
+        const progress = animatedRects.length > 1
+          ? index / (animatedRects.length - 1)
           : 0;
+        const delay = progress * progress * maximumDelay;
 
         rect.style.setProperty(
           '--pixel-transition-delay',
