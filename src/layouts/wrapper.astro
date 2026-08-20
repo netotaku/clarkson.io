@@ -1,6 +1,8 @@
 ---
 import { SITE_TITLE } from  '../consts';
 import type { ImageMetadata } from 'astro';
+import { ClientRouter } from 'astro:transitions';
+import oswaldFont from '../assets/fonts/oswald/oswald-latin-700.woff2?url';
 import PixelHero from "../components/PixelHero.astro";
 import Card from "../components/Card.astro";
 
@@ -72,10 +74,23 @@ const categories = [...categoryMap.values()]
   .sort((a, b) => b.count - a.count);
 ---
 <!doctype html>
-<html lang="en-GB">
+<html lang="en-GB" transition:animate="none">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<link
+			rel="preload"
+			href={oswaldFont}
+			as="font"
+			type="font/woff2"
+			crossorigin="anonymous"
+		/>
+		<script is:inline>
+			document.documentElement.classList.add(
+				'font-oswald-loading',
+				'hero-initial-load',
+			);
+		</script>
 		<link rel="icon" type="image/svg+xml" href="/images/favicon.png" />
 		<link rel="sitemap" href="/sitemap-index.xml" />
 		<link
@@ -85,6 +100,7 @@ const categories = [...categoryMap.values()]
 			href={new URL('rss.xml', Astro.site)}
 		/>
 		<meta name="generator" content="ZX Spectrum 128 +2" />
+		<ClientRouter fallback="swap" />
 		<link rel="canonical" href={canonicalURL} />
 
 		<title>{title}</title>
@@ -102,7 +118,13 @@ const categories = [...categoryMap.values()]
 		<meta property="twitter:image" content={new URL(imageUrl, Astro.url)} />
 		
 	</head>
-	<body>  
+	<body>
+		<div
+			class="navigation-progress"
+			data-navigation-progress
+			transition:persist="navigation-progress"
+			aria-hidden="true"
+		></div>
 		
 		<nav class="layer layer--0 nav">
 			<div class="nav__section">
@@ -231,11 +253,137 @@ const categories = [...categoryMap.values()]
 
 		<script src="https://cdn.counter.dev/script.js" data-id="59f59e50-b01a-493b-a121-d8237b9db371" data-utcoffset="1"></script>
 		<script>
-			const toggle = document.querySelector('#js-open-closed');
+			const minimumNavigationDuration = 450;
+			const initialHeroFadeDuration = 180;
+			let heroRevealVersion = 0;
 
-			toggle?.addEventListener('click', () => {
-			document.documentElement.classList.toggle('js-open');
+			const waitForPixelHero = () => {
+				const pixelHero = document.querySelector<HTMLElement>('[data-pixel-hero]');
+
+				if (!pixelHero || pixelHero.classList.contains('is-ready')) {
+					return Promise.resolve();
+				}
+
+				return new Promise<void>((resolve) => {
+					const finish = () => {
+						observer.disconnect();
+						window.clearTimeout(timeout);
+						resolve();
+					};
+
+					const observer = new MutationObserver(() => {
+						if (pixelHero.classList.contains('is-ready')) finish();
+					});
+
+					const timeout = window.setTimeout(finish, 2000);
+					observer.observe(pixelHero, { attributes: true, attributeFilter: ['class'] });
+
+					if (pixelHero.classList.contains('is-ready')) finish();
+				});
+			};
+
+			const revealInitialHero = async () => {
+				const version = ++heroRevealVersion;
+
+				try {
+					await Promise.all([
+						document.fonts.load('700 1em Oswald'),
+						waitForPixelHero(),
+					]);
+				} finally {
+					if (version !== heroRevealVersion) return;
+
+					document.documentElement.classList.remove('font-oswald-loading');
+
+					window.requestAnimationFrame(() => {
+						if (version !== heroRevealVersion) return;
+
+						window.requestAnimationFrame(() => {
+							if (version !== heroRevealVersion) return;
+
+							document.documentElement.classList.add('hero-initial-reveal');
+
+							window.setTimeout(() => {
+								if (version !== heroRevealVersion) return;
+
+								document.documentElement.classList.remove(
+									'hero-initial-load',
+									'hero-initial-reveal',
+								);
+							}, initialHeroFadeDuration);
+						});
+					});
+				}
+			};
+
+			const progressElement = () =>
+				document.querySelector<HTMLElement>('[data-navigation-progress]');
+
+			const startProgress = () => {
+				const progress = progressElement();
+
+				if (!progress) return;
+
+				progress.classList.remove('navigation-progress--complete');
+				progress.classList.add('navigation-progress--loading');
+			};
+
+			const completeProgress = () => {
+				const progress = progressElement();
+
+				if (!progress?.classList.contains('navigation-progress--loading')) return;
+
+				progress.classList.remove('navigation-progress--loading');
+				progress.classList.add('navigation-progress--complete');
+
+				const reset = () => {
+					progress.classList.remove('navigation-progress--complete');
+				};
+
+				progress.addEventListener('transitionend', reset, { once: true });
+				window.setTimeout(reset, 150);
+			};
+
+			document.addEventListener('click', (event) => {
+				const target = event.target;
+
+				if (target instanceof Element && target.closest('#js-open-closed')) {
+					document.documentElement.classList.toggle('js-open');
+				}
 			});
+
+			document.addEventListener('astro:before-preparation', (event) => {
+				document.documentElement.classList.remove('js-open');
+				startProgress();
+
+				const loadPage = event.loader;
+				event.loader = async () => {
+					await Promise.all([
+						loadPage(),
+						new Promise<void>((resolve) => {
+							window.setTimeout(resolve, minimumNavigationDuration);
+						}),
+					]);
+				};
+
+				event.signal.addEventListener('abort', completeProgress, { once: true });
+			});
+
+			document.addEventListener('astro:after-swap', () => {
+				heroRevealVersion += 1;
+				document.documentElement.classList.remove('hero-initial-reveal');
+				document.documentElement.classList.add(
+					'font-oswald-loading',
+					'hero-initial-load',
+				);
+			});
+
+			document.addEventListener('astro:page-load', () => {
+				completeProgress();
+				revealInitialHero();
+			});
+
+			revealInitialHero();
 		</script>
 	</body>
 </html>

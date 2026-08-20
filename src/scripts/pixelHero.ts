@@ -2049,8 +2049,17 @@ class PixelHero {
   }
 
   public destroy() {
+    this.image.removeEventListener(
+      'load',
+      this.render,
+    );
+
     this.resizeObserver
       ?.disconnect();
+
+    window.clearTimeout(
+      this.resizeTimer,
+    );
 
     window.removeEventListener(
       'scroll',
@@ -2068,10 +2077,18 @@ class PixelHero {
 }
 
 const instances =
-  new WeakMap<
+  new Map<
     HTMLElement,
     PixelHero
   >();
+
+function destroyAll() {
+  instances.forEach(
+    instance => instance.destroy(),
+  );
+
+  instances.clear();
+}
 
 function initialise() {
   document
@@ -2112,4 +2129,9 @@ if (
 document.addEventListener(
   'astro:page-load',
   initialise,
+);
+
+document.addEventListener(
+  'astro:before-swap',
+  destroyAll,
 );

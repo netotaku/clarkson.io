@@ -69,3 +69,22 @@
         background-size: auto 100%;
     }
 }
+
+.font-oswald-loading .hero__title h1 {
+    visibility: hidden;
+}
+
+.hero-initial-load .main {
+    opacity: 0;
+}
+
+.hero-initial-load.hero-initial-reveal .main {
+    opacity: 1;
+    transition: opacity 180ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-initial-load.hero-initial-reveal .main {
+        transition: none;
+    }
+}
