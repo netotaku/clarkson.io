@@ -2,7 +2,7 @@
 title: Jack of All Code 
 description: Specialising vs Generalising in Web Development
 pubDate: 'Jul 23 2025'
-heroImage: '/src/assets/images/test.png'
+heroImage: '/src/assets/images/space.jpg'
 theme: '#f7d737'
 categories: 
     - "web-development"
