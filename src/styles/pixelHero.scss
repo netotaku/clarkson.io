@@ -49,10 +49,47 @@
       opacity: 1;
     }
   }
+
+  &.is-transitioning-in {
+    rect {
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+  }
+
+  &.is-transitioning-in:not(.is-transitioning-in-active) {
+    rect {
+      opacity: 0;
+      transform: scale(.84);
+    }
+  }
+
+  &.is-transitioning-in-active rect {
+    animation: pixel-hero-in var(--pixel-transition-duration, 220ms) ease-out var(--pixel-transition-delay, 0ms) both;
+  }
+}
+
+@keyframes pixel-hero-in {
+  from {
+    opacity: 0;
+    transform: scale(.84);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .pixel-hero__parallax {
     will-change: auto;
+  }
+
+  .pixel-hero rect {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }

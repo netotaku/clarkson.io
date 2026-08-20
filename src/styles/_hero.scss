@@ -46,7 +46,7 @@
     }
 
     &__breadcrumb-text {
-        color: var(--color-white-30);
+        color: rgba(255,255,255,.6);
     }
 
     &__breadcrumb-icon {
@@ -80,7 +80,7 @@
 
 .hero-initial-load.hero-initial-reveal .main {
     opacity: 1;
-    transition: opacity 180ms ease-out;
+    transition: opacity 360ms ease-out;
 }
 
 @media (prefers-reduced-motion: reduce) {

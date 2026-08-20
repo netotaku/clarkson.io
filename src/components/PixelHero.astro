@@ -27,6 +27,11 @@ interface Props {
   parallax?: boolean;
   parallaxSpeed?: number;
 
+  /** Entrance timings in milliseconds. */
+  entranceStagger?: number;
+  entranceDuration?: number;
+  entranceDelay?: number;
+
   /**
    * Pick one of the built-in physics presets.
    *
@@ -61,6 +66,10 @@ const {
   parallax = true,
   parallaxSpeed = 0.08,
 
+  entranceStagger = 1200,
+  entranceDuration = 220,
+  entranceDelay = 120,
+
   physics = defaultPhysicsPreset,
   physicsOverrides = {},
 
@@ -91,6 +100,9 @@ const resolvedPhysics: PhysicsConfig = {
   data-background-mix={backgroundMix}
   data-parallax={parallax}
   data-parallax-speed={parallaxSpeed}
+  data-entrance-stagger={entranceStagger}
+  data-entrance-duration={entranceDuration}
+  data-entrance-delay={entranceDelay}
   data-physics={JSON.stringify(resolvedPhysics)}
   role="img"
   aria-label={alt}

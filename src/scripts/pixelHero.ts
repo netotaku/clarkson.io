@@ -1,6 +1,16 @@
 import type { PhysicsConfig } from '../pixel/types';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
+const DEFAULT_ENTRANCE_STAGGER = 1200;
+const DEFAULT_ENTRANCE_DURATION = 220;
+const DEFAULT_ENTRANCE_DELAY = 120;
+
+let animateNextRender = true;
+
+const prefersReducedMotion = () =>
+  window.matchMedia(
+    '(prefers-reduced-motion: reduce)',
+  ).matches;
 
 type SampleMode =
   | 'average'
@@ -76,6 +86,10 @@ class PixelHero {
   private parallax: boolean;
   private parallaxSpeed: number;
 
+  private entranceStagger: number;
+  private entranceDuration: number;
+  private entranceDelay: number;
+
   private physics: PhysicsConfig;
 
   private columns = 1;
@@ -88,6 +102,8 @@ class PixelHero {
   private resizeObserver?: ResizeObserver;
   private resizeTimer = 0;
   private scrollFrame = 0;
+  private transitionTimer = 0;
+  private isEntranceAnimating = false;
 
   constructor(
     root: HTMLElement,
@@ -171,6 +187,29 @@ class PixelHero {
         d.parallaxSpeed,
         0.08,
       );
+
+    this.entranceStagger =
+      numberValue(
+        d.entranceStagger,
+        DEFAULT_ENTRANCE_STAGGER,
+      );
+
+    this.entranceDuration =
+      numberValue(
+        d.entranceDuration,
+        DEFAULT_ENTRANCE_DURATION,
+      );
+
+    this.entranceDelay =
+      numberValue(
+        d.entranceDelay,
+        DEFAULT_ENTRANCE_DELAY,
+      );
+
+    this.root.style.setProperty(
+      '--pixel-transition-duration',
+      `${this.entranceDuration}ms`,
+    );
 
     this.physics =
       JSON.parse(
@@ -337,12 +376,122 @@ class PixelHero {
     this.erodeField();
     this.renderPhysicsField();
 
+    const shouldAnimateIn =
+      animateNextRender ||
+      this.isEntranceAnimating;
+
+    animateNextRender = false;
+
+    const animateIn =
+      shouldAnimateIn &&
+      !prefersReducedMotion();
+
+    if (animateIn) {
+      this.isEntranceAnimating = true;
+
+      window.clearTimeout(
+        this.transitionTimer,
+      );
+
+      this.preparePixelTransitionIn();
+    } else {
+      this.isEntranceAnimating = false;
+    }
+
     this.applyTheme();
     this.applyParallax();
 
     this.root.classList.add(
       'is-ready',
     );
+
+    if (animateIn) {
+      this.startPixelTransitionIn();
+    }
+  }
+
+  private setShuffledPixelDelays(
+    maximumDelay: number,
+  ) {
+    const rects = Array.from(
+      this.svg.querySelectorAll<SVGRectElement>(
+        'rect',
+      ),
+    );
+
+    for (let index = rects.length - 1; index > 0; index--) {
+      const randomIndex = Math.floor(Math.random() * (index + 1));
+
+      [rects[index], rects[randomIndex]] = [rects[randomIndex], rects[index]];
+    }
+
+    rects.forEach((rect, index) => {
+        const delay = rects.length > 1
+          ? (index / (rects.length - 1)) * maximumDelay
+          : 0;
+
+        rect.style.setProperty(
+          '--pixel-transition-delay',
+          `${delay}ms`,
+        );
+      });
+  }
+
+  private preparePixelTransitionIn() {
+    this.setShuffledPixelDelays(
+      this.entranceStagger,
+    );
+
+    this.root.classList.remove(
+      'is-transitioning-in-active',
+    );
+
+    this.root.classList.add(
+      'is-transitioning-in',
+    );
+  }
+
+  private startPixelTransitionIn() {
+    const firstRect =
+      this.svg.querySelector('rect');
+
+    if (!firstRect) {
+      this.root.classList.remove(
+        'is-transitioning-in',
+      );
+
+      this.isEntranceAnimating = false;
+
+      return;
+    }
+
+    void window.getComputedStyle(
+      firstRect,
+    ).opacity;
+
+    this.transitionTimer =
+      window.setTimeout(
+        () => {
+          this.root.classList.add(
+            'is-transitioning-in-active',
+          );
+
+          this.transitionTimer =
+            window.setTimeout(
+              () => {
+                this.root.classList.remove(
+                  'is-transitioning-in',
+                  'is-transitioning-in-active',
+                );
+
+                this.isEntranceAnimating = false;
+              },
+              this.entranceStagger +
+                this.entranceDuration,
+            );
+        },
+        this.entranceDelay,
+      );
   }
 
   private buildCells() {
@@ -2061,6 +2210,10 @@ class PixelHero {
       this.resizeTimer,
     );
 
+    window.clearTimeout(
+      this.transitionTimer,
+    );
+
     window.removeEventListener(
       'scroll',
       this.onScroll,
@@ -2129,6 +2282,21 @@ if (
 document.addEventListener(
   'astro:page-load',
   initialise,
+);
+
+document.addEventListener(
+  'astro:before-preparation',
+  event => {
+    animateNextRender = true;
+
+    event.signal.addEventListener(
+      'abort',
+      () => {
+        animateNextRender = false;
+      },
+      { once: true },
+    );
+  },
 );
 
 document.addEventListener(
