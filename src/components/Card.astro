@@ -4,11 +4,12 @@ import Header from './fragments/Header.astro';
 
 interface Props {
   post: CollectionEntry<'blog'>;
+  modifier?: string;
 }
 
-const { post } = Astro.props;
+const { post, modifier } = Astro.props;
 ---
 
-<article class="card">
+<article class:list={['card', modifier && `card${modifier}`]}>
   <Header post={post} />
 </article>

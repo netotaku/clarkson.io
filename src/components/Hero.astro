@@ -59,14 +59,18 @@ const hasBreadcrumb =
                 {item.previous && (
                   <ArrowIcon class="hero__breadcrumb-icon" />
                 )}
-                {item.href ? <a href={item.href}>{item.label}</a> : <span>{item.label}</span>}
+                {item.href ? (
+                  <a href={item.href}>{item.label}</a>
+                ) : (
+                  <span class="hero__breadcrumb-text">{item.label}</span>
+                )}
                 {item.next && (
                   <ArrowIcon class="hero__breadcrumb-icon hero__breadcrumb-icon--next" />
                 )}
               </span>
             ))
           ) : (
-            breadcrumbText
+            <span class="hero__breadcrumb-text">{breadcrumbText}</span>
           )}
         </nav>
       )

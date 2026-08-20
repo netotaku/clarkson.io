@@ -1,14 +1,24 @@
 ---
-import Wrapper 	from '../layouts/wrapper.astro';
+import Hero from '../components/Hero.astro';
+import heroImage from '../assets/images/chrome/me-fallen-over.png';
+import Wrapper from '../layouts/wrapper.astro';
+
+const breadcrumb = [
+	{ label: 'Home', href: '/', previous: true },
+	{ label: 'Page not found' },
+];
 ---
 <Wrapper
 	title="Page Not Found"
 	description="The page you were looking for could not be found."
-	image='/src/assets/images/bio.jpg'>
+	image='/src/assets/images/explosion.jpg'>
 	
-    <section class="section section--top">
-
-
-    </section>
+	<section class="section">
+		<Hero
+			backgroundImage={heroImage}
+			breadcrumb={breadcrumb}
+			title="404"
+		/>
+	</section>
 
 </Wrapper>

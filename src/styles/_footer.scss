@@ -14,9 +14,14 @@
         display: flex;
         &__list{
             min-width: 20%;
+
+            &--latest {
+                flex: 1 1 40%;
+                min-width: 0;
+            }
         }
         &--primary{
-            a{
+            .nav__links--primary a {
                 font-size: 62px;
             }
         }

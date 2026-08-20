@@ -45,6 +45,10 @@
         gap: 8px;
     }
 
+    &__breadcrumb-text {
+        color: var(--color-white-30);
+    }
+
     &__breadcrumb-icon {
         width: 1em;
         height: 1em;

@@ -1,4 +1,59 @@
 .card{
     display: block;
     color: var(--color-white);
+
+    &--mini {
+        min-width: 0;
+
+        .header {
+            gap: 0;
+            min-width: 0;
+            font-size: var(--font-size-nav-link);
+            line-height: inherit;
+        }
+
+        .header__eyebrow {
+            gap: 8px;
+            margin-bottom: 0;
+            font-weight: normal;
+            line-height: inherit;
+        }
+
+        .header__theme {
+            width: 12px;
+            height: 12px;
+            border-radius: 6px;
+        }
+
+        .header__title {
+            overflow: hidden;
+            font-size: inherit;
+            font-weight: bold;
+            line-height: inherit;
+            text-overflow: ellipsis;
+            text-wrap: nowrap;
+            white-space: nowrap;
+
+            a {
+                display: block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                text-wrap: nowrap;
+                white-space: nowrap;
+            }
+        }
+
+        .header__description {
+            overflow: hidden;
+            font-size: inherit;
+            line-height: inherit;
+            text-overflow: ellipsis;
+            text-wrap: nowrap;
+            white-space: nowrap;
+        }
+
+        .header__tags {
+            display: none;
+        }
+    }
 }
