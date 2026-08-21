@@ -1,10 +1,9 @@
 import type { PhysicsConfig } from '../pixel/types';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
-const DEFAULT_ENTRANCE_STAGGER = 1800;
-const DEFAULT_ENTRANCE_DURATION = 480;
+const DEFAULT_ENTRANCE_STAGGER = 1600;
+const DEFAULT_ENTRANCE_DURATION = 400;
 const DEFAULT_ENTRANCE_DELAY = 0;
-const ENTRANCE_INITIAL_VISIBLE_RATIO = 0.25;
 
 let animateNextRender = true;
 
@@ -411,7 +410,7 @@ class PixelHero {
     }
   }
 
-  private setShuffledPixelDelays(
+  private setEntrancePixelDelays(
     maximumDelay: number,
   ) {
     const rects = Array.from(
@@ -420,47 +419,59 @@ class PixelHero {
       ),
     );
 
-    for (let index = rects.length - 1; index > 0; index--) {
-      const randomIndex = Math.floor(Math.random() * (index + 1));
+    const maximumX = Math.max(
+      1,
+      ...rects.map(
+        rect => Number(rect.getAttribute('x')),
+      ),
+    );
+    const maximumY = Math.max(
+      1,
+      ...rects.map(
+        rect => Number(rect.getAttribute('y')),
+      ),
+    );
+    const score = (
+      rect: SVGRectElement,
+    ) => {
+      const horizontalProgress =
+        Number(rect.getAttribute('x')) /
+        maximumX;
+      const verticalProgress =
+        Number(rect.getAttribute('y')) /
+        maximumY;
 
-      [rects[index], rects[randomIndex]] = [rects[randomIndex], rects[index]];
-    }
-
-    const initiallyVisibleCount =
-      Math.ceil(
-        rects.length *
-        ENTRANCE_INITIAL_VISIBLE_RATIO,
+      return (
+        verticalProgress * 0.8 +
+        horizontalProgress * 0.2
       );
-    const animatedRects =
-      rects.slice(
-        initiallyVisibleCount,
+    };
+    const orderedRects =
+      rects.sort(
+        (a, b) =>
+          score(a) - score(b),
       );
 
-    rects
-      .slice(0, initiallyVisibleCount)
-      .forEach(rect => {
-        rect.classList.add(
-          'is-initially-visible',
-        );
-      });
+    orderedRects.forEach((rect, index) => {
+      const progress = orderedRects.length > 1
+        ? index / (orderedRects.length - 1)
+        : 0;
+      const delay = progress * progress * maximumDelay;
 
-    animatedRects.forEach((rect, index) => {
-        const progress = animatedRects.length > 1
-          ? index / (animatedRects.length - 1)
-          : 0;
-        const delay = progress * progress * maximumDelay;
-
-        rect.style.setProperty(
-          '--pixel-transition-delay',
-          `${delay}ms`,
-        );
-      });
+      rect.style.setProperty(
+        '--pixel-transition-delay',
+        `${delay}ms`,
+      );
+    });
   }
 
   private preparePixelTransitionIn() {
-    this.setShuffledPixelDelays(
+    this.setEntrancePixelDelays(
       this.entranceStagger,
     );
+
+    this.root.dataset.entranceState =
+      'pending';
 
     this.root.classList.remove(
       'is-transitioning-in-active',
@@ -469,6 +480,11 @@ class PixelHero {
     this.root.classList.add(
       'is-transitioning-in',
     );
+  }
+
+  private entranceAnimationDuration() {
+    return this.entranceStagger +
+      this.entranceDuration;
   }
 
   private startPixelTransitionIn() {
@@ -481,6 +497,14 @@ class PixelHero {
       );
 
       this.isEntranceAnimating = false;
+      this.root.dataset.entranceState =
+        'complete';
+      this.root.dispatchEvent(
+        new CustomEvent(
+          'pixel-hero:entrance-complete',
+          { bubbles: true },
+        ),
+      );
 
       return;
     }
@@ -496,6 +520,26 @@ class PixelHero {
             'is-transitioning-in-active',
           );
 
+          const animationDuration =
+            this.entranceAnimationDuration();
+
+          this.root.dataset.entranceState =
+            'running';
+          this.root.dataset.entranceDuration =
+            String(animationDuration);
+
+          this.root.dispatchEvent(
+            new CustomEvent(
+              'pixel-hero:entrance-start',
+              {
+                bubbles: true,
+                detail: {
+                  duration: animationDuration,
+                },
+              },
+            ),
+          );
+
           this.transitionTimer =
             window.setTimeout(
               () => {
@@ -505,9 +549,17 @@ class PixelHero {
                 );
 
                 this.isEntranceAnimating = false;
+                this.root.dataset.entranceState =
+                  'complete';
+
+                this.root.dispatchEvent(
+                  new CustomEvent(
+                    'pixel-hero:entrance-complete',
+                    { bubbles: true },
+                  ),
+                );
               },
-              this.entranceStagger +
-                this.entranceDuration,
+              animationDuration,
             );
         },
         this.entranceDelay,

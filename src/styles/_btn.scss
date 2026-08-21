@@ -1,6 +1,6 @@
 .btn {
     
-    cursor: pointer;
+    // cursor: pointer;
     appearance: none;
 
     overflow: hidden;
@@ -40,6 +40,12 @@
             background-color: var(--color-white-90);
             border-radius: 50%;
         }
+    }
+
+    &__label {
+        display: block;
+        width: 129px;
+        height: 12px;
     }
 
     &--icon{

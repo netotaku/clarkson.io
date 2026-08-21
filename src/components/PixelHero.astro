@@ -31,7 +31,6 @@ interface Props {
   entranceStagger?: number;
   entranceDuration?: number;
   entranceDelay?: number;
-  entranceStyle?: 'fade' | 'grow';
 
   /**
    * Pick one of the built-in physics presets.
@@ -67,10 +66,9 @@ const {
   parallax = true,
   parallaxSpeed = 0.08,
 
-  entranceStagger = 1800,
-  entranceDuration = 480,
+  entranceStagger = 1600,
+  entranceDuration = 400,
   entranceDelay = 0,
-  entranceStyle = 'fade',
 
   physics = defaultPhysicsPreset,
   physicsOverrides = {},
@@ -92,7 +90,6 @@ const resolvedPhysics: PhysicsConfig = {
 <div
   class:list={[
     'pixel-hero',
-    `pixel-hero--${entranceStyle}`,
     className,
   ]}
   data-pixel-hero
