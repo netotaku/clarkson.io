@@ -45,6 +45,32 @@
         margin-left: var(--gutter);
     }
 
+    dl:not(:last-child){
+        margin-bottom: var(--gutter);
+    }
+
+    dt{
+        font-weight: bold;
+    }
+
+    dd{
+        margin-left: 0;
+
+        &:not(:last-child){
+            margin-bottom: var(--gutter);
+        }
+    }
+
+    li:has(> h3){
+        &:not(:last-child){
+            margin-bottom: var(--gutter);
+        }
+
+        > h3:not(:last-child){
+            margin-bottom: calc(var(--gutter) / 2);
+        }
+    }
+
     table{
         width: 100%;
         border-collapse: collapse;
