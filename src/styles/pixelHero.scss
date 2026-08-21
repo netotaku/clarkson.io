@@ -36,8 +36,8 @@
 
   &__parallax {
     position: absolute;
-    inset: 0 auto auto 0;
-    width: 100%;
+    inset: 3px auto auto 3px;
+    width: calc(100% - 6px);
     transform-origin: top left;
     will-change: transform;
   }
@@ -45,7 +45,7 @@
   &__svg {
     display: block;
     width: 100%;
-    height: var(--pixel-hero-height, 600px);
+    height: calc(var(--pixel-hero-height, 600px) - 6px);
     overflow: visible;
     opacity: 0;
   }

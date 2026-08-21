@@ -2222,10 +2222,6 @@ class PixelHero {
       `translate3d(0, ${y}px, 0)`;
   }
 
-  public syncParallax() {
-    this.applyParallax();
-  }
-
   private hash(
     a: number,
     b: number,
@@ -2357,21 +2353,7 @@ if (
 
 document.addEventListener(
   'astro:page-load',
-  () => {
-    initialise();
-
-    window.requestAnimationFrame(
-      () => {
-        window.requestAnimationFrame(
-          () => {
-            instances.forEach(
-              instance => instance.syncParallax(),
-            );
-          },
-        );
-      },
-    );
-  },
+  initialise,
 );
 
 document.addEventListener(
