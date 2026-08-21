@@ -1,6 +1,8 @@
 
 html {
-    transition: margin-left 180ms ease-out;
+    transition:
+        margin-left 180ms ease-out,
+        --pixel-hero-background 700ms ease-in-out;
 }
 
 .main {

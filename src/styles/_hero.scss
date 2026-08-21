@@ -74,6 +74,12 @@
     visibility: hidden;
 }
 
+.page-transition-out .main,
+.page-transition-out .nav {
+    opacity: 0;
+    transition: opacity 520ms ease-in;
+}
+
 .hero-initial-load .main,
 .hero-initial-load .nav {
     opacity: 0;
@@ -82,10 +88,12 @@
 .hero-initial-load.hero-initial-reveal .main,
 .hero-initial-load.hero-initial-reveal .nav {
     opacity: 1;
-    transition: opacity 360ms ease-out;
+    transition: opacity 520ms ease-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .page-transition-out .main,
+    .page-transition-out .nav,
     .hero-initial-load.hero-initial-reveal .main,
     .hero-initial-load.hero-initial-reveal .nav {
         transition: none;

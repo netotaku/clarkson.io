@@ -1,3 +1,9 @@
+@property --pixel-hero-background {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #111;
+}
+
 :root {
   --pixel-hero-background: var(--color-dark-charcoal);
 
