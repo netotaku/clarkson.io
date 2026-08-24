@@ -20,6 +20,16 @@
 
     &__commit {
         color: inherit;
+        font-family: monospace;
+        background: #444;
+        padding: 4px 8px;
+        display: inline-block;
+        border-radius: 5px;
+        text-decoration: none;
+        &:hover{
+            background-color: #f60;
+            color: white;
+        }
     }
 
     &__links{

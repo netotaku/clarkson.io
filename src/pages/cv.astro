@@ -9,6 +9,129 @@ const breadcrumb = [
   { label: 'CV' },
 ];
 
+const experience = [
+  {
+    from: "Feb 2026",
+    to: "Present",
+    role: "Head of Development",
+    company: "Beep Digital",
+    description:
+      "Building and leading the development team, shaping AI strategy and improving how creative, design and development work together to deliver ambitious digital experiences.",
+  },
+  {
+    from: "Jul 2018",
+    to: "Jan 2026",
+    role: "Digital / Technical Director",
+    company: "Halo",
+    description:
+      "Led digital strategy, technology and delivery across the agency, building teams and delivering award-winning work for clients including Live Nation, Ticketmaster and Turtle Bay.",
+  },
+  {
+    from: "Feb 2016",
+    to: "Jul 2018",
+    role: "Head of Digital",
+    company: "NMI / Creditcall",
+    description:
+      "Led digital strategy, UX, development and marketing automation through a period of growth and acquisition, including a website redevelopment that increased conversions by 300%.",
+  },
+  {
+    from: "Nov 2014",
+    to: "Feb 2015",
+    role: "Technical Director",
+    company: "AUK",
+    description:
+      "Led a growing development team and worked closely with clients to define and deliver technically ambitious digital projects.",
+  },
+  {
+    from: "Nov 2012",
+    to: "Nov 2014",
+    role: "Head of Development",
+    company: "G+V",
+    description:
+      "Led the agency's technical direction, development team and solutions approach while contributing to major national pitches.",
+  },
+  {
+    from: "Nov 2011",
+    to: "Nov 2012",
+    role: "Senior Interface Developer",
+    company: "Great State",
+    description:
+      "Built complex web and mobile experiences, led technical delivery and mentored developers across major client projects.",
+  },
+  {
+    from: "Nov 2010",
+    to: "Nov 2011",
+    role: "Development Manager",
+    company: "Digital Visitor",
+    description:
+      "Led development of an award-winning social and reviews platform, including its REST API, client integrations and JavaScript tooling.",
+  },
+  {
+    from: "Nov 2007",
+    to: "Nov 2011",
+    role: "Freelance Web Developer / Designer",
+    company: "Freelance",
+    description:
+      "Designed, developed and delivered digital products for organisations including Oracle, Oxford University and the NHS.",
+  },
+  {
+    from: "Nov 2004",
+    to: "Nov 2007",
+    role: "Product Specialist",
+    company: "Xpress Ordering",
+    description:
+      "Developed interactive kiosk products and supporting web systems for clients including Orange, NatWest, Lloyds and RBS.",
+  },
+  {
+    from: "Nov 1999",
+    to: "Nov 2004",
+    role: "Web Developer / Designer",
+    company: "Freelance",
+    description:
+      "Started my career designing and building websites and interactive experiences for SMEs and clients including Playboy UK and Gumball 3000.",
+  },
+];
+
+const awards = [
+  {
+    year: 2025,
+    award: "Web Excellence Awards",
+    category: "Hotel & Hospitality",
+    project: "Tregulland & Co.",
+    company: "Halo",
+  },
+  {
+    year: 2024,
+    award: "Web Excellence Awards",
+    category: "Best Recruitment Website",
+    project: "Aspiration Training",
+    company: "Halo",
+  },
+  {
+    year: 2015,
+    award: "The Drum Awards for Digital Industries",
+    category: "Best Not-for-Profit Website",
+    project: "50 Things",
+    client: "The National Trust",
+    company: "Great State",
+  },
+  {
+    year: 2011,
+    award: "Travolution Awards",
+    category: "Best Online Application",
+    project: "Visitor Review",
+    company: "Digital Visitor",
+  },
+  {
+    year: 2010,
+    award: "IVCA Awards",
+    category: "Best Interactive",
+    project: "Rethink eLearning Application",
+    client: "Rethink",
+    company: "Freelance",
+  },
+];
+
 ---
 <Wrapper
 	title="Curriculum Vitae"
@@ -24,6 +147,13 @@ const breadcrumb = [
 	</section>
 
 	<section class="section typography measure">
+
+		{experience.map(({ from, to, role, company, description }) => (			
+				<p>{from} – {to}</p>
+				<h3>{role}</h3>
+				<p><strong>{company}</strong></p>
+				<p>{description}</p>
+		))}
 		
 	</section>			
 </Wrapper>
