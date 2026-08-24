@@ -7,8 +7,7 @@
     "dev": "astro dev --force",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "content:themes": "node scripts/generate-content-themes.mjs"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
