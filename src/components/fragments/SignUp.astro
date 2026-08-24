@@ -1,41 +1,98 @@
 ---
 ---
-<form class="form" action="https://clarkson.us13.list-manage.com/subscribe/post?u=a3a072a865603a016544b99af&amp;id=9527bc1e73&amp;f_id=00d956e1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self" novalidate="">   
-    
+<form
+    class="form"
+    action="/.netlify/functions/subscribe"
+    method="post"
+    data-signup-form
+    data-state="idle"
+>
     <h2 class="nav__heading">Sign up</h2>
-    
-    <div class="form__fieldset">
 
-        <input 
+    <div class="form__fieldset">
+        <input
             class="form form__text-input form__text-input--email"
             placeholder="Email address"
-            type="email" 
-            name="EMAIL"         
-            id="mce-EMAIL" required="" value="">
+            type="email"
+            name="email"
+            autocomplete="email"
+            required
+        >
 
-        <input 
-            type="submit" 
-            name="subscribe" 
-            id="mc-embedded-subscribe" 
-            class="form__button" 
-            value="Subscribe">
-
+        <input
+            type="submit"
+            class="form__button"
+            value="Subscribe"
+        >
     </div>
-    
-    <label for="gdpr_67692" class="form__row u-hide">        
-        <input type="checkbox" id="gdpr_67692" name="gdpr[67692]" class="gdpr" value="Y" checked> <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="form__button" value="Subscribe">                
-    </label>
 
     <div class="form__small-print">
-        
-        <p>            
+        <p>
             By submitting this form, you agree to join our mailing list.<br>
             You can unsubscribe at any time using the link in the footer of our emails.<br>
+        </p>
     </div>
 
-    <div aria-hidden="true" style="position: absolute; left: -5000px;">
-        /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
-        <input type="text" name="b_a3a072a865603a016544b99af_9527bc1e73" tabindex="-1" value="">
-    </div>
-
+    <p class="form__status" data-signup-status role="status" aria-live="polite" hidden></p>
 </form>
+
+<script>
+    type SignupWindow = Window & {
+        signupFormInitialised?: boolean;
+    };
+
+    const signupWindow = window as SignupWindow;
+
+    if (!signupWindow.signupFormInitialised) {
+        signupWindow.signupFormInitialised = true;
+
+        document.addEventListener('submit', async (event) => {
+            const form = event.target;
+
+            if (!(form instanceof HTMLFormElement) || !form.matches('[data-signup-form]')) {
+                return;
+            }
+
+            event.preventDefault();
+
+            if (form.dataset.state === 'submitting') return;
+
+            const emailInput = form.querySelector<HTMLInputElement>('input[type="email"]');
+            const submitInput = form.querySelector<HTMLInputElement>('input[type="submit"]');
+            const status = form.querySelector<HTMLElement>('[data-signup-status]');
+
+            if (!emailInput || !submitInput || !status || !form.reportValidity()) return;
+
+            form.dataset.state = 'submitting';
+            submitInput.disabled = true;
+            submitInput.value = 'Subscribing…';
+            status.hidden = true;
+            status.textContent = '';
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email: emailInput.value }),
+                });
+
+                if (!response.ok) throw new Error('Subscription request failed');
+
+                form.dataset.state = 'success';
+                emailInput.value = '';
+                emailInput.disabled = true;
+                submitInput.value = 'Subscribed';
+                status.textContent = 'Thanks — your signup has been received.';
+                status.hidden = false;
+            } catch {
+                form.dataset.state = 'error';
+                submitInput.disabled = false;
+                submitInput.value = 'Subscribe';
+                status.textContent = 'Sorry, we could not complete your signup. Please try again.';
+                status.hidden = false;
+            }
+        });
+    }
+</script>

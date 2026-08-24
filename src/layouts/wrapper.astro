@@ -2,6 +2,7 @@
 import { SITE_TITLE } from  '../consts';
 import type { ImageMetadata } from 'astro';
 import { ClientRouter } from 'astro:transitions';
+import { execFileSync } from 'node:child_process';
 import oswaldFont from '../assets/fonts/oswald/oswald-latin-700.woff2?url';
 import availableForWorkLabel from '../assets/SVG/Available for work.svg';
 import PixelHero from "../components/PixelHero.astro";
@@ -73,6 +74,29 @@ for (const post of allPosts) {
 }
 const categories = [...categoryMap.values()]
   .sort((a, b) => b.count - a.count);
+
+const isCommitSha = (value: string | undefined): value is string =>
+	/^[0-9a-f]{40}$/i.test(value ?? '');
+
+const deployedCommit = process.env.COMMIT_REF?.trim();
+let buildCommit = isCommitSha(deployedCommit) ? deployedCommit : undefined;
+
+if (!buildCommit && !deployedCommit) {
+	try {
+		const localCommit = execFileSync('git', ['rev-parse', 'HEAD'], {
+			encoding: 'utf8',
+		}).trim();
+
+		if (isCommitSha(localCommit)) buildCommit = localCommit;
+	} catch {
+		// Git may not be available in every local development environment.
+	}
+}
+
+const buildCommitLabel = buildCommit?.slice(0, 7) ?? 'dev';
+const buildCommitUrl = buildCommit
+	? `https://github.com/netotaku/clarkson.io/commit/${buildCommit}`
+	: undefined;
 ---
 <!doctype html>
 <html lang="en-GB" transition:animate="none">
@@ -222,7 +246,24 @@ const categories = [...categoryMap.values()]
 					
 					<SignUp />	
 
-					<p><a class="footer__cookies" href="/cookies-and-privacy">Cookies &amp; Privacy</a></p>
+					<p class="footer__meta">
+						<span class="footer__build">
+							HEAD @
+							{buildCommitUrl ? (
+								<a
+									class="footer__commit"
+									href={buildCommitUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+									title={`View source at commit ${buildCommit}`}
+								>{buildCommitLabel}</a>
+							) : (
+								<span>{buildCommitLabel}</span>
+							)}
+						</span>
+						<span aria-hidden="true">·</span>
+						<a class="footer__cookies" href="/cookies-and-privacy">Cookies &amp; Privacy</a>
+					</p>
 					
 				</footer>
 
@@ -267,7 +308,6 @@ const categories = [...categoryMap.values()]
 		<script src="https://cdn.counter.dev/script.js" data-id="59f59e50-b01a-493b-a121-d8237b9db371" data-utcoffset="1"></script>
 		<script>
 			const pageFadeDuration = 520;
-			const minimumNavigationDuration = pageFadeDuration;
 			const initialHeroFadeDuration = pageFadeDuration;
 			let heroRevealVersion = 0;
 
@@ -432,16 +472,6 @@ const categories = [...categoryMap.values()]
 				document.documentElement.classList.remove('js-open');
 				document.documentElement.classList.add('page-transition-out');
 				startProgress();
-
-				const loadPage = event.loader;
-				event.loader = async () => {
-					await Promise.all([
-						loadPage(),
-						new Promise<void>((resolve) => {
-							window.setTimeout(resolve, minimumNavigationDuration);
-						}),
-					]);
-				};
 
 				event.signal.addEventListener('abort', () => {
 					document.documentElement.classList.remove('page-transition-out');

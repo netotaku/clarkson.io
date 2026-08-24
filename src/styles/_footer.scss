@@ -10,6 +10,18 @@
         color: var(--color-white-60);
     }
 
+    &__meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0.35em;
+        color: var(--color-white-60);
+    }
+
+    &__commit {
+        color: inherit;
+    }
+
     &__links{
         display: flex;
         &__list{
