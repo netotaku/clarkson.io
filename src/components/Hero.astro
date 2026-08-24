@@ -1,6 +1,6 @@
 ---
 import type { ImageMetadata } from 'astro';
-import { ArrowIcon } from '../icons';
+import { ArrowIcon, MouseIcon } from '../icons';
 
 interface BreadcrumbItem {
   label: string;
@@ -76,6 +76,9 @@ const hasBreadcrumb =
       )
     }
     <h1>{title}</h1>
-    <span class="hero__scroll__icon"></span>
+    <span class="hero__scroll__icon" aria-hidden="true">
+      <MouseIcon class="hero__scroll__mouse" />
+      <ArrowIcon class="hero__scroll__arrow" />
+    </span>
   </div>
 </header>

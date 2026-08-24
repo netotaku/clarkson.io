@@ -1,6 +1,7 @@
 .hero {
     display: flex;
     align-items: center;
+    position: relative;
     min-height: min(41.8vw, calc(var(--hero-image-height) * .76));
     background-image: var(--hero-image);
     background-repeat: no-repeat;
@@ -58,6 +59,30 @@
 
         &--next {
             transform: rotate(180deg);
+        }
+    }
+
+    &__scroll {
+        &__icon {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0.3;
+        }
+
+        &__mouse {
+            width: 32px;
+            height: 32px;
+        }
+
+        &__arrow {
+            width: 25.6px;
+            height: 25.6px;
+            transform: rotate(-90deg);
         }
     }
 
