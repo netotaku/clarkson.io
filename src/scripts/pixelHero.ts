@@ -405,6 +405,13 @@ class PixelHero {
       'is-ready',
     );
 
+    this.root.dispatchEvent(
+      new CustomEvent(
+        'pixel-hero:ready',
+        { bubbles: true },
+      ),
+    );
+
     if (animateIn) {
       this.startPixelTransitionIn();
     }

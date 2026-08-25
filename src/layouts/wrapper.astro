@@ -245,7 +245,7 @@ const buildCommitUrl = buildCommit
 
 					<p class="footer__meta">
 						<span class="footer__build">
-							HEAD @
+							<strong>v3</strong> <span aria-hidden="true">·</span> HEAD @
 							{buildCommitUrl ? (
 								<a
 									class="footer__commit"
@@ -287,7 +287,7 @@ const buildCommitUrl = buildCommit
 						src={availableForWorkLabel.src}
 						width={availableForWorkLabel.width}
 						height={availableForWorkLabel.height}
-						alt=""
+						alt="Available for work"
 						aria-hidden="true"
 					/>
 				</div>
@@ -316,20 +316,44 @@ const buildCommitUrl = buildCommit
 				}
 
 				return new Promise<void>((resolve) => {
+					const finish = () => resolve();
+
+					pixelHero.addEventListener('pixel-hero:ready', finish, { once: true });
+
+					if (pixelHero.classList.contains('is-ready')) {
+						pixelHero.removeEventListener('pixel-hero:ready', finish);
+						finish();
+					}
+				});
+			};
+
+			const startPageFadeOut = (signal: AbortSignal) => {
+				const main = document.querySelector<HTMLElement>('.main');
+
+				if (
+					!main ||
+					window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+					window.getComputedStyle(main).opacity === '0'
+				) {
+					document.documentElement.classList.add('page-transition-out');
+					return Promise.resolve();
+				}
+
+				return new Promise<void>((resolve) => {
 					const finish = () => {
-						observer.disconnect();
-						window.clearTimeout(timeout);
+						main.removeEventListener('transitionend', onTransitionEnd);
+						main.removeEventListener('transitioncancel', finish);
+						signal.removeEventListener('abort', finish);
 						resolve();
 					};
+					const onTransitionEnd = (event: TransitionEvent) => {
+						if (event.propertyName === 'opacity') finish();
+					};
 
-					const observer = new MutationObserver(() => {
-						if (pixelHero.classList.contains('is-ready')) finish();
-					});
-
-					const timeout = window.setTimeout(finish, 2000);
-					observer.observe(pixelHero, { attributes: true, attributeFilter: ['class'] });
-
-					if (pixelHero.classList.contains('is-ready')) finish();
+					main.addEventListener('transitionend', onTransitionEnd);
+					main.addEventListener('transitioncancel', finish, { once: true });
+					signal.addEventListener('abort', finish, { once: true });
+					document.documentElement.classList.add('page-transition-out');
 				});
 			};
 
@@ -344,7 +368,10 @@ const buildCommitUrl = buildCommit
 				} finally {
 					if (version !== heroRevealVersion) return;
 
-					document.documentElement.classList.remove('font-oswald-loading');
+					document.documentElement.classList.remove(
+						'font-oswald-loading',
+						'page-transition-out',
+					);
 
 					window.requestAnimationFrame(() => {
 						if (version !== heroRevealVersion) return;
@@ -467,8 +494,17 @@ const buildCommitUrl = buildCommit
 
 			document.addEventListener('astro:before-preparation', (event) => {
 				document.documentElement.classList.remove('js-open');
-				document.documentElement.classList.add('page-transition-out');
 				startProgress();
+
+				const fadeOutComplete = startPageFadeOut(event.signal);
+				const loadPage = event.loader;
+
+				event.loader = async () => {
+					await Promise.all([
+						loadPage(),
+						fadeOutComplete,
+					]);
+				};
 
 				event.signal.addEventListener('abort', () => {
 					document.documentElement.classList.remove('page-transition-out');
@@ -479,7 +515,6 @@ const buildCommitUrl = buildCommit
 			document.addEventListener('astro:after-swap', () => {
 				heroRevealVersion += 1;
 				document.documentElement.classList.remove(
-					'page-transition-out',
 					'hero-initial-reveal',
 				);
 				document.documentElement.classList.add(
