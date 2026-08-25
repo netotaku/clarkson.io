@@ -146,14 +146,21 @@ const awards = [
 		/>
 	</section>
 
-	<section class="section measure">
+	<section class="section">
 
-		{experience.map(({ from, to, role, company, description }) => (			
-			<p>{from} – {to}</p>
-			<h3>{role}</h3>
-			<p>{company}</p>
-			<p class="typography">{description}</p>
+		{experience.map(({ from, to, role, company, description }) => (		
+      <div class="job">	
+			  <p class="job__duration">{from} – {to}</p>
+        <div class="job__details">
+			    <h3 class="job__title">{role}</h3>
+			    <p class="job__company">{company}</p>
+			    <p class="typography">{description}</p>
+        </div>
+      </div>
 		))}
+
+
+
 
 	</section>			
 </Wrapper>

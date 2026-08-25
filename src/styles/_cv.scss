@@ -1,0 +1,18 @@
+.job{
+    display: flex;
+    margin-bottom: 5vw;
+
+    &__duration{
+        min-width: 20%;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    &__title{
+        font-size: 32px;
+    }
+
+    &__company{
+        font-size: 28px;
+    }    
+}
