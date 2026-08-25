@@ -8,8 +8,13 @@ interface Props {
 }
 
 const { post, modifier } = Astro.props;
+const isMicro = modifier === '--micro';
 ---
 
 <article class:list={['card', modifier && `card${modifier}`]}>
-  <Header post={post} />
+  <Header
+    post={post}
+    showDescription={!isMicro}
+    showTags={!isMicro}
+  />
 </article>

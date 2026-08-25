@@ -15,6 +15,7 @@ import Contact from "../components/nav/contact.astro";
 
 import SignUp from "../components/fragments/SignUp.astro";
 import { getCollection } from 'astro:content';
+import { getLatestPost } from '../utils/blog';
 import '../styles/global.scss';
 import {
   BurgerIcon,
@@ -35,9 +36,7 @@ const { title, description, image } = Astro.props;
 const imageUrl = typeof image === 'string' ? image : image.src;
 
 const allPosts = await getCollection('blog');
-const latestPost = [...allPosts].sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-)[0];
+const latestPost = await getLatestPost();
 
 
 const categoryMap = new Map<

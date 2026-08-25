@@ -5,33 +5,24 @@
         margin-right: 3vw;
     }
     &__lockup{
-        text-align: left;
+
         position: absolute;
-        top: 285px;
+        top: 170px;
+
+        text-align: left;           
         left: var(--layout-spacing);
+        
         &__heading{
             font-family: Oswald;
             text-transform: uppercase;
             font-weight: bold;
             line-height: .9;
             font-size: var(--font-size-home-heading);
-        }
-        &__subheading{            
-            line-height: 1.2;
-            margin-top: var(--layout-spacing);
-            color: var(--color-lighter-grey);
-            font-size: var(--font-size-home-subheading);
-            // text-transform: uppercase;
+            margin-bottom: 5vw;
         }
 
-        &__desc{
-            font-size: var(--font-size-home-description);
-        }
-
-        &__details{
-            display: flex;
-            flex-direction: column;
-            gap: var(--layout-spacing);
+        &__latest{
+            margin-bottom: 5vw;
         }
 
     }

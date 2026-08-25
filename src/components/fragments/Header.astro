@@ -4,9 +4,15 @@ import FormattedDate from '../helpers/FormattedDate.astro';
 
 interface Props {
   post: CollectionEntry<'blog'>;
+  showDescription?: boolean;
+  showTags?: boolean;
 }
 
-const { post } = Astro.props;
+const {
+  post,
+  showDescription = true,
+  showTags = true,
+} = Astro.props;
 const { id, data } = post;
 const theme = /^#[0-9a-f]{6}$/i.test(data.theme) ? data.theme : 'var(--color-orange)';
 ---
@@ -26,19 +32,23 @@ const theme = /^#[0-9a-f]{6}$/i.test(data.theme) ? data.theme : 'var(--color-ora
   </h2>
 </div>
 
-  <p class="header__description">
-    {data.description}
-  </p>
+  {showDescription && (
+    <p class="header__description">
+      {data.description}
+    </p>
+  )}
 
-  <div class="header__tags" aria-label="Categories">
-    {data.categories.map((category) => (
-      <a
-        class="tag"
-        href={`/blog/category/${encodeURIComponent(category.toLowerCase())}/`}
-      >
-        <span class="tag__count">#</span>
-        <span class="tag__label">{category}</span>
-      </a>
-    ))}
-  </div>
+  {showTags && (
+    <div class="header__tags" aria-label="Categories">
+      {data.categories.map((category) => (
+        <a
+          class="tag"
+          href={`/blog/category/${encodeURIComponent(category.toLowerCase())}/`}
+        >
+          <span class="tag__count">#</span>
+          <span class="tag__label">{category}</span>
+        </a>
+      ))}
+    </div>
+  )}
 </header>

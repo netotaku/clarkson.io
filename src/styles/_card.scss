@@ -2,7 +2,8 @@
     display: block;
     color: var(--color-white);
 
-    &--mini {
+    &--mini,
+    &--micro {
         min-width: 0;
 
         .header {
@@ -53,6 +54,24 @@
         }
 
         .header__tags {
+            display: none;
+        }
+    }
+
+    &--micro {
+        .header > div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 0;
+        }
+
+        .header__eyebrow,
+        .header__eyebrow time {
+            flex: 0 0 auto;
+        }
+
+        .header__description {
             display: none;
         }
     }

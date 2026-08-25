@@ -1,7 +1,11 @@
 ---
 import Wrapper 	from '../layouts/wrapper.astro';
+import Card from '../components/Card.astro';
 import { Image } from 'astro:assets';
 import me from '../assets/images/chrome/me-crossed-arms.png';
+import { getLatestPost } from '../utils/blog';
+
+const latestPost = await getLatestPost();
 ---
 <Wrapper
 	title="Nick Clarkson, Creative Technologist, Bristol UK"
@@ -18,24 +22,28 @@ import me from '../assets/images/chrome/me-crossed-arms.png';
 		/>
 
 		<div class="home__lockup">
+
+			<div class="home__lockup__latest">
+				<h2 class="nav__heading">Latest post</h2>
+				<Card post={latestPost} modifier="--micro" />
+			</div>
+
 			<h1 class="home__lockup__heading">Nick<br>Clarkson</h1>
 
-			<div class="home__lockup__details measure">
+			<div class="measure typography">
 
-				<h2 class="home__lockup__subheading">
-					Creative Technologist<br>
+				<h1>
 					Technical Director<br>
-					Web Developer<br>
-					Web Designer
-				</h2>
+					Digital Strategist<br>
+					Technical Leader<br>
+					UX / UI
+				</h1>
 
-				<p class="home__lockup__desc">Nick has over 20 years of experience in web development, web design
-					project and team management, and CRM systems. 
-					He helps organisations navigate digital complexity with clarity and confidence.</p>
+				<p><strong>I’ve spent more than 25 years working on the web</strong> — from hands-on development and design to leading teams and shaping digital strategy.</p>
 
 				<nav class="home__nav">
 					<a href="/cv">Curriculum Vitae</a>
-					<a href="/ai">AI Governence</a>
+					<a href="/governance">AI Governence</a>
 					<a href="/blog">Thoughts</a>
 				</nav>
 
