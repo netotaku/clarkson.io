@@ -1,0 +1,33 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 5vw; //var(--layout-spacing);
+
+  &__item {
+    grid-column: span 12;
+
+    &--quarter {
+      grid-column: span 3;
+    }
+
+    &--three-quarters {
+      grid-column: span 9;
+    }
+
+    &--three-quarters {
+      grid-column: span 9;
+    }
+
+    &--third {
+      grid-column: span 4;
+    }
+
+    &--two-thirds {
+      grid-column: span 8;
+    }
+
+    &--half {
+      grid-column: span 6;
+    }
+  }
+}

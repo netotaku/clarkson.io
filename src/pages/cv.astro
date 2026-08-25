@@ -12,7 +12,7 @@ const breadcrumb = [
 const experience = [
   {
     from: "Feb 2026",
-    to: "Present",
+    to: "Jul 2026",
     role: "Head of Development",
     company: "Beep Digital",
     description:
@@ -30,7 +30,7 @@ const experience = [
     from: "Feb 2016",
     to: "Jul 2018",
     role: "Head of Digital",
-    company: "NMI / Creditcall",
+    company: "NMI",
     description:
       "Led digital strategy, UX, development and marketing automation through a period of growth and acquisition, including a website redevelopment that increased conversions by 300%.",
   },
@@ -96,7 +96,7 @@ const awards = [
   {
     year: 2025,
     award: "Web Excellence Awards",
-    category: "Hotel & Hospitality",
+    category: "Best Hotel & Hospitality",
     project: "Tregulland & Co.",
     company: "Halo",
   },
@@ -111,8 +111,7 @@ const awards = [
     year: 2015,
     award: "The Drum Awards for Digital Industries",
     category: "Best Not-for-Profit Website",
-    project: "50 Things",
-    client: "The National Trust",
+    project: "The National Trust 50 Things",
     company: "Great State",
   },
   {
@@ -127,7 +126,6 @@ const awards = [
     award: "IVCA Awards",
     category: "Best Interactive",
     project: "Rethink eLearning Application",
-    client: "Rethink",
     company: "Freelance",
   },
 ];
@@ -146,21 +144,35 @@ const awards = [
 		/>
 	</section>
 
-	<section class="section">
+	<section class="section grid">
 
-		{experience.map(({ from, to, role, company, description }) => (		
-      <div class="job">	
-			  <p class="job__duration">{from} – {to}</p>
-        <div class="job__details">
-			    <h3 class="job__title">{role}</h3>
-			    <p class="job__company">{company}</p>
-			    <p class="typography">{description}</p>
+    <div class="grid__item grid__item--two-thirds">
+
+      {experience.map(({ from, to, role, company, description }) => (		
+        <div class="job">	
+          <p class="job__duration nav__heading">{from} – {to}</p>
+          <div class="job__details">
+            <h3 class="job__title">{role}</h3>
+            <p class="job__company">{company}</p>
+            <p class="typography">{description}</p>
+          </div>
         </div>
-      </div>
-		))}
+      ))}
 
+    </div>
 
+    <div class="grid__item grid__item--third">
+			<h2 class="job__duration nav__heading">Awards</h2>
 
+			{awards.map(({ year, award, category, project, company }) => (
+				<div class="award">					
+					<h3 class="award__category job__title"><span class="award__year">{year}</span> {category}</h3>	
+          <div class="typography">
+            <p class="award__title"><strong>{award}</strong><br>{company} / {project}</p>
+          </div>
+				</div>
+			))}
+    </div>
 
 	</section>			
 </Wrapper>

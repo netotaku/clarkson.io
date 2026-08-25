@@ -1,9 +1,10 @@
 .job{
-    display: flex;
-    margin-bottom: 5vw;
-
-    &__duration{
-        min-width: 20%;
+   
+    &:not(:last-child){
+        margin-bottom: 5vw;
+    }
+    
+    &__duration{       
         font-weight: bold;
         font-size: 18px;
     }
@@ -15,4 +16,17 @@
     &__company{
         font-size: 28px;
     }    
+}
+
+.award{
+    &:not(:last-child){
+        margin-bottom: 5vw;
+    }    
+    &__category{
+        line-height: 1.2;
+    }
+    &__year{
+        color: rgba(255,255,255, .6);
+        display: block;
+    }
 }
