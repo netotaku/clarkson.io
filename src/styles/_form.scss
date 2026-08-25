@@ -45,6 +45,8 @@
     }
 
     &:hover{
+        color: var(--color-white);
+
         input[type="submit"]{ 
             background: var(--color-white);
         }
@@ -56,6 +58,28 @@
         .form__fieldset{
             border-color: var(--color-white);
         }   
+    }
+
+    &[data-state="success"]:hover{
+        input[type="submit"]{
+            color: var(--color-charcoal);
+            background: var(--color-green);
+        }
+
+        .form__fieldset{
+            border-color: var(--color-green);
+        }
+    }
+
+    &[data-state="error"]:hover{
+        input[type="submit"]{
+            color: var(--color-white);
+            background: #e02020;
+        }
+
+        .form__fieldset{
+            border-color: #e02020;
+        }
     }
     
 }

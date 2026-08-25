@@ -4,6 +4,7 @@
     class="form"
     action="/.netlify/functions/subscribe"
     method="post"
+    data-astro-reload
     data-signup-form
     data-state="idle"
 >
@@ -37,62 +38,56 @@
 </form>
 
 <script>
-    type SignupWindow = Window & {
-        signupFormInitialised?: boolean;
+    const initialiseSignupForms = () => {
+        document.querySelectorAll<HTMLFormElement>('[data-signup-form]').forEach((form) => {
+            if (form.dataset.signupInitialised === 'true') return;
+
+            form.dataset.signupInitialised = 'true';
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                if (form.dataset.state === 'submitting') return;
+
+                const emailInput = form.querySelector<HTMLInputElement>('input[type="email"]');
+                const submitInput = form.querySelector<HTMLInputElement>('input[type="submit"]');
+                const status = form.querySelector<HTMLElement>('[data-signup-status]');
+
+                if (!emailInput || !submitInput || !status || !form.reportValidity()) return;
+
+                form.dataset.state = 'submitting';
+                submitInput.disabled = true;
+                submitInput.value = 'Subscribing…';
+                status.hidden = true;
+                status.textContent = '';
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ email: emailInput.value }),
+                    });
+
+                    if (!response.ok) throw new Error('Subscription request failed');
+
+                    form.dataset.state = 'success';
+                    emailInput.value = '';
+                    emailInput.disabled = true;
+                    submitInput.value = 'Subscribed';
+                    status.textContent = 'Thanks — your signup has been received.';
+                    status.hidden = false;
+                } catch {
+                    form.dataset.state = 'error';
+                    submitInput.disabled = false;
+                    submitInput.value = 'Subscribe';
+                    status.textContent = 'Sorry, we could not complete your signup. Please try again.';
+                    status.hidden = false;
+                }
+            });
+        });
     };
 
-    const signupWindow = window as SignupWindow;
-
-    if (!signupWindow.signupFormInitialised) {
-        signupWindow.signupFormInitialised = true;
-
-        document.addEventListener('submit', async (event) => {
-            const form = event.target;
-
-            if (!(form instanceof HTMLFormElement) || !form.matches('[data-signup-form]')) {
-                return;
-            }
-
-            event.preventDefault();
-
-            if (form.dataset.state === 'submitting') return;
-
-            const emailInput = form.querySelector<HTMLInputElement>('input[type="email"]');
-            const submitInput = form.querySelector<HTMLInputElement>('input[type="submit"]');
-            const status = form.querySelector<HTMLElement>('[data-signup-status]');
-
-            if (!emailInput || !submitInput || !status || !form.reportValidity()) return;
-
-            form.dataset.state = 'submitting';
-            submitInput.disabled = true;
-            submitInput.value = 'Subscribing…';
-            status.hidden = true;
-            status.textContent = '';
-
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ email: emailInput.value }),
-                });
-
-                if (!response.ok) throw new Error('Subscription request failed');
-
-                form.dataset.state = 'success';
-                emailInput.value = '';
-                emailInput.disabled = true;
-                submitInput.value = 'Subscribed';
-                status.textContent = 'Thanks — your signup has been received.';
-                status.hidden = false;
-            } catch {
-                form.dataset.state = 'error';
-                submitInput.disabled = false;
-                submitInput.value = 'Subscribe';
-                status.textContent = 'Sorry, we could not complete your signup. Please try again.';
-                status.hidden = false;
-            }
-        });
-    }
+    initialiseSignupForms();
+    document.addEventListener('astro:page-load', initialiseSignupForms);
 </script>

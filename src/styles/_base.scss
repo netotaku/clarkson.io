@@ -5,6 +5,11 @@
     text-wrap: pretty;
 }
 
+:focus-visible {
+    outline: 3px solid var(--color-orange);
+    outline-offset: 3px;
+}
+
 .navigation-progress {
     position: fixed;
     z-index: 9999;
