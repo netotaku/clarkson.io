@@ -260,12 +260,18 @@ const buildCommitUrl = buildCommit
 					
 				</footer>
 
-				<menu
+			</main>
+
+		</div> <!-- .main -->
+
+		<div class="menu-overlay" aria-hidden="true"></div>
+
+		<menu
 					class="menu"
 					transition:persist="fixed-menu"
 				>
 					<div class="menu__group">
-						<a class="btn btn--icon" href="/">
+						<a class="btn btn--icon btn--orange" href="/">
 							<HomeIcon />
 						</a>
 
@@ -293,12 +299,7 @@ const buildCommitUrl = buildCommit
 					<span class="menu__close-icon" aria-hidden="true"><CloseIcon /></span>
 				</a>
 					</div>
-				</menu>
-
-
-			</main>
-
-		</div> <!-- .main -->
+		</menu>
 
 		
 
@@ -488,7 +489,11 @@ const buildCommitUrl = buildCommit
 				const target = event.target;
 
 				if (target instanceof Element && target.closest('#js-open-closed')) {
-					document.documentElement.classList.toggle('js-open');
+					const root = document.documentElement;
+					const opening = !root.classList.contains('js-open');
+
+					root.classList.toggle('js-open', opening);
+					root.classList.toggle('menu-overlay-visible', opening);
 				}
 			});
 
@@ -524,6 +529,7 @@ const buildCommitUrl = buildCommit
 			});
 
 			document.addEventListener('astro:page-load', () => {
+				document.documentElement.classList.remove('menu-overlay-visible');
 				completeProgressAfterPixelHero();
 				revealInitialHero();
 			});

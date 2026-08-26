@@ -24,6 +24,7 @@
 
     // colours
     --color-transparent: transparent;
+    --color-black: #000;
     --color-white: #fff;
     --color-white-90: rgba(255, 255, 255, .9);
     --color-white-60: rgba(255, 255, 255, .6);
@@ -48,6 +49,7 @@
     --color-lavender: #9d8fc1;
     --color-sage: #8fa886;
     --color-error: #e02020;
+    --overlay-opacity: .5;
 
     // motion
     --duration-fast: 180ms;

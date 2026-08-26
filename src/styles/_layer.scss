@@ -5,6 +5,7 @@
 
     &--0{
         position: fixed;
+        z-index: 4;
         overflow: hidden;
         overflow-y: scroll;
         width: var(--side-panel-width);

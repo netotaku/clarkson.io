@@ -32,6 +32,10 @@ html {
         .menu{
                 transform: translateX(calc(var(--side-panel-width) * -1));
 
+                #js-open-closed {
+                        background-color: var(--color-orange);
+                }
+
                 .menu__burger-icon {
                         display: none;
                 }
@@ -48,11 +52,18 @@ html {
     }
 }
 
+.menu-overlay-visible .menu-overlay {
+    opacity: var(--overlay-opacity);
+    pointer-events: auto;
+}
+
 @media (prefers-reduced-motion: reduce) {
     html,
     .main,
     .menu,
     .menu .btn:not(#js-open-closed),
+    #js-open-closed,
+    .menu-overlay,
     .layer--0 {
         transition: none;
     }

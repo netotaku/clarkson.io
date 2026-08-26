@@ -94,4 +94,9 @@ html{
     &blank{
         min-height: 100vh;
     }
+    @media (max-width: 639px) {
+        &no-mobile{
+            display: none;
+        }
+    }
 }
