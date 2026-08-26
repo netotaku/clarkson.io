@@ -108,9 +108,17 @@ html{
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
     }
+
+    &mobile-only{
+        display: none;
+    }
+
     @media (max-width: 639px) {
         &no-mobile{
             display: none;
+        }
+        &mobile-only{
+            display: block;
         }
     }
 }
