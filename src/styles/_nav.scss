@@ -68,8 +68,12 @@
     }
 
     @media (max-width: 639px) {
+        &__links {
+            font-size: var(--font-size-nav-link-mobile);
+        }
+
         &__links--primary a {
-            font-size: calc(var(--font-size-primary-nav) * .81);
+            font-size: var(--font-size-primary-nav-mobile);
         }
     }
 }

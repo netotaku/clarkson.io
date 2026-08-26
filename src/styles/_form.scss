@@ -44,23 +44,25 @@
         border-radius: 0 calc(var(--radius-lg) - 1px) calc(var(--radius-lg) - 1px) 0;
     }
 
-    &:hover{
-        color: var(--color-white);
+    @media (min-width: 640px){
+        &:hover{
+            color: var(--color-white);
 
-        input[type="submit"]{ 
-            background: var(--color-white);
-        }
-        input[type="email"]{
-            &::placeholder{
-                color: var(--color-white);
+            input[type="submit"]{ 
+                background: var(--color-white);
             }
+            input[type="email"]{
+                &::placeholder{
+                    color: var(--color-white);
+                }
+            }
+            .form__fieldset{
+                border-color: var(--color-white);
+            }   
         }
-        .form__fieldset{
-            border-color: var(--color-white);
-        }   
     }
 
-    &[data-state="success"]:hover{
+    &[data-state="success"]{
         input[type="submit"]{
             color: var(--color-charcoal);
             background: var(--color-green);
@@ -69,9 +71,13 @@
         .form__fieldset{
             border-color: var(--color-green);
         }
+
+        .form__status{
+            color: var(--color-green);
+        }
     }
 
-    &[data-state="error"]:hover{
+    &[data-state="error"]{
         input[type="submit"]{
             color: var(--color-white);
             background: var(--color-error);
@@ -79,6 +85,10 @@
 
         .form__fieldset{
             border-color: var(--color-error);
+        }
+
+        .form__status{
+            color: var(--color-error);
         }
     }
     

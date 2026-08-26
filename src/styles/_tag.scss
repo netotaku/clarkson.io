@@ -61,4 +61,12 @@
             font-weight: 400;
         }
     }
+
+    @media (max-width: 639px){
+        font-size: calc(var(--font-size-small) * 1.15);
+
+        &--large{
+            font-size: calc(var(--font-size-small) * 2.3);
+        }
+    }
 }

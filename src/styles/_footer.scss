@@ -73,7 +73,11 @@
         }
 
         &__links--primary .nav__links--primary a {
-            font-size: calc(var(--font-size-footer-primary-nav) * .81);
+            font-size: var(--font-size-primary-nav-mobile);
+        }
+
+        &__commit {
+            font-size: var(--font-size-nav-link-mobile);
         }
     }
 
