@@ -48,7 +48,7 @@
         &:hover{
             color: var(--color-white);
 
-            input[type="submit"]{ 
+            input[type="submit"]:not(:disabled){ 
                 background: var(--color-white);
             }
             input[type="email"]{

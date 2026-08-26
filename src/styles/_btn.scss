@@ -89,7 +89,7 @@
     }
 
     @media (min-width: 640px) {
-        &--icon:hover,
+        &--icon:hover:not(:disabled),
         &--pagination:hover:not(:disabled) {
             background-color: var(--color-orange);
         }
