@@ -80,6 +80,7 @@ class PixelHero {
   private columns = 1;
   private rows = 1;
   private tailRows = 1;
+  private observedWidth = 0;
 
   private pixels: Uint8ClampedArray | null = null;
   private cells: Cell[] = [];
@@ -187,7 +188,14 @@ class PixelHero {
 
   private init() {
     this.resizeObserver =
-      new ResizeObserver(() => {
+      new ResizeObserver(entries => {
+        const entry = entries[0];
+
+        if (entry) {
+          this.observedWidth =
+            entry.contentRect.width;
+        }
+
         window.clearTimeout(
           this.resizeTimer,
         );
@@ -227,7 +235,7 @@ class PixelHero {
 
   private render() {
     const width =
-      this.root.clientWidth;
+      this.observedWidth;
 
     if (
       !width ||

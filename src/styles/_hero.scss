@@ -9,6 +9,14 @@
     background-position: right center;
     background-size: auto 100%;
 
+    &--404 {
+        background-size: contain;
+
+        .hero__scroll__icon {
+            display: none;
+        }
+    }
+
     &__title {
 
         h1 {

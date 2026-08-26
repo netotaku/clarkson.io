@@ -12,10 +12,11 @@ interface BreadcrumbItem {
 interface Props {
   backgroundImage: ImageMetadata;
   breadcrumb?: string | BreadcrumbItem[];
+  modifier?: string;
   title: string;
 }
 
-const { backgroundImage, breadcrumb, title } = Astro.props;
+const { backgroundImage, breadcrumb, modifier, title } = Astro.props;
 const hasBreadcrumbSlot = Astro.slots.has('breadcrumb');
 const breadcrumbText = typeof breadcrumb === 'string' ? breadcrumb.trim() : '';
 const isSafeHref = (href: string) =>
@@ -44,7 +45,7 @@ const hasBreadcrumb =
 ---
 
 <header
-  class="hero"
+  class:list={['hero', modifier && `hero${modifier}`]}
   style={`--hero-image: url("${backgroundImage.src}"); --hero-image-width: ${backgroundImage.width}px; --hero-image-height: ${backgroundImage.height}px;`}
 >
   <div class="hero__title">
