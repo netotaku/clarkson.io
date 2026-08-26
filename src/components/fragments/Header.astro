@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import FormattedDate from '../helpers/FormattedDate.astro';
+import { categorySlug } from '../../utils/categories';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -43,7 +44,7 @@ const theme = /^#[0-9a-f]{6}$/i.test(data.theme) ? data.theme : 'var(--color-ora
       {data.categories.map((category) => (
         <a
           class="tag"
-          href={`/blog/category/${encodeURIComponent(category.toLowerCase())}/`}
+          href={`/blog/category/${categorySlug(category)}/`}
         >
           <span class="tag__count">#</span>
           <span class="tag__label">{category}</span>

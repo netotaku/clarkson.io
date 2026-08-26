@@ -1,13 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
 import Archive from '../../../layouts/archive.astro';
+import { categoryLabel, categorySlug } from '../../../utils/categories';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
 
   const categories = new Set(
     posts.flatMap((post) =>
-      post.data.categories?.map((c) => c.toLowerCase()) || []
+      post.data.categories?.map(categorySlug) || []
     )
   );
 
@@ -17,23 +18,24 @@ export async function getStaticPaths() {
   }));
 }
 
-const routeCategory = Astro.props.category.toLowerCase();
+const routeCategory = Astro.props.category;
+const routeCategoryLabel = categoryLabel(routeCategory);
 
 const allPosts = await getCollection('blog');
 
 const posts = allPosts.filter((post) =>
   post.data.categories.some(
-    (c) => c.toLowerCase() === routeCategory
+    (category) => categorySlug(category) === routeCategory
   )
 );
 ---
 <Archive
-  title={`#${routeCategory}`}
-  description={`Posts in the category: ${routeCategory}`}
+  title={`#${routeCategoryLabel}`}
+  description={`Posts in the category: ${routeCategoryLabel}`}
   image="/images/bio.jpg"
   breadcrumb={[
     { label: 'Blog', href: '/blog/', previous: true },
-    { label: `#${routeCategory}` },
+    { label: `#${routeCategoryLabel}` },
   ]}
   posts={posts}
 />

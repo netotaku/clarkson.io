@@ -5,6 +5,10 @@
         display: flex;
     }
 
+    &--inline{
+        display: inline-flex;
+    }
+
     align-items: center;
     flex-flow: row nowrap;
     justify-content: stretch;
@@ -39,5 +43,22 @@
     &__label{
         padding-left: var(--space-md);
         padding-right: var(--space-md);
+    }
+
+    &--large{
+        height: calc(var(--tag-height) * 2);
+        border-radius: calc(var(--radius-md) * 2);
+        font-size: calc(var(--font-size-small) * 2);
+        font-weight: 400;
+
+        .tag__count,
+        .tag__label{
+            padding-left: calc(var(--space-md) * 2);
+            padding-right: calc(var(--space-md) * 2);
+        }
+
+        .tag__count{
+            font-weight: 400;
+        }
     }
 }

@@ -15,6 +15,7 @@ import Contact from "../components/nav/contact.astro";
 import SignUp from "../components/fragments/SignUp.astro";
 import { getCollection } from 'astro:content';
 import { getLatestPost } from '../utils/blog';
+import { categoryLabel, categorySlug } from '../utils/categories';
 import '../styles/global.scss';
 import {
   BurgerIcon,
@@ -22,8 +23,6 @@ import {
   WhatsappIcon,
   HomeIcon
 } from '../icons';
-
-const today = new Date();
 
 interface Props {
 	title?: string;
@@ -48,13 +47,9 @@ const categoryMap = new Map<
   }
 >();
 
-const unslugify = (slug: string) =>
-  slug
-    .replace(/[-_]+/g, ' ')
-    .replace(/\b\w/g, (char) => char.toUpperCase());
-
 for (const post of allPosts) {
-  for (const slug of post.data.categories ?? []) {
+  for (const category of post.data.categories ?? []) {
+    const slug = categorySlug(category);
     const existing = categoryMap.get(slug);
 
     if (existing) {
@@ -62,7 +57,7 @@ for (const post of allPosts) {
     } else {
       categoryMap.set(slug, {
         slug,
-        label: unslugify(slug),
+        label: categoryLabel(category),
         count: 1,
       });
     }
@@ -141,7 +136,7 @@ const buildCommitUrl = buildCommit
 			aria-hidden="true"
 		></div>
 		
-		<nav class="layer layer--0 nav">
+		<nav id="site-menu" class="layer layer--0 nav">
 			<div class="nav__section">
 				<Primary />
 			</div>
@@ -286,10 +281,17 @@ const buildCommitUrl = buildCommit
 						<a target="_blank" class="btn btn--icon menu__whatsapp" href="https://wa.me/447771535355">
 							<WhatsappIcon />
 						</a>
-				<a id="js-open-closed" class="btn btn--icon" aria-label="Toggle menu">
+				<button
+					id="js-open-closed"
+					class="btn btn--icon"
+					type="button"
+					aria-label="Toggle menu"
+					aria-controls="site-menu"
+					aria-expanded="false"
+				>
 					<span class="menu__burger-icon" aria-hidden="true"><BurgerIcon /></span>
 					<span class="menu__close-icon" aria-hidden="true"><CloseIcon /></span>
-				</a>
+				</button>
 					</div>
 		</menu>
 
@@ -452,14 +454,17 @@ const buildCommitUrl = buildCommit
 				if (target instanceof Element && target.closest('#js-open-closed')) {
 					const root = document.documentElement;
 					const opening = !root.classList.contains('js-open');
+					const toggle = document.querySelector<HTMLElement>('#js-open-closed');
 
 					root.classList.toggle('js-open', opening);
 					root.classList.toggle('menu-overlay-visible', opening);
+					toggle?.setAttribute('aria-expanded', String(opening));
 				}
 			});
 
 			document.addEventListener('astro:before-preparation', (event) => {
 				document.documentElement.classList.remove('js-open');
+				document.querySelector('#js-open-closed')?.setAttribute('aria-expanded', 'false');
 				startProgress();
 
 				const fadeOutComplete = startPageFadeOut(event.signal);
@@ -491,6 +496,7 @@ const buildCommitUrl = buildCommit
 
 			document.addEventListener('astro:page-load', () => {
 				document.documentElement.classList.remove('menu-overlay-visible');
+				document.querySelector('#js-open-closed')?.setAttribute('aria-expanded', 'false');
 				animateProgressWithPageReveal();
 				revealInitialHero();
 			});

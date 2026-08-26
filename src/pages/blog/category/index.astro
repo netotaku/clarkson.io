@@ -1,33 +1,53 @@
 ---
 import { getCollection } from 'astro:content';
-
+import Hero from '../../../components/Hero.astro';
+import Wrapper from '../../../layouts/wrapper.astro';
+import bikeImage from '../../../assets/images/chrome/me-on-a-bike.png';
+import { categoryLabel, categorySlug } from '../../../utils/categories';
 
 const posts = await getCollection('blog');
 
-// Flatten all categories and deduplicate
-const allCategories = Array.from(
-  new Set(posts.flatMap((post) => post.data.categories || []))
-);
+const allCategories = Array.from(new Set(
+  posts.flatMap((post) => post.data.categories.map(categorySlug)),
+)).sort();
 
-// Map each category to its latest post
-const latestByCategory = allCategories.map((category) => {
-  const categoryPosts = posts
-    .filter((post) => post.data.categories?.includes(category))
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-  return {
-    category,
-    post: categoryPosts[0],
-  };
-});
+const categories = allCategories.map((category) => ({
+  slug: category,
+  label: categoryLabel(category),
+  count: posts.filter((post) =>
+    post.data.categories.some(
+      (postCategory) => categorySlug(postCategory) === category,
+    ),
+  ).length,
+}));
 ---
-<ul>
-    {latestByCategory.map(({ category, post }) => (
-      <li>
-        <h2><a href={`/blog/category/${category.toLowerCase()}/`}>{category.replace('-', ' ')}</a></h2>
-        <a href={`/blog/${post.id}/`}>
-          {post.data.title}
+<Wrapper
+  title="Blog topics"
+  description="Browse articles by topic, including ethical technology, accessibility, AI, web development and digital strategy."
+  image="/src/assets/images/dev.jpg"
+>
+  <section class="section">
+    <Hero
+      backgroundImage={bikeImage}
+      breadcrumb={[
+        { label: 'Blog', href: '/blog/', previous: true },
+        { label: 'Topics' },
+      ]}
+      title="Topics"
+    />
+  </section>
+
+  <section class="section measure">
+    <nav aria-label="Blog topics">
+      {categories.map((category) => (
+        <a
+          class="tag tag--inline tag--large"
+          href={`/blog/category/${category.slug}/`}
+        >
+          <span class="tag__count">{category.count}</span>
+          <span class="tag__label">{category.label}</span>
         </a>
-      </li>
-    ))}
-  </ul>
+      ))}
+    </nav>
+  </section>
+</Wrapper>
