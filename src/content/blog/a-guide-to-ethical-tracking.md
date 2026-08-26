@@ -58,7 +58,7 @@ Even worse, Google Analytics 4 has **removed or diminished** some of the more ac
 
 There are several excellent, privacy-friendly analytics platforms available today that don’t rely on cookies:
 
-<div class="u-scroller">
+<div class="u-scroll-x">
 
 | Tool               | Cookieless | Pricing       | Notes                                           |
 |--------------------|------------|---------------|--------------------------------------------------|

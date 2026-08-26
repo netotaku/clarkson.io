@@ -59,12 +59,12 @@ That off-hand comment got me thinking: *Are we really experiencing exponential g
 
 ## Are We in an Exponential Curve?
 
-✅ **Yes, in some areas:**
+**Yes, in some areas:**
 - **Moore’s Law** held for decades, doubling transistor counts and shrinking chips.
 - **Internet speeds**, **storage**, and **model size** in AI have followed similar exponential curves.
 - **AI scale** in particular has exploded—OpenAI’s models doubled in complexity every few months from 2018–2023.
 
-❌ **But not in lived experience:**
+**But not in lived experience:**
 - From **TV to the microwave** to **home computers** took decades.
 - Each truly disruptive technology often needed years—if not decades—to embed itself culturally.
 - Many modern breakthroughs are now *invisible*: algorithms, protocols, data flows.

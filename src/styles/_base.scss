@@ -52,6 +52,14 @@ a {
   }
 }
 
+th,
+th *,
+td,
+td * {
+    text-wrap: nowrap;
+    white-space: nowrap;
+}
+
 
 html{
     font-family: sans-serif;
@@ -93,6 +101,12 @@ html{
 .u-{
     &blank{
         min-height: 100vh;
+    }
+    &scroll-x{
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
     @media (max-width: 639px) {
         &no-mobile{
