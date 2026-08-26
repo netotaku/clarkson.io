@@ -51,14 +51,15 @@
     &--icon{
         width: var(--button-height);
         padding: 0px;
-        &:hover{
-            background-color: var(--color-orange);
-        }
     }
 
     &--green{
         padding-left: 0px;
         background-color: var(--color-green);
+    }
+
+    &--hand{
+        cursor: pointer;
     }
 
     &--orange{
@@ -68,7 +69,6 @@
     &--pagination {
         background: var(--color-white-15);
 
-        &:hover:not(:disabled),
         &:focus-visible {
             background: var(--color-orange);
         }
@@ -85,6 +85,13 @@
 
         &[aria-current='page'] {
             background: var(--color-orange);
+        }
+    }
+
+    @media (min-width: 640px) {
+        &--icon:hover,
+        &--pagination:hover:not(:disabled) {
+            background-color: var(--color-orange);
         }
     }
 

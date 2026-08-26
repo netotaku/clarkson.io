@@ -258,7 +258,7 @@ const buildCommitUrl = buildCommit
 					transition:persist="fixed-menu"
 				>
 					<div class="menu__group">
-						<a class="btn btn--icon btn--orange" href="/">
+						<a class="btn btn--icon btn--orange menu__home" href="/">
 							<HomeIcon />
 						</a>
 
@@ -278,12 +278,12 @@ const buildCommitUrl = buildCommit
 						</div>
 					</div>
 					<div class="menu__group">
-						<a target="_blank" class="btn btn--icon menu__whatsapp" href="https://wa.me/447771535355">
+						<a target="_blank" class="btn btn--icon btn--green menu__whatsapp" href="https://wa.me/447771535355">
 							<WhatsappIcon />
 						</a>
 				<button
 					id="js-open-closed"
-					class="btn btn--icon"
+					class="btn btn--icon btn--hand"
 					type="button"
 					aria-label="Toggle menu"
 					aria-controls="site-menu"
@@ -448,10 +448,7 @@ const buildCommitUrl = buildCommit
 				window.setTimeout(completeProgress, pageFadeDuration);
 			};
 
-			document.addEventListener('click', (event) => {
-				const target = event.target;
-
-				if (target instanceof Element && target.closest('#js-open-closed')) {
+			const toggleMenu = () => {
 					const root = document.documentElement;
 					const opening = !root.classList.contains('js-open');
 					const toggle = document.querySelector<HTMLElement>('#js-open-closed');
@@ -459,6 +456,13 @@ const buildCommitUrl = buildCommit
 					root.classList.toggle('js-open', opening);
 					root.classList.toggle('menu-overlay-visible', opening);
 					toggle?.setAttribute('aria-expanded', String(opening));
+			};
+
+			document.addEventListener('click', (event) => {
+				const target = event.target;
+
+				if (target instanceof Element && target.closest('#js-open-closed')) {
+					toggleMenu();
 				}
 			});
 

@@ -27,6 +27,12 @@
         transition: background-color var(--duration-fast) ease-out;
     }
 
+    @media (min-width: 640px) {
+        &__home:hover {
+            background-color: var(--color-charcoal);
+        }
+    }
+
     @media (max-width: 639px){
         flex-direction: row;
         align-items: center;
