@@ -44,11 +44,31 @@
         margin-bottom: var(--layout-spacing);
     }
 
+    &__cta {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gutter);
+
+        &--mobile {
+            display: none;
+        }
+    }
+
     @media (max-width: 639px) {
         &__header {
             position: static;
             top: auto;
             align-self: stretch;
+        }
+
+        &__cta {
+            &--desktop {
+                display: none;
+            }
+
+            &--mobile {
+                display: flex;
+            }
         }
     }
 }

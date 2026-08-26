@@ -66,4 +66,10 @@
 
         }
     }
+
+    @media (max-width: 639px) {
+        &__links--primary a {
+            font-size: calc(var(--font-size-primary-nav) * .81);
+        }
+    }
 }

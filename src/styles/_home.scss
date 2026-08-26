@@ -1,6 +1,7 @@
 .home{
     text-align: right;
     position: relative;
+    overflow: hidden;
     &__me{
         margin-right: var(--home-image-offset);
     }
@@ -11,6 +12,7 @@
 
         text-align: left;           
         left: var(--layout-spacing);
+        right: var(--layout-spacing);
         
         &__heading{
             font-family: Oswald;
@@ -31,6 +33,23 @@
         font-size: var(--font-size-home-nav);
         a{
             display: block;
+        }
+    }
+
+    @media (max-width: 639px) {
+        padding-top: 80px;
+        &__me {
+            width: var(--home-image-width-mobile);
+            height: auto;
+            margin: 0;
+            margin-right: -50px;
+        }
+
+        &__lockup__latest {
+            display: none;
+        }
+        &__lockup{
+            top: 390px;
         }
     }
 }

@@ -93,12 +93,15 @@
         margin-top: var(--hero-mobile-offset);
 
         .hero__breadcrumb {
-            flex-direction: column;
-            gap: 0;
+            display: none;
         }
 
         .hero__scroll__icon {
             gap: var(--space-2xs);
+        }
+
+        .hero__scroll__mouse {
+            display: none;
         }
     }
 }

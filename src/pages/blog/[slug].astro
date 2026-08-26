@@ -59,6 +59,27 @@ const breadcrumb = [
 
 			<Header post={post} />
 
+			<div class="blog__cta blog__cta--desktop">
+				<div class="blog__header__hire-me">
+					<h2>Hire Me</h2>
+					<p>{post.data.cta}</p>
+				</div>
+
+				<h3>Let's talk.</h3>
+
+				<div class="blog__header__icons">
+					<a class="btn btn--icon btn--whatsapp" href="#"><WhatsappIcon /></a>
+					<a class="btn btn--icon btn--phone" href="#"><PhoneIcon /></a>
+					<a class="btn btn--icon btn--email" href="#"><EmailIcon /></a>
+				</div>
+			</div>
+
+		</header>
+		<div class="blog__content typography grid__item grid__item--two-thirds">
+			<Content />
+		</div>
+
+		<div class="blog__cta blog__cta--mobile grid__item">
 			<div class="blog__header__hire-me">
 				<h2>Hire Me</h2>
 				<p>{post.data.cta}</p>
@@ -66,15 +87,11 @@ const breadcrumb = [
 
 			<h3>Let's talk.</h3>
 
-			<div class="blog__header__icons">				
+			<div class="blog__header__icons">
 				<a class="btn btn--icon btn--whatsapp" href="#"><WhatsappIcon /></a>
 				<a class="btn btn--icon btn--phone" href="#"><PhoneIcon /></a>
 				<a class="btn btn--icon btn--email" href="#"><EmailIcon /></a>
-			</div>	
-
-		</header>
-		<div class="blog__content typography grid__item grid__item--two-thirds">
-			<Content />
+			</div>
 		</div>
 	</div>			
 		

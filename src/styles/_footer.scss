@@ -71,6 +71,10 @@
             width: 100%;
             max-width: none;
         }
+
+        &__links--primary .nav__links--primary a {
+            font-size: calc(var(--font-size-footer-primary-nav) * .81);
+        }
     }
 
 }
