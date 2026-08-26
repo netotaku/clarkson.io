@@ -1,13 +1,14 @@
 :root {
     // layout and spacing
+    --composition-max-width: 1700px;
     --space-2xs: 2px;
     --space-xs: 4px;
     --space-sm: 8px;
     --space-md: 12px;
     --space-lg: 20px;
     --gutter: 22px;
-    --layout-spacing: 5vw;
-    --home-image-offset: 3vw;
+    --layout-spacing: min(5vw, 85px);
+    --home-image-offset: min(3vw, 51px);
     --section-top-spacing: 220px;
     --content-max-width: 1000px;
     --side-panel-width: 300px;
@@ -65,7 +66,7 @@
     --icon-size-sm: 12px;
     --tag-height: 32px;
     --header-theme-size: 20px;
-    --hero-min-height: 44vw;
+    --hero-min-height: min(44vw, 748px);
     --hero-mobile-padding: 104px;
     --hero-mobile-offset: 66px;
     --hero-scroll-icon-size: 32px;
@@ -76,20 +77,20 @@
     --pixel-hero-inset: 3px;
 
     // fluid type
-    --font-size-body: clamp(1rem, 1.2vw, 1.2rem);
-    --font-size-small: clamp(0.75rem, 0.9vw, 0.8125rem);
-    --font-size-nav-heading: clamp(0.75rem, 1vw, 0.9rem);
-    --font-size-nav-link: clamp(1rem, 1.35vw, 1.2rem);
-    --font-size-form-control: clamp(1rem, 1.3vw, 1.125rem);
-    --font-size-home-heading: clamp(4rem, 20vw, 22rem);
-    --font-size-home-subheading: clamp(1.75rem, 3vw, 2.625rem);
-    --font-size-home-description: clamp(1rem, 1.3vw, 1.125rem);
-    --font-size-home-nav: clamp(1.125rem, 1.6vw, 1.375rem);
-    --font-size-page-heading: clamp(3.5rem, 7.15vw, 6.25rem);
-    --font-size-blog-title: clamp(2.75rem, 4.3vw, 3.75rem);
-    --font-size-blog-description: clamp(1.0625rem, 1.45vw, 1.25rem);
-    --font-size-list-heading: clamp(3.5rem, 14vw, 12rem);
-    --font-size-card-title: clamp(2.5rem, 3.95vw, 3.4375rem);
+    --font-size-body: clamp(1rem, min(1.2vw, 20.4px), 1.2rem);
+    --font-size-small: clamp(0.75rem, min(0.9vw, 15.3px), 0.8125rem);
+    --font-size-nav-heading: clamp(0.75rem, min(1vw, 17px), 0.9rem);
+    --font-size-nav-link: clamp(1rem, min(1.35vw, 22.95px), 1.2rem);
+    --font-size-form-control: clamp(1rem, min(1.3vw, 22.1px), 1.125rem);
+    --font-size-home-heading: clamp(4rem, min(20vw, 340px), 22rem);
+    --font-size-home-subheading: clamp(1.75rem, min(3vw, 51px), 2.625rem);
+    --font-size-home-description: clamp(1rem, min(1.3vw, 22.1px), 1.125rem);
+    --font-size-home-nav: clamp(1.125rem, min(1.6vw, 27.2px), 1.375rem);
+    --font-size-page-heading: clamp(3.5rem, min(7.15vw, 121.55px), 6.25rem);
+    --font-size-blog-title: clamp(2.75rem, min(4.3vw, 73.1px), 3.75rem);
+    --font-size-blog-description: clamp(1.0625rem, min(1.45vw, 24.65px), 1.25rem);
+    --font-size-list-heading: clamp(3.5rem, min(14vw, 238px), 12rem);
+    --font-size-card-title: clamp(2.5rem, min(3.95vw, 67.15px), 3.4375rem);
     --font-size-breadcrumb: 18px;
     --font-size-job-title: 32px;
     --font-size-job-company: 28px;

@@ -38,6 +38,7 @@
     &--2{
         position: relative;
         z-index: 1;  
-        width: 100%;
+        width: min(100%, var(--composition-max-width));
+        margin-inline: auto;
     }
 }
