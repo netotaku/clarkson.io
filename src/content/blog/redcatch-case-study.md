@@ -43,8 +43,6 @@ Although the scope didn’t include full brand strategy, I approached the visual
 - Client confidence restored - Redcatch came away with a website they understood, owned, and could manage — and a sense that digital didn’t have to be intimidating.
 - Brand presence established - Their new logo and visual language now appear consistently across workwear, vans, and signage — helping reinforce their identity both online and on-site.
 
-<img src="/images/rc-post-graphic.jpg" />
-
 ## Reflections
 
 This project was a reminder that good work isn’t always about size or complexity. Sometimes, the real value lies in helping people feel confident, heard, and in control. By making the process accessible and focused, I was able to unlock progress — not just in pixels, but in partnership.
