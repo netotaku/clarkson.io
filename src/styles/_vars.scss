@@ -101,3 +101,9 @@
     --font-size-typography-heading-mobile: 1.8em;
     --inline-meta-gap: 0.35em;
 }
+
+@media (max-width: 639px) {
+    :root {
+        --side-panel-width: calc(100vw - var(--button-height) - (var(--gutter) * 2));
+    }
+}

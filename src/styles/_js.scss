@@ -10,7 +10,11 @@ html {
 }
 
 .menu {
-    transition: right var(--duration-fast) ease-out;
+    transition: transform var(--duration-fast) ease-out;
+
+    .btn:not(#js-open-closed) {
+        transition: opacity var(--duration-fast) ease-out;
+    }
 }
 
 .js-{
@@ -26,7 +30,20 @@ html {
                 transition-delay: 0s;
         }
         .menu{
-                right: var(--side-panel-width);
+                transform: translateX(calc(var(--side-panel-width) * -1));
+
+                .menu__burger-icon {
+                        display: none;
+                }
+
+                .menu__close-icon {
+                        display: flex;
+                }
+
+                .btn:not(#js-open-closed) {
+                        opacity: 0;
+                        pointer-events: none;
+                }
         }
     }
 }
@@ -35,6 +52,7 @@ html {
     html,
     .main,
     .menu,
+    .menu .btn:not(#js-open-closed),
     .layer--0 {
         transition: none;
     }

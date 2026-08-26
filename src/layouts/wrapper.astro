@@ -19,6 +19,7 @@ import { getLatestPost } from '../utils/blog';
 import '../styles/global.scss';
 import {
   BurgerIcon,
+  CloseIcon,
   WhatsappIcon,
   HomeIcon
 } from '../icons';
@@ -213,15 +214,11 @@ const buildCommitUrl = buildCommit
 				<slot />
 				
 				<footer class="section footer">
-					<div class="">
-			
-					</div>
 
 					<div class="footer__links footer__links--primary">										
 						<div class="footer__links__list">
 							<Primary />
 						</div>
-
 					</div>
 
 					<div class="footer__links">	
@@ -263,43 +260,47 @@ const buildCommitUrl = buildCommit
 					
 				</footer>
 
+				<menu
+					class="menu"
+					transition:persist="fixed-menu"
+				>
+					<div class="menu__group">
+						<a class="btn btn--icon" href="/">
+							<HomeIcon />
+						</a>
+
+						<div
+							class="btn btn--green menu__availability"
+							aria-label="Available for work"
+						>
+							<span class="btn__circle"></span>
+							<img
+								class="btn__label"
+								src={availableForWorkLabel.src}
+								width={availableForWorkLabel.width}
+								height={availableForWorkLabel.height}
+								alt="Available for work"
+								aria-hidden="true"
+							/>
+						</div>
+					</div>
+					<div class="menu__group">
+						<a class="btn btn--icon menu__whatsapp" href="#">
+							<WhatsappIcon />
+						</a>
+				<a id="js-open-closed" class="btn btn--icon" aria-label="Toggle menu">
+					<span class="menu__burger-icon" aria-hidden="true"><BurgerIcon /></span>
+					<span class="menu__close-icon" aria-hidden="true"><CloseIcon /></span>
+				</a>
+					</div>
+				</menu>
+
+
 			</main>
 
 		</div> <!-- .main -->
 
-		<menu
-			class="menu"
-			transition:persist="fixed-menu"
-		>
-			<div class="menu__group">
-				<a class="btn btn--icon" href="/">
-					<HomeIcon />
-				</a>
-
-				<div
-					class="btn btn--green menu__availability"
-					aria-label="Available for work"
-				>
-					<span class="btn__circle"></span>
-					<img
-						class="btn__label"
-						src={availableForWorkLabel.src}
-						width={availableForWorkLabel.width}
-						height={availableForWorkLabel.height}
-						alt="Available for work"
-						aria-hidden="true"
-					/>
-				</div>
-			</div>
-			<div class="menu__group">
-				<a class="btn btn--icon menu__whatsapp" href="#">
-					<WhatsappIcon />
-				</a>
-				<a id="js-open-closed" class="btn btn--icon">
-					<BurgerIcon />
-				</a>
-			</div>
-		</menu>
+		
 
 		<script src="https://cdn.counter.dev/script.js" data-id="59f59e50-b01a-493b-a121-d8237b9db371" data-utcoffset="1"></script>
 		<script>
