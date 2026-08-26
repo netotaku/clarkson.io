@@ -119,7 +119,13 @@
     visibility: hidden;
 }
 
-.page-transition-out .main,
+.page-transition-out .main {
+    opacity: 0;
+    transition:
+        opacity var(--duration-medium) ease-in,
+        transform var(--duration-fast) ease-out;
+}
+
 .page-transition-out .nav {
     opacity: 0;
     transition: opacity var(--duration-medium) ease-in;
@@ -130,7 +136,13 @@
     opacity: 0;
 }
 
-.hero-initial-load.hero-initial-reveal .main,
+.hero-initial-load.hero-initial-reveal .main {
+    opacity: 1;
+    transition:
+        opacity var(--duration-medium) ease-out,
+        transform var(--duration-fast) ease-out;
+}
+
 .hero-initial-load.hero-initial-reveal .nav {
     opacity: 1;
     transition: opacity var(--duration-medium) ease-out;

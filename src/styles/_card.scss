@@ -75,4 +75,35 @@
             display: none;
         }
     }
+
+    @media (max-width: 639px) {
+        .header__eyebrow {
+            font-size: 1.15em;
+        }
+
+        .header__title {
+            font-size: calc(var(--font-size-card-title) * 1.15);
+        }
+
+        .header__description {
+            font-size: calc(var(--font-size-blog-description) * 1.15);
+        }
+
+        .header__tags .tag {
+            font-size: calc(var(--font-size-small) * 1.3225);
+        }
+
+        &--mini,
+        &--micro {
+            .header {
+                font-size: calc(var(--font-size-nav-link) * 1.15);
+            }
+
+            .header__eyebrow,
+            .header__title,
+            .header__description {
+                font-size: inherit;
+            }
+        }
+    }
 }

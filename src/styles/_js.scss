@@ -1,16 +1,17 @@
 
 html {
-    transition:
-        margin-left var(--duration-fast) ease-out,
-        --pixel-hero-background var(--duration-pixel-background) ease-in-out;
+    transition: --pixel-hero-background var(--duration-pixel-background) ease-in-out;
 }
 
 .main {
-    transition: margin-right var(--duration-fast) ease-out;
+    transform: translateX(0);
+    transition: transform var(--duration-fast) ease-out;
+    will-change: transform;
 }
 
 .menu {
     transition: transform var(--duration-fast) ease-out;
+    will-change: transform;
 
     .btn:not(#js-open-closed) {
         transition: opacity var(--duration-fast) ease-out;
@@ -19,9 +20,8 @@ html {
 
 .js-{
     &open{
-        margin-left: calc(var(--side-panel-width) * -1);
         .main{
-                margin-right: calc(var(--side-panel-width) * -1);
+                transform: translateX(calc(var(--side-panel-width) * -1));
         }
         .layer--0{
                 visibility: visible;
