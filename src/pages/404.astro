@@ -1,6 +1,7 @@
 ---
 import Hero from '../components/Hero.astro';
 import heroImage from '../assets/images/chrome/me-fallen-over.png';
+import pixelImage from '../assets/images/explosion.jpg';
 import Wrapper from '../layouts/wrapper.astro';
 
 const breadcrumb = [
@@ -11,7 +12,7 @@ const breadcrumb = [
 <Wrapper
 	title="Page Not Found"
 	description="The page you were looking for could not be found."
-	image='/src/assets/images/explosion.jpg'>
+	image={pixelImage}>
 	
 	<section class="section">
 		<Hero

@@ -3,6 +3,7 @@ import Wrapper from '../layouts/wrapper.astro';
 import Hero from '../components/Hero.astro';
 
 import heroImage from '../assets/images/chrome/me-seated.png'
+import pixelImage from '../assets/images/country.jpg';
 
 const breadcrumb = [
   { label: 'Home', href: '/', previous: true },
@@ -134,7 +135,7 @@ const awards = [
 <Wrapper
 	title="Curriculum Vitae"
 	description="Nick Clarkson’s curriculum vitae, covering over 25 years of experience in web development, technical leadership and digital strategy."
-	image="/src/assets/images/country.jpg">
+	image={pixelImage}>
 
 	<section class="section">
 		<Hero

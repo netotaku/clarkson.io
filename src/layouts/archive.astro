@@ -1,7 +1,7 @@
 ---
-import type { ImageMetadata } from 'astro';
 import type { CollectionEntry } from 'astro:content';
 import bikeImage from '../assets/images/chrome/me-on-a-bike.png';
+import pixelImage from '../assets/images/dev.jpg';
 import List from '../components/List.astro';
 import Hero from '../components/Hero.astro';
 import Wrapper from './wrapper.astro';
@@ -16,13 +16,12 @@ interface BreadcrumbItem {
 interface Props {
   title: string;
   description: string;
-  image: string | ImageMetadata;
   posts: CollectionEntry<'blog'>[];
   breadcrumb?: string | BreadcrumbItem[];
   perPage?: number;
 }
 
-const { title, description, image, posts, breadcrumb, perPage = 6 } = Astro.props;
+const { title, description, posts, breadcrumb, perPage = 6 } = Astro.props;
 const sortedPosts = [...posts].sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
@@ -31,7 +30,7 @@ const sortedPosts = [...posts].sort(
 <Wrapper
   title={title}
   description={description}
-  image="/src/assets/images/dev.jpg">
+  image={pixelImage}>
   <section class="section">
     <Hero backgroundImage={bikeImage} breadcrumb={breadcrumb} title="Thoughts" />
     <List posts={sortedPosts} perPage={perPage} />

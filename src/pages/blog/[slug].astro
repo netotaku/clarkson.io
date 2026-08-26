@@ -29,12 +29,6 @@ type Props = CollectionEntry<'blog'>;
 const post = Astro.props;
 const { Content } = await render(post);
 
-const allPosts = await getCollection('blog');
-const relatedPosts = allPosts
-  .filter((p) => p.id !== post.id) // exclude current post
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()) // newest first
-  .slice(0, 2); // limit to 2
-
 const breadcrumb = [
   { label: 'Blog', href: '/blog/', previous: true },
   { label: post.data.title },

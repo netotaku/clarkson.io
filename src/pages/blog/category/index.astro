@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Hero from '../../../components/Hero.astro';
 import Wrapper from '../../../layouts/wrapper.astro';
 import bikeImage from '../../../assets/images/chrome/me-on-a-bike.png';
+import pixelImage from '../../../assets/images/dev.jpg';
 import { categoryLabel, categorySlug } from '../../../utils/categories';
 
 const posts = await getCollection('blog');
@@ -24,7 +25,7 @@ const categories = allCategories.map((category) => ({
 <Wrapper
   title="Blog topics"
   description="Browse articles by topic, including ethical technology, accessibility, AI, web development and digital strategy."
-  image="/src/assets/images/dev.jpg"
+  image={pixelImage}
 >
   <section class="section">
     <Hero

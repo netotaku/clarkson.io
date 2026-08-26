@@ -3,6 +3,7 @@ import Wrapper from '../layouts/wrapper.astro';
 import Hero from '../components/Hero.astro';
 
 import heroImage from '../assets/images/chrome/me-seated.png'
+import pixelImage from '../assets/images/times-sq.jpg';
 
 const breadcrumb = [
   { label: 'Home', href: '/', previous: true },
@@ -13,7 +14,7 @@ const breadcrumb = [
 <Wrapper
 	title="AI Governance"
 	description="Practical AI governance guidance for adopting artificial intelligence responsibly, transparently and effectively."
-	image="/src/assets/images/times-sq.jpg">
+	image={pixelImage}>
 
 	<section class="section">
 		<Hero

@@ -3,6 +3,7 @@ import Wrapper from '../layouts/wrapper.astro';
 import Hero from '../components/Hero.astro';
 
 import heroImage from '../assets/images/chrome/me-seated.png'
+import pixelImage from '../assets/images/river.jpg';
 
 const breadcrumb = [
   { label: 'Home', href: '/', previous: true },
@@ -13,7 +14,7 @@ const breadcrumb = [
 <Wrapper
 	title="Where I Fit"
 	description="Where Nick Clarkson’s experience in creative technology, technical leadership and digital strategy can add the most value."
-	image="/src/assets/images/river.jpg">
+	image={pixelImage}>
 
 	<section class="section">
 		<Hero

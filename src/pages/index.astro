@@ -3,6 +3,7 @@ import Wrapper 	from '../layouts/wrapper.astro';
 import Card from '../components/Card.astro';
 import { Image } from 'astro:assets';
 import me from '../assets/images/chrome/me-crossed-arms.png';
+import pixelImage from '../assets/images/more-jungle.jpg';
 import { getLatestPost } from '../utils/blog';
 
 const latestPost = await getLatestPost();
@@ -10,7 +11,7 @@ const latestPost = await getLatestPost();
 <Wrapper
 	title="Nick Clarkson, Creative Technologist, Bristol UK"
 	description="Nick Clarkson is a Bristol-based creative technologist and technical leader with over 25 years of experience in web development and digital strategy."
-	image='/src/assets/images/more-jungle.jpg'>
+	image={pixelImage}>
 
 	<section class="section home">
 
