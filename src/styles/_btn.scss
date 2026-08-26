@@ -6,9 +6,9 @@
     overflow: hidden;
 
     border: 0px;
-    height: 46px;
+    height: var(--button-height);
 
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
 
     text-decoration: none;
     font-weight: bold;
@@ -21,7 +21,7 @@
 
     background-color: var(--color-charcoal);
 
-    padding: 0px 20px;
+    padding: 0 var(--space-lg);
 
     line-height: 1;
 
@@ -31,12 +31,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-right: 12px;
-        padding: 0px 13px 0px 16px;
+        margin-right: var(--space-md);
+        padding: 0 calc(var(--space-md) + 1px) 0 var(--radius-lg);
         &::before {
             content: "";
-            width: 12px;
-            height: 12px;
+            width: var(--icon-size-sm);
+            height: var(--icon-size-sm);
             background-color: var(--color-white-90);
             border-radius: 50%;
         }
@@ -44,12 +44,12 @@
 
     &__label {
         display: block;
-        width: 129px;
-        height: 12px;
+        width: var(--button-label-width);
+        height: var(--icon-size-sm);
     }
 
     &--icon{
-        width: 46px;        
+        width: var(--button-height);
         padding: 0px;
         &:hover{
             background-color: var(--color-orange);
@@ -76,8 +76,8 @@
     }
 
     &--page {
-        min-width: 46px;
-        padding: 0 16px;
+        min-width: var(--button-height);
+        padding: 0 var(--radius-lg);
 
         &[aria-current='page'] {
             background: var(--color-orange);

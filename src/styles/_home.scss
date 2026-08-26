@@ -2,12 +2,12 @@
     text-align: right;
     position: relative;
     &__me{
-        margin-right: 3vw;
+        margin-right: var(--home-image-offset);
     }
     &__lockup{
 
         position: absolute;
-        top: 170px;
+        top: var(--home-lockup-offset);
 
         text-align: left;           
         left: var(--layout-spacing);
@@ -18,11 +18,11 @@
             font-weight: bold;
             line-height: .9;
             font-size: var(--font-size-home-heading);
-            margin-bottom: 5vw;
+            margin-bottom: var(--layout-spacing);
         }
 
         &__latest{
-            margin-bottom: 5vw;
+            margin-bottom: var(--layout-spacing);
         }
 
     }

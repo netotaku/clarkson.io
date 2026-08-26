@@ -3,7 +3,7 @@
     
     // font-size: var(--font-size-body);
 
-    font-size: 1.4em;
+    font-size: var(--font-size-typography);
     font-weight: 400;
 
     p:not(:last-child),
@@ -38,7 +38,7 @@
         // text-transform: uppercase;
         // letter-spacing: -2px;
         line-height: 1.2;
-        font-size: 3.2em;
+        font-size: var(--font-size-typography-heading);
     }
 
     ul,ol{
@@ -80,10 +80,19 @@
             border-bottom: solid 1px var(--color-grey);
         }
         th,td{
-            padding: 10px;        
+            padding: calc(var(--space-sm) + var(--space-2xs));
             white-space: nowrap!important;
         }
         border-bottom: solid 1px var(--color-grey);
+    }
+
+    @media (max-width: 639px){
+        font-size: var(--font-size-typography-mobile);
+
+        h1{
+            font-size: var(--font-size-typography-heading-mobile);
+            line-height: 1.05;
+        }
     }
 
 }

@@ -1,6 +1,26 @@
 :root {
-    --gutter: 22px; 
+    // layout and spacing
+    --space-2xs: 2px;
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 12px;
+    --space-lg: 20px;
+    --gutter: 22px;
     --layout-spacing: 5vw;
+    --home-image-offset: 3vw;
+    --section-top-spacing: 220px;
+    --content-max-width: 1000px;
+    --side-panel-width: 300px;
+
+    // borders and radii
+    --border-width: 2px;
+    --focus-ring-width: 3px;
+    --focus-ring-offset: 3px;
+    --radius-xs: 4px;
+    --radius-sm: 5px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
 
     // colours
     --color-transparent: transparent;
@@ -16,6 +36,7 @@
     --color-near-black: #111;
     --color-dark-charcoal: #181818;
     --color-charcoal: #333;
+    --color-mid-charcoal: #444;
     --color-grey: #666;
     --color-light-grey: #aaa;
     --color-lighter-grey: #ccc;
@@ -26,6 +47,30 @@
     --color-terracotta: #d98e73;
     --color-lavender: #9d8fc1;
     --color-sage: #8fa886;
+    --color-error: #e02020;
+
+    // motion
+    --duration-fast: 180ms;
+    --duration-medium: 520ms;
+    --duration-pixel-background: 700ms;
+    --duration-navigation: 2000ms;
+    --duration-pixel-transition: 400ms;
+
+    // component dimensions
+    --navigation-progress-height: 2px;
+    --button-height: 46px;
+    --button-label-width: 129px;
+    --icon-size-sm: 12px;
+    --tag-height: 32px;
+    --header-theme-size: 20px;
+    --hero-min-height: 44vw;
+    --hero-mobile-padding: 104px;
+    --hero-mobile-offset: 66px;
+    --hero-scroll-icon-size: 32px;
+    --hero-scroll-arrow-size: 25.6px;
+    --home-lockup-offset: 170px;
+    --pixel-hero-height: 600px;
+    --pixel-hero-inset: 3px;
 
     // fluid type
     --font-size-body: clamp(1rem, 1.2vw, 1.2rem);
@@ -40,6 +85,18 @@
     --font-size-page-heading: clamp(3.5rem, 7.15vw, 6.25rem);
     --font-size-blog-title: clamp(2.75rem, 4.3vw, 3.75rem);
     --font-size-blog-description: clamp(1.0625rem, 1.45vw, 1.25rem);
-    --font-size-list-heading: clamp(4.5rem, 14vw, 12rem);
+    --font-size-list-heading: clamp(3.5rem, 14vw, 12rem);
     --font-size-card-title: clamp(2.5rem, 3.95vw, 3.4375rem);
+    --font-size-breadcrumb: 18px;
+    --font-size-job-title: 32px;
+    --font-size-job-company: 28px;
+    --font-size-primary-nav: 44px;
+    --font-size-footer-primary-nav: 62px;
+    --font-size-footer-mobile-heading: 0.875rem;
+    --font-size-footer-mobile: 1.125rem;
+    --font-size-typography: 1.4em;
+    --font-size-typography-mobile: 1.2em;
+    --font-size-typography-heading: 3.2em;
+    --font-size-typography-heading-mobile: 1.8em;
+    --inline-meta-gap: 0.35em;
 }

@@ -1,7 +1,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 5vw; //var(--layout-spacing);
+  gap: var(--layout-spacing);
 
   &__item {
     grid-column: span 12;
@@ -28,6 +28,12 @@
 
     &--half {
       grid-column: span 6;
+    }
+  }
+
+  @media (max-width: 639px) {
+    &__item {
+      grid-column: span 12;
     }
   }
 }

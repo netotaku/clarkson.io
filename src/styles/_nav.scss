@@ -21,8 +21,8 @@
                 border-style: solid;
                 border-left-color: var(--color-orange);
                 border-width: 0px;
-                border-left-width: 4px;
-                padding-left: 8px;                
+                border-left-width: var(--radius-xs);
+                padding-left: var(--space-sm);
             }  
             
             &:hover{
@@ -37,7 +37,7 @@
                 font-family: Oswald;
                 text-transform: uppercase;
                 font-weight: bold;
-                font-size: 44px;
+                font-size: var(--font-size-primary-nav);
                 line-height: .9;
 
                 sup{
@@ -60,7 +60,7 @@
                 }
                 &:hover{
                     text-decoration: none;
-                    color: orange;
+                    color: var(--color-orange);
                 }                
             }
 

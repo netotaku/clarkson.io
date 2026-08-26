@@ -1,32 +1,32 @@
 .job{
    
     &:not(:last-child){
-        margin-bottom: 5vw;
+        margin-bottom: var(--layout-spacing);
     }
     
     &__duration{       
         font-weight: bold;
-        font-size: 18px;
+        font-size: var(--font-size-breadcrumb);
     }
 
     &__title{
-        font-size: 32px;
+        font-size: var(--font-size-job-title);
     }
 
     &__company{
-        font-size: 28px;
+        font-size: var(--font-size-job-company);
     }    
 }
 
 .award{
     &:not(:last-child){
-        margin-bottom: 5vw;
+        margin-bottom: var(--layout-spacing);
     }    
     &__category{
         line-height: 1.2;
     }
     &__year{
-        color: rgba(255,255,255, .6);
+        color: var(--color-white-60);
         display: block;
     }
 }

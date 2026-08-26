@@ -5,18 +5,18 @@
 
     &__eyebrow {
         display: flex;
-        gap: 12px;
+        gap: var(--space-md);
         align-items: center;
         color: inherit;
         font-weight: bold;
-        margin-bottom: 8px;
+        margin-bottom: var(--space-sm);
     }
 
     &__theme {
         display: block;        
-        width: 20px;
-        height: 20px;
-        border-radius: 10px;        
+        width: var(--header-theme-size);
+        height: var(--header-theme-size);
+        border-radius: 50%;
         background-color: var(--header-theme, var(--color-orange));
     }
 
@@ -47,6 +47,6 @@
     &__tags {
         display: flex;
         flex-wrap: wrap;
-        gap: 4px;
+        gap: var(--space-xs);
     }
 }

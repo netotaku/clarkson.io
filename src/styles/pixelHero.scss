@@ -11,7 +11,7 @@
 .pixel-hero {
   position: relative;
   width: 100%;
-  height: var(--pixel-hero-height, 600px);
+  height: var(--pixel-hero-height);
   overflow: visible;
   pointer-events: none;
 
@@ -26,8 +26,8 @@
 
   &__parallax {
     position: absolute;
-    inset: 3px auto auto 3px;
-    width: calc(100% - 6px);
+    inset: var(--pixel-hero-inset) auto auto var(--pixel-hero-inset);
+    width: calc(100% - (var(--pixel-hero-inset) * 2));
     transform-origin: top left;
     will-change: transform;
   }
@@ -35,7 +35,7 @@
   &__svg {
     display: block;
     width: 100%;
-    height: calc(var(--pixel-hero-height, 600px) - 6px);
+    height: calc(var(--pixel-hero-height) - (var(--pixel-hero-inset) * 2));
     overflow: visible;
     opacity: 0;
   }
@@ -61,7 +61,7 @@
   }
 
   &.is-transitioning-in-active rect {
-    animation: pixel-hero-cascade-in var(--pixel-transition-duration, 400ms) ease-out var(--pixel-transition-delay, 0ms) both;
+    animation: pixel-hero-cascade-in var(--pixel-transition-duration, var(--duration-pixel-transition)) ease-out var(--pixel-transition-delay, 0ms) both;
   }
 }
 

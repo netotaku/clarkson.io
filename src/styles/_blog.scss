@@ -1,7 +1,4 @@
 .blog{
-    
-    display: flex;
-    gap: var(--layout-spacing);
     position: relative;
 
     &__header{
@@ -9,8 +6,6 @@
         position: sticky;
         top: max(var(--layout-spacing), calc(var(--gutter) * 4));
         align-self: flex-start;
-        min-width: 30%;
-        max-width: 30%;
         display: flex;
         flex-direction: column;
         gap: var(--gutter);
@@ -19,11 +14,11 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            gap: 8px;
+            gap: var(--space-sm);
             font-weight: bold;
-            margin-bottom: 4px;
+            margin-bottom: var(--space-xs);
             img{
-                border-radius: 4px;
+                border-radius: var(--radius-xs);
             }
         }
         &__title{
@@ -38,14 +33,22 @@
         } 
         &__icons{
             display: flex;
-            gap: 8px;
+            gap: var(--space-sm);
         }       
     } 
     
     &__hero{
         display: block;
         overflow: hidden;
-        border-radius: 24px;
+        border-radius: var(--radius-xl);
         margin-bottom: var(--layout-spacing);
+    }
+
+    @media (max-width: 639px) {
+        &__header {
+            position: static;
+            top: auto;
+            align-self: stretch;
+        }
     }
 }

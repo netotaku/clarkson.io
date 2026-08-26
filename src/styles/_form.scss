@@ -8,8 +8,8 @@
 
     &__fieldset{
         appearance: none;
-        border: solid 2px var(--color-white-30);
-        border-radius: 17px;
+        border: solid var(--border-width) var(--color-white-30);
+        border-radius: calc(var(--radius-lg) + 1px);
         display: flex;
         position: relative;
         overflow: hidden;
@@ -21,7 +21,7 @@
     input[type="email"],
     input[type="submit"]{
         appearance: none;
-        padding: 20px;    
+        padding: var(--space-lg);
         font-size: var(--font-size-form-control);
     }
 
@@ -41,7 +41,7 @@
         border: 0px;
         background: var(--color-white-30);
         flex: 0 0 auto;
-        border-radius: 0 15px 15px 0;
+        border-radius: 0 calc(var(--radius-lg) - 1px) calc(var(--radius-lg) - 1px) 0;
     }
 
     &:hover{
@@ -74,11 +74,11 @@
     &[data-state="error"]:hover{
         input[type="submit"]{
             color: var(--color-white);
-            background: #e02020;
+            background: var(--color-error);
         }
 
         .form__fieldset{
-            border-color: #e02020;
+            border-color: var(--color-error);
         }
     }
     

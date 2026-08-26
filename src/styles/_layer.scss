@@ -6,7 +6,7 @@
         position: fixed;
         overflow: hidden;
         overflow-y: scroll;
-        width: 300px;
+        width: var(--side-panel-width);
         right: 0;
         top: 0px;
         bottom: 0px;
@@ -15,8 +15,8 @@
         pointer-events: none;
         transform: translateX(100%);
         transition:
-            transform 180ms ease-out,
-            visibility 0s linear 180ms;
+            transform var(--duration-fast) ease-out,
+            visibility 0s linear var(--duration-fast);
     }
     &--1{
         position: absolute;

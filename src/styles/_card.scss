@@ -14,16 +14,16 @@
         }
 
         .header__eyebrow {
-            gap: 8px;
+            gap: var(--space-sm);
             margin-bottom: 0;
             font-weight: normal;
             line-height: inherit;
         }
 
         .header__theme {
-            width: 12px;
-            height: 12px;
-            border-radius: 6px;
+            width: var(--icon-size-sm);
+            height: var(--icon-size-sm);
+            border-radius: 50%;
         }
 
         .header__title {
@@ -62,7 +62,7 @@
         .header > div {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: var(--space-sm);
             min-width: 0;
         }
 

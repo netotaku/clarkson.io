@@ -1,23 +1,23 @@
 
 html {
     transition:
-        margin-left 180ms ease-out,
-        --pixel-hero-background 700ms ease-in-out;
+        margin-left var(--duration-fast) ease-out,
+        --pixel-hero-background var(--duration-pixel-background) ease-in-out;
 }
 
 .main {
-    transition: margin-right 180ms ease-out;
+    transition: margin-right var(--duration-fast) ease-out;
 }
 
 .menu {
-    transition: right 180ms ease-out;
+    transition: right var(--duration-fast) ease-out;
 }
 
 .js-{
     &open{
-        margin-left: -300px;
+        margin-left: calc(var(--side-panel-width) * -1);
         .main{
-                margin-right: -300px; 
+                margin-right: calc(var(--side-panel-width) * -1);
         }
         .layer--0{
                 visibility: visible;
@@ -26,7 +26,7 @@ html {
                 transition-delay: 0s;
         }
         .menu{
-                right: 300px;
+                right: var(--side-panel-width);
         }
     }
 }

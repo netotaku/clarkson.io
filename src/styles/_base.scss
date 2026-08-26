@@ -6,8 +6,8 @@
 }
 
 :focus-visible {
-    outline: 3px solid var(--color-orange);
-    outline-offset: 3px;
+    outline: var(--focus-ring-width) solid var(--color-orange);
+    outline-offset: var(--focus-ring-offset);
 }
 
 .navigation-progress {
@@ -16,7 +16,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 2px;
+    height: var(--navigation-progress-height);
     pointer-events: none;
     background: var(--color-orange);
     opacity: 0;
@@ -26,15 +26,15 @@
     &--loading {
         opacity: 1;
         transform: scaleX(.22);
-        transition: transform 520ms ease-out;
+        transition: transform var(--duration-medium) ease-out;
     }
 
     &--animating {
         opacity: 0;
         transform: scaleX(1);
         transition:
-            transform var(--navigation-animation-duration, 2000ms) cubic-bezier(.1, .7, .2, 1),
-            opacity 180ms ease-out calc(var(--navigation-animation-duration, 2000ms) - 180ms);
+            transform var(--navigation-animation-duration, var(--duration-navigation)) cubic-bezier(.1, .7, .2, 1),
+            opacity var(--duration-fast) ease-out calc(var(--navigation-animation-duration, var(--duration-navigation)) - var(--duration-fast));
     }
 
     &--complete {
@@ -69,19 +69,19 @@ html{
 
     height: 100%;
 
-    background: var(--pixel-hero-background, #111);
+    background: var(--pixel-hero-background, var(--color-near-black));
 
 }
 
 .section{
     padding: var(--layout-spacing);
     &--top{
-        padding-top: 220px;
+        padding-top: var(--section-top-spacing);
     }
 }
 
 .measure{
-    max-width: 1000px;
+    max-width: var(--content-max-width);
 }
 
 .main{

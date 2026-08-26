@@ -14,21 +14,21 @@
         display: flex;
         flex-wrap: wrap;
         align-items: baseline;
-        gap: 0.35em;
+        gap: var(--inline-meta-gap);
         color: var(--color-white-60);
     }
 
     &__commit {
         color: inherit;
         font-family: monospace;
-        background: #444;
-        padding: 4px 8px;
+        background: var(--color-mid-charcoal);
+        padding: var(--space-xs) var(--space-sm);
         display: inline-block;
-        border-radius: 5px;
+        border-radius: var(--radius-sm);
         text-decoration: none;
         &:hover{
-            background-color: #f60;
-            color: white;
+            background-color: var(--color-orange);
+            color: var(--color-white);
         }
     }
 
@@ -44,8 +44,32 @@
         }
         &--primary{
             .nav__links--primary a {
-                font-size: 62px;
+                font-size: var(--font-size-footer-primary-nav);
             }
+        }
+    }
+
+    @media (max-width: 639px){
+        --font-size-nav-heading: var(--font-size-footer-mobile-heading);
+        --font-size-nav-link: var(--font-size-footer-mobile);
+        --font-size-form-control: var(--font-size-footer-mobile);
+
+        font-size: var(--font-size-footer-mobile);
+
+        &__links{
+            flex-direction: column;
+            gap: var(--gutter);
+
+            &__list,
+            &__list--latest{
+                width: 100%;
+                min-width: 0;
+            }
+        }
+
+        .form__fieldset{
+            width: 100%;
+            max-width: none;
         }
     }
 
