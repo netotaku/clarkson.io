@@ -432,57 +432,26 @@ const buildCommitUrl = buildCommit
 				window.setTimeout(reset, 150);
 			};
 
-			document.addEventListener('pixel-hero:entrance-start', (event) => {
+			const animateProgressWithPageReveal = async () => {
+				await waitForPixelHero();
+
 				const progress = progressElement();
 
-				if (
-					!progress?.classList.contains('navigation-progress--loading') ||
-					!(event instanceof CustomEvent)
-				) return;
+				if (!progress?.classList.contains('navigation-progress--loading')) return;
 
-				const duration = Number(event.detail?.duration);
-
-				progress.style.setProperty(
-					'--navigation-animation-duration',
-					String(Number.isFinite(duration) ? duration : 2000) + 'ms',
-				);
-				progress.classList.remove('navigation-progress--loading');
-				progress.classList.add('navigation-progress--animating');
-			});
-
-			const completeProgressAfterPixelHero = async () => {
-				const pixelHero = document.querySelector<HTMLElement>('[data-pixel-hero]');
-
-				if (
-					!pixelHero ||
-					window.matchMedia('(prefers-reduced-motion: reduce)').matches
-				) {
+				if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 					completeProgress();
 					return;
 				}
 
-				let finished = false;
+				progress.style.setProperty(
+					'--navigation-animation-duration',
+					`${pageFadeDuration}ms`,
+				);
+				progress.classList.remove('navigation-progress--loading');
+				progress.classList.add('navigation-progress--animating');
 
-				const finish = () => {
-					if (finished) return;
-
-					finished = true;
-					window.clearTimeout(timeout);
-					pixelHero.removeEventListener('pixel-hero:entrance-complete', finish);
-					completeProgress();
-				};
-
-				const timeout = window.setTimeout(finish, 6000);
-				pixelHero.addEventListener('pixel-hero:entrance-complete', finish);
-
-				await waitForPixelHero();
-
-				if (
-					pixelHero.dataset.entranceState === 'complete' ||
-					!pixelHero.dataset.entranceState
-				) {
-					finish();
-				}
+				window.setTimeout(completeProgress, pageFadeDuration);
 			};
 
 			document.addEventListener('click', (event) => {
@@ -530,7 +499,7 @@ const buildCommitUrl = buildCommit
 
 			document.addEventListener('astro:page-load', () => {
 				document.documentElement.classList.remove('menu-overlay-visible');
-				completeProgressAfterPixelHero();
+				animateProgressWithPageReveal();
 				revealInitialHero();
 			});
 

@@ -1,17 +1,6 @@
 import type { PhysicsConfig } from '../pixel/types';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
-const DEFAULT_ENTRANCE_STAGGER = 1600;
-const DEFAULT_ENTRANCE_DURATION = 400;
-const DEFAULT_ENTRANCE_DELAY = 0;
-
-let animateNextRender = true;
-
-const prefersReducedMotion = () =>
-  window.matchMedia(
-    '(prefers-reduced-motion: reduce)',
-  ).matches;
-
 type SampleMode =
   | 'average'
   | 'top'
@@ -86,10 +75,6 @@ class PixelHero {
   private parallax: boolean;
   private parallaxSpeed: number;
 
-  private entranceStagger: number;
-  private entranceDuration: number;
-  private entranceDelay: number;
-
   private physics: PhysicsConfig;
 
   private columns = 1;
@@ -102,8 +87,6 @@ class PixelHero {
   private resizeObserver?: ResizeObserver;
   private resizeTimer = 0;
   private scrollFrame = 0;
-  private transitionTimer = 0;
-  private isEntranceAnimating = false;
 
   constructor(
     root: HTMLElement,
@@ -187,29 +170,6 @@ class PixelHero {
         d.parallaxSpeed,
         0.08,
       );
-
-    this.entranceStagger =
-      numberValue(
-        d.entranceStagger,
-        DEFAULT_ENTRANCE_STAGGER,
-      );
-
-    this.entranceDuration =
-      numberValue(
-        d.entranceDuration,
-        DEFAULT_ENTRANCE_DURATION,
-      );
-
-    this.entranceDelay =
-      numberValue(
-        d.entranceDelay,
-        DEFAULT_ENTRANCE_DELAY,
-      );
-
-    this.root.style.setProperty(
-      '--pixel-transition-duration',
-      `${this.entranceDuration}ms`,
-    );
 
     this.physics =
       JSON.parse(
@@ -376,28 +336,6 @@ class PixelHero {
     this.erodeField();
     this.renderPhysicsField();
 
-    const shouldAnimateIn =
-      animateNextRender ||
-      this.isEntranceAnimating;
-
-    animateNextRender = false;
-
-    const animateIn =
-      shouldAnimateIn &&
-      !prefersReducedMotion();
-
-    if (animateIn) {
-      this.isEntranceAnimating = true;
-
-      window.clearTimeout(
-        this.transitionTimer,
-      );
-
-      this.preparePixelTransitionIn();
-    } else {
-      this.isEntranceAnimating = false;
-    }
-
     this.applyBackground();
     this.applyParallax();
 
@@ -412,165 +350,6 @@ class PixelHero {
       ),
     );
 
-    if (animateIn) {
-      this.startPixelTransitionIn();
-    }
-  }
-
-  private setEntrancePixelDelays(
-    maximumDelay: number,
-  ) {
-    const rects = Array.from(
-      this.svg.querySelectorAll<SVGRectElement>(
-        'rect',
-      ),
-    );
-
-    const maximumX = Math.max(
-      1,
-      ...rects.map(
-        rect => Number(rect.getAttribute('x')),
-      ),
-    );
-    const maximumY = Math.max(
-      1,
-      ...rects.map(
-        rect => Number(rect.getAttribute('y')),
-      ),
-    );
-    const score = (
-      rect: SVGRectElement,
-    ) => {
-      const horizontalProgress =
-        Number(rect.getAttribute('x')) /
-        maximumX;
-      const verticalProgress =
-        Number(rect.getAttribute('y')) /
-        maximumY;
-
-      return (
-        verticalProgress * 0.8 +
-        horizontalProgress * 0.2
-      );
-    };
-    const orderedRects =
-      rects.sort(
-        (a, b) =>
-          score(a) - score(b),
-      );
-
-    orderedRects.forEach((rect, index) => {
-      const progress = orderedRects.length > 1
-        ? index / (orderedRects.length - 1)
-        : 0;
-      const delay = progress * progress * maximumDelay;
-
-      rect.style.setProperty(
-        '--pixel-transition-delay',
-        `${delay}ms`,
-      );
-    });
-  }
-
-  private preparePixelTransitionIn() {
-    this.setEntrancePixelDelays(
-      this.entranceStagger,
-    );
-
-    this.root.dataset.entranceState =
-      'pending';
-
-    this.root.classList.remove(
-      'is-transitioning-in-active',
-    );
-
-    this.root.classList.add(
-      'is-transitioning-in',
-    );
-  }
-
-  private entranceAnimationDuration() {
-    return this.entranceStagger +
-      this.entranceDuration;
-  }
-
-  private startPixelTransitionIn() {
-    const firstRect =
-      this.svg.querySelector('rect');
-
-    if (!firstRect) {
-      this.root.classList.remove(
-        'is-transitioning-in',
-      );
-
-      this.isEntranceAnimating = false;
-      this.root.dataset.entranceState =
-        'complete';
-      this.root.dispatchEvent(
-        new CustomEvent(
-          'pixel-hero:entrance-complete',
-          { bubbles: true },
-        ),
-      );
-
-      return;
-    }
-
-    void window.getComputedStyle(
-      firstRect,
-    ).opacity;
-
-    this.transitionTimer =
-      window.setTimeout(
-        () => {
-          this.root.classList.add(
-            'is-transitioning-in-active',
-          );
-
-          const animationDuration =
-            this.entranceAnimationDuration();
-
-          this.root.dataset.entranceState =
-            'running';
-          this.root.dataset.entranceDuration =
-            String(animationDuration);
-
-          this.root.dispatchEvent(
-            new CustomEvent(
-              'pixel-hero:entrance-start',
-              {
-                bubbles: true,
-                detail: {
-                  duration: animationDuration,
-                },
-              },
-            ),
-          );
-
-          this.transitionTimer =
-            window.setTimeout(
-              () => {
-                this.root.classList.remove(
-                  'is-transitioning-in',
-                  'is-transitioning-in-active',
-                );
-
-                this.isEntranceAnimating = false;
-                this.root.dataset.entranceState =
-                  'complete';
-
-                this.root.dispatchEvent(
-                  new CustomEvent(
-                    'pixel-hero:entrance-complete',
-                    { bubbles: true },
-                  ),
-                );
-              },
-              animationDuration,
-            );
-        },
-        this.entranceDelay,
-      );
   }
 
   private buildCells() {
@@ -1559,10 +1338,6 @@ class PixelHero {
       this.resizeTimer,
     );
 
-    window.clearTimeout(
-      this.transitionTimer,
-    );
-
     window.removeEventListener(
       'scroll',
       this.onScroll,
@@ -1631,21 +1406,6 @@ if (
 document.addEventListener(
   'astro:page-load',
   initialise,
-);
-
-document.addEventListener(
-  'astro:before-preparation',
-  event => {
-    animateNextRender = true;
-
-    event.signal.addEventListener(
-      'abort',
-      () => {
-        animateNextRender = false;
-      },
-      { once: true },
-    );
-  },
 );
 
 document.addEventListener(
