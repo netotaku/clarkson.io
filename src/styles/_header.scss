@@ -7,7 +7,6 @@
         display: flex;
         gap: var(--space-md);
         align-items: center;
-        color: inherit;
         font-weight: bold;
         margin-bottom: var(--space-sm);
     }
@@ -23,31 +22,22 @@
     &__title {
         overflow-wrap: break-word;
         font-family: "Roboto", sans-serif;
-        font-size: var(--font-size-card-title);
-        line-height: 1.1;
         text-wrap: pretty;
         hyphens: auto;
 
         a {
-            color: inherit;
             text-decoration: none;
 
             &:focus-visible {
-                color: var(--color-orange);
                 text-decoration: underline;
             }
 
             @media (min-width: 640px) {
                 &:hover {
-                    color: var(--color-orange);
                     text-decoration: underline;
                 }
             }
         }
-    }
-
-    &__description {
-        font-size: var(--font-size-blog-description);
     }
 
     &__tags {

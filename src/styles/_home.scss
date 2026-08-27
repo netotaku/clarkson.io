@@ -27,15 +27,9 @@
             margin-bottom: var(--layout-spacing);
         }
 
-        &__sub-heading{
-            line-height: 1.1!important;
-            color: rgba(white, .6);
-        }
-
     }
 
     &__nav{
-        font-size: var(--font-size-home-nav);
         a{
             display: block;
         }

@@ -1,25 +1,18 @@
+
+
 .nav{
 
     &__section{
         padding: var(--gutter);
     }
 
-    &__heading{
-        color: var(--color-white-30);
-        text-transform: uppercase;
-        font-size: var(--font-size-nav-heading);
-    }
-
     &__links{
-        font-size: var(--font-size-nav-link);
-
         a{
             display: block;
-            color: var(--color-white);
             text-decoration: none;
             &.active{                
                 border-style: solid;
-                border-left-color: var(--color-orange);
+                border-left-color: var(--color-dark-orange);
                 border-width: 0px;
                 border-left-width: var(--radius-xs);
                 padding-left: var(--space-sm);
@@ -34,12 +27,9 @@
                 font-family: Oswald;
                 text-transform: uppercase;
                 font-weight: bold;
-                font-size: var(--font-size-primary-nav);
-                line-height: .9;
 
                 sup{
                     display: none;
-                    color: var(--color-orange);
                     vertical-align: top; 
                     position: absolute;
                     top: -8%;
@@ -50,23 +40,12 @@
                 &.active{
                     border: 0;
                     padding: 0;
-                    color: var(--color-light-grey);
                     sup{
                         display: inline;
                     }
                 }
             }
 
-        }
-    }
-
-    @media (max-width: 639px) {
-        &__links {
-            font-size: var(--font-size-nav-link-mobile);
-        }
-
-        &__links--primary a {
-            font-size: var(--font-size-primary-nav-mobile);
         }
     }
 
@@ -77,7 +56,6 @@
 
         &__links--primary a:hover {
             text-decoration: none;
-            color: var(--color-orange);
         }
     }
 }

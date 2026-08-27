@@ -17,13 +17,11 @@
     justify-content: center;
     align-items: center;
 
-    color: var(--color-white);
+    color: var(--color-text);
 
     background-color: var(--color-charcoal);
 
     padding: 0 var(--space-lg);
-
-    line-height: 1;
 
     &__circle{
         align-self: stretch;
@@ -63,14 +61,14 @@
     }
 
     &--orange{
-        background-color: var(--color-orange);
+        background-color: var(--color-dark-orange);
     }
 
     &--pagination {
         background: var(--color-white-15);
 
         &:focus-visible {
-            background: var(--color-orange);
+            background:  var(--color-dark-orange);
         }
 
         &:disabled {
@@ -84,14 +82,14 @@
         padding: 0 var(--radius-lg);
 
         &[aria-current='page'] {
-            background: var(--color-orange);
+            background:  var(--color-dark-orange);
         }
     }
 
     @media (min-width: 640px) {
         &--icon:hover:not(:disabled),
         &--pagination:hover:not(:disabled) {
-            background-color: var(--color-orange);
+            background-color:  var(--color-dark-orange);
         }
     }
 

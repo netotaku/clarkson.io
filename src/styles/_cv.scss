@@ -6,27 +6,14 @@
     
     &__duration{       
         font-weight: bold;
-        font-size: var(--font-size-breadcrumb);
     }
-
-    &__title{
-        font-size: var(--font-size-job-title);
-    }
-
-    &__company{
-        font-size: var(--font-size-job-company);
-    }    
 }
 
 .award{
     &:not(:last-child){
         margin-bottom: var(--layout-spacing);
     }    
-    &__category{
-        line-height: 1.2;
-    }
     &__year{
-        color: var(--color-white-60);
         display: block;
     }
 }

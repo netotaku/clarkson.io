@@ -45,7 +45,7 @@
 }
 
 a {
-  color: var(--color-orange);
+  // color: var(--color-action);
 
   @media (min-width: 640px) {
     &:hover {
@@ -65,8 +65,9 @@ td * {
 
 html{
     font-family: sans-serif;
-    line-height: 1.5;
-    color: var(--color-white);
+    font-size: var(--type-body-size);
+    line-height: var(--type-body-leading);
+    color: var(--color-text);
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

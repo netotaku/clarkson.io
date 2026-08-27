@@ -8,3 +8,4 @@ export { default as HomeIcon } from './home.astro';
 export { default as ArrowIcon } from './arrow.astro';
 export { default as MouseIcon } from './mouse.astro';
 export { default as PinIcon } from './pin.astro';
+export { default as SpeedtestIcon } from './speedtest.astro';

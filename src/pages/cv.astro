@@ -161,7 +161,7 @@ const awards = [
 
       {experience.map(({ from, to, role, company, description }) => (		
         <div class="job">	
-          <p class="job__duration nav__heading">{from} – {to}</p>
+          <p class="job__duration eyebrow">{from} – {to}</p>
           <div class="job__details">
             <h3 class="job__title">{role}</h3>
             <p class="job__company">{company}</p>
@@ -173,7 +173,7 @@ const awards = [
     </div>
 
     <div class="grid__item grid__item--third">
-			<h2 class="job__duration nav__heading">Awards</h2>
+			<h2 class="job__duration eyebrow">Awards</h2>
 
 			{awards.map(({ year, award, category, project, company }) => (
 				<div class="award">					

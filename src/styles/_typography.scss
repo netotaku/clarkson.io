@@ -1,9 +1,41 @@
+.type{
+    color: inherit;
+
+    &--title{
+        font-size: var(--type-title-size);
+        line-height: var(--type-title-leading);
+    }
+
+    &--heading{
+        font-size: var(--type-heading-size);
+        line-height: var(--type-heading-leading);
+    }
+
+    &--lead{
+        font-size: var(--type-lead-size);
+        line-height: var(--type-lead-leading);
+    }
+
+    &--body{
+        font-size: var(--type-body-size);
+        line-height: var(--type-body-leading);
+    }
+
+    &--ui{
+        font-size: var(--type-ui-size);
+        line-height: var(--type-ui-leading);
+    }
+
+    &--meta{
+        font-size: var(--type-meta-size);
+        line-height: var(--type-meta-leading);
+    }
+}
+
 .typography{
-
-    
-    // font-size: var(--font-size-body);
-
-    font-size: var(--font-size-typography);
+    color: var(--color-text);
+    // font-size: var(--type-body-size);
+    // line-height: var(--type-body-leading);
     font-weight: 400;
 
     p:not(:last-child),
@@ -37,8 +69,29 @@
         // font-weight: bold;
         // text-transform: uppercase;
         // letter-spacing: -2px;
-        line-height: 1.2;
-        font-size: var(--font-size-typography-heading);
+        // font-size: var(--type-title-size);
+        // line-height: var(--type-title-leading);
+    }
+
+    h2{
+        // font-size: var(--type-heading-size);
+        // line-height: var(--type-heading-leading);
+    }
+
+    h3{
+        // font-size: var(--type-lead-size);
+        // line-height: var(--type-lead-leading);
+    }
+
+    h4{
+        // font-size: var(--type-ui-size);
+        // line-height: var(--type-ui-leading);
+    }
+
+    h5,
+    h6{
+        // font-size: var(--type-meta-size);
+        // line-height: var(--type-meta-leading);
     }
 
     ul,ol{
@@ -83,16 +136,6 @@
             padding: calc(var(--space-sm) + var(--space-2xs));
         }
         border-bottom: solid 1px var(--color-grey);
-    }
-
-    @media (max-width: 639px){
-        font-size: var(--font-size-typography-mobile);
-        font-weight: 400;
-
-        h1{
-            font-size: var(--font-size-typography-heading-mobile);
-            line-height: 1.05;
-        }
     }
 
 }

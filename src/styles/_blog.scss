@@ -24,13 +24,8 @@
         &__title{
             font-family: oswald;
             text-transform: uppercase;
-            font-size: var(--font-size-blog-title);
-            line-height: 1;
             text-wrap: pretty;
         }
-        &__desc{
-            font-size: var(--font-size-blog-description);
-        } 
         &__icons{
             display: flex;
             gap: var(--space-sm);
@@ -60,13 +55,6 @@
             top: auto;
             align-self: stretch;
 
-            .header__description {
-                font-size: calc(var(--font-size-typography-mobile) * 1.1);
-            }
-
-            &__hire-me p {
-                font-size: var(--font-size-typography-mobile);
-            }
         }
 
         &__cta {

@@ -14,17 +14,14 @@
     justify-content: stretch;
     // 
     background: var(--color-mid-charcoal);
-    color: var(--color-white);
     margin-right: var(--space-xs);
     margin-top: var(--space-xs);
     border-radius: var(--radius-md);
     overflow: hidden;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: var(--font-size-small);
     height: var(--tag-height);
     &__count{
-        color: var(--color-white);
         font-weight: bold;
         padding-left: var(--space-md);
         padding-right: var(--space-md);
@@ -45,7 +42,6 @@
     &--large{
         height: calc(var(--tag-height) * 2);
         border-radius: calc(var(--radius-md) * 2);
-        font-size: calc(var(--font-size-small) * 2);
         font-weight: 400;
 
         .tag__count,
@@ -56,14 +52,6 @@
 
         .tag__count{
             font-weight: 400;
-        }
-    }
-
-    @media (max-width: 639px){
-        font-size: calc(var(--font-size-small) * 1.15);
-
-        &--large{
-            font-size: calc(var(--font-size-small) * 2.3);
         }
     }
 

@@ -21,7 +21,8 @@ import {
   BurgerIcon,
   CloseIcon,
   WhatsappIcon,
-  HomeIcon
+  HomeIcon,
+  SpeedtestIcon
 } from '../icons';
 
 interface Props {
@@ -33,6 +34,8 @@ interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { title, description, image } = Astro.props;
 const shareImageUrl = new URL('/share.jpg', Astro.url);
+const performanceTestURL = new URL('/analysis', 'https://pagespeed.web.dev');
+performanceTestURL.searchParams.set('url', canonicalURL.href);
 
 const allPosts = await getCollection('blog');
 const latestPost = await getLatestPost();
@@ -150,7 +153,7 @@ const buildCommitUrl = buildCommit
 				<Social />
 			</div>		
 			<div class="nav__section">
-				<h2 class="nav__heading"># Topics</h2>
+				<h2 class="eyebrow"># Topics</h2>
 				{categories.map((category) => (
 					<a
 						href={`/blog/category/${category.slug}/`}
@@ -219,7 +222,7 @@ const buildCommitUrl = buildCommit
 							<Contact />
 						</div>
 						<div class="footer__links__list footer__links__list--latest">
-							<h2 class="nav__heading">Latest Post</h2>
+							<h2 class="eyebrow">Latest Post</h2>
 							<Card post={latestPost} modifier="--mini" />
 						</div>
 					</div>
@@ -228,6 +231,18 @@ const buildCommitUrl = buildCommit
 
 					<p class="footer__meta">
 						<span class="footer__build">
+
+							<a
+								class="footer__performance"
+								href={performanceTestURL}
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label={`Test ${canonicalURL.href} with PageSpeed Insights`}
+								title="Test this page with PageSpeed Insights"
+							><SpeedtestIcon /></a>
+
+							<span aria-hidden="true">·</span>
+
 							<strong>v3</strong> <span>@</span>
 							{buildCommitUrl ? (
 								<a
@@ -241,8 +256,6 @@ const buildCommitUrl = buildCommit
 								<span>{buildCommitLabel}</span>
 							)}
 						</span>
-						<span class="u-no-mobile" aria-hidden="true">·</span><br class="u-mobile-only">
-						<a class="footer__cookies" href="/cookies-and-privacy">Cookies &amp; Privacy</a>											
 					</p>
 					
 				</footer>

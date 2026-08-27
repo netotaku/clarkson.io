@@ -4,8 +4,6 @@
     flex-direction: column;
     gap: var(--gutter);
 
-    color: var(--color-white-30);
-
     &__fieldset{
         appearance: none;
         border: solid var(--border-width) var(--color-white-30);
@@ -22,19 +20,14 @@
     input[type="submit"]{
         appearance: none;
         padding: var(--space-lg);
-        font-size: var(--font-size-form-control);
     }
 
 
     input[type="email"]{
-        color: var(--color-white);
         background: var(--color-transparent);
         border: 0;  
         flex: 1 1 auto;    
         min-width: 0;
-        &::placeholder{
-            color: var(--color-white-30);
-        }
     }
 
     input[type="submit"]{        
@@ -46,15 +39,8 @@
 
     @media (min-width: 640px){
         &:hover{
-            color: var(--color-white);
-
             input[type="submit"]:not(:disabled){ 
                 background: var(--color-white);
-            }
-            input[type="email"]{
-                &::placeholder{
-                    color: var(--color-white);
-                }
             }
             .form__fieldset{
                 border-color: var(--color-white);
