@@ -28,7 +28,7 @@
     }
 
     @media (min-width: 640px) {
-        &__home:hover {
+        a.menu__home:hover {
             background-color: var(--color-charcoal);
         }
     }

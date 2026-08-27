@@ -23,9 +23,6 @@
     text-transform: uppercase;
     font-size: var(--font-size-small);
     height: var(--tag-height);
-    &:hover{
-       background: var(--color-white-20);
-    }
     &__count{
         color: var(--color-white);
         font-weight: bold;
@@ -67,6 +64,12 @@
 
         &--large{
             font-size: calc(var(--font-size-small) * 2.3);
+        }
+    }
+
+    @media (min-width: 640px){
+        &:hover{
+            background: var(--color-white-20);
         }
     }
 }

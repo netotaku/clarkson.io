@@ -43,8 +43,10 @@
             text-transform: uppercase;
               
             color: var(--color-white);
-            &:hover{
-                color: var(--color-orange);
+            @media (min-width: 640px) {
+                &:hover{
+                    color: var(--color-orange);
+                }
             }
         }
     }

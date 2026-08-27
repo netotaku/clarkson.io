@@ -26,10 +26,6 @@
         display: inline-block;
         border-radius: var(--radius-sm);
         text-decoration: none;
-        &:hover{
-            background-color: var(--color-orange);
-            color: var(--color-white);
-        }
     }
 
     &__links{
@@ -78,6 +74,13 @@
 
         &__commit {
             font-size: var(--font-size-nav-link-mobile);
+        }
+    }
+
+    @media (min-width: 640px){
+        &__commit:hover{
+            background-color: var(--color-orange);
+            color: var(--color-white);
         }
     }
 

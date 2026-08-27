@@ -25,9 +25,6 @@
                 padding-left: var(--space-sm);
             }  
             
-            &:hover{
-                text-decoration: underline;
-            }
         }        
 
         &--primary{
@@ -58,10 +55,6 @@
                         display: inline;
                     }
                 }
-                &:hover{
-                    text-decoration: none;
-                    color: var(--color-orange);
-                }                
             }
 
         }
@@ -74,6 +67,17 @@
 
         &__links--primary a {
             font-size: var(--font-size-primary-nav-mobile);
+        }
+    }
+
+    @media (min-width: 640px) {
+        &__links a:hover {
+            text-decoration: underline;
+        }
+
+        &__links--primary a:hover {
+            text-decoration: none;
+            color: var(--color-orange);
         }
     }
 }
