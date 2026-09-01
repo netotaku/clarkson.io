@@ -1,5 +1,8 @@
 .card{
     display: block;
+
+    line-height: 1.8;
+
     &--mini,
     &--micro {
         min-width: 0;
@@ -10,9 +13,10 @@
         }
 
         .header__eyebrow {
-            gap: var(--space-sm);
+           // gap: var(--space-sm);
             margin-bottom: 0;
             font-weight: normal;
+            font-size: inherit;
         }
 
         .header__theme {
@@ -63,6 +67,7 @@
         }
 
         .header__description {
+            font-size: inherit;
             display: none;
         }
     }

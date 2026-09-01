@@ -142,7 +142,7 @@ body{
     letter-spacing: 2px;
 }
 
-.card--mini .header__title{
+.card--mini .header__title, .card--micro .header__title{
     font-size: inherit;
 }
 
@@ -160,12 +160,34 @@ body{
 }
 
 .nav__links--primary {
-    font-size: 52px;
+    font-size: 45px;
     line-height: 1;
+
+    sup{
+        color: var(--color-dark-orange);
+    }
 }
 
 .typography a {
     color: var(--color-dark-orange);
+}
+
+.tag{
+    font-size: 13px;
+}
+
+.typography h1,
+.header__title{
+    font-size: 40px;
+    line-height: 1.1;
+}
+
+.header__eyebrow {
+   // font-size: 16px;
+}
+
+.header__description{
+   //  font-size: 24px;
 }
 
 .footer__meta {
@@ -176,10 +198,32 @@ body{
     }
 }
 
+
+
 @media (min-width: 639px) {
-    .typography a{
-        &:hover{
-            text-decoration: none;
-        }
+
+    .typography h1,
+    .header__title{
+        font-size: 60px;
+        line-height: 1.1;
     }
+
+    .typography{
+
+        font-size: 1em;
+
+        a{
+            &:hover{
+                text-decoration: none;
+            }
+        }
+    } 
+
+    .footer__commit{
+        &:hover{
+            background-color: var(--color-dark-orange);
+            color: white;
+        }   
+    }
+
 }

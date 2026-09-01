@@ -3,6 +3,17 @@
     display: flex;
     flex-direction: column;
     gap: var(--gutter);
+    color: var(--color-text-subtle);
+    transition: color var(--duration-fast) ease-out;
+
+    a{
+        color: var(--color-light-grey);
+        transition: color var(--duration-fast) ease-out;
+    }
+
+    &__small-print{
+        transition: color var(--duration-fast) ease-out;
+    }
 
     &__fieldset{
         appearance: none;
@@ -14,12 +25,17 @@
         padding: 0;
         margin: 0;
         max-width: 75%;
+        transition: border-color var(--duration-fast) ease-out;
     }
 
     input[type="email"],
     input[type="submit"]{
         appearance: none;
         padding: var(--space-lg);
+        color: inherit;
+        transition:
+            color var(--duration-fast) ease-out,
+            background-color var(--duration-fast) ease-out;
     }
 
 
@@ -28,10 +44,16 @@
         border: 0;  
         flex: 1 1 auto;    
         min-width: 0;
+
+        &::placeholder{
+            color: inherit;
+            transition: color var(--duration-fast) ease-out;
+        }
     }
 
     input[type="submit"]{        
         border: 0px;
+        color: var(--color-near-black);
         background: var(--color-white-30);
         flex: 0 0 auto;
         border-radius: 0 calc(var(--radius-lg) - 1px) calc(var(--radius-lg) - 1px) 0;
@@ -39,6 +61,16 @@
 
     @media (min-width: 640px){
         &:hover{
+            color: var(--color-text);
+
+            .form__small-print{
+                color: var(--color-text);
+            }
+
+            a{
+                color: var(--color-text);
+            }
+
             input[type="submit"]:not(:disabled){ 
                 background: var(--color-white);
             }

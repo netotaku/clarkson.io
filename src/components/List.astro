@@ -36,6 +36,7 @@ const dateLabels = posts.map((post) =>
         <h2
           class:list={[
             'list__date-heading',
+            'eyebrow',
             (index === 0 || dateLabels[index] !== dateLabels[index - 1]) &&
               'list__date-heading--visible',
           ]}
