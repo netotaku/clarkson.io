@@ -7,6 +7,14 @@
     &__duration{       
         font-weight: bold;
     }
+
+    & &__title {
+        font-size: 1.404em;
+    }
+
+    & &__company {
+        font-size: 1.2em;
+    }
 }
 
 .award{
