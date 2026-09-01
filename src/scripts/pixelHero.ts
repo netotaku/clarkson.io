@@ -88,8 +88,6 @@ class PixelHero {
   private resizeObserver?: ResizeObserver;
   private resizeTimer = 0;
   private scrollFrame = 0;
-  private lastScrollY = -1;
-  private stableScrollFrames = 0;
 
   constructor(
     root: HTMLElement,
@@ -184,9 +182,6 @@ class PixelHero {
 
     this.onScroll =
       this.onScroll.bind(this);
-
-    this.animateParallax =
-      this.animateParallax.bind(this);
 
     this.init();
   }
@@ -1265,66 +1260,30 @@ class PixelHero {
 
     this.scrollFrame =
       requestAnimationFrame(
-        this.animateParallax,
+        () => {
+          this.scrollFrame = 0;
+          this.applyParallax();
+        },
       );
   }
 
-  private parallaxOffset() {
+  private applyParallax() {
     const reduced =
       window.matchMedia(
         '(prefers-reduced-motion: reduce)',
       ).matches;
 
-    return (
+    const y =
       !this.parallax ||
       reduced
         ? 0
         : window.scrollY *
-          this.parallaxSpeed
-    );
-  }
+          this.parallaxSpeed;
 
-  private setParallaxTransform(
-    y: number,
-  ) {
     this.parallaxLayer
       .style
       .transform =
       `translate3d(0, ${y}px, 0)`;
-  }
-
-  private animateParallax() {
-    const scrollY = window.scrollY;
-
-    this.setParallaxTransform(
-      this.parallaxOffset(),
-    );
-
-    if (scrollY === this.lastScrollY) {
-      this.stableScrollFrames += 1;
-    } else {
-      this.lastScrollY = scrollY;
-      this.stableScrollFrames = 0;
-    }
-
-    if (this.stableScrollFrames >= 4) {
-      this.scrollFrame = 0;
-      return;
-    }
-
-    this.scrollFrame =
-      requestAnimationFrame(
-        this.animateParallax,
-      );
-  }
-
-  private applyParallax() {
-    const y = this.parallaxOffset();
-
-    this.lastScrollY = window.scrollY;
-    this.stableScrollFrames = 0;
-
-    this.setParallaxTransform(y);
   }
 
   private hash(
