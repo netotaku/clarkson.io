@@ -88,8 +88,8 @@ class PixelHero {
   private resizeObserver?: ResizeObserver;
   private resizeTimer = 0;
   private scrollFrame = 0;
-  private currentParallaxY = 0;
-  private targetParallaxY = 0;
+  private lastScrollY = -1;
+  private stableScrollFrames = 0;
 
   constructor(
     root: HTMLElement,
@@ -1257,9 +1257,6 @@ class PixelHero {
   }
 
   private onScroll() {
-    this.targetParallaxY =
-      this.parallaxOffset();
-
     if (
       this.scrollFrame
     ) {
@@ -1297,25 +1294,23 @@ class PixelHero {
   }
 
   private animateParallax() {
-    const difference =
-      this.targetParallaxY -
-      this.currentParallaxY;
+    const scrollY = window.scrollY;
 
-    if (Math.abs(difference) < 0.1) {
-      this.currentParallaxY =
-        this.targetParallaxY;
-      this.setParallaxTransform(
-        this.currentParallaxY,
-      );
+    this.setParallaxTransform(
+      this.parallaxOffset(),
+    );
+
+    if (scrollY === this.lastScrollY) {
+      this.stableScrollFrames += 1;
+    } else {
+      this.lastScrollY = scrollY;
+      this.stableScrollFrames = 0;
+    }
+
+    if (this.stableScrollFrames >= 4) {
       this.scrollFrame = 0;
       return;
     }
-
-    this.currentParallaxY +=
-      difference * 0.24;
-    this.setParallaxTransform(
-      this.currentParallaxY,
-    );
 
     this.scrollFrame =
       requestAnimationFrame(
@@ -1326,8 +1321,8 @@ class PixelHero {
   private applyParallax() {
     const y = this.parallaxOffset();
 
-    this.currentParallaxY = y;
-    this.targetParallaxY = y;
+    this.lastScrollY = window.scrollY;
+    this.stableScrollFrames = 0;
 
     this.setParallaxTransform(y);
   }
