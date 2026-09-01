@@ -4,6 +4,16 @@
     gap: calc(var(--gutter) * 2);
     list-style: none;
 
+    .header__description {
+        font-size: 120%;
+    }
+
+    @media (min-width: 640px) {
+        .header__title a:hover {
+            text-decoration-color: var(--color-white-50);
+        }
+    }
+
     &__item {
         padding-bottom: calc(var(--gutter) * 2);
     }
