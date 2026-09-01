@@ -88,6 +88,8 @@ class PixelHero {
   private resizeObserver?: ResizeObserver;
   private resizeTimer = 0;
   private scrollFrame = 0;
+  private currentParallaxY = 0;
+  private targetParallaxY = 0;
 
   constructor(
     root: HTMLElement,
@@ -182,6 +184,9 @@ class PixelHero {
 
     this.onScroll =
       this.onScroll.bind(this);
+
+    this.animateParallax =
+      this.animateParallax.bind(this);
 
     this.init();
   }
@@ -1252,6 +1257,9 @@ class PixelHero {
   }
 
   private onScroll() {
+    this.targetParallaxY =
+      this.parallaxOffset();
+
     if (
       this.scrollFrame
     ) {
@@ -1260,30 +1268,68 @@ class PixelHero {
 
     this.scrollFrame =
       requestAnimationFrame(
-        () => {
-          this.scrollFrame = 0;
-          this.applyParallax();
-        },
+        this.animateParallax,
       );
   }
 
-  private applyParallax() {
+  private parallaxOffset() {
     const reduced =
       window.matchMedia(
         '(prefers-reduced-motion: reduce)',
       ).matches;
 
-    const y =
+    return (
       !this.parallax ||
       reduced
         ? 0
         : window.scrollY *
-          this.parallaxSpeed;
+          this.parallaxSpeed
+    );
+  }
 
+  private setParallaxTransform(
+    y: number,
+  ) {
     this.parallaxLayer
       .style
       .transform =
       `translate3d(0, ${y}px, 0)`;
+  }
+
+  private animateParallax() {
+    const difference =
+      this.targetParallaxY -
+      this.currentParallaxY;
+
+    if (Math.abs(difference) < 0.1) {
+      this.currentParallaxY =
+        this.targetParallaxY;
+      this.setParallaxTransform(
+        this.currentParallaxY,
+      );
+      this.scrollFrame = 0;
+      return;
+    }
+
+    this.currentParallaxY +=
+      difference * 0.24;
+    this.setParallaxTransform(
+      this.currentParallaxY,
+    );
+
+    this.scrollFrame =
+      requestAnimationFrame(
+        this.animateParallax,
+      );
+  }
+
+  private applyParallax() {
+    const y = this.parallaxOffset();
+
+    this.currentParallaxY = y;
+    this.targetParallaxY = y;
+
+    this.setParallaxTransform(y);
   }
 
   private hash(
