@@ -68,5 +68,10 @@
             max-width: none;
         }
 
+        .card--mini,
+        .card--mini .header__title {
+            line-height: var(--type-body-leading);
+        }
+
     }
 }

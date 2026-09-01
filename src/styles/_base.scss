@@ -10,40 +10,6 @@
     outline-offset: var(--focus-ring-offset);
 }
 
-.navigation-progress {
-    position: fixed;
-    z-index: 9999;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: var(--navigation-progress-height);
-    pointer-events: none;
-    background: var(--color-orange);
-    opacity: 0;
-    transform: scaleX(0);
-    transform-origin: left;
-
-    &--loading {
-        opacity: 1;
-        transform: scaleX(.22);
-        transition: transform var(--duration-medium) ease-out;
-    }
-
-    &--animating {
-        opacity: 0;
-        transform: scaleX(1);
-        transition:
-            transform var(--navigation-animation-duration, var(--duration-navigation)) cubic-bezier(.1, .7, .2, 1),
-            opacity var(--duration-fast) ease-out calc(var(--navigation-animation-duration, var(--duration-navigation)) - var(--duration-fast));
-    }
-
-    &--complete {
-        opacity: 0;
-        transform: scaleX(1);
-        transition: none;
-    }
-}
-
 a {
   // color: var(--color-action);
 

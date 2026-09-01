@@ -23,6 +23,11 @@
             margin-bottom: var(--layout-spacing);
         }
 
+        .typography &__sub-heading {
+            font-size: 36px;
+            line-height: 1.1;
+        }
+
         &__latest{
             margin-bottom: var(--layout-spacing);
         }
@@ -49,6 +54,12 @@
         }
         &__lockup{
             top: 390px;
+        }
+    }
+
+    @media (min-width: 640px) {
+        &__lockup .typography &__lockup__sub-heading {
+            font-size: 54px;
         }
     }
 }

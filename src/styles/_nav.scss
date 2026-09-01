@@ -55,7 +55,12 @@
         }
 
         &__links--primary a:hover {
+            color: var(--color-dark-orange);
             text-decoration: none;
+
+            sup {
+                display: inline;
+            }
         }
     }
 }

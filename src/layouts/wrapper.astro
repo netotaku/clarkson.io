@@ -132,13 +132,6 @@ const buildCommitUrl = buildCommit
 		
 	</head>
 	<body>
-		<div
-			class="navigation-progress"
-			data-navigation-progress
-			transition:persist="navigation-progress"
-			aria-hidden="true"
-		></div>
-		
 		<nav id="site-menu" class="layer layer--0 nav">
 			<div class="nav__section">
 				<Primary />
@@ -407,65 +400,6 @@ const buildCommitUrl = buildCommit
 				}
 			};
 
-			const progressElement = () =>
-				document.querySelector<HTMLElement>('[data-navigation-progress]');
-
-			const startProgress = () => {
-				const progress = progressElement();
-
-				if (!progress) return;
-
-				progress.classList.remove(
-					'navigation-progress--animating',
-					'navigation-progress--complete',
-				);
-				progress.classList.add('navigation-progress--loading');
-			};
-
-			const completeProgress = () => {
-				const progress = progressElement();
-
-				if (
-					!progress?.classList.contains('navigation-progress--loading') &&
-					!progress?.classList.contains('navigation-progress--animating')
-				) return;
-
-				progress.classList.remove(
-					'navigation-progress--loading',
-					'navigation-progress--animating',
-				);
-				progress.classList.add('navigation-progress--complete');
-
-				const reset = () => {
-					progress.classList.remove('navigation-progress--complete');
-				};
-
-				progress.addEventListener('transitionend', reset, { once: true });
-				window.setTimeout(reset, 150);
-			};
-
-			const animateProgressWithPageReveal = async () => {
-				await waitForPixelHero();
-
-				const progress = progressElement();
-
-				if (!progress?.classList.contains('navigation-progress--loading')) return;
-
-				if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-					completeProgress();
-					return;
-				}
-
-				progress.style.setProperty(
-					'--navigation-animation-duration',
-					`${pageFadeDuration}ms`,
-				);
-				progress.classList.remove('navigation-progress--loading');
-				progress.classList.add('navigation-progress--animating');
-
-				window.setTimeout(completeProgress, pageFadeDuration);
-			};
-
 			const toggleMenu = () => {
 					const root = document.documentElement;
 					const opening = !root.classList.contains('js-open');
@@ -487,8 +421,6 @@ const buildCommitUrl = buildCommit
 			document.addEventListener('astro:before-preparation', (event) => {
 				document.documentElement.classList.remove('js-open');
 				document.querySelector('#js-open-closed')?.setAttribute('aria-expanded', 'false');
-				startProgress();
-
 				const fadeOutComplete = startPageFadeOut(event.signal);
 				const loadPage = event.loader;
 
@@ -501,7 +433,6 @@ const buildCommitUrl = buildCommit
 
 				event.signal.addEventListener('abort', () => {
 					document.documentElement.classList.remove('page-transition-out');
-					completeProgress();
 				}, { once: true });
 			});
 
@@ -519,7 +450,6 @@ const buildCommitUrl = buildCommit
 			document.addEventListener('astro:page-load', () => {
 				document.documentElement.classList.remove('menu-overlay-visible');
 				document.querySelector('#js-open-closed')?.setAttribute('aria-expanded', 'false');
-				animateProgressWithPageReveal();
 				revealInitialHero();
 			});
 
