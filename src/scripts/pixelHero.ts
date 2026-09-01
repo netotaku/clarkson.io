@@ -74,6 +74,7 @@ class PixelHero {
 
   private parallax: boolean;
   private parallaxSpeed: number;
+  private nativeParallax: boolean;
 
   private physics: PhysicsConfig;
 
@@ -172,6 +173,15 @@ class PixelHero {
         0.08,
       );
 
+    this.nativeParallax =
+      this.parallax &&
+      !window.matchMedia(
+        '(prefers-reduced-motion: reduce)',
+      ).matches &&
+      CSS.supports(
+        'animation-timeline: scroll()',
+      );
+
     this.physics =
       JSON.parse(
         d.physics ?? '{}',
@@ -211,11 +221,17 @@ class PixelHero {
       this.root,
     );
 
-    window.addEventListener(
-      'scroll',
-      this.onScroll,
-      { passive: true },
-    );
+    if (this.nativeParallax) {
+      this.root.classList.add(
+        'pixel-hero--native-parallax',
+      );
+    } else {
+      window.addEventListener(
+        'scroll',
+        this.onScroll,
+        { passive: true },
+      );
+    }
 
     if (
       this.image.complete &&
@@ -1268,6 +1284,20 @@ class PixelHero {
   }
 
   private applyParallax() {
+    if (this.nativeParallax) {
+      const maximumScroll = Math.max(
+        0,
+        document.documentElement.scrollHeight -
+          window.innerHeight,
+      );
+
+      this.parallaxLayer.style.setProperty(
+        '--pixel-hero-parallax-distance',
+        `${maximumScroll * this.parallaxSpeed}px`,
+      );
+      return;
+    }
+
     const reduced =
       window.matchMedia(
         '(prefers-reduced-motion: reduce)',
