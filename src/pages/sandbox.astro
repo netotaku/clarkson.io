@@ -1,0 +1,40 @@
+---
+import PixelHero from '../components/PixelHero.astro';
+import pixelImage from '../assets/images/more-jungle.jpg';
+import '../styles/global.scss';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>PixelHero Sandbox</title>
+  </head>
+  <body>
+    <PixelHero
+      src={pixelImage}
+      alt="Pixelated jungle artwork"
+      topHeight={1200}
+      pixelPitch={44}
+      dotScale={0.9}
+      cornerRadius={28}
+      backgroundSample="average"
+      backgroundMix={0.29}
+      parallax={false}
+      physics="chunky-collapse"
+      physicsOverrides={{
+        dissolveStart: 0.1,
+        erosion: 0.9,
+        cohesion: 0.66,
+        gravity: 2.25,
+        turbulence: 0.04,
+        drag: 0.22,
+        fragmentDistance: 4000,
+        tailOpacity: 1,
+        tailFadeCurve: 1,
+        seed: 911,
+      }}
+    />
+  </body>
+</html>
