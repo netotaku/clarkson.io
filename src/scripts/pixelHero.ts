@@ -202,10 +202,7 @@ class PixelHero {
       booleanValue(
         d.parallax,
         true,
-      ) &&
-      !window.matchMedia(
-        MOBILE_MEDIA_QUERY,
-      ).matches;
+      );
 
     this.parallaxSpeed =
       numberValue(

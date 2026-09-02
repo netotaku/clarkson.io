@@ -34,8 +34,7 @@
 
 .typography{
     color: var(--color-text);
-    // font-size: var(--type-body-size);
-    // line-height: var(--type-body-leading);
+
     font-weight: 400;
 
     display: flex;
@@ -58,41 +57,9 @@
         opacity: .3;
     }
 
-    h1{
-        // font-family: Oswald;
-        // font-size: var(--font-size-page-heading);
-        // font-weight: bold;
-        // text-transform: uppercase;
-        // letter-spacing: -2px;
-        // font-size: var(--type-title-size);
-        // line-height: var(--type-title-leading);
-    }
-
-    h2{
-        // font-size: var(--type-heading-size);
-        // line-height: var(--type-heading-leading);
-    }
-
-    h3{
-        // font-size: var(--type-lead-size);
-        // line-height: var(--type-lead-leading);
-    }
-
-    h4{
-        // font-size: var(--type-ui-size);
-        // line-height: var(--type-ui-leading);
-    }
-
-    h5,
-    h6{
-        // font-size: var(--type-meta-size);
-        // line-height: var(--type-meta-leading);
-    }
-
     ul,ol{
         margin-left: var(--gutter);
     }
-
 
     dt{
         font-weight: bold;
