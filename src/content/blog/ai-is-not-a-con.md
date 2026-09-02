@@ -10,7 +10,7 @@ categories:
 cta: "Trying to work out where AI genuinely fits in your organisation?"
 ---
 
-Yesterday I watched [Ed Zitron make the case that generative AI is a con](https://www.youtube.com/watch?v=YNQuYOYK9MI).
+Yesterday I watched [Ed Zitron make the case that generative AI is a con](https://www.youtube.com/watch?v=Lf5oqGOCRCM).
 
 I don't think I'd go that far.
 
