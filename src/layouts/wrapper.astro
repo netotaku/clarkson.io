@@ -23,7 +23,8 @@ import {
   CloseIcon,
   WhatsappIcon,
   HomeIcon,
-  SpeedtestIcon
+  SpeedtestIcon,
+  RssIcon
 } from '../icons';
 
 interface Props {
@@ -132,9 +133,9 @@ const buildCommitUrl = buildCommit
 	</head>
 	<body>
 		<nav id="site-menu" class="layer layer--0 nav">
-			<div class="nav__section nav__availability">
+			<!-- <div class="nav__section nav__availability">
 				<AvailabilityStatus />
-			</div>
+			</div> -->
 			<div class="nav__section">
 				<Primary />
 			</div>
@@ -225,9 +226,17 @@ const buildCommitUrl = buildCommit
 
 					<p class="footer__meta">
 						<span class="footer__build">
+							<a
+								class="footer__icon"
+								href="/rss.xml"
+								aria-label="RSS feed"
+								title="Subscribe to the RSS feed"
+							><RssIcon /></a>
+
+							<span aria-hidden="true">·</span>
 
 							<a
-								class="footer__performance"
+								class="footer__icon footer__performance"
 								href={performanceTestURL}
 								target="_blank"
 								rel="noopener noreferrer"
@@ -251,7 +260,7 @@ const buildCommitUrl = buildCommit
 							)}
 						</span>
 
-						<span aria-hidden="true">·</span>
+						<span aria-hidden="true" class="u-no-mobile">·</span>
 
 						<a class="footer__cookies" href="/cookies-and-privacy">Cookies &amp; Privacy</a>											
 

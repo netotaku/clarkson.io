@@ -2,7 +2,7 @@
 title: AI Is Not a Con. But the Numbers Might Be.
 description: AI works. I'm less convinced its business model does.
 pubDate: 'Sep 02 2026'
-heroImage: '/src/assets/images/blog/stormy-cloud-sunset.jpg'
+heroImage: '/src/assets/images/blog/forest-fire.jpg'
 theme: '#ff6600'
 categories:
 - "ai"
@@ -10,7 +10,7 @@ categories:
 cta: "Trying to work out where AI genuinely fits in your organisation?"
 ---
 
-Yesterday I watched Ed Zitron make the case that generative AI is a con.
+Yesterday I watched [Ed Zitron make the case that generative AI is a con](https://www.youtube.com/watch?v=YNQuYOYK9MI).
 
 I don't think I'd go that far.
 
