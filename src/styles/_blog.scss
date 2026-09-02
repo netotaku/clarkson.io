@@ -20,35 +20,12 @@
             }
         }
         
-        &__eyebrow{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: var(--space-sm);
-            font-weight: bold;
-            margin-bottom: var(--space-xs);
-            img{
-                border-radius: var(--radius-xs);
-            }
-        }
-        &__title{
-            font-family: oswald;
-            text-transform: uppercase;
-            text-wrap: pretty;
-        }
         &__icons{
             display: flex;
             gap: var(--space-sm);
         }       
     } 
     
-    &__hero{
-        display: block;
-        overflow: hidden;
-        border-radius: var(--radius-xl);
-        margin-bottom: var(--layout-spacing);
-    }
-
     &__cta {
         display: flex;
         flex-direction: column;

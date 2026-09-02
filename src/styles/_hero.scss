@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     position: relative;
-   // min-height: min(41.8vw, calc(var(--hero-image-height) * .76));
     min-height: var(--hero-min-height);
     background-image: var(--hero-image);
     background-repeat: no-repeat;

@@ -11,8 +11,6 @@
 }
 
 a {
-  // color: var(--color-action);
-
   @media (min-width: 640px) {
     &:hover {
       text-decoration: none;
@@ -52,9 +50,6 @@ html{
 
 .section{
     padding: var(--layout-spacing);
-    &--top{
-        padding-top: var(--section-top-spacing);
-    }
 }
 
 .measure{
@@ -68,9 +63,6 @@ html{
 }
 
 .u-{
-    &blank{
-        min-height: 100vh;
-    }
     &scroll-x{
         display: block;
         max-width: 100%;
@@ -78,16 +70,9 @@ html{
         -webkit-overflow-scrolling: touch;
     }
 
-    &mobile-only{
-        display: none;
-    }
-
     @media (max-width: 639px) {
         &no-mobile{
             display: none;
-        }
-        &mobile-only{
-            display: block;
         }
     }
 }
