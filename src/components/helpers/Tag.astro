@@ -1,0 +1,35 @@
+---
+import {
+  categoryLabel,
+  categorySlug,
+} from '../../utils/categories';
+
+interface Props {
+  category: string;
+  count?: string | number;
+  variant?: 'inline' | 'stacked';
+  large?: boolean;
+}
+
+const {
+  category,
+  count = '#',
+  variant,
+  large = false,
+} = Astro.props;
+
+const slug = categorySlug(category);
+const label = categoryLabel(category);
+---
+
+<a
+  class:list={[
+    'tag',
+    variant && `tag--${variant}`,
+    { 'tag--large': large },
+  ]}
+  href={`/blog/category/${slug}/`}
+>
+  <span class="tag__count">{count}</span>
+  <span class="tag__label">{label}</span>
+</a>

@@ -1,0 +1,24 @@
+---
+import availableForWorkLabel from '../../assets/SVG/Available for work.svg';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div
+  class:list={['btn', 'btn--green', className]}
+  aria-label="Available for work"
+>
+  <span class="btn__circle"></span>
+  <img
+    class="btn__label"
+    src={availableForWorkLabel.src}
+    width={availableForWorkLabel.width}
+    height={availableForWorkLabel.height}
+    alt="Available for work"
+    aria-hidden="true"
+  />
+</div>

@@ -4,7 +4,8 @@ import Hero from '../../../components/Hero.astro';
 import Wrapper from '../../../layouts/wrapper.astro';
 import bikeImage from '../../../assets/images/chrome/me-on-a-bike.png';
 import pixelImage from '../../../assets/images/dev.jpg';
-import { categoryLabel, categorySlug } from '../../../utils/categories';
+import Tag from '../../../components/helpers/Tag.astro';
+import { categorySlug } from '../../../utils/categories';
 
 const posts = await getCollection('blog');
 
@@ -14,7 +15,6 @@ const allCategories = Array.from(new Set(
 
 const categories = allCategories.map((category) => ({
   slug: category,
-  label: categoryLabel(category),
   count: posts.filter((post) =>
     post.data.categories.some(
       (postCategory) => categorySlug(postCategory) === category,
@@ -41,13 +41,12 @@ const categories = allCategories.map((category) => ({
   <section class="section measure">
     <nav aria-label="Blog topics">
       {categories.map((category) => (
-        <a
-          class="tag tag--inline tag--large"
-          href={`/blog/category/${category.slug}/`}
-        >
-          <span class="tag__count">{category.count}</span>
-          <span class="tag__label">{category.label}</span>
-        </a>
+        <Tag
+          category={category.slug}
+          count={category.count}
+          variant="inline"
+          large
+        />
       ))}
     </nav>
   </section>

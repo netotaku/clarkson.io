@@ -6,6 +6,15 @@
         padding: var(--gutter);
     }
 
+    &__availability {
+        display: none;
+
+        .btn {
+            width: fit-content;
+            justify-content: flex-start;
+        }
+    }
+
     &__links{
         a{
             display: block;
@@ -58,6 +67,12 @@
         &__links--primary a:hover {
             color: var(--color-dark-orange);
             text-decoration: none;
+        }
+    }
+
+    @media (max-width: 639px) {
+        &__availability {
+            display: block;
         }
     }
 }
