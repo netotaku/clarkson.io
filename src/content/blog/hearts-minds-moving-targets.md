@@ -7,7 +7,7 @@ theme: '#b3b3b3'
 categories:
  - "technical-leadership"
  - "agency-life"
-cta: "Need technical leadership that works for the client and the development team? Let's talk."
+cta: "Need technical leadership that works for the client and the development team?"
 ---
 
 One of the less technical parts of technical leadership is creating the conditions that allow developers to do their best work.
@@ -74,7 +74,7 @@ The person sitting opposite you may have spent three months getting that brief a
 
 Then the agency turns up and says:
 
-*Actually, we think you should do something else.*
+> Actually, we think you should do something else.
 
 Technically, we might be right.
 
@@ -98,11 +98,11 @@ And trust changes the relationship.
 
 Eventually the conversation moves from:
 
-*Can you build what we've specified?*
+> Can you build what we've specified?
 
 towards:
 
-*Here's the problem. What do you think we should do?*
+> Here's the problem. What do you think we should do?
 
 That's a much more valuable position for both the agency and the client.
 
