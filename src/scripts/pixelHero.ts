@@ -1,6 +1,15 @@
 import type { PhysicsConfig } from '../pixel/types';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
+const MOBILE_MEDIA_QUERY = '(max-width: 639px)';
+
+const MOBILE_LUMINANCE = {
+  protectedEnd: 0.3,
+  releaseEnd: 0.5,
+  minCeiling: 0.25,
+  releaseCeiling: 0.45,
+} as const;
+
 type SampleMode =
   | 'average'
   | 'top'
@@ -35,6 +44,35 @@ const clamp = (
       value,
     ),
   );
+
+const srgbToLinear = (
+  channel: number,
+) => {
+  const value = channel / 255;
+
+  return value <= 0.04045
+    ? value / 12.92
+    : Math.pow(
+        (value + 0.055) / 1.055,
+        2.4,
+      );
+};
+
+const linearToSrgb = (
+  channel: number,
+) => {
+  const value =
+    channel <= 0.0031308
+      ? channel * 12.92
+      : 1.055 * Math.pow(
+          channel,
+          1 / 2.4,
+        ) - 0.055;
+
+  return Math.round(
+    clamp(value) * 255,
+  );
+};
 
 const numberValue = (
   value: string | undefined,
@@ -166,7 +204,7 @@ class PixelHero {
         true,
       ) &&
       !window.matchMedia(
-        '(max-width: 639px)',
+        MOBILE_MEDIA_QUERY,
       ).matches;
 
     this.parallaxSpeed =
@@ -367,6 +405,10 @@ class PixelHero {
 
   private buildCells() {
     this.cells = [];
+    const constrainLuminance =
+      window.matchMedia(
+        MOBILE_MEDIA_QUERY,
+      ).matches;
 
     for (
       let row = 0;
@@ -384,14 +426,78 @@ class PixelHero {
           attached: true,
           detached: false,
           support: 1,
-          colour:
-            this.sampleColour(
-              col,
-              row,
-            ),
+          colour: constrainLuminance
+            ? this.constrainMobileLuminance(
+                this.sampleColour(
+                  col,
+                  row,
+                ),
+                row,
+              )
+            : this.sampleColour(
+                col,
+                row,
+              ),
         });
       }
     }
+  }
+
+  private constrainMobileLuminance(
+    colour: Colour,
+    row: number,
+  ): Colour {
+    const position =
+      this.rows <= 1
+        ? 0
+        : row / (this.rows - 1);
+
+    if (
+      position >=
+      MOBILE_LUMINANCE.releaseEnd
+    ) {
+      return colour;
+    }
+
+    const releaseProgress = clamp(
+      (
+        position -
+        MOBILE_LUMINANCE.protectedEnd
+      ) /
+      (
+        MOBILE_LUMINANCE.releaseEnd -
+        MOBILE_LUMINANCE.protectedEnd
+      ),
+    );
+
+    const ceiling =
+      MOBILE_LUMINANCE.minCeiling +
+      (
+        MOBILE_LUMINANCE.releaseCeiling -
+        MOBILE_LUMINANCE.minCeiling
+      ) *
+      releaseProgress;
+
+    const red = srgbToLinear(colour.r);
+    const green = srgbToLinear(colour.g);
+    const blue = srgbToLinear(colour.b);
+    const luminance =
+      0.2126 * red +
+      0.7152 * green +
+      0.0722 * blue;
+
+    if (luminance <= ceiling) {
+      return colour;
+    }
+
+    const scale = ceiling / luminance;
+
+    return {
+      r: linearToSrgb(red * scale),
+      g: linearToSrgb(green * scale),
+      b: linearToSrgb(blue * scale),
+      a: colour.a,
+    };
   }
 
   private erodeField() {
