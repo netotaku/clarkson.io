@@ -2,7 +2,7 @@
 title: AI Is Not a Con. But the Numbers Might Be.
 description: AI works. I'm less convinced its business model does.
 pubDate: 'Sep 02 2026'
-heroImage: '/src/assets/images/blog/forest-fire.jpg'
+heroImage: '/src/assets/images/blog/wild-fire.jpg'
 theme: '#ff6600'
 categories:
 - "ai"
