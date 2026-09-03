@@ -1,5 +1,3 @@
----
----
 <form
     class="form"
     action="/.netlify/functions/subscribe"
@@ -26,6 +24,7 @@
             class="form__button"
             value="Subscribe"
         >
+
     </div>
 
     <p class="form__status" data-signup-status role="status" aria-live="polite" hidden></p>
@@ -45,16 +44,48 @@
             if (form.dataset.signupInitialised === 'true') return;
 
             form.dataset.signupInitialised = 'true';
+            const emailInput = form.querySelector<HTMLInputElement>('input[type="email"]');
+            const submitInput = form.querySelector<HTMLInputElement>('input[type="submit"]');
+            const status = form.querySelector<HTMLElement>('[data-signup-status]');
+
+            if (!emailInput || !submitInput || !status) return;
+
+            const requestedPreviewState = import.meta.env.DEV
+                ? new URLSearchParams(window.location.search).get('signup-state')
+                : null;
+
+            emailInput.addEventListener('focus', () => {
+                if (form.dataset.state !== 'error' && form.dataset.state !== 'success') return;
+
+                form.dataset.state = 'idle';
+                submitInput.disabled = false;
+                submitInput.value = 'Subscribe';
+                status.textContent = '';
+                status.hidden = true;
+            });
+
+            if (requestedPreviewState === 'success' || requestedPreviewState === 'error') {
+                form.dataset.state = requestedPreviewState;
+                form.dataset.signupPreview = requestedPreviewState;
+                status.hidden = false;
+
+                if (requestedPreviewState === 'success') {
+                    submitInput.disabled = true;
+                    submitInput.value = 'Subscribed';
+                    status.textContent = 'Thanks — your signup has been received.';
+                } else {
+                    status.textContent = 'Sorry, we could not complete your signup. Please try again.';
+                }
+
+                return;
+            }
+
             form.addEventListener('submit', async (event) => {
                 event.preventDefault();
 
                 if (form.dataset.state === 'submitting') return;
 
-                const emailInput = form.querySelector<HTMLInputElement>('input[type="email"]');
-                const submitInput = form.querySelector<HTMLInputElement>('input[type="submit"]');
-                const status = form.querySelector<HTMLElement>('[data-signup-status]');
-
-                if (!emailInput || !submitInput || !status || !form.reportValidity()) return;
+                if (!form.reportValidity()) return;
 
                 form.dataset.state = 'submitting';
                 submitInput.disabled = true;
@@ -75,7 +106,6 @@
 
                     form.dataset.state = 'success';
                     emailInput.value = '';
-                    emailInput.disabled = true;
                     submitInput.value = 'Subscribed';
                     status.textContent = 'Thanks — your signup has been received.';
                     status.hidden = false;

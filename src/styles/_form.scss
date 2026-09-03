@@ -57,32 +57,52 @@
         background: var(--color-white-30);
         flex: 0 0 auto;
         border-radius: 0 calc(var(--radius-lg) - 1px) calc(var(--radius-lg) - 1px) 0;
+        &:disabled{
+            color: rgba(255,255,255,.4);
+        }
     }
 
-    @media (min-width: 640px){
-        &:hover{
-            color: var(--color-text);
-
-            .form__small-print{
+    &[data-state="idle"]{
+        @media (min-width: 640px){
+            &:hover{
                 color: var(--color-text);
-            }
 
-            a{
-                color: var(--color-text);
-            }
+                .form__small-print{
+                    color: var(--color-text);
+                }
 
-            input[type="submit"]:not(:disabled){ 
-                background: var(--color-white);
+                a{
+                    color: var(--color-text);
+                }
+
+                input[type="submit"]:not(:disabled){
+                    background: var(--color-white);
+                }
+                .form__fieldset{
+                    border-color: var(--color-white);
+                }
             }
-            .form__fieldset{
-                border-color: var(--color-white);
-            }   
+        }
+    }
+
+    &__status{
+        display: inline-block;
+        align-self: flex-start;
+        width: auto;
+        font-size: 15px;
+        font-weight: bold;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 8px;
+
+        &[hidden] {
+            display: none;
         }
     }
 
     &[data-state="success"]{
+
         input[type="submit"]{
-            color: var(--color-charcoal);
             background: var(--color-green);
         }
 
@@ -91,7 +111,8 @@
         }
 
         .form__status{
-            color: var(--color-green);
+            background: var(--color-green);
+            color: white;
         }
     }
 
@@ -106,7 +127,7 @@
         }
 
         .form__status{
-            color: var(--color-error);
+            background: var(--color-error);
         }
     }
     
