@@ -8,6 +8,12 @@ export default defineConfig({
 		enabled: false,
 	},
 	integrations: [mdx(), sitemap()],
+	markdown: {
+		shikiConfig: {
+			theme: 'github-dark',
+			wrap: false,
+		},
+	},
 	vite: {
 		optimizeDeps: {
 			force: true,

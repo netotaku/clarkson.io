@@ -2,7 +2,7 @@
 title: Nobody Knows How Long Software Takes
 description: We keep trying to make the two hours faster when the problem is the nine days.
 pubDate: 'Sep 04 2026'
-heroImage: "/src/assets/images/helping-hand.jpg"
+heroImage: "/src/assets/images/blog/night-sky-rice-field.jpg"
 theme: '#ff6600'
 categories:
  - "development"
