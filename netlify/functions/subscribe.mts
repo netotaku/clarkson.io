@@ -1,5 +1,6 @@
 const EMAIL_MAX_LENGTH = 254;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const BLOCKED_EMAIL_DOMAINS = ['sigismail.com'];
 
 const jsonResponse = (body: Record<string, unknown>, status: number) =>
     Response.json(body, {
@@ -41,6 +42,14 @@ export default async (request: Request) => {
         return jsonResponse({ ok: false, error: 'invalid_email' }, 400);
     }
 
+    const normalizedEmail = email.trim().toLowerCase();
+    const domain = normalizedEmail.split('@')[1];
+
+    if (BLOCKED_EMAIL_DOMAINS.some((blocked) => domain === blocked || domain.endsWith(`.${blocked}`))) {
+        // Acknowledge spam without forwarding it to the mailing list provider.
+        return jsonResponse({ ok: true }, 200);
+    }
+
     const apiKey = process.env.EMAILOCTOPUS_API_KEY;
     const listId = process.env.EMAILOCTOPUS_LIST_ID;
 
@@ -59,7 +68,7 @@ export default async (request: Request) => {
                     Authorization: `Bearer ${apiKey}`,
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email_address: email.trim().toLowerCase() }),
+                body: JSON.stringify({ email_address: normalizedEmail }),
             },
         );
 
