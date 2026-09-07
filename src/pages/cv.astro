@@ -89,7 +89,7 @@ const experience = [
     role: "Web Developer / Designer",
     company: "Freelance",
     description:
-      "Started my career designing and building websites and interactive experiences for SMEs and clients including Playboy UK and Gumball 3000.",
+      "Started my career designing and building websites and interactive experiences for SMEs and clients including local bars, and Gumball 3000.",
   },
 ];
 
@@ -263,7 +263,6 @@ const awards = [
         </div>
       ))}
 
-
     </div>
 
     <div class="grid__item grid__item--third">
@@ -278,22 +277,21 @@ const awards = [
 				</div>
 			))}
 
-      <div class="typography">
-
-        <h2>Skills</h2>
-
-        <p>I've worked across a fairly broad range of technologies and disciplines over the years. This isn't an exhaustive history of everything I've used, but a useful overview of the experience I bring to projects.</p>
-
-        {skills.map(({ category, items }) => (
-          <p>
-            <strong>{category}</strong><br>
-            {items.join(', ')}
-          </p>
-        ))}
-      
-      </div>
-
     </div>
 
-	</section>			
+  </section>
+
+  <section class="section grid">
+    <div class="grid__item typography measure">
+      <h2>Skills</h2>
+      <p>I've worked across a fairly broad range of technologies and disciplines over the years. This isn't an exhaustive history of everything I've used, but a useful overview of the experience I bring to projects.</p>
+    </div>
+
+    {skills.map(({ category, items }) => (
+      <div class="grid__item grid__item--third typography">
+        <h3>{category}</h3>
+        <p>{items.join(', ')}</p>
+      </div>
+    ))}
+  </section>
 </Wrapper>
