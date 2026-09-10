@@ -3,11 +3,11 @@ title: Agentic Development Is Expensive
 description: AI can write more software than ever. The next optimisation problem might be knowing when not to use it.
 pubDate: 'Sep 10 2026'
 heroImage: '/src/assets/images/blog/the-value-of-boredom.png'
-theme: '#b3b3b3'
+theme: '#767329'
 categories:
     - "ai"
     - "development"
-    - "agentic-development"
+    - "vibe-coding"
 cta: "Using AI in your development process and need help making it sustainable? Let's talk."
 ---
 
