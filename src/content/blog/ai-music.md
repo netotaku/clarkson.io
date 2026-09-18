@@ -7,6 +7,7 @@ theme: '#e73758'
 categories: 
     - "ai"
     - "comment"
+    - "music"
 cta: "Technology is most interesting when you look beyond the hype and ask what actually changes for people. I help organisations do that — combining technical understanding, strategy and creative thinking to make better digital products and experiences."
 ---
 I've been trying to find AI music.
