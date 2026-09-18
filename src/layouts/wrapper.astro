@@ -4,6 +4,7 @@ import type { ImageMetadata } from 'astro';
 import { ClientRouter } from 'astro:transitions';
 import { execFileSync } from 'node:child_process';
 import PixelHero from "../components/PixelHero.astro";
+import EqualiserLoader from '../components/EqualiserLoader.astro';
 import Card from "../components/Card.astro";
 import Tag from "../components/helpers/Tag.astro";
 import AvailabilityStatus from '../components/fragments/AvailabilityStatus.astro';
@@ -156,6 +157,8 @@ const buildCommitUrl = buildCommit
 				))}
 			</div>			
 		</nav>
+
+		<EqualiserLoader />
 
 		<div class="main">
 
