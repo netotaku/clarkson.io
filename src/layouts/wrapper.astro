@@ -249,7 +249,7 @@ const buildCommitUrl = buildCommit
 								href={performanceTestURL}
 								target="_blank"
 								rel="noopener noreferrer"
-								aria-label={`Test ${canonicalURL.href} with PageSpeed Insights`}
+								aria-label={`Lighthouse: test ${canonicalURL.href} with PageSpeed Insights`}
 								title="Test this page with PageSpeed Insights"
 							>Lighthouse</a>
 						<span aria-hidden="true">·</span>
@@ -275,14 +275,14 @@ const buildCommitUrl = buildCommit
 				transition:persist="fixed-menu"
 			>
 				<div class="menu__group">
-					<a class="btn btn--icon btn--orange menu__home" href="/">
+					<a class="btn btn--icon btn--orange menu__home" href="/" aria-label="Home">
 						<HomeIcon />
 					</a>
 
 					<AvailabilityStatus class="menu__availability" />
 				</div>
 				<div class="menu__group">
-					<a target="_blank" class="btn btn--icon btn--green menu__whatsapp" href="https://wa.me/447771535355">
+					<a target="_blank" class="btn btn--icon btn--green menu__whatsapp" href="https://wa.me/447771535355" aria-label="Contact Nick on WhatsApp">
 						<WhatsappIcon />
 					</a>
 					<button

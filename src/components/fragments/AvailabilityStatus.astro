@@ -10,7 +10,6 @@ const { class: className } = Astro.props;
 
 <div
   class:list={['btn', 'btn--green', className]}
-  aria-label="Available for work"
 >
   <span class="btn__circle"></span>
   <img
@@ -19,6 +18,5 @@ const { class: className } = Astro.props;
     width={availableForWorkLabel.width}
     height={availableForWorkLabel.height}
     alt="Available for work"
-    aria-hidden="true"
   />
 </div>

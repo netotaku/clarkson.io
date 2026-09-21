@@ -19,8 +19,9 @@
         gap: var(--inline-meta-gap);
     }
 
-    &__commit {
+    a.footer__commit {
         font-family: monospace;
+        color: var(--color-white);
         background: var(--color-mid-charcoal);
         padding: var(--space-xs) var(--space-sm);
         display: inline-block;

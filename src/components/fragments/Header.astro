@@ -22,7 +22,7 @@ const theme = /^#[0-9a-f]{6}$/i.test(data.theme) ? data.theme : 'var(--color-ora
   <div class="header__eyebrow">
     <span
       class="header__theme"
-      aria-label={`Read ${data.title}`}
+      aria-hidden="true"
       style={`--header-theme: ${theme}`}
     ></span>
     <FormattedDate date={data.pubDate} />

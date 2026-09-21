@@ -128,10 +128,18 @@
     opacity: 0;
 }
 
+.hero-initial-load .main {
+    visibility: hidden;
+}
+
 .hero-initial-load.hero-initial-reveal .main {
+    visibility: visible;
     opacity: 1;
+    // Paint content on the first visible fade frame, not while opacity is zero.
+    // Otherwise Chromium can omit that content from LCP even after the fade.
     transition:
         opacity var(--duration-medium) ease-out,
+        visibility var(--duration-medium) linear,
         transform var(--duration-fast) ease-out;
 }
 
