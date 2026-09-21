@@ -226,26 +226,7 @@ const buildCommitUrl = buildCommit
 
 					<p class="footer__meta">
 						<span class="footer__build">
-							<!-- <a
-								class="footer__icon"
-								href="/rss.xml"
-								aria-label="RSS feed"
-								title="Subscribe to the RSS feed"
-							><RssIcon /></a> -->
-
-							<!-- <span aria-hidden="true">·</span>
-
-							<a
-								class="footer__icon footer__performance"
-								href={performanceTestURL}
-								target="_blank"
-								rel="noopener noreferrer"
-								aria-label={`Test ${canonicalURL.href} with PageSpeed Insights`}
-								title="Test this page with PageSpeed Insights"
-							><SpeedtestIcon /></a>
-
-							<span aria-hidden="true">·</span> -->
-
+						
 							<strong>v3</strong> <span>@</span>
 							{buildCommitUrl ? (
 								<a
@@ -262,7 +243,24 @@ const buildCommitUrl = buildCommit
 
 					</p>
 
-					<p class="footer__meta"><a class="footer__cookies" href="/cookies-and-privacy">Cookies &amp; Privacy</a></p>											
+					<p class="footer__meta">
+						<a
+								class="footer__icon footer__performance"
+								href={performanceTestURL}
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label={`Test ${canonicalURL.href} with PageSpeed Insights`}
+								title="Test this page with PageSpeed Insights"
+							>Lighthouse</a>
+						<span aria-hidden="true">·</span>
+						<a
+								class="footer__icon"
+								href="/rss.xml"
+								aria-label="RSS feed"
+								title="Subscribe to the RSS feed"
+							>RSS</a>
+						<span aria-hidden="true">·</span>
+						<a class="footer__cookies" href="/cookies-and-privacy">Cookies &amp; Privacy</a></p>											
 					
 				</footer>
 
