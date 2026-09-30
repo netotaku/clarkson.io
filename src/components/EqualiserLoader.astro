@@ -30,6 +30,10 @@
     animation: spinner_0KQs 1.2s cubic-bezier(0.52, .6, .25, .99) infinite;
   }
 
+  :global(html.js-open) .ripple-loader {
+    display: none;
+  }
+
   @keyframes spinner_0KQs {
     0% { r: 0; opacity: 1; }
     100% { r: 11px; opacity: 0; }
