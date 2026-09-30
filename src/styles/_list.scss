@@ -37,7 +37,8 @@
         margin-top: calc(var(--gutter) * 2);
     }
 
-    &__pagination[hidden] {
+    &__pagination[hidden],
+    &__pagination .btn[hidden] {
         display: none;
     }
 }

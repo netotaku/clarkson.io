@@ -116,7 +116,13 @@ const dateLabels = posts.map((post) =>
 
         previous.disabled = currentPage === 0;
         next.disabled = currentPage === pageCount - 1;
+        const visiblePageCount = 4;
+        const firstVisiblePage = Math.max(
+          0,
+          Math.min(currentPage - 1, pageCount - visiblePageCount),
+        );
         pageButtons.forEach((button, index) => {
+          button.hidden = index < firstVisiblePage || index >= firstVisiblePage + visiblePageCount;
           if (index === currentPage) {
             button.setAttribute('aria-current', 'page');
           } else {
