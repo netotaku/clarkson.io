@@ -1,6 +1,9 @@
 ---
+import { getCollection } from 'astro:content';
 import Wrapper from '../layouts/wrapper.astro';
 import Hero from '../components/Hero.astro';
+import List from '../components/List.astro';
+import { categorySlug } from '../utils/categories';
 
 import heroImage from '../assets/images/chrome/me-seated.png'
 import pixelImage from '../assets/images/jungle.avif';
@@ -9,6 +12,10 @@ const breadcrumb = [
   { label: 'Home', href: '/', previous: true },
   { label: 'About Me' },
 ];
+
+const agencyLifePosts = (await getCollection('blog'))
+  .filter((post) => post.data.categories.some((category) => categorySlug(category) === 'agency-life'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 ---
 <Wrapper
@@ -75,5 +82,9 @@ const breadcrumb = [
 <p> Good delivery isn’t just getting the immediate piece of work over the line. I want the codebase, process and team to be in a better position afterwards. </p>
 
 <p> That can mean simplifying architecture, documenting an awkward decision, improving tooling, removing technical debt or helping somebody understand something they didn’t before. The best work creates momentum beyond the thing that was originally commissioned. </p>
-	</section>			
+	</section>
+
+	<section class="section" aria-labelledby="agency-life-heading">		
+		<List posts={agencyLifePosts} />
+	</section>
 </Wrapper>
