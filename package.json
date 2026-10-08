@@ -14,8 +14,8 @@
     "db:check": "node scripts/check-turso.mjs",
     "db:upgrade-page-views": "node scripts/upgrade-page-views.mjs",
     "db:setup": "node scripts/upgrade-page-views.mjs",
-    "db:seed-demo": "node scripts/seed-page-views.mjs",
-    "db:cleanup-demo": "node scripts/seed-page-views.mjs --cleanup"
+    "db:cleanup-local": "node scripts/cleanup-local-capture.mjs",
+    "db:migrate-counter-dev": "node scripts/migrate-counter-dev-2026-10-08.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",

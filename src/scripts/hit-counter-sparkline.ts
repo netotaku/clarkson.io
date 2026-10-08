@@ -1,5 +1,22 @@
 import type { HitCounterData } from '../types/hit-counter';
 
+// Decorative weights, deliberately independent of measured monthly history.
+// Rounded spikes return near the baseline, with a taller late peak and rising
+// finish, matching the playful orange line in the reference screenshot.
+const illustrativeWeights = [3, 11, 3, 27, 3, 51, 9, 3, 76, 3, 36, 68];
+export const illustrativeDescription = 'Illustrative upward trend for fun, not measured monthly statistics.';
+
+export function illustrativeSparklinePath(totalHits: number): string {
+  if (!Number.isFinite(totalHits) || totalHits <= 0) return '';
+  const weightTotal = illustrativeWeights.reduce((sum, weight) => sum + weight, 0);
+  // Synthetic month keys provide evenly spaced positions to the existing SVG
+  // curve generator only. These values never enter the API response or database.
+  return sparklinePath(illustrativeWeights.map((weight, index) => ({
+    month: `2000-${String(index + 1).padStart(2, '0')}`,
+    count: totalHits * weight / weightTotal,
+  })));
+}
+
 // Padding keeps the stroke inside the viewBox, including along the zero baseline.
 export function sparklinePath(monthly: HitCounterData['monthly']): string {
   const monthIndex = (month: string) => Number(month.slice(0, 4)) * 12 + Number(month.slice(5, 7)) - 1;
@@ -25,10 +42,4 @@ export function sparklinePath(monthly: HitCounterData['monthly']): string {
     previous = { month, x, y };
     return command;
   }).filter(Boolean).join(' ');
-}
-
-export function sparklineDescription(monthly: HitCounterData['monthly']): string {
-  if (!monthly.length) return 'Monthly site views: no monthly data available.';
-  const points = [...monthly].sort((a, b) => a.month.localeCompare(b.month));
-  return `Monthly site views, not cumulative. Zero baseline; unknown months are gaps. ${points.map(point => `${point.month}: ${point.count === null ? 'unknown' : point.count}`).join('; ')}.`;
 }

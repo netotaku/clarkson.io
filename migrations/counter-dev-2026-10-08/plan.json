@@ -1,0 +1,44 @@
+{
+  "id": "counter-dev-2026-10-08",
+  "sourceFile": "counter_stats_all_2026-10-8_clar-ky.csv",
+  "sha256": "7fd9af5bb401a522cfc987e6c99b1501e2c7c72b000c3d39914f32b136ef09a8",
+  "sourceMetric": "page",
+  "proposedLegacyHits": 2791,
+  "sourceSelection": "all",
+  "observedDateLabels": {
+    "first": "2025-05-13",
+    "last": "2026-10-07"
+  },
+  "sourcePeriod": {
+    "fromInclusiveUTC": null,
+    "cutoffExclusiveUTC": null,
+    "timezone": null
+  },
+  "scope": "User-approved approximate starting baseline of 2,791; source lifetime coverage and exact export cut-off remain unverified",
+  "coverageConfirmed": false,
+  "recordedPageTotalPolicyConfirmed": true,
+  "monthlyLegacyHits": {},
+  "unknownHistoricalMonths": [
+    "2025-05",
+    "2025-06",
+    "2025-07",
+    "2025-08",
+    "2025-09",
+    "2025-10",
+    "2025-11",
+    "2025-12",
+    "2026-01",
+    "2026-02",
+    "2026-03",
+    "2026-04",
+    "2026-05",
+    "2026-06",
+    "2026-07",
+    "2026-08",
+    "2026-09",
+    "2026-10"
+  ],
+  "basis": "illustrative-baseline",
+  "illustrativeBaselineApproved": true,
+  "liveCaptureFromUTC": "2026-10-08T13:40:09.395Z"
+}

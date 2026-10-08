@@ -1,5 +1,5 @@
 import type { HitCounterData } from '../types/hit-counter';
-import { sparklinePath, sparklineDescription } from './hit-counter-sparkline';
+import { illustrativeSparklinePath, illustrativeDescription } from './hit-counter-sparkline';
 
 export type HitCounterElement = HTMLElement & { hitCounterData?: HitCounterData };
 const pending = new Map<HitCounterElement, AbortController>();
@@ -34,9 +34,9 @@ async function loadCounter(element: HitCounterElement) {
     element.hitCounterData = data;
     const sparkline = element.querySelector<SVGSVGElement>('[data-hit-counter-sparkline]');
     if (sparkline) {
-      sparkline.querySelector('path')?.setAttribute('d', sparklinePath(data.monthly));
+      sparkline.querySelector('path')?.setAttribute('d', illustrativeSparklinePath(data.totalHits));
       const description = sparkline.querySelector('desc');
-      if (description) description.textContent = sparklineDescription(data.monthly);
+      if (description) description.textContent = illustrativeDescription;
       sparkline.dataset.loaded = 'true';
     }
     total.textContent = format.format(data.totalHits);
@@ -59,7 +59,7 @@ export function initializeHitCounters() {
 }
 
 // Astro bundles this module once. The initial call also supports first arriving
-// at /sandbox through navigation, when its script may load after page-load.
+// through navigation, when its script may load after page-load.
 initializeHitCounters();
 document.addEventListener('astro:page-load', initializeHitCounters);
 document.addEventListener('astro:before-swap', () => {

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { sparklinePath, sparklineDescription } from '../src/scripts/hit-counter-sparkline.ts';
+import { sparklinePath } from '../src/scripts/hit-counter-sparkline.ts';
 const monthly = counts => counts.map((count, i) => ({month: `2026-${String(i + 1).padStart(2, '0')}`, count}));
 
 test('monthly values are chronological, non-cumulative and use a zero baseline', () => {
@@ -12,7 +12,6 @@ test('monthly values are chronological, non-cumulative and use a zero baseline',
 test('sparse activity keeps real zeroes while unknown and missing months break the line', () => {
   assert.equal(sparklinePath(monthly([4, 0, null, 2, 4])), 'M2.00,2.00 C39.00,2.00 39.00,78.00 76.00,78.00 M224.00,40.00 C261.00,40.00 261.00,2.00 298.00,2.00');
   assert.equal(sparklinePath([{month:'2026-01',count:2},{month:'2026-03',count:4}]), 'M2.00,40.00 M298.00,2.00');
-  assert.match(sparklineDescription(monthly([0, null])), /2026-01: 0; 2026-02: unknown/);
 });
 
 test('empty, unknown, zero and single-value series are finite and safe', () => {
@@ -22,5 +21,15 @@ test('empty, unknown, zero and single-value series are finite and safe', () => {
   // An isolated point has no connecting segment and no dot.
   assert.equal(sparklinePath(monthly([7])), 'M150.00,2.00');
   assert.equal(sparklinePath(monthly([0])), 'M150.00,78.00');
-  assert.match(sparklineDescription([]), /no monthly data/);
+});
+
+test('illustrative curve is stable, trends upwards and is explicitly described as illustrative', async () => {
+  const {illustrativeSparklinePath, illustrativeDescription} = await import('../src/scripts/hit-counter-sparkline.ts');
+  const path = illustrativeSparklinePath(2791);
+  assert.match(path, /^M2\.00,75\.00 C/);
+  assert.match(path, /298\.00,10\.00$/);
+  assert.equal((path.match(/C/g)||[]).length,11);
+  assert.equal(illustrativeSparklinePath(2792),path);
+  assert.match(illustrativeDescription,/not measured monthly statistics/);
+  assert.equal(illustrativeSparklinePath(0),'');
 });

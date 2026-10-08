@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createClient } from '@libsql/client';
 import { ensurePageViewsSchema } from '../server/page-views-schema.mjs';
-import { demoVisits, seedPageViews } from '../scripts/seed-page-views.mjs';
+import { demoVisits, seedPageViews } from './helpers/demo-page-views.mjs';
 
 const now = new Date('2026-10-07T12:00:00Z');
 async function database() {

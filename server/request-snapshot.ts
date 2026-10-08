@@ -1,5 +1,7 @@
 export type RequestSnapshot = {
   schemaVersion: 1;
+  // Assigned by the capture server only, never accepted from browser metadata.
+  testBatch?: string;
   method: string;
   referrerHostname?: string;
   userAgent?: string;
@@ -21,11 +23,12 @@ function bounded(value: unknown, limit: number): string | undefined {
 }
 
 // Explicit allowlist only. No body, cookies, authorisation or IP fields are accepted.
-// Viewport must be supplied separately by a future browser payload, never inferred from headers.
+// Viewport is supplied separately by the browser, never inferred from headers.
 export function createRequestSnapshot(input: {
   method: string;
   headers?: Pick<Headers, 'get'>;
   viewport?: unknown;
+  referrerHostname?: unknown;
 }): RequestSnapshot {
   const snapshot: RequestSnapshot = {
     schemaVersion: 1,
@@ -37,7 +40,9 @@ export function createRequestSnapshot(input: {
   const language = bounded(input.headers?.get('accept-language'), SNAPSHOT_LIMITS.acceptLanguage);
   if (language) snapshot.headers['accept-language'] = language;
 
-  const referrer = input.headers?.get('referer');
+  const browserHostname = input.referrerHostname;
+  const referrer = typeof browserHostname === 'string' && browserHostname.length <= SNAPSHOT_LIMITS.referrerHostname &&
+    /^[a-z0-9.-]+$/i.test(browserHostname) ? `https://${browserHostname}/` : input.headers?.get('referer');
   if (referrer && referrer.length <= 4096) {
     try {
       const url = new URL(referrer);
