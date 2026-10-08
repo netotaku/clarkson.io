@@ -13,7 +13,7 @@ import Primary from "../components/nav/primary.astro";
 import Secondary from "../components/nav/secondary.astro";
 import Social from "../components/nav/social.astro";
 import Contact from "../components/nav/contact.astro";
-
+import Counter from '../components/HitCounter.astro';
 import SignUp from "../components/fragments/SignUp.astro";
 import { getCollection } from 'astro:content';
 import { getLatestPost } from '../utils/blog';
@@ -23,9 +23,7 @@ import {
   BurgerIcon,
   CloseIcon,
   WhatsappIcon,
-  HomeIcon,
-  SpeedtestIcon,
-  RssIcon
+  HomeIcon
 } from '../icons';
 
 interface Props {
@@ -243,25 +241,30 @@ const buildCommitUrl = buildCommit
 
 					</p>
 
-					<p class="footer__meta">
-						<a
-								class="footer__icon footer__performance"
-								href={performanceTestURL}
-								target="_blank"
-								rel="noopener noreferrer"
-								aria-label={`Lighthouse: test ${canonicalURL.href} with PageSpeed Insights`}
-								title="Test this page with PageSpeed Insights"
-							>Lighthouse</a>
-						<span aria-hidden="true">·</span>
-						<a
-								class="footer__icon"
-								href="/rss.xml"
-								aria-label="RSS feed"
-								title="Subscribe to the RSS feed"
-							>RSS</a>
-						<span aria-hidden="true">·</span>
-						<a class="footer__cookies" href="/cookies-and-privacy">Cookies &amp; Privacy</a></p>											
-					
+					<div class="footer__meta">
+						<div class="footer__meta__left">
+							<a
+									class="footer__icon footer__performance"
+									href={performanceTestURL}
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label={`Lighthouse: test ${canonicalURL.href} with PageSpeed Insights`}
+									title="Test this page with PageSpeed Insights"
+								>Lighthouse</a>
+							<span aria-hidden="true">·</span>
+							<a
+									class="footer__icon"
+									href="/rss.xml"
+									aria-label="RSS feed"
+									title="Subscribe to the RSS feed"
+								>RSS</a>
+							<span aria-hidden="true">·</span>
+							<a class="footer__cookies" href="/cookies-and-privacy">Cookies &amp; Privacy</a></p>
+						</div>	
+						<div class="footer__meta__right">
+							<Counter />
+						</div>	
+					</div>									
 				</footer>
 
 			</main>

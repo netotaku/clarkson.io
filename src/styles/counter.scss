@@ -1,0 +1,29 @@
+.counter{
+
+    position: relative;
+    height: 32px;
+    width: 110px;
+
+    &__total{
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    &__sparkline {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: var(--hit-counter-chart-width, 120px);
+        height: var(--hit-counter-chart-height, 20px);
+        background: transparent;
+
+        &[data-loaded="false"] {
+            display: none;
+        }
+    }
+
+}

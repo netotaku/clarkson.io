@@ -10,13 +10,19 @@
     "dev": "astro dev --force",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "db:check": "node scripts/check-turso.mjs",
+    "db:upgrade-page-views": "node scripts/upgrade-page-views.mjs",
+    "db:setup": "node scripts/upgrade-page-views.mjs",
+    "db:seed-demo": "node scripts/seed-page-views.mjs",
+    "db:cleanup-demo": "node scripts/seed-page-views.mjs --cleanup"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
     "@astrojs/mdx": "^4.2.6",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.3.1",
+    "@libsql/client": "^0.18.0",
     "@tabler/icons-astro": "^3.46.0",
     "astro": "^5.7.10",
     "typescript": "^5.9.3"
