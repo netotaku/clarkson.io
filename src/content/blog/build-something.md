@@ -5,7 +5,6 @@ pubDate: 'Sep 28 2026'
 heroImage: '/src/assets/images/blog/foundry.jpeg'
 theme: '#b3b3b3'
 categories:
-    - "development"
     - "agency-life"
     - "ai"
 cta: "I can help you build development teams and technical capability that are ready for what comes next."

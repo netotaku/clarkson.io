@@ -4,9 +4,8 @@ description: "A conversation with my father sparked this timeline of disruptive 
 pubDate: "27 May 2025"
 heroImage: "/src/assets/images/bulb.jpg"
 theme: '#fdedc6'
-categories: 
-    - "comment"
-    - "technology"
+categories:
+    - "technology-and-culture"
 cta: "I help teams and individuals make sense of new technologies, implement ethical digital strategies, and future-proof their digital presence."
 ---
 

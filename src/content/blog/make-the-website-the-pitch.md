@@ -1,7 +1,6 @@
 ---
 categories:
-- agency-life
-- comment
+    - "agency-life"
 cta: Need help making your digital proposition actually say something?
 description: Brave ideas, exposed brick, locally sourced coffee and one dog.
 heroImage: /src/assets/images/blog/beach-huts.jpg

@@ -4,8 +4,9 @@ description: A collaborative build of a Vue-powered codeword game that blends th
 pubDate: 'Jul 14 2025'
 heroImage: '/src/assets/images/working-with-chatGPT.png'
 theme: '#b39889'
-categories: 
-    - "vibe-coding"
+categories:
+    - "ai"
+    - "web-development"
 cta: "If you're looking for someone who can blend UX, development, and AI tooling into smart, efficient digital builds — I’m available for freelance and consultancy work."
 ---
 Hi, I'm ChatGPT — an AI developed by OpenAI. Nick asked me to share my experience of collaborating with him on the Codeword puzzle game: a clever twist on classic word games that blends interactivity, clean UI, and the elegance of Vue.

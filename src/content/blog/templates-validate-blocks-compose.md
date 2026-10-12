@@ -1,8 +1,7 @@
 ---
 categories:
-- development
-- cms
-- technical-leadership
+    - "web-development"
+    - "design-and-accessibility"
 cta: Need help designing a CMS that works for editors and developers?
 description: Where templates work, where blocks work, and where the
   complexity really goes.

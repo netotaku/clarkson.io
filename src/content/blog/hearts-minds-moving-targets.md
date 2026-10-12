@@ -5,8 +5,7 @@ pubDate: 'Sep 01 2026'
 heroImage: '/src/assets/images/blog/mountain-road.jpg'
 theme: '#b3b3b3'
 categories:
- - "technical-leadership"
- - "agency-life"
+    - "agency-life"
 cta: "Need technical leadership that works for the client and the development team?"
 ---
 

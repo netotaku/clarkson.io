@@ -4,10 +4,8 @@ description: "How I helped a Bristol-based contractor cut through the noise, bui
 pubDate: "10 Jun 2025"
 heroImage: "/src/assets/images/rc-hero.jpg"
 theme: '#a29876'
-categories: 
-  - "Case Study"
-  - "No Code" 
-  - "Squarespace"
+categories:
+    - "web-development"
 cta: "Need a calm, strategic approach to digital delivery? I help teams cut through complexity and move projects forward — with clarity, not chaos."
 ---
 Redcatch Construction is a Bristol-based building contractor that needed a professional digital presence and visual identity. 

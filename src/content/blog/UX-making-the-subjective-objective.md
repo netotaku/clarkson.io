@@ -4,9 +4,8 @@ description: "How UX Smooths Digital Delivery and Aligns Creative Projects"
 pubDate: "23 jun 2025"
 heroImage: "/src/assets/images/sea.avif"
 theme: '#fda811'
-categories: 
-    - "comment"
-    - "ux"
+categories:
+    - "design-and-accessibility"
 cta: "Need help smoothing your next web project? Let’s talk about how I can sidecar your creative team, run the UX process, and deliver browser-ready results—without losing the soul of the brand."
 ---
 UX isn't new. It’s been around since long before websites were even a thing—shaping everything from product design to service experiences. But too often in digital branding projects, it's either misunderstood or left out entirely. 

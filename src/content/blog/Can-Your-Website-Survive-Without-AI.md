@@ -6,8 +6,7 @@ heroImage: '/src/assets/images/blog/volcano.jpeg'
 theme: '#c65a1e'
 categories:
     - "ai"
-    - "development"
-    - "digital-strategy"
+    - "web-development"
 cta: "I can help you build websites that are maintainable, portable and ready for whatever comes next."
 ---
 I've been thinking about what happens to all the software we're building with AI in five years.

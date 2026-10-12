@@ -4,9 +4,8 @@ description: Why tighter scopes don't always make fixed-price projects safer, an
 pubDate: 'Oct 02 2026'
 heroImage: '/src/assets/images/blog/retro-scifi.avif'
 theme: '#39FF14'
-categories: 
+categories:
     - "agency-life"
-    - "project-management"
 cta: "I can help you scope digital projects around what success looks like, without pretending we know everything before we start."
 ---
 Fixed price is a pretty awful way to buy software.

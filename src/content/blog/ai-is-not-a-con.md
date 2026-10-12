@@ -5,8 +5,8 @@ pubDate: 'Sep 02 2026'
 heroImage: '/src/assets/images/blog/wild-fire.jpg'
 theme: '#ff6600'
 categories:
-- "ai"
-- "digital-strategy"
+    - "ai"
+    - "digital-strategy"
 cta: "Trying to work out where AI genuinely fits in your organisation?"
 ---
 

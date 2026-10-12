@@ -4,10 +4,8 @@ description: "Once a powerful tool for discovery and growth, Instagram hashtags 
 pubDate: 29 May 2025
 heroImage: "/src/assets/images/winter.jpg"
 theme: '#949587'
-categories: 
-  - "comment"
-  - "technology" 
-  - "social"
+categories:
+    - "digital-strategy"
 cta: "Still relying on hashtags to drive engagement? Let's talk about better ways to get your content seen."
 ---
 Once a powerful tool for discovery and growth, Instagram hashtags have lost their edge. Here's why — and what matters now.

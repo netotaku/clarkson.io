@@ -4,10 +4,9 @@ description: But it doesn't need to
 pubDate: 'Aug 16 2026'
 heroImage: '/src/assets/images/blog/ai-music.png'
 theme: '#e73758'
-categories: 
+categories:
     - "ai"
-    - "comment"
-    - "music"
+    - "technology-and-culture"
 cta: "Technology is most interesting when you look beyond the hype and ask what actually changes for people. I help organisations do that — combining technical understanding, strategy and creative thinking to make better digital products and experiences."
 ---
 I've been trying to find AI music.

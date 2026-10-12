@@ -4,8 +4,8 @@ description: "Gatekeeping disguised as tradition is holding creative communities
 pubDate: "18 may 2025"
 heroImage: "/src/assets/images/dj.jpg"
 theme: '#a57d52'
-categories: 
-    - "comment"
+categories:
+    - "technology-and-culture"
 cta: "If your team is wrestling with how to bring new tools—like AI or automation—into a practice grounded in experience and quality, I offer consultancy to help you evolve without losing your edge."
 ---
 

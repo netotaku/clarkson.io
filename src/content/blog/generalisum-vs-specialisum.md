@@ -4,7 +4,7 @@ description: Specialising vs Generalising in Web Development
 pubDate: 'Jul 23 2025'
 heroImage: '/src/assets/images/space.jpg'
 theme: '#f7d737'
-categories: 
+categories:
     - "web-development"
 cta: "If you’ve been grappling with where to focus your development skills, ask yourself this: what makes you more adaptable? Deep specialism or broad capability? I’d love to hear your take—are you leaning generalist, specialist, or something in between?"
 ---

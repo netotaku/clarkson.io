@@ -4,8 +4,8 @@ description:  "Privacy isn't only about what one company knows. It's what can be
 pubDate: 'Oct 1 2026'
 heroImage: '/src/assets/images/blog/nyc.avif'
 theme: '#ff6600'
-categories: 
-    - "privacy"
+categories:
+    - "privacy-and-ethics"
 cta: "I can help you build digital products that collect less, respect users and still give you the information you actually need"
 ---
 We've probably all had this conversation.

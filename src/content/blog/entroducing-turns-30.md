@@ -5,9 +5,7 @@ pubDate: 'Sep 18 2026'
 heroImage: '/src/assets/images/blog/endtroducing.jpeg'
 theme: '#b3b3b3'
 categories:
-    - "music"
-    - "creativity"
-    - "technology"
+    - "technology-and-culture"
 cta: "I can help you turn good ideas into useful digital things."
 ---
 <img src="/images/endtroducing.webp">

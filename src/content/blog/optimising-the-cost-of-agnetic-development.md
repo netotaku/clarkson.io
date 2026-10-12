@@ -6,8 +6,7 @@ heroImage: '/src/assets/images/blog/the-value-of-boredom.png'
 theme: '#767329'
 categories:
     - "ai"
-    - "development"
-    - "vibe-coding"
+    - "web-development"
 cta: "Using AI in your development process and need help making it sustainable? Let's talk."
 ---
 

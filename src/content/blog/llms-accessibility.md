@@ -4,10 +4,9 @@ description: "How large language models are transforming communication and usabi
 pubDate: "22 May 2025"
 heroImage: "/src/assets/images/helping-hand.jpg"
 theme: '#c36933'
-categories: 
-  - "ai"
-  - "accessibility" 
-  - "social"
+categories:
+    - "ai"
+    - "design-and-accessibility"
 cta: "Want to build what’s next? I help teams and individuals explore the inclusive use of AI in real-world settings—and I bring experience managing and mentoring neurodivergent team members."
 ---
 

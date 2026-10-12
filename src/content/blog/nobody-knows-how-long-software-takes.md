@@ -5,9 +5,7 @@ pubDate: 'Sep 04 2026'
 heroImage: "/src/assets/images/blog/night-sky-rice-field.jpg"
 theme: '#ff6600'
 categories:
- - "development"
- - "technical-leadership"
- - "agency-life"
+    - "agency-life"
 cta: "Need experienced technical leadership on your next web project?"
 ---
 

@@ -4,9 +4,8 @@ description: "Rethinking the Value of No Code Platforms"
 pubDate: "18 Jun 2025"
 heroImage: "/src/assets/images/aw.jpg"
 theme: '#f3ca94'
-categories:   
-  - "No Code" 
-  - "Squarespace"
+categories:
+    - "web-development"
 cta: "Need help deciding which approach is right for your project? I offer consultancy for teams and individuals looking to reduce delivery risk and find the right fit — whether that’s No Code, low code, or fully custom builds."
 ---
 No Code platforms have long carried a reputation as second-rate — a compromise solution for those lacking technical skills or budget. But that perception is increasingly out of step with reality. 

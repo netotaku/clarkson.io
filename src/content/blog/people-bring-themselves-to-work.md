@@ -5,9 +5,7 @@ pubDate: 'Oct 12 2026'
 heroImage: '/src/assets/images/blog/autumn.jpeg'
 theme: '#767329'
 categories:
-    - "teams"
     - "agency-life"
-    - "diversity"
 cta: "I can help you build and lead development teams that bring different perspectives, challenge assumptions and produce better work"
 ---
 I once hired a developer who was legally blind.

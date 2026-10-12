@@ -4,10 +4,8 @@ description: Are CRM and Email Are Your Last Safe Channels?
 pubDate: 'May 04 2025'
 heroImage: '/src/assets/images/destruction.jpg'
 theme: '#fff6a5'
-categories: 
-    - "crm"
+categories:
     - "digital-strategy"
-    - "email-marketing"
 cta: "I offer consultancy for teams and individuals looking to reduce platform dependency, build ethical CRM practices, and create resilient email strategies that actually work."
 ---
 When Elon Musk took over Twitter and rebranded it as X, the platform's utility as a reliable marketing channel quickly deteriorated. Major advertisers left, the tone shifted, and the rules of engagement became unclear. But the problem isn’t just X—it’s systemic.

@@ -4,8 +4,8 @@ description: Social media is no longer a digital default
 pubDate: 'Aug 23 2026'
 heroImage: '/src/assets/images/clubbing.webp'
 theme: '#ff9900'
-categories: 
-    - "social"
+categories:
+    - "digital-strategy"
 cta: "Need some digital clarity? I help organisations work out which channels, platforms and technologies are actually worth investing in — and which ones they can safely stop doing."
 ---
 Over the last year or so, I’ve been asked to remove quite a few social media icons from websites.

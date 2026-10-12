@@ -4,9 +4,8 @@ description: "Why the rise of mindfulness might be a symptom, not the solution"
 pubDate: "14 Aug 2026"
 heroImage: "/src/assets/images/blog/the-value-of-boredom.png"
 theme: '#e7cc77'
-categories:   
-  - "Comment" 
-  - "Wellbeing"
+categories:
+    - "technology-and-culture"
 cta: "Good digital work isn’t always about adding more. I help organisations create simpler, clearer digital experiences that respect people’s attention."
 ---
 We’ve built a world where boredom is increasingly difficult to experience.
