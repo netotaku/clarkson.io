@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://clar.ky/sitemap-index.xml
