@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en-GB">
+    <head>
+        <title>Email Archive</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <style is:inline>
+
+            *{
+                box-sizing: border-box;
+                padding: 0px;
+                margin: 0px;
+
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+
+            a{
+                color: #f60;
+            }
+
+            a:hover{
+                text-decoration: none;
+            }
+
+            .email-preview{
+                height: 100vh;
+                height: 100dvh;
+                display: flex;
+                font-family: "Roboto", sans-serif;
+            }
+
+            .menu, .content{
+                position: relative;
+              
+                height: 100%;
+            }
+
+            .menu{
+                
+                flex-shrink: 0;
+                overflow-y: auto;
+                padding: 20px;
+                min-width: 20%;
+                background: #222;
+                color: white;
+
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                line-height: 1.6;
+            }
+
+            .content{
+                flex: 1;
+                min-width: 0;
+                background: #eee;
+                display: flex;
+            }
+
+            .email_frame{
+                border: 0;
+                width: 100%;
+            }
+
+            .well{
+
+            }
+
+            .well span, 
+            .well small, 
+            .well a{
+                display: block;
+            }
+
+            .tag{
+                
+                padding: 8px 12px;
+                background-color: #f60;
+                color: white;
+            }
+
+            .well .tag{
+                display: inline-block;  
+            }
+
+
+            small{
+                color: #666;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+
+            .hero{
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+        </style>
+
+    </head>
+
+    <body class="email-preview">
+
+        <menu class="menu">
+
+            <div class="well hero">
+
+                <div>
+                    <small>Campaign</small>
+                    <h1>Autumn Availability</h1>
+                </div>
+                
+                <p>
+                <small>Subject</small>
+                <span>I'm Available for work!</span></p>    
+                  
+                <p>
+                <small>Segment</small>
+                <span class="tag">Agencies</span></p>
+
+            </div>
+
+
+            <div class="well">
+                <small>Actions</small>
+                <a href="">Copy HTML</a>
+                <a href="">New window</a>
+                <a target="_blank" href="https://dashboard.emailoctopus.com/">Dashboard</a>
+            </div>
+
+            <div class="well">
+                <small>Archive</small>
+                <a href="" target="frame">Autumn Hospitality Pitch</a>
+                <a href="" class="selected" target="frame">Autumn Availability</a>
+            </div>
+
+        </menu>
+
+
+        <iframe class="content email_frame" src="/email.html" id="frame"></iframe>
+
+
+    </body>
+
+</html>
