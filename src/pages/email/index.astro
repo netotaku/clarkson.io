@@ -1,3 +1,29 @@
+---
+import '../../styles/email.scss';
+import { getCollection } from 'astro:content';
+
+const entries = await getCollection('email');
+const contentByPage = new Map(entries.map((entry) => [entry.data.page ?? entry.id, entry]));
+if (contentByPage.size !== entries.length) throw new Error('Email content entries must reference unique pages');
+const dateFormat = new Intl.DateTimeFormat('en-GB', { dateStyle: 'long', timeZone: 'UTC' });
+const emailPages = Object.keys(import.meta.glob('./**/*.{astro,md,mdx}'))
+    .filter((path) => path !== './index.astro' && !path.startsWith('./workbench/') && !path.includes('['))
+    .map((path) => {
+        const slug = path.replace(/^\.\//, '').replace(/\.(astro|md|mdx)$/, '').replace(/\/index$/, '');
+        const entry = contentByPage.get(slug);
+        return {
+            href: `/email/${slug}/`,
+            label: entry?.data.campaign ?? slug.split('/').pop()!.replace(/[-_]/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase()),
+            subject: entry?.data.subject ?? 'No matching email content',
+            segment: entry?.data.segment ?? 'Not supplied',
+            sentDate: entry?.data.sentDate ?? null,
+            sentDateLabel: entry?.data.sentDate ? dateFormat.format(entry.data.sentDate) : 'Not supplied',
+        };
+    })
+    .filter((page) => page.href !== '/email/workbench/')
+    .sort((a, b) => (b.sentDate?.valueOf() ?? -Infinity) - (a.sentDate?.valueOf() ?? -Infinity) || a.label.localeCompare(b.label));
+const initialEmail = emailPages[0];
+---
 <!doctype html>
 <html lang="en-GB">
     <head>
@@ -7,102 +33,6 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-        <style is:inline>
-
-            *{
-                box-sizing: border-box;
-                padding: 0px;
-                margin: 0px;
-
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-            }
-
-            a{
-                color: #f60;
-            }
-
-            a:hover{
-                text-decoration: none;
-            }
-
-            .email-preview{
-                height: 100vh;
-                height: 100dvh;
-                display: flex;
-                font-family: "Roboto", sans-serif;
-            }
-
-            .menu, .content{
-                position: relative;
-              
-                height: 100%;
-            }
-
-            .menu{
-                
-                flex-shrink: 0;
-                overflow-y: auto;
-                padding: 20px;
-                min-width: 20%;
-                background: #222;
-                color: white;
-
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-
-                line-height: 1.6;
-            }
-
-            .content{
-                flex: 1;
-                min-width: 0;
-                background: #eee;
-                display: flex;
-            }
-
-            .email_frame{
-                border: 0;
-                width: 100%;
-            }
-
-            .well{
-
-            }
-
-            .well span, 
-            .well small, 
-            .well a{
-                display: block;
-            }
-
-            .tag{
-                
-                padding: 8px 12px;
-                background-color: #f60;
-                color: white;
-            }
-
-            .well .tag{
-                display: inline-block;  
-            }
-
-
-            small{
-                color: #666;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-            }
-
-            .hero{
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-            }
-
-        </style>
-
     </head>
 
     <body class="email-preview">
@@ -113,16 +43,20 @@
 
                 <div>
                     <small>Campaign</small>
-                    <h1>Autumn Availability</h1>
+                    <h1 data-email-campaign>{initialEmail?.label ?? 'No emails available'}</h1>
                 </div>
-                
+
                 <p>
                 <small>Subject</small>
-                <span>I'm Available for work!</span></p>    
-                  
+                <span data-email-subject>{initialEmail?.subject ?? 'Not supplied'}</span></p>
+
                 <p>
                 <small>Segment</small>
-                <span class="tag">Agencies</span></p>
+                <span class="tag" data-email-segment>{initialEmail?.segment ?? 'Not supplied'}</span></p>
+
+                <p>
+                <small>Send date</small>
+                <span data-email-sent-date>{initialEmail?.sentDateLabel ?? 'Not supplied'}</span></p>
 
             </div>
 
@@ -130,22 +64,31 @@
             <div class="well">
                 <small>Actions</small>
                 <a href="">Copy HTML</a>
-                <a href="">New window</a>
+                <a href={initialEmail?.href ?? '/email.html'} target="_blank" rel="noopener" data-email-new-window>New window</a>
                 <a target="_blank" href="https://dashboard.emailoctopus.com/">Dashboard</a>
             </div>
 
             <div class="well">
                 <small>Archive</small>
-                <a href="" target="frame">Autumn Hospitality Pitch</a>
-                <a href="" class="selected" target="frame">Autumn Availability</a>
+                {emailPages.map((page) => (
+                    <a href={page.href} target="frame" data-email-link
+                        data-campaign={page.label} data-subject={page.subject}
+                        data-segment={page.segment} data-sent-date={page.sentDateLabel}
+                        class:list={{ selected: page === initialEmail }}
+                        aria-current={page === initialEmail ? 'true' : undefined}>
+                        {page.label}
+                    </a>
+                ))}
             </div>
 
         </menu>
 
 
-        <iframe class="content email_frame" src="/email.html" id="frame"></iframe>
+        <iframe class="content email_frame" src={initialEmail?.href ?? '/email.html'} id="frame" name="frame" title="Email preview"></iframe>
 
 
+        <script>
+            import '../../scripts/email-focus';
+        </script>
     </body>
-
 </html>

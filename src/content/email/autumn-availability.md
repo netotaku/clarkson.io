@@ -1,7 +1,9 @@
 ---
-campaign: "Autumn '26'"
+campaign: "Autumn '26"
 subject: "I'm Available for work!"
 segment: agencies
+page: autumn-26-availibility
+sentDate: null
 heading: I've spent 25+ years working across web development, technical leadership, UX and digital strategy, mostly in and around agencies.
 ---
 **I've got some availability and I'm looking for the next thing I can help with. Freelance or permanent. Bristol, hybrid or remote.**

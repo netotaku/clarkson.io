@@ -1,0 +1,80 @@
+.email-preview {
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    font-family: "Roboto", sans-serif;
+
+    &, * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+        color: #f60;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .menu, .content {
+        position: relative;
+        height: 100%;
+    }
+
+    .menu {
+        flex-shrink: 0;
+        overflow-y: auto;
+        padding: 20px;
+        min-width: 20%;
+        background: #222;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        line-height: 1.6;
+    }
+
+    .content {
+        flex: 1;
+        min-width: 0;
+        background: #eee;
+        display: flex;
+    }
+
+    .email_frame {
+        border: 0;
+        width: 100%;
+    }
+
+    .well {
+        span, small, a {
+            display: block;
+        }
+
+        .tag {
+            display: inline-block;
+        }
+    }
+
+    .tag {
+        padding: 8px 12px;
+        background-color: #f60;
+        color: white;
+    }
+
+    small {
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .hero {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}

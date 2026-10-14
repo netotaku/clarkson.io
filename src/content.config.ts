@@ -24,4 +24,19 @@ const blog = defineCollection({
     }),
 });
 
-export const collections = { blog };
+const email = defineCollection({
+  loader: glob({
+    base: './src/content/email',
+    pattern: '**/*.{md,mdx}',
+  }),
+  schema: z.object({
+    campaign: z.string().trim().min(1),
+    subject: z.string().trim().min(1),
+    segment: z.string().trim().min(1),
+    heading: z.string().trim().min(1),
+    sentDate: z.coerce.date().nullish(),
+    page: z.string().regex(/^[a-z0-9]+(?:[-/][a-z0-9]+)*$/).optional(),
+  }),
+});
+
+export const collections = { blog, email };
