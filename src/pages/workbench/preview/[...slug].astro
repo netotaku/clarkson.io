@@ -1,0 +1,18 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import EmailLayout from '../../../layouts/email-autumn.astro';
+
+export async function getStaticPaths() {
+    return (await getCollection('email')).map((email) => ({
+        params: { slug: email.id },
+        props: { email },
+    }));
+}
+
+type Props = { email: CollectionEntry<'email'> };
+const { email } = Astro.props;
+const { Content } = await render(email);
+---
+<EmailLayout {...email.data}>
+    <Content />
+</EmailLayout>

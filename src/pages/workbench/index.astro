@@ -1,0 +1,84 @@
+---
+import '../../styles/email.scss';
+import { getCollection } from 'astro:content';
+
+const dateFormat = new Intl.DateTimeFormat('en-GB', { dateStyle: 'long', timeZone: 'UTC' });
+const emailPages = (await getCollection('email'))
+    .map((entry) => ({
+        href: `/workbench/preview/${entry.id}/`,
+        label: entry.data.campaign,
+        subject: entry.data.subject,
+        segment: entry.data.segment,
+        sentDate: entry.data.sentDate,
+        sentDateLabel: entry.data.sentDate ? dateFormat.format(entry.data.sentDate) : 'Not supplied',
+    }))
+    .sort((a, b) => (b.sentDate?.valueOf() ?? -Infinity) - (a.sentDate?.valueOf() ?? -Infinity) || a.label.localeCompare(b.label));
+const initialEmail = emailPages[0];
+---
+<!doctype html>
+<html lang="en-GB">
+    <head>
+        <title>Email Workbench</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+
+    <body class="email-preview">
+
+        <menu class="menu">
+
+            <div class="well hero">
+
+                <div>
+                    <small>Campaign</small>
+                    <h1 data-email-campaign>{initialEmail?.label ?? 'No emails available'}</h1>
+                </div>
+
+                <p>
+                <small>Subject</small>
+                <span data-email-subject>{initialEmail?.subject ?? 'Not supplied'}</span></p>
+
+                <p>
+                <small>Segment</small>
+                <span class="tag" data-email-segment>{initialEmail?.segment ?? 'Not supplied'}</span></p>
+
+                <p>
+                <small>Send date</small>
+                <span data-email-sent-date>{initialEmail?.sentDateLabel ?? 'Not supplied'}</span></p>
+
+            </div>
+
+
+            <div class="well">
+                <small>Actions</small>                
+                {initialEmail && <a href={initialEmail.href} target="_blank" rel="noopener" data-email-new-window>New window</a>}
+                <a target="_blank" href="https://dashboard.emailoctopus.com/">Dashboard</a>
+            </div>
+
+            <div class="well">
+                <small>Emails</small>
+                {emailPages.map((page) => (
+                    <a href={page.href} target="frame" data-email-link
+                        data-campaign={page.label} data-subject={page.subject}
+                        data-segment={page.segment} data-sent-date={page.sentDateLabel}
+                        class:list={{ selected: page === initialEmail }}
+                        aria-current={page === initialEmail ? 'true' : undefined}>
+                        {page.label}
+                    </a>
+                ))}
+            </div>
+
+        </menu>
+
+
+        {initialEmail && <iframe class="content email_frame" src={initialEmail.href} id="frame" name="frame" title="Email preview"></iframe>}
+
+
+        <script>
+            import '../../scripts/email-focus';
+        </script>
+    </body>
+</html>
