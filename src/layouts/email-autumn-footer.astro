@@ -21,12 +21,13 @@ const styles    = {
     eyebrow:        "font-weight:bold; color: #666666; font-size: 14px;",
     bigLink:        "text-decoration: none; color: white; display:block; font-size: 32px;line-height: 1.2; font-family: Impact, Arial, sans-serif;",
     footerLink:     "text-decoration: none; color: white; display:block;",
-    column:         "width: 25%; padding-bottom: 20px; font-family: Arial, sans-serif; font-size: 16px; line-height: 24px; color: #ffffff;",
+    column:         "width: 25%; padding-bottom: 20px; font-family: Arial, sans-serif; font-size: 18px; line-height: 1.4; color: #ffffff;",
+    flash:          `${font} padding: 8px 12px; text-align: right; background: #eeeeee; color: #666666`,
 }
 
 const signature = () => `
     
-    <strong>Nick Clarkson</strong><br>
+    <strong style="font-size: 22px">Nick Clarkson</strong><br>
     Freelance digital design, developement & strategy<br>
     <a style="${styles.orange}" href="tel:07771535355">07771 535 355</a><br>
     <a style="${styles.orange}" href="mailto:nick@clarkson.io">nick@clarkson.io</a><br>
@@ -70,10 +71,19 @@ const about = () => `
                     display: block!important;
                     mso-hide: none!important;
                 }
+                .footer-column {
+                    display: block !important;
+                    width: 50% !important;
+                    float: left !important;
+                }
             }
         </style>
     </head>
     <body style={styles.reset + "background: #111111;"}>
+        <div style={styles.flash}>
+            {campaign} |
+            <a style="color: #666666" title="View this email in your browser" href="{{WebVersionURL}}">View Online</a>
+        </div>
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
             <tr>
                 <td style={styles.padding + "background: white;padding-bottom:0;"}>
@@ -137,7 +147,7 @@ const about = () => `
 
                     <!-- ./desktop -->
                     
-                    <table class="menu" width="600" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                    <table class="menu" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; max-width: 600px">
                         <tr>
                             <td {...{"width": "25%"}} align="left" valign="top" style={styles.column} class="footer-column">
                                 <div style={styles.eyebrow}>MENU</div>
@@ -146,7 +156,7 @@ const about = () => `
                                 <a style={styles.footerLink + "margin-bottom: 0"} href="https://clar.ky/governance/">AI Governance</a>
                             </td>
                             <td {...{"width": "25%"}} align="left" valign="top" style={styles.column} class="footer-column">
-                                <div style={styles.eyebrow}">SOCIAL</div>
+                                <div style={styles.eyebrow}>SOCIAL</div>
                                 <a style={styles.footerLink} href="https://www.threads.com/@clar.ky">Threads</a>
                                 <a style={styles.footerLink} href="https://github.com/netotaku">GitHub</a>
                                 <a style={styles.footerLink + "margin-bottom: 0"} href="https://www.linkedin.com/in/nicholasclarkson/">LinkedIn</a>
@@ -159,6 +169,18 @@ const about = () => `
                             </td>
                         </tr>
                     </table>
+
+                    <div style="margin: 16px 0; margin-top: 0; font-size: 18px; color: #888888; line-height: 1.4;">
+
+                        <p>
+                            You received this email because you are subscribed to my list.<br class="hide">
+                            You can <a style="color: #aaaaaa; text-decoration: underline;" href="{{UnsubscribeURL}}">unsubscribe</a> at any time.</p>
+
+                        {'{{SenderInfo}}'}
+
+                        <p>Powered by <a style="color: #aaaaaa; text-decoration: underline;" href="{{RewardsURL}}">EmailOctopus</a></p>
+
+                    </div>
 
                 </td>
             </tr>
