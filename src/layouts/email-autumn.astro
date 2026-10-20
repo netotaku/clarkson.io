@@ -2,15 +2,41 @@
 import type { CollectionEntry } from 'astro:content';
 
 type Props = CollectionEntry<'email'>['data'];
-const { campaign, subject, segment, heading, sentDate, page } = Astro.props;
+const { campaign, subject, heading } = Astro.props;
 ---
 <!doctype html>
-<html lang="en-GB">
+<html lang="en-GB" xmlns:o="urn:schemas-microsoft-com:office:office">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="x-apple-disable-message-reformatting" />
+        <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
         <title>{subject}</title>
-        <style>
+        <!--[if mso]>
+        <xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml>
+        <![endif]-->
+        <style is:global>
+            table, td {
+                mso-table-lspace: 0pt;
+                mso-table-rspace: 0pt;
+            }
+
+            table {
+                border-collapse: collapse;
+                border-spacing: 0;
+            }
+
+            img {
+                border: 0;
+                outline: none;
+                text-decoration: none;
+                -ms-interpolation-mode: bicubic;
+            }
+
+            body, table, td, p, a {
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
+            }
 
             body{
                 -webkit-font-smoothing: antialiased;
@@ -27,17 +53,16 @@ const { campaign, subject, segment, heading, sentDate, page } = Astro.props;
                     width: 200px!important;
                 }
 
-            }            
+            }
 
             @media screen and (max-width: 600px) {
-
 
                 .me{
                     width: 130px!important;
                 }
-                
+
                 .leaf{
-                    width: 80px;
+                    width: 80px!important;
                 }
 
                 .header{
@@ -55,19 +80,11 @@ const { campaign, subject, segment, heading, sentDate, page } = Astro.props;
 
                 .flash{
                     text-align: left!important;
-                    font-size: 12px;                                   
+                    font-size: 12px;
                 }
 
                 .no-mobile{
                     display: none!important;
-                }
-
-                .mobile-only{
-                    display: block!important;
-                }
-
-                .seasonal-lockup{
-                    vertical-align: middle;
                 }
 
                 .footer-column {
@@ -80,23 +97,19 @@ const { campaign, subject, segment, heading, sentDate, page } = Astro.props;
                     width: 100%;
                 }
 
-
-
                 .footer-bottom{
                     padding-bottom: 8%!important;
                 }
             }
 
-
-
         </style>
     </head>
-    <body style="padding: 0; margin: 0; font-family: sans-serif; background: #754C11; color: white">
-        
-        <table cellpadding="0" cellspacing="0" style="width: 100%">
+    <body bgcolor="#754C11" style="padding: 0; margin: 0; font-family: sans-serif; background: #754C11; color: white">
+
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="width: 100%">
             <tr>
                 <td class="flash" bgcolor="#111111" style="text-align: right; color: #aaaaaa; padding-left: 8%">
-                    <div style="padding: 8px 12px; padding-left: 0px;">
+                    <div style="padding: 8px 12px; padding-left: 0;">
                         <span class="no-mobile"><strong>{campaign}</strong> |</span>
                         <a style="color: #aaaaaa" title="View this email in your browser" href="{{WebVersionURL}}">View Online</a>
                     </div>
@@ -105,17 +118,17 @@ const { campaign, subject, segment, heading, sentDate, page } = Astro.props;
             <tr>
                 <td bgcolor="#222222" style="color: #ffffff">
 
-                    <table class="header" width="100%" height="150" cellpadding="0" cellspacing="0">
+                    <table role="presentation" border="0" class="header" width="100%" height="150" cellpadding="0" cellspacing="0">
                         <tr>
-                            <td style="padding-left: 8%">
+                            <td style="padding-left: 8%; color: #ffffff; font-family: sans-serif;">
                                 <h1 class="h1" style="font-weight: normal; padding: 0; margin: 0; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 48px">NICK CLARKSON</h1>
-                                <p style="padding: 0; margin: 0;"><strong>Freelance digital design, development & strategy</strong></p>                
+                                <p style="padding: 0; margin: 0;"><strong>Freelance digital design, development & strategy</strong></p>
                             </td>
-                            <td class="seasonal-lockup" style="padding-right: 8%" valign="middle">
-                                <div style="float: right;">
-                                    <img width="100" class="leaf" style="display: block;" src="/images/email/octopus/autumn/maple-top.png">
-                                    <img width="100" class="leaf mobile-only" style="display: block;" src="/images/email/octopus/autumn/maple-bottom.png">
-                                </div>
+                            <td align="right" style="padding-right: 8%" valign="middle">
+                                <table role="presentation" border="0" align="right" cellpadding="0" cellspacing="0">
+                                    <tr><td><img width="100" class="leaf" alt="" style="display: block; width: 100px;" src="https://clar.ky/images/email/octopus/autumn/maple-top.png" /></td></tr>
+                                    <tr><td><img width="100" class="leaf" alt="" style="display: block; width: 100px;" src="https://clar.ky/images/email/octopus/autumn/maple-bottom.png" /></td></tr>
+                                </table>
                             </td>
                         </tr>
                     </table>
@@ -123,46 +136,52 @@ const { campaign, subject, segment, heading, sentDate, page } = Astro.props;
                 </td>
             </tr>
             <tr>
-                <td style="padding-left: 8%; padding-top: 8%">
+                <td style="padding-left: 8%; padding-top: 8%; color: #ffffff; font-family: sans-serif;">
+                    <!--[if mso]><table role="presentation" border="0" width="600" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
                     <div style="max-width: 600px">
                         <h2 class="h2" style="line-height: 1.3; margin-top: 0; font-size: 32px;">{heading}</h2>
-                        <div style="line-height: 1.6; font-size: 18px; padding-right: 8%">                        
+                        <div style="line-height: 1.6; font-size: 18px; color: #ffffff; padding-right: 8%">
                             <slot />
-                            <p><a style="display: inline-block; padding: 8px 22px; background: #f60; color: white; font-weight: bold; border-radius: 8px; text-decoration: none;" href="https://wa.me/447771535355">Let's Talk</a></p>
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin: 18px 0;">
+                                <tr><td bgcolor="#ff6600" style="background: #ff6600; border-radius: 8px; mso-padding-alt: 8px 22px;">
+                                    <a style="display: inline-block; padding: 8px 22px; color: #ffffff; font-weight: bold; text-decoration: none; mso-padding-alt: 0;" href="https://wa.me/447771535355">Let's Talk</a>
+                                </td></tr>
+                            </table>
                         </div>
                     </div>
+                    <!--[if mso]></td></tr></table><![endif]-->
                 </td>
             </tr>
             <tr>
                 <td>
 
-                    <table width="100%" cellpadding="0" cellspacing="0">
-                        <tr>                            
-                            <td style="padding-right: 8%">
-                                <img class="me me--top" style="display: block; float: right; width: 400px" src="/images/email/octopus/autumn/me-top.png">
+                    <table role="presentation" border="0" width="100%" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td style="padding-right: 8%" align="right">
+                                <img class="me" width="400" alt="" style="display: block; width: 400px; height: auto;" src="https://clar.ky/images/email/octopus/autumn/me-top.png">
                             </td>
                         </tr>
                     </table>
-  
-                </td>
-            </tr>      
-            <tr>
-                <td style="background: #111111">
 
-                    <table width="100%" cellpadding="0" cellspacing="0">
+                </td>
+            </tr>
+            <tr>
+                <td bgcolor="#111111" style="background: #111111">
+
+                    <table role="presentation" border="0" width="100%" cellpadding="0" cellspacing="0">
                         <tr>
                             <td style="padding-top: 8%; padding-left: 8%">
 
-                                <span style="display:block; color: #444444"><strong><small>ABOUT ME</small></strong></span>
+                                <span style="display:block; color: #aaaaaa; font-family: Arial, sans-serif; font-size: 16px; line-height: 24px;"><strong>ABOUT ME</strong></span>
                                 <span class="about-links" style="font-size: 32px; line-height: 1.2; font-family: Impact, Arial, sans-serif; display: block; margin-bottom: 16px;">
                                     <a style="text-decoration: none; color: white; display:block" href="https://clar.ky/who-i-am/">WHO I AM</a><!--[if mso]><br /><![endif]-->
                                     <a style="text-decoration: none; color: white; display:block" href="https://clar.ky/how-i-work/">HOW I WORK</a><!--[if mso]><br /><![endif]-->
-                                    <a style="text-decoration: none; color: white; display:block; margin-bottom: 0px" href="https://clar.ky/where-i-fit/">WHERE I FIT</a>
+                                    <a style="text-decoration: none; color: white; display:block; margin-bottom: 0" href="https://clar.ky/where-i-fit/">WHERE I FIT</a>
                                 </span>
 
-                            </td>                          
-                            <td valign="top" style="padding-right: 8%">
-                                <img class="me me--bottom" style="display: block; float: right; width: 400px" src="/images/email/octopus/autumn/me-bottom.png">
+                            </td>
+                            <td valign="top" style="padding-right: 8%" align="right">
+                                <img class="me" width="400" alt="" style="display: block; width: 400px; height: auto;" src="https://clar.ky/images/email/octopus/autumn/me-bottom.png">
                             </td>
                         </tr>
                         <tr>
@@ -171,22 +190,22 @@ const { campaign, subject, segment, heading, sentDate, page } = Astro.props;
                                 <table class="menu" role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
                                 <tr>
                                     <td width="25%" align="left" valign="top" style="width: 25%; padding-bottom: 20px; font-family: Arial, sans-serif; font-size: 16px; line-height: 24px; color: #ffffff;" class="footer-column">
-                                        <span style="display:block; color: #444444"><strong><small>MENU</small></strong></span>
+                                        <span style="display:block; color: #aaaaaa; font-family: Arial, sans-serif; font-size: 16px; line-height: 24px;"><strong>MENU</strong></span>
                                         <a style="text-decoration: none; color: white; display:block" href="https://clar.ky/cv/">CV</a><!--[if mso]><br /><![endif]-->
                                         <a style="text-decoration: none; color: white; display:block" href="https://clar.ky/blog/">Thoughts</a><!--[if mso]><br /><![endif]-->
-                                        <a style="text-decoration: none; color: white; display:block; margin-bottom: 0px" href="https://clar.ky/governance/">AI Governance</a>
+                                        <a style="text-decoration: none; color: white; display:block; margin-bottom: 0" href="https://clar.ky/governance/">AI Governance</a>
                                     </td>
                                     <td width="25%" align="left" valign="top" style="width: 25%; padding-bottom: 20px; font-family: Arial, sans-serif; font-size: 16px; line-height: 24px; color: #ffffff;" class="footer-column">
-                                        <span style="display:block; color: #444444"><strong><small>SOCIAL</small></strong></span>
+                                        <span style="display:block; color: #aaaaaa; font-family: Arial, sans-serif; font-size: 16px; line-height: 24px;"><strong>SOCIAL</strong></span>
                                         <a style="text-decoration: none; color: white; display:block" href="https://www.threads.com/@clar.ky">Threads</a><!--[if mso]><br /><![endif]-->
                                         <a style="text-decoration: none; color: white; display:block" href="https://github.com/netotaku">GitHub</a><!--[if mso]><br /><![endif]-->
-                                        <a style="text-decoration: none; color: white; display:block; margin-bottom: 0px" href="https://www.linkedin.com/in/nicholasclarkson/">LinkedIn</a>
+                                        <a style="text-decoration: none; color: white; display:block; margin-bottom: 0" href="https://www.linkedin.com/in/nicholasclarkson/">LinkedIn</a>
                                     </td>
                                     <td width="25%" align="left" valign="top" style="width: 25%; padding-bottom: 20px; font-family: Arial, sans-serif; font-size: 16px; line-height: 24px; color: #ffffff;" class="footer-column">
-                                        <span style="display:block; color: #444444"><strong><small>CONTACT</small></strong></span>
+                                        <span style="display:block; color: #aaaaaa; font-family: Arial, sans-serif; font-size: 16px; line-height: 24px;"><strong>CONTACT</strong></span>
                                         <a style="text-decoration: none; color: white; display:block" href="tel:+447771535355">Phone</a><!--[if mso]><br /><![endif]-->
                                         <a style="text-decoration: none; color: white; display:block" href="https://wa.me/447771535355">WhatsApp</a><!--[if mso]><br /><![endif]-->
-                                        <a style="text-decoration: none; color: white; display:block; margin-bottom: 0px" href="mailto:nick@clarkson.io">Email</a>
+                                        <a style="text-decoration: none; color: white; display:block; margin-bottom: 0" href="mailto:nick@clarkson.io">Email</a>
                                     </td>
                                 </tr>
                                 </table>
@@ -194,22 +213,22 @@ const { campaign, subject, segment, heading, sentDate, page } = Astro.props;
                             </td>
                         </tr>
                         <tr>
-                            <td class="footer-bottom" colspan="2" bgcolor="#111111" style="font-family: Arial, sans-serif; line-height: 24px; padding-left: 8%; padding-bottom: 80px; padding-right: 8%; background-color: #111111; color: #444444" class="pad">
+                            <td class="footer-bottom" colspan="2" bgcolor="#111111" style="font-family: Arial, sans-serif; line-height: 24px; padding-left: 8%; padding-bottom: 80px; padding-right: 8%; background-color: #111111; color: #aaaaaa; font-size: 16px;">
 
-                                <p style="margin: 16px 0; margin-top: 0px;">You received this email because you subscribed to my list.<br class="no-mobile">
-                                You can <a style="color: #666666" href="{{UnsubscribeURL}}">unsubscribe</a> at any time.</p>
+                                <p style="margin: 16px 0; margin-top: 0;">You received this email because you subscribed to my list.<br class="no-mobile">
+                                You can <a style="color: #cccccc; text-decoration: underline;" href="{{UnsubscribeURL}}">unsubscribe</a> at any time.</p>
 
                                 {'{{SenderInfo}}'}
 
-                                <p style="margin: 16px 0; margin-bottom: 0px;">Powered by <a style="color: #666666" href="{{RewardsURL}}">EmailOctopus</a></p>
+                                <p style="margin: 16px 0; margin-bottom: 0;">Powered by <a style="color: #cccccc; text-decoration: underline;" href="{{RewardsURL}}">EmailOctopus</a></p>
 
                             </td>
                         </tr>
                     </table>
 
                 </td>
-            </tr>                  
+            </tr>
         </table>
-        
+
     </body>
 </html>
