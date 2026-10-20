@@ -7,12 +7,12 @@ const { campaign, subject, heading } = Astro.props;
 const gutter    = "8%;";
 const font      = "font-family: sans-serif;"
 const styles    = {
-    hide:           "display: none;",
-    img:            "display: block;",
+    hide:           "display: none; mso-hide: all;",
+    img:            "display: block; border: 0; outline: none; text-decoration: none;",
     headingFont:    `${font} line-height: 1.3; font-size: 32px; font-weight:bold; letter-spacing: -1px`,
     baseFont:       `${font} line-height: 1.6; font-size: 18px;`,
     reset:          "padding: 0px; margin: 0px; box-sizing: border-box;",
-    padding:        `padding: ${gutter}`,   
+    padding:        `padding: ${gutter}`,
     paddingLeft:    `padding-left: ${gutter}`,
     paddingTop:     `padding-top: ${gutter}`,
     paddingRight:   `padding-right: ${gutter}`,
@@ -26,10 +26,10 @@ const styles    = {
 }
 
 const signature = () => `
-    
+
     <strong style="font-size: 22px">Nick Clarkson</strong><br>
-    Freelance digital design, developement & strategy<br>
-    <a style="${styles.orange}" href="tel:07771535355">07771 535 355</a><br>
+    Freelance digital design, development & strategy<br>
+    <a style="${styles.orange}" href="tel:+447771535355">07771 535 355</a><br>
     <a style="${styles.orange}" href="mailto:nick@clarkson.io">nick@clarkson.io</a><br>
     <a style="${styles.orange}" href="https://clar.ky">https://clar.ky</a>
 
@@ -39,8 +39,8 @@ const about = () => `
 
     <span style="${styles.eyebrow}">ABOUT ME</span>
     <span style="display: block; margin-bottom: 16px;">
-        <a style="${styles.bigLink}" href="https://clar.ky/who-i-am/">WHO I AM</a>
-        <a style="${styles.bigLink}" href="https://clar.ky/how-i-work/">HOW I WORK</a>
+        <a style="${styles.bigLink}" href="https://clar.ky/who-i-am/">WHO I AM</a><!--[if mso]><br /><![endif]-->
+        <a style="${styles.bigLink}" href="https://clar.ky/how-i-work/">HOW I WORK</a><!--[if mso]><br /><![endif]-->
         <a style="${styles.bigLink}" href="https://clar.ky/where-i-fit/">WHERE I FIT</a>
     </span>
 
@@ -48,7 +48,7 @@ const about = () => `
 
 ---
 <!doctype html>
-<html lang="en-GB" 
+<html lang="en-GB"
     {...{ "xmlns:o": "urn:schemas-microsoft-com:office:office" }}
 >
     <head>
@@ -57,7 +57,25 @@ const about = () => `
         <meta name="x-apple-disable-message-reformatting" />
         <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
         <title>{subject}</title>
-        <style>
+        <!--[if mso]>
+        <xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml>
+        <![endif]-->
+        <style is:inline>
+            table, td {
+                mso-table-lspace: 0pt;
+                mso-table-rspace: 0pt;
+            }
+            table {
+                border-collapse: collapse;
+                border-spacing: 0;
+            }
+            img {
+                -ms-interpolation-mode: bicubic;
+            }
+            body, table, td, p, a {
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
+            }
             body,html{
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
@@ -69,7 +87,6 @@ const about = () => `
                 }
                 .show{
                     display: block!important;
-                    mso-hide: none!important;
                 }
                 .footer-column {
                     display: block !important;
@@ -79,96 +96,107 @@ const about = () => `
             }
         </style>
     </head>
-    <body style={styles.reset + "background: #111111;"}>
-        <div style={styles.flash}>
-            {campaign} |
-            <a style="color: #666666" title="View this email in your browser" href="{{WebVersionURL}}">View Online</a>
-        </div>
+    <body {...{bgcolor: "#111111"}} style={styles.reset + font + "background: #111111;"}>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr><td align="right" {...{bgcolor: "#eeeeee"}} style={styles.flash}>
+                {campaign} |
+                <a style="color: #666666" title="View this email in your browser" href="{{WebVersionURL}}">View Online</a>
+            </td></tr>
+        </table>
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
             <tr>
-                <td style={styles.padding + "background: white;padding-bottom:0;"}>
-                    
+                <td {...{bgcolor: "#ffffff"}} style={styles.padding + "background: #ffffff; color: #000000; padding-bottom:0;"}>
+
+                    <!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->
                     <div style={styles.baseFont + "max-width: 600px;"}>
                         <h1 style={styles.headingFont}>Hi!<br>{heading}</h1>
                         <slot />
                         <p>All the best</p>
                     </div>
+                    <!--[if mso]></td></tr></table><![endif]-->
 
                     <!-- mobile -->
+                    <!--[if !mso]><!-->
 
                         <div style={styles.hide + styles.baseFont} class="show">
                             <Fragment set:html={signature()} />
-                            <img style={styles.img + "width: 100%; height: auto;"} src="/images/email/octopus/autumn/autumn-me-top.png">
+                            <img width="490" height="203" alt="" style={styles.img + "width: 100%; height: auto;"} src="https://clar.ky/images/email/octopus/autumn/autumn-me-top.png">
                         </div>
 
+                    <!--<![endif]-->
                     <!-- ./mobile -->
 
                     <!-- desktop -->
 
-                        <table class="hide" width="100%" border="0" cellpadding="0" cellspacing="0">
+                        <table role="presentation" class="hide" width="100%" border="0" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td style={styles.baseFont + styles.paddingBottom} align="left" valign="top">
                                    <Fragment set:html={signature()} />
                                 </td>
                                 <td align="right" valign="bottom">
-                                    <img style={styles.img} src="/images/email/octopus/autumn/autumn-me-top.png">
+                                    <img width="490" height="203" alt="" style={styles.img + "width: 490px; height: auto;"} src="https://clar.ky/images/email/octopus/autumn/autumn-me-top.png">
                                 </td>
                             </tr>
                         </table>
-                
+
                     <!-- ./desktop -->
 
                 </td>
             </tr>
             <tr>
-                <td class="footer" style={styles.baseFont + styles.padding + "color: white; padding-top:0;"}>
+                <td {...{bgcolor: "#111111"}} class="footer" style={styles.baseFont + styles.padding + "color: white; padding-top:0;"}>
 
                     <!-- mobile -->
+                    <!--[if !mso]><!-->
 
                         <div class="show" style={styles.hide}>
-                            <img class="show" style={styles.img + "width: 100%; height: auto;"} src="/images/email/octopus/autumn/autumn-me-bottom.png">
+                            <img width="490" height="203" alt="" style={styles.img + "width: 100%; height: auto;"} src="https://clar.ky/images/email/octopus/autumn/autumn-me-bottom.png">
                             <Fragment set:html={about()} />
                         </div>
 
+                    <!--<![endif]-->
                     <!-- ./mobile -->
 
                     <!-- desktop -->
 
-                        <table class="hide" width="100%" border="0" cellpadding="0" cellspacing="0">
+                        <table role="presentation" class="hide" width="100%" border="0" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td align="left" valign="top" style={styles.paddingTop}>
                                     <Fragment set:html={about()} />
                                 </td>
                                 <td align="right" valign="top">
-                                    <img style={styles.img} src="/images/email/octopus/autumn/autumn-me-bottom.png">
+                                    <img width="490" height="203" alt="" style={styles.img + "width: 490px; height: auto;"} src="https://clar.ky/images/email/octopus/autumn/autumn-me-bottom.png">
                                 </td>
                             </tr>
                         </table>
 
                     <!-- ./desktop -->
-                    
-                    <table class="menu" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; max-width: 600px">
+
+                    <!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->
+                    <table role="presentation" class="menu" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; max-width: 600px">
                         <tr>
                             <td {...{"width": "25%"}} align="left" valign="top" style={styles.column} class="footer-column">
                                 <div style={styles.eyebrow}>MENU</div>
-                                <a style={styles.footerLink} href="https://clar.ky/cv/">CV</a>
-                                <a style={styles.footerLink} href="https://clar.ky/blog/">Thoughts</a>
+                                <a style={styles.footerLink} href="https://clar.ky/cv/">CV</a><!--[if mso]><br /><![endif]-->
+                                <a style={styles.footerLink} href="https://clar.ky/blog/">Thoughts</a><!--[if mso]><br /><![endif]-->
                                 <a style={styles.footerLink + "margin-bottom: 0"} href="https://clar.ky/governance/">AI Governance</a>
                             </td>
                             <td {...{"width": "25%"}} align="left" valign="top" style={styles.column} class="footer-column">
                                 <div style={styles.eyebrow}>SOCIAL</div>
-                                <a style={styles.footerLink} href="https://www.threads.com/@clar.ky">Threads</a>
-                                <a style={styles.footerLink} href="https://github.com/netotaku">GitHub</a>
+                                <a style={styles.footerLink} href="https://www.threads.com/@clar.ky">Threads</a><!--[if mso]><br /><![endif]-->
+                                <a style={styles.footerLink} href="https://github.com/netotaku">GitHub</a><!--[if mso]><br /><![endif]-->
                                 <a style={styles.footerLink + "margin-bottom: 0"} href="https://www.linkedin.com/in/nicholasclarkson/">LinkedIn</a>
                             </td>
                             <td {...{"width": "25%"}} align="left" valign="top" style={styles.column} class="footer-column">
                                 <div style={styles.eyebrow}>CONTACT</div>
-                                <a style={styles.footerLink} href="tel:+447771535355">Phone</a>
-                                <a style={styles.footerLink} href="https://wa.me/447771535355">WhatsApp</a>
+                                <a style={styles.footerLink} href="tel:+447771535355">Phone</a><!--[if mso]><br /><![endif]-->
+                                <a style={styles.footerLink} href="https://wa.me/447771535355">WhatsApp</a><!--[if mso]><br /><![endif]-->
                                 <a style={styles.footerLink + "margin-bottom: 0"} href="mailto:nick@clarkson.io">Email</a>
                             </td>
                         </tr>
                     </table>
+
+                    <!--[if mso]></td></tr></table><![endif]-->
 
                     <div style="margin: 16px 0; margin-top: 0; font-size: 18px; color: #888888; line-height: 1.4;">
 
