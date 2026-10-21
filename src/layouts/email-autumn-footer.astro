@@ -4,7 +4,7 @@ import type { CollectionEntry } from 'astro:content';
 type Props = CollectionEntry<'email'>['data'];
 const { campaign, subject, heading } = Astro.props;
 
-const gutter    = "8%;";
+const gutter    = "6%;";
 const font      = "font-family: sans-serif;"
 const styles    = {
     hide:           "display: none; mso-hide: all;",
@@ -22,12 +22,12 @@ const styles    = {
     bigLink:        "text-decoration: none; color: white; display:block; font-size: 36px; line-height: 1.2; font-family: Impact, Arial, sans-serif;",
     footerLink:     "text-decoration: none; color: white; display:block;",
     column:         "width: 25%; padding-bottom: 20px; font-family: Arial, sans-serif; font-size: 18px; line-height: 1.4; color: #ffffff;",
-    flash:          `${font} padding: 8px 12px; text-align: right; background: #eeeeee; color: #666666`,
+    flash:          `${font} padding: 8px 18px; background: #eeeeee; color: #666666; border-radius: 8px; font-size: 14px;`,
 }
 
 const signature = () => `
 
-    <strong style="font-size: 22px">Nick Clarkson</strong><br>
+    <strong style="font-size: 22px; letter-spacing: -1px;">Nick Clarkson</strong><br>
     Freelance digital design, development & strategy<br>
     <a style="${styles.orange}" href="tel:+447771535355">07771 535 355</a><br>
     <a style="${styles.orange}" href="mailto:nick@clarkson.io">nick@clarkson.io</a><br>
@@ -61,6 +61,11 @@ const about = () => `
         <xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml>
         <![endif]-->
         <style is:inline>
+
+            .address a{
+                color: #aaaaaa!important;
+            }
+
             table, td {
                 mso-table-lspace: 0pt;
                 mso-table-rspace: 0pt;
@@ -93,25 +98,39 @@ const about = () => `
                     width: 50% !important;
                     float: left !important;
                 }
+                .h1{
+                    font-size: 28px!important;
+                }
+                .tag{
+                    width: 100%;
+                }
+
             }
         </style>
     </head>
     <body {...{bgcolor: "#111111"}} style={styles.reset + font + "background: #111111;"}>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-            <tr><td align="right" {...{bgcolor: "#eeeeee"}} style={styles.flash}>
-                {campaign} |
-                <a style="color: #666666" title="View this email in your browser" href="{{WebVersionURL}}">View Online</a>
-            </td></tr>
-        </table>
+
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
             <tr>
                 <td {...{bgcolor: "#ffffff"}} style={styles.padding + "background: #ffffff; color: #000000; padding-bottom:0;"}>
 
                     <!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->
                     <div style={styles.baseFont + "max-width: 600px;"}>
-                        <h1 style={styles.headingFont}>Hi!<br>{heading}</h1>
+
+
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" class="tag" style="margin-bottom: 56px;">
+                            <tbody><tr><td align="left" {...{bgcolor: "#eeeeee"}} style={styles.flash}>
+                                <!-- set:text avoids Astro reconstructing this anchor around the following body content. -->
+                                <a style="color: #666666;" title="View this email in your browser" href="{{WebVersionURL}}" set:text={campaign} />
+                            </td></tr></tbody>
+                        </table>
+
+                        <h1 class="h1" style={styles.headingFont}>Hi!<br>{heading}</h1>
+
                         <slot />
-                        <p>All the best</p>
+
+                        <p>All the best!</p>
+
                     </div>
                     <!--[if mso]></td></tr></table><![endif]-->
 
@@ -204,7 +223,9 @@ const about = () => `
                             You received this email because you are subscribed to my list.<br class="hide">
                             You can <a style="color: #aaaaaa; text-decoration: underline;" href="{{UnsubscribeURL}}">unsubscribe</a> at any time.</p>
 
-                        {'{{SenderInfo}}'}
+                        <span class="address">
+                            {'{{SenderInfo}}'}
+                        </span>
 
                         <p>Powered by <a style="color: #aaaaaa; text-decoration: underline;" href="{{RewardsURL}}">EmailOctopus</a></p>
 
