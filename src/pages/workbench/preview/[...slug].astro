@@ -1,6 +1,6 @@
 ---
 import { getCollection, render, type CollectionEntry } from 'astro:content';
-import EmailLayout from '../../../layouts/email-autumn-footer.astro';
+import EmailLayout from '../../../layouts/email/autumn.astro';
 
 export async function getStaticPaths() {
     return (await getCollection('email')).map((email) => ({

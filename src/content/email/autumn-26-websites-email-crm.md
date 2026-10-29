@@ -1,7 +1,7 @@
 ---
 campaign: "Autumn ’26 Websites, Email & CRM"
 subject: "Anything to sort before Christmas?"
-segment: professional-services-retail
+segment: no-agencies
 sentDate: 2026-10-21
 heading: "I’ve got availability this autumn for websites, online shops and email campaigns — whether you’re preparing for Christmas or getting plans in place for next year."
 ---
