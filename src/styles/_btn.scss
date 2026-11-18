@@ -59,6 +59,11 @@
         cursor: pointer;
     }
 
+    &--inline-block{
+        display: inline-block;
+        align-content: center;
+    }
+
     &--orange{
         background-color: var(--color-dark-orange);
     }

@@ -31,12 +31,23 @@
             margin-bottom: var(--layout-spacing);
         }
 
+        &__description{
+            font-size: var(--font-size-post-description);
+        }
+
     }
 
     &__nav{
-        a{
+        margin-bottom: calc(var(--post-list-spacing) * 2);
+
+        > a{
             display: block;
         }
+    }
+
+    &__blog-link{
+        color: var(--color-dark-orange);
+        text-decoration: underline;
     }
 
     @media (max-width: 639px) {
@@ -54,6 +65,7 @@
         &__lockup{
             margin-top: 310px;
         }
+
     }
 
 }

@@ -7,7 +7,9 @@
     --space-md: 12px;
     --space-lg: 20px;
     --gutter: 22px;
+    --post-list-spacing: calc(var(--gutter) * 2);
     --layout-spacing: min(5vw, 85px);
+    --font-size-post-description: 120%;
     --home-image-offset: min(3vw, 51px);
     --content-max-width: 1000px;
     --side-panel-width: 300px;
