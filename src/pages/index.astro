@@ -1,12 +1,14 @@
 ---
 import Wrapper 	from '../layouts/wrapper.astro';
 import Card from '../components/Card.astro';
+import List from '../components/List.astro';
 import { Image } from 'astro:assets';
 import me from '../assets/images/chrome/me-crossed-arms.png';
 import pixelImage from '../assets/images/more-jungle.jpg';
-import { getLatestPost } from '../utils/blog';
+import { getLatestPosts } from '../utils/blog';
 
-const latestPost = await getLatestPost();
+const latestPosts = await getLatestPosts(3);
+const [latestPost] = latestPosts;
 ---
 <Wrapper
 	title="Nick Clarkson, Creative Technologist, Bristol UK"
@@ -38,10 +40,13 @@ const latestPost = await getLatestPost();
 				<nav class="home__nav">
 					<a href="/cv">Curriculum Vitae</a>
 					<a href="/governance">AI Governence</a>
-					<a href="/blog">Thoughts</a>
+					<!-- <a href="/blog">Thoughts</a> -->
 				</nav>
 
 			</div>
+							
+				<List posts={latestPosts} />
+				<p><a href="/blog">View all blog posts</a></p>
 			
 		</div>
 

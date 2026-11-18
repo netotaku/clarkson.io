@@ -1,18 +1,22 @@
 .home{
-    text-align: right;
-    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
     overflow: hidden;
+
+    &__me,
+    &__lockup{
+        grid-area: 1 / 1;
+    }
+
     &__me{
+        justify-self: end;
         margin-right: var(--home-image-offset);
     }
     &__lockup{
 
-        position: absolute;
-        top: var(--home-lockup-offset);
-
-        text-align: left;           
-        left: var(--layout-spacing);
-        right: var(--layout-spacing);
+        margin-top: calc(var(--home-lockup-offset) - var(--layout-spacing));
+        text-align: left;
         
         &__heading{
             font-family: Oswald;
@@ -48,7 +52,7 @@
             display: none;
         }
         &__lockup{
-            top: 390px;
+            margin-top: 310px;
         }
     }
 
