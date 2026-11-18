@@ -1,6 +1,6 @@
 ---
 title: "The AI Apocalypse Doesn't Need Sentience"
-description: "The AI apocalypse might not need sentient machines. What happens when hostile nations use AI to weaponise our personal data and destabilise society?"
+description: "What happens when hostile nations use AI to weaponise our personal data and destabilise society?"
 pubDate: "18 nov 2026"
 heroImage: "/src/assets/images/dj.jpg"
 theme: '#a57d52'
