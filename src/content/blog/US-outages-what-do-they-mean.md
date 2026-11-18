@@ -6,6 +6,7 @@ heroImage: "/src/assets/images/dj.jpg"
 theme: '#a57d52'
 categories:
     - "ai"
+    - "privacy-and-ethics"
 cta: "I've spent over 25 years building digital products, with privacy and security central to good development."
 ---
 Zombie films have always understood something about the apocalypse that science fiction about artificial intelligence often overlooks.
